@@ -1,0 +1,20 @@
+#ant specific
+dist/
+build/
+
+#netbeans specific
+/DungeonCrawl/nbproject/*
+!/DungeonCrawl/nbproject.properties
+!/DungeonCrawl/nbproject/project.xml
+
+#java specific
+*.class
+
+#general swap/backup files
+*.so
+*.log
+*.out
+*~
+*.swp
+*.DS_Store
+*.lock
