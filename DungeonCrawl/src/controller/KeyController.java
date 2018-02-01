@@ -8,6 +8,7 @@ package controller;
 import DungeonCrawl.DungeonCrawl;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import model.GameObject;
 import model.Moveable.Gamer;
 
 /**
@@ -23,41 +24,51 @@ public class KeyController implements KeyListener  {
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        Gamer gamer = DungeonCrawl.gameData.gamer;
+        GameObject firstGameObject = DungeonCrawl.gameData.gameObjects.get(0);
         
-        switch (ke.getKeyCode()) 
+        if(firstGameObject instanceof Gamer)
         {
-            case KeyEvent.VK_LEFT:
-                gamer.setLeft(true);
-                break;
-            case KeyEvent.VK_RIGHT:
-                gamer.setRight(true);
-                break;
-            case KeyEvent.VK_UP:
-                gamer.setUp(true);
-                break;
-            case KeyEvent.VK_DOWN:
-                gamer.setDown(true);
-                break;
+            Gamer gamer = (Gamer)firstGameObject;
+
+            switch (ke.getKeyCode()) 
+            {
+                case KeyEvent.VK_LEFT:
+                    gamer.setLeft(true);
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    gamer.setRight(true);
+                    break;
+                case KeyEvent.VK_UP:
+                    gamer.setUp(true);
+                    break;
+                case KeyEvent.VK_DOWN:
+                    gamer.setDown(true);
+                    break;
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        Gamer gamer = DungeonCrawl.gameData.gamer;
-        switch (ke.getKeyCode()){
-            case KeyEvent.VK_LEFT:
-                gamer.setLeft(false);
-                break;
-            case KeyEvent.VK_RIGHT:
-                gamer.setRight(false);
-                break;
-            case KeyEvent.VK_DOWN:
-                gamer.setDown(false);
-                break;
-            case KeyEvent.VK_UP:
-                gamer.setUp(false);
-                break;
+        Object firstGameObject = DungeonCrawl.gameData.gameObjects.get(0);
+        
+        if(firstGameObject instanceof Gamer)
+        {
+            Gamer gamer = (Gamer)firstGameObject;
+            switch (ke.getKeyCode()){
+                case KeyEvent.VK_LEFT:
+                    gamer.setLeft(false);
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    gamer.setRight(false);
+                    break;
+                case KeyEvent.VK_DOWN:
+                    gamer.setDown(false);
+                    break;
+                case KeyEvent.VK_UP:
+                    gamer.setUp(false);
+                    break;
+            }
         }
     }
     

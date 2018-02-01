@@ -15,15 +15,12 @@ import controller.ObjectAnimator;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.util.HashSet;
-import java.util.Set;
 import model.GameData;
 import model.GameObject;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Collectible;
 import model.Immoveable.Collectible.Key;
-import model.Immoveable.Tile.Button;
 
 public class Gamer extends MoveableObject {
     private final int width = 16;
@@ -31,6 +28,10 @@ public class Gamer extends MoveableObject {
     
     private float dx;
     private float dy;
+    
+    public float moveSpeed;
+    public float maxSpeed;
+    public float stopSpeed;
     
     public BufferedImage[] leftSprites;
     public BufferedImage[] rightSprites;
@@ -143,34 +144,57 @@ public class Gamer extends MoveableObject {
 
     @Override
     public void update() {
-        if(left){
+        if(left)
+        {
+            super.x -= 50;
+            
+            facing = 3;
             gamerMoves.setFrames(leftSprites);
-        }
-        else if(right){
+        } 
+        else if(right)
+        {
+            super.x += 50;
+            
+            facing = 1;
             gamerMoves.setFrames(rightSprites);
         }
-        else if(up){
+        
+        if(down)
+        {
+            super.y += 50;
+            
+            facing = 2;
+            gamerMoves.setFrames(downSprites);
+        } 
+        else if(up)
+        {
+            super.y -= 50;
+            
+            facing = 0;
             gamerMoves.setFrames(upSprites);
         }
-        else if(down){
-            gamerMoves.setFrames(downSprites);
-        }
         
-        gamerMoves.setDelay(100);
-        
-        if (!(right && down && left && up)&&(dx == 0 && dy == 0))
+        if (!(right && down && left && up))
         {
             switch(facing){
                 case 0:
+                    gamerMoves.setFrames(upIdle);
                     break;
                 case 1:
+                    gamerMoves.setFrames(rightIdle);
                     break;
                 case 2:
+                    gamerMoves.setFrames(downIdle);
                     break;
                 case 3:
+                    gamerMoves.setFrames(leftIdle);
                     break;
             }
             gamerMoves.setDelay(-1);
+        }
+        else
+        {
+            gamerMoves.setDelay(100);
         }
         
         gamerMoves.update();
@@ -178,8 +202,6 @@ public class Gamer extends MoveableObject {
         Gamer ghostGamer = new Gamer(super.x + dx, super.y - dy);
         
         // Need to check for collisions between ghostGamer and collidibles
-        super.x += dx;
-        super.y -= dy;
     }
 
     @Override
@@ -191,7 +213,7 @@ public class Gamer extends MoveableObject {
                 if(this.getCollisionBox().intersects(
                     object.getCollisionBox()))
                 {
-                    super.setAlive(false);
+                    
                 }
             }
             else if(object instanceof Collectible)

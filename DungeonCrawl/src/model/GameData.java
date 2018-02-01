@@ -26,10 +26,14 @@ public class GameData {
         // landscape = new Landscape();
         gameObjects = Collections.synchronizedList(new ArrayList<GameObject>());
         gamer = new Gamer(650, 625);
+        GameData.gameObjects.add(GameData.gamer);
     }
     
     public void resetGameData()
     {
+        GameData.gamer = new Gamer(650, 625);
+        GameData.gamer.update();
+        
 //        if(landscape.getLevel() instanceof YouWinLevel)
 //        {
 //            hero.hearts += 6;
@@ -51,6 +55,9 @@ public class GameData {
                     ((Monster)object).update();
                     
                     // ((Monster)object).findCollision();
+                }
+                else if(object instanceof Gamer){
+                    ((Gamer)object).update();
                 }
             }
         }

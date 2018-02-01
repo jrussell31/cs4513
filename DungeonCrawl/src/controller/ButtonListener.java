@@ -4,6 +4,7 @@ import DungeonCrawl.DungeonCrawl;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import model.Moveable.Gamer;
 
 public class ButtonListener implements ActionListener {
@@ -11,7 +12,7 @@ public class ButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-//        if (ae.getSource() == MainWindow.startButton) 
+//        if (ae. == KeyEvent.VK_SPACE) 
 //        {
 //            if(!DungeonCrawl.animator.running)
 //            {

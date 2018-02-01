@@ -9,12 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.GameData;
 
-public class MetricPanel extends JPanel
+public class InventoryPanel extends JPanel
 {
     private final JPanel lifePanel, ammoPanel, keyPanel;
     private final JLabel ammoImage, amountOfAmmo, amountOfKeys;
     
-    public MetricPanel()
+    public InventoryPanel()
     {
         this.setLayout(new GridLayout(1, 4));
         

@@ -10,15 +10,15 @@ import javax.swing.JPanel;
 import model.GameData;
 import model.GameObject;
 
-public class MainPanel extends JPanel 
+public class GamePanel extends JPanel 
 {
-    public static final int PWIDTH = 750; 
-    public static final int PHEIGHT = 750;
+    public static final int PWIDTH = 1000; 
+    public static final int PHEIGHT = 900;
 
     private Graphics graphics;
     private Image dbImage = null;
 
-    public MainPanel() 
+    public GamePanel() 
     {
         setBackground(Color.black);
         setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
@@ -38,7 +38,7 @@ public class MainPanel extends JPanel
             }
         }
 
-        graphics.clearRect(0, 0, MainPanel.PWIDTH, MainPanel.PHEIGHT);
+        graphics.clearRect(0, 0, GamePanel.PWIDTH, GamePanel.PHEIGHT);
 
         synchronized(GameData.gameObjects) 
         {
