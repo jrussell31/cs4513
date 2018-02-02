@@ -37,7 +37,6 @@ public class DungeonCrawl {
         gameForReal.setLocation(0, 0);
         gameForReal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameForReal.setVisible(true);
-        gameForReal.setBackground(Color.BLACK);
         
         thread = new Thread(animator);
         
