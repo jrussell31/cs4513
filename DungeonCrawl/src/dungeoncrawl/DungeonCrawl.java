@@ -5,6 +5,7 @@
  */
 package DungeonCrawl;
 import controller.Animator;
+import java.awt.Color;
 import javax.swing.JFrame;
 import model.GameData;
 import view.MainWindow;
@@ -27,8 +28,8 @@ public class DungeonCrawl {
     public static void main(String[] args) {
         animator = new Animator();
         gameData = new GameData();
-        gamePanel = new GamePanel();
-        inventoryPanel = new InventoryPanel();
+        gamePanel = new GamePanel(1000, 900);
+        inventoryPanel = new InventoryPanel(300, 900);
         
         JFrame gameForReal = new MainWindow();
         gameForReal.setTitle("Level 1!");
@@ -36,6 +37,7 @@ public class DungeonCrawl {
         gameForReal.setLocation(0, 0);
         gameForReal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameForReal.setVisible(true);
+        gameForReal.setBackground(Color.BLACK);
         
         thread = new Thread(animator);
         
