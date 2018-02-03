@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import model.GameData;
 import model.GameObject;
@@ -22,7 +23,6 @@ public class GamePanel extends JPanel
         GamePanel.pwidth = pwidth;
         GamePanel.pheight = pheight;
         
-        setBackground(Color.black);
         setPreferredSize(new Dimension(GamePanel.pwidth, GamePanel.pheight));
         setFocusable(true);
         requestFocus();

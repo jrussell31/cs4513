@@ -19,14 +19,21 @@ import java.util.List;
 public class GameData {
     public static List<GameObject> gameObjects;
     public static Gamer gamer;
+    public static String level;
+    public static int time;
+    public static String chipsLeft;
     //public static Landscape landscape;
 
     public GameData() 
     {
-        // landscape = new Landscape();
         gameObjects = Collections.synchronizedList(new ArrayList<GameObject>());
+        
+        // Level specific items
         gamer = new Gamer(650, 625);
         GameData.gameObjects.add(GameData.gamer);
+        GameData.level = "1";
+        GameData.time = 120000;
+        GameData.chipsLeft = "10";
     }
     
     public void resetGameData()
@@ -46,6 +53,11 @@ public class GameData {
     
     public void update() 
     {
+        if(GameData.time > 0)
+        {
+            GameData.time -= 1000;
+        }
+        
         synchronized(gameObjects)
         {
             for(GameObject object: gameObjects)

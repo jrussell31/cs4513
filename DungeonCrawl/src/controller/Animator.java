@@ -27,6 +27,7 @@ public class Animator implements Runnable {
             DungeonCrawl.gameData.update();
             DungeonCrawl.gamePanel.gameRender();
             DungeonCrawl.gamePanel.printScreen();
+            DungeonCrawl.inventoryPanel.updateInventoryPanel();
             
             long endTime = System.currentTimeMillis();
             int sleepTime = (int) (1.0 / FRAMES_PER_SECOND * 1000)

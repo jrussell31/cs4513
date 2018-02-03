@@ -28,27 +28,9 @@ public class MainWindow extends JFrame {
 
         // Game Panel layout section
         GroupLayout gamePanelLayout = new GroupLayout(DungeonCrawl.gamePanel);
-        DungeonCrawl.gamePanel.setLayout(gamePanelLayout);
-        gamePanelLayout.setHorizontalGroup(
-            gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, GamePanel.pwidth, Short.MAX_VALUE)
-        );
-        gamePanelLayout.setVerticalGroup(
-            gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, GamePanel.pheight, Short.MAX_VALUE)
-        );
         
         // Inventory Panel layout section
         GroupLayout inventoryPanelLayout = new GroupLayout(DungeonCrawl.inventoryPanel);
-        DungeonCrawl.inventoryPanel.setLayout(inventoryPanelLayout);
-        inventoryPanelLayout.setHorizontalGroup(
-            inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, InventoryPanel.pwidth, Short.MAX_VALUE)
-        );
-        inventoryPanelLayout.setVerticalGroup(
-            inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, InventoryPanel.pwidth, Short.MAX_VALUE)
-        );
         
         // Entire Layout
         GroupLayout layout = new GroupLayout(getContentPane());

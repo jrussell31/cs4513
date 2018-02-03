@@ -18,6 +18,7 @@ import view.InventoryPanel;
 public class DungeonCrawl {
     public static GameData gameData;
     public static Animator animator;
+    public static JFrame mainWindow;
     public static InventoryPanel inventoryPanel;
     public static GamePanel gamePanel;
     public static Thread thread;
@@ -29,14 +30,14 @@ public class DungeonCrawl {
         animator = new Animator();
         gameData = new GameData();
         gamePanel = new GamePanel(1000, 900);
-        inventoryPanel = new InventoryPanel(300, 900);
+        inventoryPanel = new InventoryPanel(350, 900);
         
-        JFrame gameForReal = new MainWindow();
-        gameForReal.setTitle("Level 1!");
-        gameForReal.setSize(1500, 1000);
-        gameForReal.setLocation(0, 0);
-        gameForReal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameForReal.setVisible(true);
+        mainWindow = new MainWindow();
+        mainWindow.setTitle("Level 1!");
+        mainWindow.setSize(1500, 1000);
+        mainWindow.setLocation(0, 0);
+        mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainWindow.setVisible(true);
         
         thread = new Thread(animator);
         
