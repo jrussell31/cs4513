@@ -18,20 +18,12 @@ public class InventoryPanel extends JPanel
 {
 //    private final JPanel lifePanel, ammoPanel, keyPanel;
 //    private final JLabel ammoImage, amountOfAmmo, amountOfKeys;
-    private JLabel lblChipsLeft, lblLevel, lblTime, lblBoots, lblKeys;
-    private JTextField txtChipsLeft;
-    private JTextField txtLevel;
-    private JTextField txtTime;
+    private JLabel lblChipsLeft, lblLevel, lblTime, lblBoots;
+    private JTextField txtChipsLeft, txtLevel, txtTime;
     private JPanel bootPanel;
-    private JLabel lblIceBoot;
-    private JLabel lblFireBoot;
-    private JLabel lblSuctionBoot;
-    private JLabel lblFlipperBoot;
+    private JLabel lblIceBoot, lblFireBoot, lblSuctionBoot, lblFlipperBoot;
     private JPanel keyPanel;
-    private JLabel lblBlueKey;
-    private JLabel lblRedKey;
-    private JLabel lblYellowKey;
-    private JLabel lblGreenKey;
+    private JLabel lblBlueKey, lblRedKey, lblYellowKey, lblGreenKey;
     
     public static int pwidth, pheight;
     
@@ -60,7 +52,8 @@ public class InventoryPanel extends JPanel
         lblLevel.setFont(new Font("Tahoma", 0, 36)); // NOI18N
         lblLevel.setForeground(new Color(255, 0, 0));
         
-        txtLevel = new JTextField(String.valueOf(GameData.level));
+        txtLevel = new JTextField();
+        txtLevel.setText(String.valueOf(GameData.level));
         txtLevel.setFont(new Font("Tahoma", 0, 36));
         txtLevel.setHorizontalAlignment(JTextField.CENTER);
         txtLevel.setEditable(false);
@@ -70,18 +63,23 @@ public class InventoryPanel extends JPanel
         lblTime.setFont(new Font("Tahoma", 0, 36)); // NOI18N
         lblTime.setForeground(new Color(255, 0, 0));
         lblTime.setText("TIME (s)");
-        
-        txtTime = new JTextField(String.valueOf(GameData.time));
+
+        lblChipsLeft.setFont(new Font("Tahoma", 0, 36)); // NOI18N
+        lblChipsLeft.setForeground(new Color(255, 0, 0));
+        lblChipsLeft.setText("CHIPS LEFT");
+
+        txtTime = new JTextField();
+        txtTime.setText(String.valueOf(GameData.time));
         txtTime.setFont(new Font("Tahoma", 0, 36));
         txtTime.setHorizontalAlignment(JTextField.CENTER);
         txtTime.setEditable(false);
 
-        
+        // Chips left label and text field
         lblChipsLeft = new JLabel("CHIPS LEFT");
         lblChipsLeft.setFont(new Font("Tahoma", 0, 36)); // NOI18N
         lblChipsLeft.setForeground(new Color(255, 0, 0));
         
-        txtChipsLeft = new JTextField(String.valueOf(GameData.chipsLeft));
+        txtChipsLeft = new JTextField();
         txtChipsLeft.setText(String.valueOf(GameData.chipsLeft));
         txtChipsLeft.setFont(new Font("Tahoma", 0, 36));
         txtChipsLeft.setHorizontalAlignment(JTextField.CENTER);
@@ -95,16 +93,16 @@ public class InventoryPanel extends JPanel
         //Boot panel
         bootPanel = new JPanel(new GridLayout(1, 4));
         
-        lblIceBoot = new JLabel();
+        lblIceBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Ice_Skates.png")));
         lblIceBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        lblFireBoot = new JLabel();
+        lblFireBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Fire_Boots.png")));
         lblFireBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        lblSuctionBoot = new JLabel();
+        lblSuctionBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Fire_Boots.png")));
         lblSuctionBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        lblFlipperBoot = new JLabel();
+        lblFlipperBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Fire_Boots.png")));
         lblFlipperBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
         bootPanel.add(lblIceBoot);
@@ -112,30 +110,30 @@ public class InventoryPanel extends JPanel
         bootPanel.add(lblSuctionBoot);
         bootPanel.add(lblFlipperBoot);
         
-        // Keys label
-        lblKeys = new JLabel("KEYS");
-        lblKeys.setFont(new Font("Tahoma", 0, 36));
-        lblKeys.setForeground(new Color(255, 0, 0));
-        
         //Key panel
         keyPanel = new JPanel(new GridLayout(1, 4));
         
-        lblBlueKey = new JLabel(new ImageIcon());
-        lblBlueKey.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        lblBlueKey = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblIceBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        lblRedKey = new JLabel(new ImageIcon());
-        lblRedKey.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        lblFireBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblFireBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        lblYellowKey = new JLabel(new ImageIcon());
-        lblYellowKey.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        lblSuctionBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblSuctionBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        lblGreenKey = new JLabel(new ImageIcon());
-        lblGreenKey.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        lblFlipperBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblFlipperBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        keyPanel.add(lblBlueKey);
-        keyPanel.add(lblRedKey);
-        keyPanel.add(lblYellowKey);
-        keyPanel.add(lblGreenKey);
+        bootPanel.add(lblIceBoot);
+        bootPanel.add(lblFireBoot);
+        bootPanel.add(lblSuctionBoot);
+        bootPanel.add(lblFlipperBoot);
+        
+        txtLevel.setText(String.valueOf(GameData.level));
+        txtLevel.setFont(new Font("Tahoma", 0, 36));
+        txtLevel.setHorizontalAlignment(JTextField.CENTER);
+        txtLevel.setEditable(false);
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
@@ -153,9 +151,7 @@ public class InventoryPanel extends JPanel
                             .addComponent(lblChipsLeft, GroupLayout.Alignment.LEADING)
                             .addComponent(txtChipsLeft, GroupLayout.Alignment.LEADING)
                             .addComponent(lblBoots, GroupLayout.Alignment.LEADING)
-                            .addComponent(bootPanel, GroupLayout.Alignment.LEADING)
-                            .addComponent(lblKeys, GroupLayout.Alignment.LEADING)
-                            .addComponent(keyPanel, GroupLayout.Alignment.LEADING))))
+                            .addComponent(bootPanel))))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         
@@ -173,8 +169,6 @@ public class InventoryPanel extends JPanel
                 .addComponent(txtChipsLeft, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblBoots)
                 .addComponent(bootPanel)
-                .addComponent(lblKeys)
-                .addComponent(keyPanel)
                 .addContainerGap(166, Short.MAX_VALUE))
         );
     }
