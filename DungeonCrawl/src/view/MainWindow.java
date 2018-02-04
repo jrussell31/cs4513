@@ -26,7 +26,7 @@ public class MainWindow extends JFrame {
     
     private void initComponents(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        
+
         // Game Panel layout section
         GroupLayout gamePanelLayout = new GroupLayout(DungeonCrawl.gamePanel);
         

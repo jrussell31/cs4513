@@ -39,10 +39,11 @@ public class DungeonCrawl {
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setVisible(true);
         
-        thread = new Thread(animator);
+       thread = new Thread(animator);
     }
     
     public static void startGame(){
+         
         DungeonCrawl.gameData.resetGameData();
         thread.start();
     }

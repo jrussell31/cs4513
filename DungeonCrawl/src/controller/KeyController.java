@@ -45,8 +45,8 @@ public class KeyController implements KeyListener  {
                     gamer.setDown(true);
                     break;
                 case KeyEvent.VK_SPACE:
+                    if(!DungeonCrawl.thread.isAlive())
                     DungeonCrawl.startGame();
-                    break;
             }
         }
     }
