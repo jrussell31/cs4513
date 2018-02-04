@@ -40,8 +40,6 @@ public class DungeonCrawl {
         mainWindow.setVisible(true);
         
         thread = new Thread(animator);
-        
-        startGame();
     }
     
     public static void startGame(){
