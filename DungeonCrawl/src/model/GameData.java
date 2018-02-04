@@ -20,10 +20,11 @@ import model.Moveable.Fireball;
 public class GameData {
     public static List<GameObject> gameObjects;
     public static Gamer gamer;
+    public static int level;
     public static Fireball fireball; 
-    public static String level;
     public static int time;
-    public static String chipsLeft;
+    public static int chipsLeft;
+    private int timerCounter;
     //public static Landscape landscape;
 
     public GameData() 
@@ -35,9 +36,10 @@ public class GameData {
         fireball = new Fireball (750,725); 
         GameData.gameObjects.add(GameData.gamer);
         GameData.gameObjects.add(GameData.fireball); 
-        GameData.level = "1";
-        GameData.time = 120000;
-        GameData.chipsLeft = "10";
+        GameData.level = 1;
+        GameData.time = 120;
+        GameData.chipsLeft = 10;
+        timerCounter = 0;
     }
     
     public void resetGameData()
@@ -59,7 +61,13 @@ public class GameData {
     {
         if(GameData.time > 0)
         {
-            GameData.time -= 1000;
+            if(timerCounter == 10){
+                timerCounter = 0;
+                GameData.time--;
+            }
+            else{
+                timerCounter++;
+            }
         }
         
         synchronized(gameObjects)
