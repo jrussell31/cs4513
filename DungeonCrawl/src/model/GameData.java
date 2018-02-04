@@ -11,6 +11,7 @@ import model.Moveable.Monster;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import model.Moveable.Fireball;
 
 /**
  *
@@ -19,6 +20,7 @@ import java.util.List;
 public class GameData {
     public static List<GameObject> gameObjects;
     public static Gamer gamer;
+    public static Fireball fireball; 
     public static String level;
     public static int time;
     public static String chipsLeft;
@@ -30,7 +32,9 @@ public class GameData {
         
         // Level specific items
         gamer = new Gamer(650, 625);
+        fireball = new Fireball (750,725); 
         GameData.gameObjects.add(GameData.gamer);
+        GameData.gameObjects.add(GameData.fireball); 
         GameData.level = "1";
         GameData.time = 120000;
         GameData.chipsLeft = "10";
