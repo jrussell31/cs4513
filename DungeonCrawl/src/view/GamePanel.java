@@ -6,22 +6,24 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import model.GameData;
 import model.GameObject;
 
 public class GamePanel extends JPanel 
 {
-    public static final int PWIDTH = 1000; 
-    public static final int PHEIGHT = 900;
+    public static int pwidth, pheight;
 
     private Graphics graphics;
     private Image dbImage = null;
 
-    public GamePanel() 
+    public GamePanel(int pwidth, int pheight) 
     {
-        setBackground(Color.black);
-        setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
+        GamePanel.pwidth = pwidth;
+        GamePanel.pheight = pheight;
+        
+        setPreferredSize(new Dimension(GamePanel.pwidth, GamePanel.pheight));
         setFocusable(true);
         requestFocus();
     }
@@ -29,7 +31,7 @@ public class GamePanel extends JPanel
     public void gameRender() 
     {        
         if (dbImage == null) {
-            dbImage = createImage(PWIDTH, PHEIGHT);
+            dbImage = createImage(pwidth, pheight);
             if (dbImage == null) {
                 System.out.println("dbImage is null");
                 return;
@@ -38,7 +40,7 @@ public class GamePanel extends JPanel
             }
         }
 
-        graphics.clearRect(0, 0, GamePanel.PWIDTH, GamePanel.PHEIGHT);
+        graphics.clearRect(0, 0, GamePanel.pwidth, GamePanel.pheight);
 
         synchronized(GameData.gameObjects) 
         {

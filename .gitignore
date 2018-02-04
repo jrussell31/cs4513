@@ -3,9 +3,8 @@ dist/
 build/
 
 #netbeans specific
-/DungeonCrawl/nbproject/*
-!/DungeonCrawl/nbproject.properties
-!/DungeonCrawl/nbproject/project.xml
+/DungeonCrawl/nbproject/private
+
 
 #java specific
 *.class
