@@ -4,8 +4,6 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -23,9 +21,20 @@ public class InventoryPanel extends JPanel
     private JLabel lblChipsLeft;
     private JLabel lblLevel;
     private JLabel lblTime;
+    private JLabel lblBoots;
     private JTextField txtChipsLeft;
     private JTextField txtLevel;
     private JTextField txtTime;
+    private JPanel bootPanel;
+    private JLabel lblIceBoot;
+    private JLabel lblFireBoot;
+    private JLabel lblSuctionBoot;
+    private JLabel lblFlipperBoot;
+    private JPanel keyPanel;
+    private JLabel lblBlueKey;
+    private JLabel lblRedKey;
+    private JLabel lblYellowKey;
+    private JLabel lblGreenKey;
     
     public static int pwidth, pheight;
     
@@ -45,43 +54,87 @@ public class InventoryPanel extends JPanel
     }
     
     private void initComponents(){
-        lblLevel = new JLabel();
-        lblTime = new JLabel();
-        lblChipsLeft = new JLabel();
-        txtTime = new JTextField();
-        txtChipsLeft = new JTextField();
-        txtLevel = new JTextField();
-        
         setPreferredSize(new Dimension(InventoryPanel.pwidth, InventoryPanel.pheight));
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 20));
-
+        
+        // Level label and text field
+        lblLevel = new JLabel("LEVEL");
         lblLevel.setFont(new Font("Tahoma", 0, 36)); // NOI18N
         lblLevel.setForeground(new Color(255, 0, 0));
-        lblLevel.setText("LEVEL");
-
+        
+        txtLevel = new JTextField();
+        txtLevel.setText(String.valueOf(GameData.level));
+        txtLevel.setFont(new Font("Tahoma", 0, 36));
+        txtLevel.setHorizontalAlignment(JTextField.CENTER);
+        txtLevel.setEditable(false);
+        
+        // Time label and text field
+        lblTime = new JLabel("TIME (s)");
         lblTime.setFont(new Font("Tahoma", 0, 36)); // NOI18N
         lblTime.setForeground(new Color(255, 0, 0));
-        lblTime.setText("TIME (s)");
-
-        lblChipsLeft.setFont(new Font("Tahoma", 0, 36)); // NOI18N
-        lblChipsLeft.setForeground(new Color(255, 0, 0));
-        lblChipsLeft.setText("CHIPS LEFT");
-
+        
+        txtTime = new JTextField();
         txtTime.setText(String.valueOf(GameData.time));
         txtTime.setFont(new Font("Tahoma", 0, 36));
         txtTime.setHorizontalAlignment(JTextField.CENTER);
         txtTime.setEditable(false);
 
+        // Chips left label and text field
+        lblChipsLeft = new JLabel("CHIPS LEFT");
+        lblChipsLeft.setFont(new Font("Tahoma", 0, 36)); // NOI18N
+        lblChipsLeft.setForeground(new Color(255, 0, 0));
+        
+        txtChipsLeft = new JTextField();
         txtChipsLeft.setText(String.valueOf(GameData.chipsLeft));
         txtChipsLeft.setFont(new Font("Tahoma", 0, 36));
         txtChipsLeft.setHorizontalAlignment(JTextField.CENTER);
         txtChipsLeft.setEditable(false);
 
-        txtLevel.setText(String.valueOf(GameData.level));
-        txtLevel.setFont(new Font("Tahoma", 0, 36));
-        txtLevel.setHorizontalAlignment(JTextField.CENTER);
-        txtLevel.setEditable(false);
+        // Boots label
+        lblBoots = new JLabel("BOOTS");
+        lblBoots.setFont(new Font("Tahoma", 0, 36));
+        lblBoots.setForeground(new Color(255, 0, 0));
+        
+        //Boot panel
+        bootPanel = new JPanel(new GridLayout(1, 4));
+        
+        lblIceBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Ice_Skates.png")));
+        lblIceBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        lblFireBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Fire_Boots.png")));
+        lblFireBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        lblSuctionBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Fire_Boots.png")));
+        lblSuctionBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        lblFlipperBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Fire_Boots.png")));
+        lblFlipperBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        bootPanel.add(lblIceBoot);
+        bootPanel.add(lblFireBoot);
+        bootPanel.add(lblSuctionBoot);
+        bootPanel.add(lblFlipperBoot);
+        
+        //Key panel
+        keyPanel = new JPanel(new GridLayout(1, 4));
+        
+        lblBlueKey = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblIceBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        lblFireBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblFireBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        lblSuctionBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblSuctionBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        lblFlipperBoot = new JLabel(new ImageIcon(ImageFinder.getImage("ImagesFolder", "")));
+        lblFlipperBoot.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        bootPanel.add(lblIceBoot);
+        bootPanel.add(lblFireBoot);
+        bootPanel.add(lblSuctionBoot);
+        bootPanel.add(lblFlipperBoot);
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
@@ -90,31 +143,33 @@ public class InventoryPanel extends JPanel
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtTime, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(txtLevel, GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLevel, GroupLayout.Alignment.LEADING)
                             .addComponent(lblTime, GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTime, GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLevel, GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLevel, GroupLayout.Alignment.LEADING)
+                            .addComponent(lblChipsLeft, GroupLayout.Alignment.LEADING)
                             .addComponent(txtChipsLeft, GroupLayout.Alignment.LEADING)
-                            .addComponent(lblChipsLeft, GroupLayout.Alignment.LEADING))))
+                            .addComponent(lblBoots, GroupLayout.Alignment.LEADING)
+                            .addComponent(bootPanel))))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
+        
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addComponent(lblLevel)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLevel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTime)
-                .addGap(10, 10, 10)
                 .addComponent(txtTime, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblChipsLeft)
-                .addGap(13, 13, 13)
                 .addComponent(txtChipsLeft, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBoots)
+                .addComponent(bootPanel)
                 .addContainerGap(166, Short.MAX_VALUE))
         );
     }
@@ -128,4 +183,8 @@ public class InventoryPanel extends JPanel
 //        this.paintComponents(graphics);
 //        this.repaint();
 //    }
+
+    private String ImageFinder() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
