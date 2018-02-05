@@ -5,10 +5,21 @@
  */
 package model.Immoveable.Tile;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author russe_000
  */
 public class Button extends Tile {
+    
+    public Button(float x, float y) {
+        super(x, y);
+    }
+
+    @Override
+    public void render(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

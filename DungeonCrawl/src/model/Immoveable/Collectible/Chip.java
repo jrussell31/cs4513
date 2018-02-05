@@ -1,14 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.Immoveable.Collectible;
 
-/**
- *
- * @author russe_000
- */
+import controller.ImageFinder;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+
 public class Chip extends Collectible {
+    private final int width = 32;
+    private final int height = 32;
     
+    public BufferedImage chip;
+    
+    public Chip(float x, float y) {
+        super(x, y);
+        
+        try{
+            BufferedImage image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Chip.png");
+            chip = image;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    };
+
+    @Override
+    public void render(Graphics g) {
+        if(this.isAlive()){
+            g.drawImage(chip, (int)super.x, (int)super.y, null);
+        }
+    }
 }

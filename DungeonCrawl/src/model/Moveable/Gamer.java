@@ -21,6 +21,9 @@ import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Collectible;
 import model.Immoveable.Collectible.Key;
+import model.Immoveable.Tile.Lock;
+import model.Immoveable.Tile.Tile;
+import model.Immoveable.Tile.Wall;
 
 public class Gamer extends MoveableObject {
     private final int width = 16;
@@ -199,7 +202,9 @@ public class Gamer extends MoveableObject {
         
         gamerMoves.update();
         
-        Gamer ghostGamer = new Gamer(super.x + dx, super.y - dy);
+        findCollision();
+
+        //Gamer ghostGamer = new Gamer(super.x + dx, super.y - dy);
         
         // Need to check for collisions between ghostGamer and collidibles
     }
@@ -218,12 +223,14 @@ public class Gamer extends MoveableObject {
             }
             else if(object instanceof Collectible)
             {
+                
                 if(object instanceof Key)
                 {
                     if(this.getCollisionBox().intersects(
                         object.getCollisionBox()))
                     {
-                        
+                       ((Key) object).setAlive(false);
+                       DungeonCrawl.DungeonCrawl.gameData.gamerInventory.add(object);
                     }
                 }
                 else if(object instanceof Boot)
@@ -231,6 +238,8 @@ public class Gamer extends MoveableObject {
                     if(this.getCollisionBox().intersects(
                         object.getCollisionBox()))
                     {
+                        ((Boot)object).setAlive(false);
+                        DungeonCrawl.DungeonCrawl.gameData.gamerInventory.add(object);
                     }
                 }
                 else if(object instanceof Chip)
@@ -238,7 +247,26 @@ public class Gamer extends MoveableObject {
                     if(this.getCollisionBox().intersects(
                         object.getCollisionBox()))
                     {
-                        
+                        ((Chip)object).setAlive(false);
+                        DungeonCrawl.DungeonCrawl.gameData.gamerInventory.add(object);
+                    }
+                }
+            }
+            else if(object instanceof Tile){
+                
+                if(object instanceof Wall){
+                    
+                    if(object instanceof Lock){
+                        if(this.getCollisionBox().intersects(
+                        object.getCollisionBox())){
+                            for(GameObject o : DungeonCrawl.DungeonCrawl.gameData.gamerInventory){
+                                if(o instanceof Key){
+                                    if(((Key)o).color == ((Lock)object).color){
+                                        ((Lock)object).setAlive(false);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
