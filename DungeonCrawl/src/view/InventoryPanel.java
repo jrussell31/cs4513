@@ -4,6 +4,8 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -16,22 +18,11 @@ import model.GameData;
 
 public class InventoryPanel extends JPanel
 {
-//    private final JPanel lifePanel, ammoPanel, keyPanel;
-//    private final JLabel ammoImage, amountOfAmmo, amountOfKeys;
-    private JLabel lblChipsLeft, lblLevel, lblTime, lblBoots, lblKeys;
-    private JTextField txtChipsLeft;
-    private JTextField txtLevel;
-    private JTextField txtTime;
-    private JPanel bootPanel;
-    private JLabel lblIceBoot;
-    private JLabel lblFireBoot;
-    private JLabel lblSuctionBoot;
-    private JLabel lblFlipperBoot;
-    private JPanel keyPanel;
-    private JLabel lblBlueKey;
-    private JLabel lblRedKey;
-    private JLabel lblYellowKey;
-    private JLabel lblGreenKey;
+    private JTextField txtChipsLeft, txtLevel, txtTime;
+    private JPanel bootPanel, keyPanel;
+    private JLabel lblChipsLeft, lblLevel, lblTime;
+    private JLabel lblBoots, lblSuctionBoot, lblIceBoot, lblFireBoot, lblFlipperBoot;
+    private JLabel lblKeys, lblBlueKey, lblRedKey, lblYellowKey, lblGreenKey;
     
     public static int pwidth, pheight;
     
@@ -153,9 +144,9 @@ public class InventoryPanel extends JPanel
                             .addComponent(lblChipsLeft, GroupLayout.Alignment.LEADING)
                             .addComponent(txtChipsLeft, GroupLayout.Alignment.LEADING)
                             .addComponent(lblBoots, GroupLayout.Alignment.LEADING)
-                            .addComponent(bootPanel, GroupLayout.Alignment.LEADING)
+                            .addComponent(bootPanel)
                             .addComponent(lblKeys, GroupLayout.Alignment.LEADING)
-                            .addComponent(keyPanel, GroupLayout.Alignment.LEADING))))
+                            .addComponent(keyPanel))))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         
@@ -179,17 +170,75 @@ public class InventoryPanel extends JPanel
         );
     }
     
-//    @Override
-//    public void paintComponent(Graphics g)
-//    {
-//        super.paintComponent(g);
-//        Graphics2D graphics = (Graphics2D)g;
-//        
-//        this.paintComponents(graphics);
-//        this.repaint();
-//    }
-
-    private String ImageFinder() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setIceBoot(boolean enabled){
+        if(enabled){
+            lblIceBoot.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Ice_Skates.png")));
+        }
+        else{
+            lblIceBoot.setIcon(null);
+        }
+    }
+    
+    public void setFireBoot(boolean enabled){
+        if(enabled){
+            lblFireBoot.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Fire_Boots.png")));
+        }
+        else{
+            lblFireBoot.setIcon(null);
+        }
+    }
+    
+    public void setSuctionBoot(boolean enabled){
+        if(enabled){
+            lblSuctionBoot.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Suction_Boots.png")));
+        }
+        else{
+            lblSuctionBoot.setIcon(null);
+        }
+    }
+    
+    public void setFlipperBoot(boolean enabled){
+        if(enabled){
+            lblFlipperBoot.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Flippers.png")));
+        }
+        else{
+            lblFlipperBoot.setIcon(null);
+        }
+    }
+    
+    public void setBlueKey(boolean enabled){
+        if(enabled){
+            lblBlueKey.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Blue_Key.png")));
+        }
+        else{
+            lblBlueKey.setIcon(null);
+        }
+    }
+    
+    public void setRedKey(boolean enabled){
+        if(enabled){
+            lblRedKey.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Red_Key.png")));
+        }
+        else{
+            lblRedKey.setIcon(null);
+        }
+    }
+    
+    public void setYellowKey(boolean enabled){
+        if(enabled){
+            lblYellowKey.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Yellow_Key.png")));
+        }
+        else{
+            lblYellowKey.setIcon(null);
+        }
+    }
+    
+    public void setGreenKey(boolean enabled){
+        if(enabled){
+            lblGreenKey.setIcon(new ImageIcon(ImageFinder.getImage("ImagesFolder", "Green_Key.png")));
+        }
+        else{
+            lblGreenKey.setIcon(null);
+        }
     }
 }

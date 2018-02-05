@@ -23,7 +23,6 @@ public class GameData {
     public static int time;
     public static int chipsLeft;
     private int timerCounter;
-    //public static Landscape landscape;
 
     public GameData() 
     {
@@ -42,15 +41,6 @@ public class GameData {
     {
         GameData.gamer = new Gamer(650, 625);
         GameData.gamer.update();
-        
-//        if(landscape.getLevel() instanceof YouWinLevel)
-//        {
-//            hero.hearts += 6;
-//            
-//            Main.metricPanel.updateHeartsAndArrows();
-//        }
-//        
-//        landscape.setLevel(landscape.getLevel());
     }
     
     public void update() 
