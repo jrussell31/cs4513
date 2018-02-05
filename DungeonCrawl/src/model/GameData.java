@@ -33,7 +33,7 @@ public class GameData {
         
         // Level specific items
         gamer = new Gamer(650, 625);
-        fireball = new Fireball (750,725); 
+        fireball = new Fireball (350,325); 
         GameData.gameObjects.add(GameData.gamer);
         GameData.gameObjects.add(GameData.fireball); 
         GameData.level = 1;

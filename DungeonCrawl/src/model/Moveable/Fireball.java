@@ -23,7 +23,8 @@ public class Fireball extends Monster {
     public BufferedImage[] fireballSprites;
     
     public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
-    public boolean turnLeft, turnRight, turnUp, turnDown = false; 
+    public boolean turnRight, turnUp, turnDown = false; 
+    public boolean turnLeft = true; 
     
     private final ObjectAnimator fireballMoves;
     
@@ -55,9 +56,9 @@ public class Fireball extends Monster {
     
     @Override
     public void update() {
-        while(isAlive()){
+            fireballMoves.setFrames(fireballSprites);
             if (turnLeft){
-                for(int i = 0; i < 5; i++){
+                for(int i = 0; i < 4; i++){
                     super.x -= 50;
                 }
                 //facing = 3;
@@ -69,7 +70,7 @@ public class Fireball extends Monster {
             } 
             else if(turnDown)
             {
-                for(int i = 0; i < 5; i++){
+                for(int i = 0; i < 4; i++){
                     super.y += 50;
                 }
                 //facing = 1;
@@ -81,7 +82,7 @@ public class Fireball extends Monster {
             }
             else if(turnRight)
             {
-                for(int i = 0; i < 5; i++){
+                for(int i = 0; i < 4; i++){
                     super.x += 50;
                 }
                 //facing = 2;
@@ -93,7 +94,7 @@ public class Fireball extends Monster {
             } 
             else if(turnUp)
             {
-                for(int i = 0; i < 5; i++){
+                for(int i = 0; i < 4; i++){
                     super.y -= 50;
                 }
                 //facing = 0;
@@ -103,7 +104,16 @@ public class Fireball extends Monster {
                 turnUp = false; 
                 turnDown = false;
             }
-            fireballMoves.update();
-            } 
-        }
+            fireballMoves.update(); 
+    }
+
+    @Override
+    public Rectangle2D.Double getCollisionBox() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void findCollision() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     }
