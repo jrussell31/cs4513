@@ -25,7 +25,7 @@ public class Chip extends Collectible {
 
     @Override
     public void render(Graphics g) {
-        if(this.isAlive()){
+        if(this.isAlive() && this.isDisplayed){
             g.drawImage(chip, (int)super.x, (int)super.y, null);
         }
     }

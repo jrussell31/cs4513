@@ -10,12 +10,12 @@ public class Lock extends Wall{
     private final int width = 32;
     private final int height = 32;
     
-    public LockType color;
+    public LockType type;
     
     public BufferedImage[] lockImg;
     public Lock(float x, float y, LockType k) {
         super(x, y);
-        this.color = k;
+        this.type = k;
         
         lockImg = new BufferedImage[5];
         
@@ -43,7 +43,7 @@ public class Lock extends Wall{
     public void render(Graphics g) {
         if(this.isAlive()){
             BufferedImage image;
-            switch(color){
+            switch(type){
                 case BLUE:
                     image = lockImg[0];
                     break;

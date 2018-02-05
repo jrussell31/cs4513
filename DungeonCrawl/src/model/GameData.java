@@ -42,7 +42,7 @@ public class GameData {
         GameData.gameObjects.add(GameData.gamer);
         GameData.level = 1;
         GameData.time = 120;
-        GameData.chipsLeft = 10;
+        GameData.chipsLeft = 3;
         timerCounter = 0;
         
         //Level keys
@@ -109,5 +109,16 @@ public class GameData {
                 }
             }
         }
+        
+        ArrayList<GameObject> removeInventory = new ArrayList<>();
+        synchronized(gamerInventory){
+            for(GameObject object : gamerInventory){
+                if(!object.isAlive()){
+                    removeInventory.add(object);
+                }             
+            }
+        }
+        gamerInventory.removeAll(removeInventory);
+                       
     }
 }

@@ -24,6 +24,7 @@ import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Tile;
 import model.Immoveable.Tile.Wall;
+import model.LockType;
 
 public class Gamer extends MoveableObject {
     private final int width = 16;
@@ -229,8 +230,8 @@ public class Gamer extends MoveableObject {
                     if(this.getCollisionBox().intersects(
                         object.getCollisionBox()))
                     {
-                       ((Key) object).setAlive(false);
-                       DungeonCrawl.DungeonCrawl.gameData.gamerInventory.add(object);
+                       ((Key) object).isDisplayed = false;
+                       GameData.gamerInventory.add(object);
                     }
                 }
                 else if(object instanceof Boot)
@@ -238,8 +239,8 @@ public class Gamer extends MoveableObject {
                     if(this.getCollisionBox().intersects(
                         object.getCollisionBox()))
                     {
-                        ((Boot)object).setAlive(false);
-                        DungeonCrawl.DungeonCrawl.gameData.gamerInventory.add(object);
+                        ((Boot)object).isDisplayed = false;
+                        GameData.gamerInventory.add(object);
                     }
                 }
                 else if(object instanceof Chip)
@@ -259,10 +260,19 @@ public class Gamer extends MoveableObject {
                     if(object instanceof Lock){
                         if(this.getCollisionBox().intersects(
                         object.getCollisionBox())){
-                            for(GameObject o : DungeonCrawl.DungeonCrawl.gameData.gamerInventory){
-                                if(o instanceof Key){
-                                    if(((Key)o).color == ((Lock)object).color){
-                                        ((Lock)object).setAlive(false);
+                            if(((Lock) object).type == LockType.SOCKET){
+                               if(GameData.chipsLeft <= 0){
+                                       ((Lock)object).setAlive(false);               
+                               }
+                            }
+                            else{
+                                for(GameObject o : GameData.gamerInventory){
+                                    if(o instanceof Key){
+                                        if(((Key)o).type == ((Lock)object).type){
+                                            ((Lock)object).setAlive(false);
+                                            ((Key)o).setAlive(false);
+                                            break;
+                                        }
                                     }
                                 }
                             }

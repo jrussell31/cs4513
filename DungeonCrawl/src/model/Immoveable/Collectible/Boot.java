@@ -9,13 +9,13 @@ public class Boot extends Collectible{
     private final int width = 32;
     private final int height = 32;
     
-    public BootType boot;
+    public BootType type;
     
     public BufferedImage[] bootImg;
     
     public Boot(float x, float y, BootType b) {
         super(x, y);
-        this.boot = b;
+        this.type = b;
         
         bootImg = new BufferedImage[4];
         
@@ -38,9 +38,9 @@ public class Boot extends Collectible{
 
     @Override
     public void render(Graphics g) {
-        if(this.isAlive()){
+        if(this.isAlive() && this.isDisplayed){
             BufferedImage image;
-            switch(boot){
+            switch(type){
                 case FIRE:
                     image = bootImg[0];
                     break;

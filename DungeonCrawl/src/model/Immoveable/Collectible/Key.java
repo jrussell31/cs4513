@@ -10,14 +10,12 @@ import java.awt.image.BufferedImage;
 public class Key extends Collectible {
     private final int width = 32;
     private final int height = 32;
-    
-    public LockType color;
-    
+    public LockType type;    
     public BufferedImage[] keyImg;
     
     public Key(float x, float y, LockType k) {
         super(x, y);    
-        this.color = k;
+        this.type = k;
         
         keyImg = new BufferedImage[4];
         
@@ -40,9 +38,9 @@ public class Key extends Collectible {
 
     @Override
     public void render(Graphics g) {
-        if(this.isAlive()){
+        if(this.isAlive() && this.isDisplayed){
             BufferedImage image;
-            switch(color){
+            switch(type){
                 case BLUE:
                     image = keyImg[0];
                     break;
