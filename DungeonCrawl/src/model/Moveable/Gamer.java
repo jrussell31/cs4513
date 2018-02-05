@@ -248,7 +248,7 @@ public class Gamer extends MoveableObject {
                         object.getCollisionBox()))
                     {
                         ((Chip)object).setAlive(false);
-                        DungeonCrawl.DungeonCrawl.gameData.gamerInventory.add(object);
+                        DungeonCrawl.DungeonCrawl.gameData.collectChip();
                     }
                 }
             }

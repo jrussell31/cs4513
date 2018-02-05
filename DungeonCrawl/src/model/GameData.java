@@ -77,6 +77,10 @@ public class GameData {
         GameData.gamer.update();
     }
     
+    public void collectChip(){
+        --chipsLeft;
+    }
+    
     public void update() 
     {
         if(GameData.time > 0)
