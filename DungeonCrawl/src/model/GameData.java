@@ -41,7 +41,7 @@ public class GameData {
         
         // Level specific items
         gamer = new Gamer(650, 625);
-        GameData.gameObjects.add(GameData.gamer);
+        //GameData.gameObjects.add(GameData.gamer);
         GameData.level = 1;
         GameData.time = 120;
         GameData.chipsLeft = 3;
