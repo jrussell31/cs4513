@@ -5,6 +5,9 @@
  */
 package model.Moveable;
 
+import java.awt.Graphics;
+import java.awt.geom.Rectangle2D;
+
 /**
  *
  * @author russe_000
@@ -13,5 +16,30 @@ public class Bug extends Monster {
 
     public Bug(float x, float y) {
         super(x, y);
+    }
+
+    @Override
+    public void render(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isAlive() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Rectangle2D.Double getCollisionBox() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void findCollision() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
