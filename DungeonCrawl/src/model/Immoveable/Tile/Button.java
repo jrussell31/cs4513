@@ -5,7 +5,8 @@
  */
 package model.Immoveable.Tile;
 
-import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
 /**
  *
@@ -18,8 +19,12 @@ public class Button extends Tile {
     }
 
     @Override
-    public void render(Graphics g) {
+    public void render(Graphics2D g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        //Draw Collision Box
+        //g.setColor(Color.blue);
+        //g.draw(this.getCollisionBox());
     }
     
 }

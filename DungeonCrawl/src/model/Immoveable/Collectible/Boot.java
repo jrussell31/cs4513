@@ -1,7 +1,8 @@
 package model.Immoveable.Collectible;
 
 import controller.ImageFinder;
-import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
 
@@ -37,7 +38,7 @@ public class Boot extends Collectible{
     }
 
     @Override
-    public void render(Graphics g) {
+    public void render(Graphics2D g) {
         if(this.isAlive() && this.isDisplayed){
             BufferedImage image;
             switch(type){
@@ -54,6 +55,10 @@ public class Boot extends Collectible{
                     image = bootImg[3];
             }
             g.drawImage(image, (int)super.x, (int)super.y, 50, 50, null);
+            
+            //Draw Collision Box
+            g.setColor(Color.blue);
+            g.draw(this.getCollisionBox());
         }
     }
 }

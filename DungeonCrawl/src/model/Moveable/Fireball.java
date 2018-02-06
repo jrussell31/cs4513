@@ -7,8 +7,8 @@ package model.Moveable;
 
 import controller.ImageFinder;
 import controller.ObjectAnimator;
-import java.awt.Graphics;
-import java.awt.geom.Rectangle2D;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -42,9 +42,13 @@ public class Fireball extends Monster {
     }
     
     @Override
-    public void render(Graphics g) {
+    public void render(Graphics2D g) {
         g.drawImage(fireballMoves.getImage(), (int)super.x, (int)super.y, 60, 60, 
             null);
+        
+        //Draw Collision Box
+        //g.setColor(Color.blue);
+        //g.draw(this.getCollisionBox());
     }
 
     //@Override

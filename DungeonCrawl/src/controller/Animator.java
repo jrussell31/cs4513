@@ -33,9 +33,9 @@ public class Animator implements Runnable {
 
         while (running) {
             long startTime = System.currentTimeMillis();
-
-            processCollisions();
+            
             DungeonCrawl.gameData.update();
+            processCollisions();
             DungeonCrawl.gamePanel.gameRender();
             DungeonCrawl.gamePanel.printScreen();
             DungeonCrawl.inventoryPanel.updateInventoryPanel();
@@ -56,7 +56,7 @@ public class Animator implements Runnable {
 
     private void processCollisions() {
         for (GameObject object : GameData.gameObjects) {
-            if (DungeonCrawl.gameData.gamer.getCollisionBox().intersects(
+            if (GameData.gamer.getCollisionBox().intersects(
                     object.getCollisionBox())) {
                 if (object instanceof Monster) {
 
@@ -78,15 +78,23 @@ public class Animator implements Runnable {
                                 if (GameData.chipsLeft <= 0) {
                                     ((Lock) object).setAlive(false);
                                 }
+                                else{
+                                    GameData.gamer.noMove();
+                                }
                             } else {
+                                boolean key = false;
                                 for (GameObject o : GameData.gamerInventory) {
                                     if (o instanceof Key) {
                                         if (((Key) o).type == ((Lock) object).type) {
                                             ((Lock) object).setAlive(false);
                                             ((Key) o).setAlive(false);
+                                            key = true;
                                             break;
                                         }
                                     }
+                                }
+                                if(!key){
+                                    GameData.gamer.noMove();
                                 }
                             }
                         }

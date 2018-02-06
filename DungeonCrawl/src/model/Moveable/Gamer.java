@@ -12,19 +12,9 @@ package model.Moveable;
 
 import controller.ImageFinder;
 import controller.ObjectAnimator;
-import java.awt.Graphics;
-import java.awt.geom.Rectangle2D;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import model.GameData;
-import model.GameObject;
-import model.Immoveable.Collectible.Boot;
-import model.Immoveable.Collectible.Chip;
-import model.Immoveable.Collectible.Collectible;
-import model.Immoveable.Collectible.Key;
-import model.Immoveable.Tile.Lock;
-import model.Immoveable.Tile.Tile;
-import model.Immoveable.Tile.Wall;
-import model.LockType;
 
 public class Gamer extends MoveableObject {
     private final int width = 16;
@@ -135,25 +125,24 @@ public class Gamer extends MoveableObject {
     }
 
     @Override
-    public void render(Graphics g) {
-        g.drawImage(gamerMoves.getImage(), (int)super.x, (int)super.y, 60, 60, 
+    public void render(Graphics2D g) {
+        g.drawImage(gamerMoves.getImage(), (int)super.x, (int)super.y, 50, 50, 
             null);
-    }
-
-    @Override
-    public Rectangle2D.Double getCollisionBox() {
-        // May need to change to adjust to correct height and width
-        return new Rectangle2D.Double(super.x, super.y, 50, 50);
+        g.setColor(Color.blue);
+        g.draw(this.getCollisionBox());
     }
 
     @Override
     public void update() {
+        dx = super.x;
+        dy = super.y;
         if(left)
         {
             super.x -= 50;
             
             facing = 3;
-            gamerMoves.setFrames(leftSprites);            
+            gamerMoves.setFrames(leftSprites);   
+            left = false;
         } 
         else if(right)
         {
@@ -161,6 +150,7 @@ public class Gamer extends MoveableObject {
             
             facing = 1;
             gamerMoves.setFrames(rightSprites);
+            right = false;
         }
         
         if(down)
@@ -169,6 +159,7 @@ public class Gamer extends MoveableObject {
             
             facing = 2;
             gamerMoves.setFrames(downSprites);
+            down = false;
         } 
         else if(up)
         {
@@ -176,6 +167,7 @@ public class Gamer extends MoveableObject {
             
             facing = 0;
             gamerMoves.setFrames(upSprites);
+            up = false;
         }
         
         if (!(right && down && left && up))
@@ -201,85 +193,11 @@ public class Gamer extends MoveableObject {
             gamerMoves.setDelay(100);
         }
         
-        gamerMoves.update();
-        
-        //findCollision();
-
-        //Gamer ghostGamer = new Gamer(super.x + dx, super.y - dy);
-        
-        // Need to check for collisions between ghostGamer and collidibles
+        gamerMoves.update();                
     }
 
-    /*@Override
-    public void findCollision() {
-        /*for(GameObject object: GameData.gameObjects)
-        {
-            if(object instanceof Monster)
-            {
-                if(this.getCollisionBox().intersects(
-                    object.getCollisionBox()))
-                {
-                    
-                }
-            }
-            else if(object instanceof Collectible)
-            {
-                
-                if(object instanceof Key)
-                {
-                    if(this.getCollisionBox().intersects(
-                        object.getCollisionBox()))
-                    {
-                       ((Key) object).isDisplayed = false;
-                       GameData.gamerInventory.add(object);
-                    }
-                }
-                else if(object instanceof Boot)
-                {
-                    if(this.getCollisionBox().intersects(
-                        object.getCollisionBox()))
-                    {
-                        ((Boot)object).isDisplayed = false;
-                        GameData.gamerInventory.add(object);
-                    }
-                }
-                else if(object instanceof Chip)
-                {
-                    if(this.getCollisionBox().intersects(
-                        object.getCollisionBox()))
-                    {
-                        ((Chip)object).setAlive(false);
-                        DungeonCrawl.DungeonCrawl.gameData.collectChip();
-                    }
-                }
-            }
-            else if(object instanceof Tile){
-                
-                if(object instanceof Wall){
-                    
-                    if(object instanceof Lock){
-                        if(this.getCollisionBox().intersects(
-                        object.getCollisionBox())){
-                            if(((Lock) object).type == LockType.SOCKET){
-                               if(GameData.chipsLeft <= 0){
-                                       ((Lock)object).setAlive(false);               
-                               }
-                            }
-                            else{
-                                for(GameObject o : GameData.gamerInventory){
-                                    if(o instanceof Key){
-                                        if(((Key)o).type == ((Lock)object).type){
-                                            ((Lock)object).setAlive(false);
-                                            ((Key)o).setAlive(false);
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }*/
+    public void noMove() {
+        super.x = dx;
+        super.y = dy;
+    }
 }

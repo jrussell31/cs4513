@@ -6,6 +6,7 @@
 package model.Moveable;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 /**
@@ -18,7 +19,7 @@ public abstract class Monster extends MoveableObject {
         super(x, y);
     }
 
-    public abstract void render(Graphics g);
+    public abstract void render(Graphics2D g);
 
     public boolean isAlive(){
         return super.isAlive(); 

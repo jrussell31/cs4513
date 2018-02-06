@@ -3,7 +3,9 @@ package model.Immoveable.Tile;
 
 import controller.ImageFinder;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.Color;
 import model.LockType;
 
 public class Lock extends Wall{
@@ -40,7 +42,7 @@ public class Lock extends Wall{
     };
 
     @Override
-    public void render(Graphics g) {
+    public void render(Graphics2D g) {
         if(this.isAlive()){
             BufferedImage image;
             switch(type){
@@ -60,6 +62,10 @@ public class Lock extends Wall{
                     image = lockImg[3];
             }
             g.drawImage(image, (int)super.x, (int)super.y, 50, 50, null);
+            
+            //Draw Collision Box
+            g.setColor(Color.blue);
+            g.draw(this.getCollisionBox());
         }
     }
 }

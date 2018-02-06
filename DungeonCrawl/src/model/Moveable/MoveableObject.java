@@ -24,9 +24,6 @@ public abstract class MoveableObject implements GameObject {
         this.alive = true;
     }
     
-    @Override
-    public abstract void render(Graphics g);
-    
     public void setAlive(boolean alive){
         this.alive = alive;
     }
