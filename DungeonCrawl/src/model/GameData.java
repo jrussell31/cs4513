@@ -11,6 +11,7 @@ import model.Moveable.Monster;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import model.Moveable.Fireball;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
@@ -28,6 +29,7 @@ public class GameData {
     public static Lock blueLock, yellowLock, socket;
     public static Boot fireBoot, iceBoot;
     public static int level;
+    public static Fireball fireball; 
     public static int time;
     public static int chipsLeft;
     private int timerCounter;
@@ -39,6 +41,7 @@ public class GameData {
         
         // Level specific items
         gamer = new Gamer(650, 625);
+        GameData.gameObjects.add(GameData.gamer);
         GameData.level = 1;
         GameData.time = 120;
         GameData.chipsLeft = 3;
