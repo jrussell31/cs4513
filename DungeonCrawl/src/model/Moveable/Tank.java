@@ -64,6 +64,7 @@ public class Tank extends Monster{
     public void update() {
         tankMoves.setFrames(tank_S);
         
+        
         if (down) {
             super.y += 10;
             //tankMoves.setFrames(tank_S);
