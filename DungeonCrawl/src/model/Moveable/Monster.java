@@ -23,11 +23,6 @@ public abstract class Monster extends MoveableObject {
     public boolean isAlive(){
         return super.isAlive(); 
     }
-
-    public abstract Rectangle2D.Double getCollisionBox();
-
-    public abstract void update();
-
-    public abstract void findCollision();
     
+    public abstract void update();    
 }

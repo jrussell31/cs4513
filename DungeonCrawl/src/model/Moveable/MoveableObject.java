@@ -11,6 +11,7 @@
 package model.Moveable;
 
 import java.awt.Graphics;
+import java.awt.geom.Rectangle2D;
 import model.GameObject;
 
 public abstract class MoveableObject implements GameObject {
@@ -36,5 +37,8 @@ public abstract class MoveableObject implements GameObject {
     
     public abstract void update();
     
-    public abstract void findCollision();
+    @Override
+    public Rectangle2D.Double getCollisionBox(){
+        return new Rectangle2D.Double(x, y, 50, 50);
+    }
 }

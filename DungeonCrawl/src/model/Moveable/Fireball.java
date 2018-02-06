@@ -106,14 +106,4 @@ public class Fireball extends Monster {
             }
             fireballMoves.update(); 
     }
-
-    @Override
-    public Rectangle2D.Double getCollisionBox() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void findCollision() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    }
+}

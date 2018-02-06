@@ -210,7 +210,7 @@ public class Gamer extends MoveableObject {
         // Need to check for collisions between ghostGamer and collidibles
     }
 
-    @Override
+    /*@Override
     public void findCollision() {
         /*for(GameObject object: GameData.gameObjects)
         {
@@ -280,6 +280,6 @@ public class Gamer extends MoveableObject {
                     }
                 }
             }
-        }*/
-    }
+        }
+    }*/
 }
