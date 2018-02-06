@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
  *
  * 
  */
-public abstract class Monster extends MoveableObject {
+public abstract class Monster extends MoveableObject  {
 
     public Monster(float x, float y) {
         super(x, y);
