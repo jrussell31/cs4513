@@ -55,7 +55,7 @@ public class Tank extends Monster{
     }
 
     @Override
-    public void render(Graphics g) {
+    public void render(Graphics2D g) {
         g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, 50, 50, 
             null);
         //Draw Collision Box
@@ -122,10 +122,5 @@ public class Tank extends Monster{
         }
             
         tankMoves.update();
-    }
-
-    @Override
-    public boolean isAlive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
