@@ -39,7 +39,6 @@ public class GameData {
         
         // Level specific items
         gamer = new Gamer(650, 625);
-        GameData.gameObjects.add(GameData.gamer);
         GameData.level = 1;
         GameData.time = 120;
         GameData.chipsLeft = 3;
@@ -94,6 +93,8 @@ public class GameData {
             }
         }
         
+        gamer.update();
+        
         synchronized(gameObjects)
         {
             for(GameObject object: gameObjects)
@@ -103,9 +104,6 @@ public class GameData {
                     ((Monster)object).update();
                     
                     // ((Monster)object).findCollision();
-                }
-                else if(object instanceof Gamer){
-                    ((Gamer)object).update();
                 }
             }
         }

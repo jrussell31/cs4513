@@ -143,7 +143,7 @@ public class Gamer extends MoveableObject {
     @Override
     public Rectangle2D.Double getCollisionBox() {
         // May need to change to adjust to correct height and width
-        return new Rectangle2D.Double(super.x, super.y, width*3.5, height*2.5);
+        return new Rectangle2D.Double(super.x, super.y, 50, 50);
     }
 
     @Override
@@ -153,7 +153,7 @@ public class Gamer extends MoveableObject {
             super.x -= 50;
             
             facing = 3;
-            gamerMoves.setFrames(leftSprites);
+            gamerMoves.setFrames(leftSprites);            
         } 
         else if(right)
         {
@@ -203,7 +203,7 @@ public class Gamer extends MoveableObject {
         
         gamerMoves.update();
         
-        findCollision();
+        //findCollision();
 
         //Gamer ghostGamer = new Gamer(super.x + dx, super.y - dy);
         
@@ -212,7 +212,7 @@ public class Gamer extends MoveableObject {
 
     @Override
     public void findCollision() {
-        for(GameObject object: GameData.gameObjects)
+        /*for(GameObject object: GameData.gameObjects)
         {
             if(object instanceof Monster)
             {
@@ -280,6 +280,6 @@ public class Gamer extends MoveableObject {
                     }
                 }
             }
-        }
+        }*/
     }
 }

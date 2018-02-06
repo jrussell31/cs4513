@@ -62,6 +62,8 @@ public class GamePanel extends JPanel
             
             GameData.gameObjects.removeAll(remove);
         }
+        
+        GameData.gamer.render(graphics);
     }      
 
     public void printScreen() {
