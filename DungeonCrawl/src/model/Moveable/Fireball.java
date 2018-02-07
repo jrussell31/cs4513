@@ -5,6 +5,7 @@
  */
 package model.Moveable;
 
+import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Graphics;
@@ -19,10 +20,10 @@ public class Fireball extends Monster {
     
     private final int width = 16;
     private final int height = 24;
+    private int counter = 0;
     
     public BufferedImage[] fireballSprites;
     
-    public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
     public boolean turnRight, turnUp, turnDown = false; 
     public boolean turnLeft = true; 
     
@@ -39,6 +40,7 @@ public class Fireball extends Monster {
         } catch(Exception e){
             e.printStackTrace();
         }
+        
     }
     
     @Override
@@ -56,55 +58,83 @@ public class Fireball extends Monster {
     
     @Override
     public void update() {
-            fireballMoves.setFrames(fireballSprites);
+            fireballMoves.setFrames(fireballSprites);             
             if (turnLeft){
-                for(int i = 0; i < 4; i++){
-                    super.x -= 50;
-                }
-                //facing = 3;
-                fireballMoves.setFrames(fireballSprites);
-                turnLeft = false; 
-                turnRight = false; 
-                turnUp = false; 
-                turnDown = true; 
+                if (gameData.time >0){
+                    if (counter == 1000){
+                        counter = 0; 
+                        for(int i = 0; i < 4; i++){
+                            super.x -= 50;
+                        }
+                        fireballMoves.setFrames(fireballSprites);
+                        turnLeft = false; 
+                        turnRight = false; 
+                        turnUp = false; 
+                        turnDown = true;
+                    }
+                    else{
+                        counter += 100; 
+                    }
+                } 
             } 
             else if(turnDown)
             {
-                for(int i = 0; i < 4; i++){
-                    super.y += 50;
-                }
-                //facing = 1;
-                fireballMoves.setFrames(fireballSprites);
-                turnLeft = false; 
-                turnRight = true; 
-                turnUp = false; 
-                turnDown = false;
+                if(gameData.time > 0){
+                    if(counter == 1000){
+                        counter = 0; 
+                        for(int i = 0; i < 4; i++){
+                            super.y += 50;
+                        }
+                        fireballMoves.setFrames(fireballSprites);
+                        turnLeft = false; 
+                        turnRight = true; 
+                        turnUp = false; 
+                        turnDown = false;
+                    }
+                    else{
+                        counter += 100;                         
+                    }
+                }   
             }
             else if(turnRight)
             {
-                for(int i = 0; i < 4; i++){
-                    super.x += 50;
-                }
-                //facing = 2;
-                fireballMoves.setFrames(fireballSprites);
-                turnLeft = false; 
-                turnRight = false; 
-                turnUp = true; 
-                turnDown = false;
+                if(gameData.time > 0){                    
+                    if(counter == 1000){
+                        counter = 0; 
+                        for(int i = 0; i < 4; i++){
+                            super.x += 50;
+                        }
+                        fireballMoves.setFrames(fireballSprites);
+                        turnLeft = false; 
+                        turnRight = false; 
+                        turnUp = true; 
+                        turnDown = false;
+                    }
+                    else{
+                        counter += 100; 
+                    }
+                }                    
             } 
             else if(turnUp)
             {
-                for(int i = 0; i < 4; i++){
-                    super.y -= 50;
-                }
-                //facing = 0;
-                fireballMoves.setFrames(fireballSprites);
-                turnLeft = true; 
-                turnRight = false; 
-                turnUp = false; 
-                turnDown = false;
-            }
-            fireballMoves.update(); 
+                if(gameData.time > 0){                    
+                    if(counter == 1000){
+                        counter = 0; 
+                        for(int i = 0; i < 4; i++){
+                            super.y -= 50;
+                        }
+                        fireballMoves.setFrames(fireballSprites);
+                        turnLeft = true; 
+                        turnRight = false; 
+                        turnUp = false; 
+                        turnDown = false;
+                    }
+                    else{
+                        counter += 100; 
+                    }
+                }                
+            }           
+        fireballMoves.update();             
     }
 
     @Override
