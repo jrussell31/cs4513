@@ -146,14 +146,14 @@ public class Gamer extends MoveableObject {
     public void update() {
         if(left)
         {
-            super.x -= 50;
+            super.x -= 10;
             
             facing = 3;
             gamerMoves.setFrames(leftSprites);
         } 
         else if(right)
         {
-            super.x += 50;
+            super.x += 10;
             
             facing = 1;
             gamerMoves.setFrames(rightSprites);
@@ -161,14 +161,14 @@ public class Gamer extends MoveableObject {
         
         if(down)
         {
-            super.y += 50;
+            super.y += 10;
             
             facing = 2;
             gamerMoves.setFrames(downSprites);
         } 
         else if(up)
         {
-            super.y -= 50;
+            super.y -= 10;
             
             facing = 0;
             gamerMoves.setFrames(upSprites);
