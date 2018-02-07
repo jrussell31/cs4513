@@ -16,6 +16,7 @@ import model.GameObject;
 public abstract class MoveableObject implements GameObject {
     public float x, y;
     private boolean alive;
+    public static final int MOVEMENT = 32;
     
     public MoveableObject(float x, float y){
         this.x = x;

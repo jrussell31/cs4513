@@ -31,7 +31,7 @@ public class GameData {
         gameObjects = Collections.synchronizedList(new ArrayList<GameObject>());
         
         // Level specific items
-        gamer = new Gamer(650, 625);
+        gamer = new Gamer(962, 865);
         fireball = new Fireball (350,325); 
         GameData.gameObjects.add(GameData.gamer);
         GameData.gameObjects.add(GameData.fireball); 
@@ -43,7 +43,7 @@ public class GameData {
     
     public void resetGameData()
     {
-        GameData.gamer = new Gamer(650, 625);
+        GameData.gamer = new Gamer(962, 865);
         GameData.gamer.update();
     }
     
