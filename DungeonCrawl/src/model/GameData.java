@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import model.Moveable.Fireball;
+import model.Moveable.Tank;
 
 /**
  *
@@ -21,7 +22,8 @@ public class GameData {
     public static List<GameObject> gameObjects;
     public static Gamer gamer;
     public static int level;
-    public static Fireball fireball; 
+    public static Fireball fireball;
+    public static Tank tank;
     public static int time;
     public static int chipsLeft;
     private int timerCounter;
@@ -33,8 +35,11 @@ public class GameData {
         // Level specific items
         gamer = new Gamer(962, 865);
         fireball = new Fireball (350,325); 
+        tank = new Tank (700, 300);
         GameData.gameObjects.add(GameData.gamer);
         GameData.gameObjects.add(GameData.fireball); 
+        GameData.gameObjects.add(GameData.tank); 
+        
         GameData.level = 1;
         GameData.time = 120;
         GameData.chipsLeft = 10;
@@ -47,7 +52,7 @@ public class GameData {
         GameData.gamer.update();
     }
     
-    public void update() 
+    public void update()
     {
         if(GameData.time > 0)
         {
