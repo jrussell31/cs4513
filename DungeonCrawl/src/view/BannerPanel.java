@@ -7,9 +7,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,6 +37,10 @@ public class BannerPanel extends JPanel {
         txtLevel.setFont(new Font("Tahoma", 0, 36));
         txtLevel.setHorizontalAlignment(JTextField.CENTER);
         txtLevel.setEditable(false);
+        
+        this.setLayout(new BorderLayout());
+            this.add(txtLevel, BorderLayout.CENTER);
+        
     }
 }
 
