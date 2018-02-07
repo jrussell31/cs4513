@@ -30,7 +30,7 @@ public class BannerPanel extends JPanel {
     }
 
     private void initComponents(){
-    setPreferredSize(new Dimension(BannerPanel.pwidth, BannerPanel.pheight));
+        setPreferredSize(new Dimension(BannerPanel.pwidth, BannerPanel.pheight));
         setBackground(Color.cyan);
         setBorder(BorderFactory.createLineBorder(Color.gray, 20));
         txtLevel = new JTextField("Welcome to Level "+String.valueOf(GameData.level));
@@ -39,8 +39,7 @@ public class BannerPanel extends JPanel {
         txtLevel.setEditable(false);
         
         this.setLayout(new BorderLayout());
-            this.add(txtLevel, BorderLayout.CENTER);
-        
+        this.add(txtLevel, BorderLayout.CENTER);
     }
 }
 
