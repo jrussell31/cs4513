@@ -48,7 +48,7 @@ public class GameData {
         // Level specific items
         gamer = new Gamer(962, 865);
         fireball = new Fireball (354,321); 
-        tank = new Tank (700, 300);
+        tank = new Tank (706, 321);
         ball = new Ball(642,289);
         GameData.gameObjects.add(GameData.fireball); 
         GameData.gameObjects.add(GameData.tank); 
@@ -56,7 +56,7 @@ public class GameData {
         
         
         GameData.level = 1;
-        GameData.time = 120;
+        GameData.time = 10;
         GameData.chipsLeft = 3;
         timerCounter = 0;
         
