@@ -30,6 +30,9 @@ public class Gamer extends MoveableObject {
     private boolean up = false;
     private boolean down = false;
     
+    private float dx;
+    private float dy;
+    
     public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
     
     private final ObjectAnimator gamerMoves;
@@ -91,7 +94,7 @@ public class Gamer extends MoveableObject {
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(gamerMoves.getImage(), (int)super.x, (int)super.y, 50, 50, 
+        g.drawImage(gamerMoves.getImage(), (int)super.x, (int)super.y, (int)super.width, (int)super.height, 
             null);
         g.setColor(Color.blue);
         g.draw(this.getCollisionBox());
@@ -103,7 +106,7 @@ public class Gamer extends MoveableObject {
         dy = super.y;
         if(left)
         {
-            super.x -= 50;
+            super.x -= super.MOVEMENT;
             
             facing = 3;
             gamerMoves.setFrames(leftIdle);
@@ -111,7 +114,7 @@ public class Gamer extends MoveableObject {
         } 
         else if(right)
         {
-            super.x += 50;
+            super.x += super.MOVEMENT;
             
             facing = 1;
             gamerMoves.setFrames(rightIdle);
@@ -120,7 +123,7 @@ public class Gamer extends MoveableObject {
         
         if(down)
         {
-            super.y += 50;
+            super.y += super.MOVEMENT;
             
             facing = 2;
             gamerMoves.setFrames(downIdle);
@@ -128,7 +131,7 @@ public class Gamer extends MoveableObject {
         } 
         else if(up)
         {
-            super.y -= 50;
+            super.y -= super.MOVEMENT;
             
             facing = 0;
             gamerMoves.setFrames(upIdle);

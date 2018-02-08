@@ -15,7 +15,7 @@ import java.awt.geom.Rectangle2D;
 import model.GameObject;
 
 public abstract class MoveableObject implements GameObject {
-    public float x, y;
+    public float x, y, height = 32, width = 32;
     private boolean alive;
     public static final int MOVEMENT = 32;
     
@@ -37,6 +37,6 @@ public abstract class MoveableObject implements GameObject {
     
     @Override
     public Rectangle2D.Double getCollisionBox(){
-        return new Rectangle2D.Double(x, y, 50, 50);
+        return new Rectangle2D.Double(x, y, width, height);
     }
 }

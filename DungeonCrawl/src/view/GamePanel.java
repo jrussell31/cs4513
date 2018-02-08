@@ -33,13 +33,7 @@ public final class GamePanel extends JPanel
         setPreferredSize(new Dimension(GamePanel.pwidth, GamePanel.pheight));
         setFocusable(true);
         requestFocus();
-    }
-    @Override
-  protected void paintComponent(Graphics g) {
-
-    super.paintComponent(g);
-        g.drawImage(dbImage, 0, 0, null);
-}
+    }    
 
     public void gameRender() 
     {        
