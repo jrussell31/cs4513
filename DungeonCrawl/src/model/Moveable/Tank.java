@@ -73,7 +73,11 @@ public class Tank extends Monster{
                 if (counter == 1000) {
                     counter = 0;
                     for (int i = 0; i < 1; i++) {                        
+<<<<<<< HEAD
                         super.y += super.MOVERMENT;
+=======
+                        super.y += super.MOVEMENT;
+>>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_S);
                     }
                     if (super.y >= 500) {
@@ -97,7 +101,11 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
+<<<<<<< HEAD
                         super.x += super.MOVERMENT;
+=======
+                        super.x += super.MOVEMENT;
+>>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_E);
                     }                    
                     if (super.x >= 800) {
@@ -118,7 +126,11 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
+<<<<<<< HEAD
                         super.y -= super.MOVERMENT;
+=======
+                        super.y -= super.MOVEMENT;
+>>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_N);
                     }
                     if (super.y <= 300) {
@@ -139,7 +151,11 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
+<<<<<<< HEAD
                         super.x -= super.MOVERMENT;
+=======
+                        super.x -= super.MOVEMENT;
+>>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_W);
                     }
                     

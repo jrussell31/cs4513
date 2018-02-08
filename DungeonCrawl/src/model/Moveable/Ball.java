@@ -45,8 +45,8 @@ public class Ball extends Monster {
                 g.drawImage(ballMoves.getImage(), (int) super.x, (int) super.y, 32, 32,
                 null);
         //Draw Collision Box
-        //g.setColor(Color.blue);
-        //g.draw(this.getCollisionBox());
+        g.setColor(Color.blue);
+        g.draw(this.getCollisionBox());
     }
 
     @Override
