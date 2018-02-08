@@ -18,8 +18,6 @@ import java.awt.image.BufferedImage;
  */
 public class Fireball extends Monster {
     
-    private final int width = 16;
-    private final int height = 24;
     private int counter = 0;
     
     public BufferedImage[] fireballSprites;
@@ -45,21 +43,14 @@ public class Fireball extends Monster {
     
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(fireballMoves.getImage(), (int)super.x, (int)super.y, 60, 60, 
+        g.drawImage(fireballMoves.getImage(), (int)super.x, (int)super.y, (int)super.width, (int)super.height, 
             null);
         
         //Draw Collision Box
-        //g.setColor(Color.blue);
-        //g.draw(this.getCollisionBox());
+        g.setColor(Color.blue);
+        g.draw(this.getCollisionBox());
     }
-
-    //@Override
-    //public Rectangle2D.Double getCollisionBox() {
-        // May need to change to adjust to correct height and width
-        //return new Rectangle2D.Double(super.x, super.y, width*3.5, height*2.5);
-    //}
-    
-    
+       
     @Override
     public void update() {
             fireballMoves.setFrames(fireballSprites);             
@@ -67,14 +58,16 @@ public class Fireball extends Monster {
                 if (gameData.time >0){
                     if (counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.x -= 50;
+                        for(int i = 0; i < 1; i++){
+                            super.x -= super.MOVEMENT; 
                         }
+                        if (super.x <= 200) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = false; 
                         turnUp = false; 
                         turnDown = true;
+                        }
                     }
                     else{
                         counter += 100; 
@@ -86,14 +79,16 @@ public class Fireball extends Monster {
                 if(gameData.time > 0){
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.y += 50;
+                        for(int i = 0; i < 1; i++){
+                            super.y += super.MOVEMENT;
                         }
+                        if (super.y >= 500) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = true; 
                         turnUp = false; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100;                         
@@ -105,14 +100,16 @@ public class Fireball extends Monster {
                 if(gameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.x += 50;
+                        for(int i = 0; i < 1; i++){
+                            super.x += super.MOVEMENT;                            
                         }
+                        if (super.x >= 350) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = false; 
                         turnUp = true; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100; 
@@ -124,14 +121,16 @@ public class Fireball extends Monster {
                 if(gameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.y -= 50;
+                        for(int i = 0; i < 1; i++){
+                            super.y -= super.MOVEMENT;                      
                         }
+                        if (super.y <= 350) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = true; 
                         turnRight = false; 
                         turnUp = false; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100; 

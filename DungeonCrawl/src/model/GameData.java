@@ -46,10 +46,10 @@ public class GameData {
         gamerInventory = Collections.synchronizedList(new ArrayList<GameObject>());
         
         // Level specific items
-        gamer = new Gamer(650, 600);
-        fireball = new Fireball (350,325); 
-        tank = new Tank (700, 300);
-        ball = new Ball(650,300);
+        gamer = new Gamer(2, 1);
+        fireball = new Fireball (354,321); 
+        tank = new Tank (706, 321);
+        ball = new Ball(642,289);
         GameData.gameObjects.add(GameData.fireball); 
         GameData.gameObjects.add(GameData.tank); 
         GameData.gameObjects.add(this.ball);
@@ -61,34 +61,34 @@ public class GameData {
         timerCounter = 0;
         
         //Level keys
-        redKey = new Key(600, 100, LockType.RED);
-        yellowKey = new Key(650, 100, LockType.YELLOW);
+        redKey = new Key(610, 97, LockType.RED);
+        yellowKey = new Key(642, 97, LockType.YELLOW);
         gameObjects.add(redKey);
         gameObjects.add(yellowKey);
         
         //Level locks
-        blueLock = new Lock(100, 100, LockType.BLUE);
-        yellowLock = new Lock(100, 150, LockType.YELLOW);
-        socket = new Lock(100, 200, LockType.SOCKET);
+        blueLock = new Lock(98, 97, LockType.BLUE);
+        yellowLock = new Lock(98, 129, LockType.YELLOW);
+        socket = new Lock(98, 161, LockType.SOCKET);
         gameObjects.add(blueLock);
         gameObjects.add(yellowLock);
         gameObjects.add(socket);
         
         //Level boots
-        fireBoot = new Boot(900, 100, BootType.FIRE);
-        iceBoot = new Boot(900, 150, BootType.ICE);
+        fireBoot = new Boot(898, 97, BootType.FIRE);
+        iceBoot = new Boot(898, 129, BootType.ICE);
         gameObjects.add(fireBoot);
         gameObjects.add(iceBoot);
         
         //Level chips
-        gameObjects.add(new Chip(300, 100));
-        gameObjects.add(new Chip(350, 100));
-        gameObjects.add(new Chip(300, 150));
+        gameObjects.add(new Chip(354, 97));
+        gameObjects.add(new Chip(322, 97));
+        gameObjects.add(new Chip(322, 129));
     }
     
     public void resetGameData()
     {
-        GameData.gamer = new Gamer(650, 600);
+        GameData.gamer = new Gamer(2, 1);
         GameData.gamer.update();
     }
     
