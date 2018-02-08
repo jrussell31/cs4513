@@ -46,7 +46,7 @@ public class GameData {
         gamerInventory = Collections.synchronizedList(new ArrayList<GameObject>());
         
         // Level specific items
-        gamer = new Gamer(962, 865);
+        gamer = new Gamer(2, 1);
         fireball = new Fireball (354,321); 
         tank = new Tank (706, 321);
         ball = new Ball(642,289);
@@ -56,7 +56,7 @@ public class GameData {
         
         
         GameData.level = 1;
-        GameData.time = 10;
+        GameData.time = 120;
         GameData.chipsLeft = 3;
         timerCounter = 0;
         
@@ -67,28 +67,28 @@ public class GameData {
         gameObjects.add(yellowKey);
         
         //Level locks
-        blueLock = new Lock(100, 100, LockType.BLUE);
-        yellowLock = new Lock(100, 150, LockType.YELLOW);
-        socket = new Lock(100, 200, LockType.SOCKET);
+        blueLock = new Lock(98, 97, LockType.BLUE);
+        yellowLock = new Lock(98, 129, LockType.YELLOW);
+        socket = new Lock(98, 161, LockType.SOCKET);
         gameObjects.add(blueLock);
         gameObjects.add(yellowLock);
         gameObjects.add(socket);
         
         //Level boots
-        fireBoot = new Boot(900, 100, BootType.FIRE);
-        iceBoot = new Boot(900, 150, BootType.ICE);
+        fireBoot = new Boot(898, 97, BootType.FIRE);
+        iceBoot = new Boot(898, 129, BootType.ICE);
         gameObjects.add(fireBoot);
         gameObjects.add(iceBoot);
         
         //Level chips
-        gameObjects.add(new Chip(300, 100));
-        gameObjects.add(new Chip(350, 100));
-        gameObjects.add(new Chip(300, 150));
+        gameObjects.add(new Chip(354, 97));
+        gameObjects.add(new Chip(322, 97));
+        gameObjects.add(new Chip(322, 129));
     }
     
     public void resetGameData()
     {
-        GameData.gamer = new Gamer(962, 865);
+        GameData.gamer = new Gamer(2, 1);
         GameData.gamer.update();
     }
     

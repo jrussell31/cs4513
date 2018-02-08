@@ -9,8 +9,6 @@ import java.awt.Color;
 import model.LockType;
 
 public class Lock extends Wall{
-    private final int width = 32;
-    private final int height = 32;
     
     public LockType type;
     
@@ -61,7 +59,7 @@ public class Lock extends Wall{
                 default:
                     image = lockImg[3];
             }
-            g.drawImage(image, (int)super.x, (int)super.y, 50, 50, null);
+            g.drawImage(image, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
             
             //Draw Collision Box
             g.setColor(Color.blue);

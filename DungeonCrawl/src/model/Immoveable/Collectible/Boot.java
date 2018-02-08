@@ -7,8 +7,6 @@ import java.awt.image.BufferedImage;
 import model.BootType;
 
 public class Boot extends Collectible{
-    private final int width = 32;
-    private final int height = 32;
     
     public BootType type;
     
@@ -54,7 +52,7 @@ public class Boot extends Collectible{
                 default:
                     image = bootImg[3];
             }
-            g.drawImage(image, (int)super.x, (int)super.y, 50, 50, null);
+            g.drawImage(image, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
             
             //Draw Collision Box
             g.setColor(Color.blue);
