@@ -58,11 +58,11 @@ public class Tank extends Monster{
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, 32, 32, 
+        g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, (int)super.height, (int)super.width, 
             null);
         //Draw Collision Box
-        //g.setColor(Color.blue);
-        //g.draw(this.getCollisionBox());
+        g.setColor(Color.blue);
+        g.draw(this.getCollisionBox());
     }
     
     @Override
@@ -73,7 +73,7 @@ public class Tank extends Monster{
                 if (counter == 1000) {
                     counter = 0;
                     for (int i = 0; i < 1; i++) {                        
-                        super.y += 32;
+                        super.y += super.MOVERMENT;
                         //tankMoves.setFrames(tank_S);
                     }
                     if (super.y >= 500) {
@@ -97,7 +97,7 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
-                        super.x += 32;
+                        super.x += super.MOVERMENT;
                         //tankMoves.setFrames(tank_E);
                     }                    
                     if (super.x >= 800) {
@@ -118,7 +118,7 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
-                        super.y -= 32;
+                        super.y -= super.MOVERMENT;
                         //tankMoves.setFrames(tank_N);
                     }
                     if (super.y <= 300) {
@@ -139,9 +139,10 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
-                        super.x -= 32;
+                        super.x -= super.MOVERMENT;
                         //tankMoves.setFrames(tank_W);
                     }
+                    
                     if (super.x >= 700) {
                         facing = 3;
                         left = false; 
