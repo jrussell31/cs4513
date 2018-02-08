@@ -49,6 +49,7 @@ public class GameData {
         gamer = new Gamer(650, 600);
         fireball = new Fireball (350,325); 
         tank = new Tank (700, 300);
+        ball = new Ball(650,300);
         GameData.gameObjects.add(GameData.fireball); 
         GameData.gameObjects.add(GameData.tank); 
         GameData.gameObjects.add(this.ball);
