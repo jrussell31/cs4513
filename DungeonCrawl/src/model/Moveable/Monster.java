@@ -6,28 +6,24 @@
 package model.Moveable;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 /**
  *
  * 
  */
-public abstract class Monster extends MoveableObject  {
+public abstract class Monster extends MoveableObject {
 
     public Monster(float x, float y) {
         super(x, y);
     }
 
-    public abstract void render(Graphics g);
+    public abstract void render(Graphics2D g);
 
     public boolean isAlive(){
         return super.isAlive(); 
     }
-
-    public abstract Rectangle2D.Double getCollisionBox();
-
-    public abstract void update();
-
-    public abstract void findCollision();
     
+    public abstract void update();    
 }

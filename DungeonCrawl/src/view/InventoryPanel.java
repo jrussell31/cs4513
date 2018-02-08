@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -15,6 +16,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import model.GameData;
+import static model.GameData.gamerInventory;
+import model.GameObject;
+import model.Immoveable.Collectible.Boot;
+import model.Immoveable.Collectible.Key;
+import model.LockType;
 
 public class InventoryPanel extends JPanel
 {
@@ -39,6 +45,52 @@ public class InventoryPanel extends JPanel
         this.txtTime.setText(String.valueOf(GameData.time));
         this.txtLevel.setText(String.valueOf(GameData.level));
         this.txtChipsLeft.setText(String.valueOf(GameData.chipsLeft));
+        
+        int bKey = 0, gKey = 0, rKey = 0, yKey = 0,
+            fireBoot = 0, forceBoot = 0, iceBoot = 0, waterBoot = 0;
+        
+        for(GameObject object : gamerInventory){
+            if(object.getClass() == Key.class){
+                switch(((Key)object).type){
+                    case BLUE:
+                        bKey++;
+                        break;
+                    case GREEN:
+                        gKey++;
+                        break;
+                    case RED:
+                        rKey++;
+                        break;
+                    case YELLOW:
+                        yKey++;
+                        break;
+                }
+            }
+            else if(object.getClass() == Boot.class){
+                switch(((Boot)object).type){
+                    case FIRE:
+                        fireBoot++;
+                        break;
+                    case FORCE:
+                        forceBoot++;
+                        break;
+                    case ICE:
+                        iceBoot++;
+                        break;
+                    case WATER:
+                        waterBoot++;
+                        break;
+                }
+            }
+        }
+        setBlueKey(bKey > 0);
+        setGreenKey(gKey > 0);
+        setRedKey(rKey > 0);
+        setYellowKey(yKey > 0);
+        setFireBoot(fireBoot > 0);
+        setSuctionBoot(forceBoot > 0);
+        setIceBoot(iceBoot > 0);
+        setFlipperBoot(waterBoot > 0);
     }
     
     private void initComponents(){
