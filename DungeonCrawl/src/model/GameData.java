@@ -47,9 +47,9 @@ public class GameData {
         
         // Level specific items
         gamer = new Gamer(962, 865);
-        fireball = new Fireball (353,321); 
+        fireball = new Fireball (354,321); 
         tank = new Tank (700, 300);
-        ball = new Ball(650,300);
+        ball = new Ball(642,289);
         GameData.gameObjects.add(GameData.fireball); 
         GameData.gameObjects.add(GameData.tank); 
         GameData.gameObjects.add(this.ball);
