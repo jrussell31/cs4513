@@ -11,6 +11,8 @@ import model.Moveable.Monster;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import model.Immoveable.Tile.Wall;
+import model.Moveable.Ball;
 import model.Moveable.Fireball;
 import model.Moveable.Tank;
 
@@ -24,6 +26,8 @@ public class GameData {
     public static int level;
     public static Fireball fireball;
     public static Tank tank;
+    public static Ball ball;
+    public static Wall wall;
     public static int time;
     public static int chipsLeft;
     private int timerCounter;
@@ -36,9 +40,13 @@ public class GameData {
         gamer = new Gamer(650, 625);
         fireball = new Fireball (350,325); 
         tank = new Tank (700, 300);
+        ball = new Ball(450,400);
+       /// wall = new Wall(450, 500);
         GameData.gameObjects.add(GameData.gamer);
         GameData.gameObjects.add(GameData.fireball); 
         GameData.gameObjects.add(GameData.tank); 
+        GameData.gameObjects.add(this.ball);
+        
         
         GameData.level = 1;
         GameData.time = 120;
