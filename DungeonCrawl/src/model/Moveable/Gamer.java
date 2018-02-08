@@ -10,15 +10,15 @@
  */
 package model.Moveable;
 
+import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import view.GamePanel;
 
 public class Gamer extends MoveableObject {
-    private final int width = 32;
-    private final int height = 32;
        
     public BufferedImage[] leftIdle;
     public BufferedImage[] rightIdle;
@@ -104,40 +104,41 @@ public class Gamer extends MoveableObject {
     public void update() {
         dx = super.x;
         dy = super.y;
-        if(left)
-        {
-            super.x -= super.MOVEMENT;
-            
-            facing = 3;
-            gamerMoves.setFrames(leftIdle);
-            left = false;
-        } 
-        else if(right)
-        {
-            super.x += super.MOVEMENT;
-            
-            facing = 1;
-            gamerMoves.setFrames(rightIdle);
-            right = false;
+        if (gameData.time > 0) {
+            if(left)
+            {
+                super.x -= super.MOVEMENT;
+
+                facing = 3;
+                gamerMoves.setFrames(leftIdle);
+                left = false;
+            } 
+            else if(right)
+            {
+                super.x += super.MOVEMENT;
+
+                facing = 1;
+                gamerMoves.setFrames(rightIdle);
+                right = false;
+            }
+
+            if(down)
+            {
+                super.y += super.MOVEMENT;
+
+                facing = 2;
+                gamerMoves.setFrames(downIdle);
+                down = false;
+            } 
+            else if(up)
+            {
+                super.y -= super.MOVEMENT;
+
+                facing = 0;
+                gamerMoves.setFrames(upIdle);
+                up = false;
+            }
         }
-        
-        if(down)
-        {
-            super.y += super.MOVEMENT;
-            
-            facing = 2;
-            gamerMoves.setFrames(downIdle);
-            down = false;
-        } 
-        else if(up)
-        {
-            super.y -= super.MOVEMENT;
-            
-            facing = 0;
-            gamerMoves.setFrames(upIdle);
-            up = false;
-        }
-        
         if (!(right && down && left && up))
         {
             switch(facing){
