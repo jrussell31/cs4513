@@ -27,7 +27,7 @@ public class Chip extends Collectible {
     @Override
     public void render(Graphics2D g) {
         if(this.isAlive() && this.isDisplayed){
-            g.drawImage(chip, (int)super.x, (int)super.y, 50, 50, null);
+            g.drawImage(chip, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
         }
         
         //Draw Collision Box
