@@ -61,8 +61,8 @@ public class GameData {
         timerCounter = 0;
         
         //Level keys
-        redKey = new Key(600, 100, LockType.RED);
-        yellowKey = new Key(650, 100, LockType.YELLOW);
+        redKey = new Key(610, 97, LockType.RED);
+        yellowKey = new Key(642, 97, LockType.YELLOW);
         gameObjects.add(redKey);
         gameObjects.add(yellowKey);
         
