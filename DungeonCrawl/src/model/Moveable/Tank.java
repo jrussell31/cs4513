@@ -24,6 +24,7 @@ public class Tank extends Monster{
     public BufferedImage[] tank_W;
     public BufferedImage[] tank_E;
     
+    int counter = 0;
     
     public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
     public boolean right, up, left = false; 
@@ -57,7 +58,7 @@ public class Tank extends Monster{
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, 50, 50, 
+        g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, 32, 32, 
             null);
         //Draw Collision Box
         //g.setColor(Color.blue);
@@ -66,61 +67,94 @@ public class Tank extends Monster{
     
     @Override
     public void update() {
-        //tankMoves.setFrames(tank_S);
         if (GameData.time > 0) {     
             if (down) {
-                super.y += 5;
                 tankMoves.setFrames(tank_S);
-                
-                if (super.y == 500) {
-                    facing = 2;
-                    //tankMoves.setFrames(tank_S);
-                    left = false; 
-                    right = true; 
-                    up = false; 
-                    down = false; 
+                if (counter == 1000) {
+                    counter = 0;
+                    for (int i = 0; i < 1; i++) {                        
+                        super.y += 32;
+                        //tankMoves.setFrames(tank_S);
+                    }
+                    if (super.y >= 500) {
+                        facing = 2;
+                        tankMoves.setFrames(tank_S);
+                        left = false; 
+                        right = true; 
+                        up = false; 
+                        down = false; 
+                    }                    
+                    tankMoves.setFrames(tank_S);
                 }
+                else {
+                    counter += 100;
+                }
+                
             }
-            else if (right) {            
-                super.x += 5;
+            else if (right) {  
                 tankMoves.setFrames(tank_E);
-
-                if (super.x == 800) {
-                    facing = 1;
-                    //tankMoves.setFrames(tank_E);
-                    left = false; 
-                    right = false; 
-                    up = true; 
-                    down = false; 
+                if (counter == 1000) {
+                    counter = 0;
+                    
+                    for (int i = 0; i < 1; i++) {                        
+                        super.x += 32;
+                        //tankMoves.setFrames(tank_E);
+                    }                    
+                    if (super.x >= 800) {
+                        facing = 1;
+                        left = false; 
+                        right = false; 
+                        up = true; 
+                        down = false; 
+                    }
+                    tankMoves.setFrames(tank_E);
+                } else {
+                    counter += 100;
                 }
             }
             else if (up) {
-                super.y -= 5;
                 tankMoves.setFrames(tank_N);
-
-                if (super.y == 300) {
-                    facing = 0;
-                    //tankMoves.setFrames(tank_N);
-                    left = true; 
-                    right = false; 
-                    up = false; 
-                    down = false; 
+                if (counter >= 1000) {
+                    counter = 0;
+                    
+                    for (int i = 0; i < 1; i++) {                        
+                        super.y -= 32;
+                        //tankMoves.setFrames(tank_N);
+                    }
+                    if (super.y <= 300) {
+                        facing = 0;
+                        left = true; 
+                        right = false; 
+                        up = false; 
+                        down = false; 
+                    }
+                    tankMoves.setFrames(tank_N);
+                } else {
+                    counter += 100;
                 }
             }
             else if (left) {
-                super.x -= 5;
                 tankMoves.setFrames(tank_W);
-
-                if (super.x == 700) {
-                    facing = 3;
-                    //tankMoves.setFrames(tank_W);
-                    left = false; 
-                    right = false; 
-                    up = false; 
-                    down = true; 
+                if (counter == 1000) {
+                    counter = 0;
+                    
+                    for (int i = 0; i < 1; i++) {                        
+                        super.x -= 32;
+                        //tankMoves.setFrames(tank_W);
+                    }
+                    if (super.x >= 700) {
+                        facing = 3;
+                        left = false; 
+                        right = false; 
+                        up = false; 
+                        down = true; 
+                    } 
+                    tankMoves.setFrames(tank_W);
+                } else {
+                    counter += 100;
                 }
-            }
+            }tankMoves.update();
         }
-        tankMoves.update();
+        
     }
 }
