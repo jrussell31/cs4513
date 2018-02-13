@@ -58,14 +58,16 @@ public class Fireball extends Monster {
                 if (gameData.time >0){
                     if (counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.x -= super.MOVEMENT;
+                        for(int i = 0; i < 1; i++){
+                            super.x -= super.MOVEMENT; 
                         }
+                        if (super.x <= 200) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = false; 
                         turnUp = false; 
                         turnDown = true;
+                        }
                     }
                     else{
                         counter += 100; 
@@ -77,14 +79,16 @@ public class Fireball extends Monster {
                 if(gameData.time > 0){
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
+                        for(int i = 0; i < 1; i++){
                             super.y += super.MOVEMENT;
                         }
+                        if (super.y >= 500) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = true; 
                         turnUp = false; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100;                         
@@ -96,14 +100,16 @@ public class Fireball extends Monster {
                 if(gameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.x += super.MOVEMENT;
+                        for(int i = 0; i < 1; i++){
+                            super.x += super.MOVEMENT;                            
                         }
+                        if (super.x >= 350) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = false; 
                         turnUp = true; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100; 
@@ -115,14 +121,16 @@ public class Fireball extends Monster {
                 if(gameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.y -= super.MOVEMENT;
+                        for(int i = 0; i < 1; i++){
+                            super.y -= super.MOVEMENT;                      
                         }
+                        if (super.y <= 350) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = true; 
                         turnRight = false; 
                         turnUp = false; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100; 
