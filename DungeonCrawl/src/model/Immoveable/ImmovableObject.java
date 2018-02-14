@@ -6,11 +6,12 @@ import model.GameObject;
 public abstract class ImmovableObject implements GameObject {
     
     public float x, y, height = 32, width = 32;
+    public static int offset = 32;
     private boolean alive;    
     
     public ImmovableObject(float x, float y){
-        this.x = x;
-        this.y = y;
+        this.x = x * offset;
+        this.y = y * offset;
         alive = true;
     }
     
@@ -27,7 +28,5 @@ public abstract class ImmovableObject implements GameObject {
     public void setAlive(boolean a){
         this.alive = a;
     }
-    
-    public void update(){}
     
 }
