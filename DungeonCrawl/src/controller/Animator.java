@@ -6,14 +6,18 @@
 package controller;
 
 import DungeonCrawl.DungeonCrawl;
+import java.util.HashSet;
+import model.ButtonType;
 import model.GameData;
 import model.GameObject;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Collectible;
 import model.Immoveable.Collectible.Key;
+import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Tile;
+import model.Immoveable.Tile.ToggleWall;
 import model.Immoveable.Tile.Wall;
 import model.LockType;
 import model.Moveable.Monster;
@@ -33,7 +37,7 @@ public class Animator implements Runnable {
 
         while (running) {
             long startTime = System.currentTimeMillis();
-            
+
             DungeonCrawl.gameData.update();
             processCollisions();
             DungeonCrawl.gamePanel.gameRender();
@@ -77,8 +81,7 @@ public class Animator implements Runnable {
                             if (((Lock) object).type == LockType.SOCKET) {
                                 if (GameData.chipsLeft <= 0) {
                                     ((Lock) object).setAlive(false);
-                                }
-                                else{
+                                } else {
                                     GameData.gamer.noMove();
                                 }
                             } else {
@@ -93,12 +96,27 @@ public class Animator implements Runnable {
                                         }
                                     }
                                 }
-                                if(!key){
+                                if (!key) {
                                     GameData.gamer.noMove();
                                 }
                             }
+                        } else if (object instanceof ToggleWall) {
+                            if (!((ToggleWall)object).isOpen()) {
+                                GameData.gamer.noMove();
+                            }
                         }
                     }
+                    else if(object instanceof Button){
+                            if(((Button)object).getType() == ButtonType.GREEN){
+                                for(int count = 0; count < GameData.gameObjects.size(); count++){
+                                    GameObject currObj = GameData.gameObjects.get(count);
+                                    if(currObj instanceof ToggleWall){
+                                        ((ToggleWall) currObj).setOpen(!((ToggleWall) currObj).isOpen());
+                                        GameData.gameObjects.set(count, currObj);
+                                    }
+                                }
+                            }
+                        }
                 }
             }
         }

@@ -14,5 +14,4 @@ public abstract class Wall extends Tile {
     public Wall(float x, float y) {
         super(x, y);
     }
-    
 }

@@ -18,7 +18,10 @@ import model.Moveable.Tank;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
+import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Lock;
+import model.Immoveable.Tile.Portal;
+import model.Immoveable.Tile.ToggleWall;
 
 /**
  *
@@ -36,6 +39,7 @@ public class GameData {
     public static Tank tank;
     public static Ball ball;
     public static Wall wall;
+    public static Portal portal;
     public static int time;
     public static int chipsLeft;
     private int timerCounter;
@@ -52,8 +56,7 @@ public class GameData {
         ball = new Ball(642,289);
         GameData.gameObjects.add(GameData.fireball); 
         GameData.gameObjects.add(GameData.tank); 
-        GameData.gameObjects.add(this.ball);
-        
+        GameData.gameObjects.add(GameData.ball);
         
         GameData.level = 1;
         GameData.time = 120;
@@ -84,6 +87,16 @@ public class GameData {
         gameObjects.add(new Chip(354, 97));
         gameObjects.add(new Chip(322, 97));
         gameObjects.add(new Chip(322, 129));
+        
+        //Portal Tile (x = tile count from origin * 32 + 2, y = tile count from origin * 32 + 1)
+        portal = new Portal((2 * 32) + 2, (5 * 32) + 1); 
+        gameObjects.add(portal);
+        
+        //Toggle wall tile
+        gameObjects.add(new ToggleWall((2 * 32) + 2, (6 * 32) + 1));
+        
+        //Green Button
+        gameObjects.add(new Button((2 * 32) + 2, (7 * 32) + 1, ButtonType.GREEN));
     }
     
     public void resetGameData()

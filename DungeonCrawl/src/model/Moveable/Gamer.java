@@ -104,6 +104,7 @@ public class Gamer extends MoveableObject {
     public void update() {
         dx = super.x;
         dy = super.y;
+        
         if(left)
         {
             super.x -= super.MOVEMENT;
@@ -120,8 +121,7 @@ public class Gamer extends MoveableObject {
             gamerMoves.setFrames(rightIdle);
             right = false;
         }
-        
-        if(down)
+        else if(down)
         {
             super.y += super.MOVEMENT;
             
@@ -137,8 +137,7 @@ public class Gamer extends MoveableObject {
             gamerMoves.setFrames(upIdle);
             up = false;
         }
-        
-        if (!(right && down && left && up))
+        else
         {
             switch(facing){
                 case 0:
@@ -154,11 +153,6 @@ public class Gamer extends MoveableObject {
                     gamerMoves.setFrames(leftIdle);
                     break;
             }
-            gamerMoves.setDelay(-1);
-        }
-        else
-        {
-            gamerMoves.setDelay(100);
         }
         
         gamerMoves.update();                
