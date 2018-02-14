@@ -29,8 +29,6 @@ public class GameData {
     public static List<GameObject> gameObjects;
     public static List<GameObject> gamerInventory;
     public static Gamer gamer;
-    public static Key redKey, yellowKey;
-    public static Lock blueLock, yellowLock, socket;
     public static Boot fireBoot, iceBoot;
     public static int level;
     public static Fireball fireball;
@@ -62,37 +60,24 @@ public class GameData {
         timerCounter = 0;
         
         //Level keys
-        redKey = new Key(610, 97, LockType.RED);
-        yellowKey = new Key(642, 97, LockType.YELLOW);
-        gameObjects.add(redKey);
-        gameObjects.add(yellowKey);
+        gameObjects.add(new Key(29, 1, LockType.GREEN));
         
         //Level locks
-        blueLock = new Lock(3, 3, LockType.BLUE);
-        yellowLock = new Lock(3, 4, LockType.YELLOW);
-        socket = new Lock(3, 5, LockType.SOCKET);
-        gameObjects.add(blueLock);
-        gameObjects.add(yellowLock);
-        gameObjects.add(socket);
-        
-        //Level boots
-        fireBoot = new Boot(898, 97, BootType.FIRE);
-        iceBoot = new Boot(898, 129, BootType.ICE);
-        gameObjects.add(fireBoot);
-        gameObjects.add(iceBoot);
-        
-        //Level chips
-        gameObjects.add(new Chip(354, 97));
-        gameObjects.add(new Chip(322, 97));
-        gameObjects.add(new Chip(322, 129));
+        gameObjects.add(new Lock(0, 1, LockType.BLUE));
+        gameObjects.add(new Lock(30, 1, LockType.BLUE));
+        for(int j = 0; j < 31; ++j){
+            gameObjects.add(new Lock(j, 0, LockType.BLUE));
+            if(j == 15) gameObjects.add(new Lock(j, 2, LockType.GREEN));
+            else gameObjects.add(new Lock(j, 2, LockType.BLUE));
+        }
         
         //Level blocks
-        gameObjects.add(new Block(4, 4));
+        gameObjects.add(new Block(15, 3));
     }
     
     public void resetGameData()
     {
-        GameData.gamer = new Gamer(2, 1);
+        GameData.gamer = new Gamer(1, 1);
         GameData.gamer.update();
     }
     
