@@ -19,6 +19,7 @@ import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Lock;
+import model.Moveable.Block;
 
 /**
  *
@@ -39,14 +40,14 @@ public class GameData {
     public static int time;
     public static int chipsLeft;
     private int timerCounter;
-
+    
     public GameData() 
     {
         gameObjects = Collections.synchronizedList(new ArrayList<GameObject>());
         gamerInventory = Collections.synchronizedList(new ArrayList<GameObject>());
         
         // Level specific items
-        gamer = new Gamer(2, 1);
+        gamer = new Gamer(1, 1);
         fireball = new Fireball (354,321); 
         tank = new Tank (706, 321);
         ball = new Ball(642,289);
@@ -67,9 +68,9 @@ public class GameData {
         gameObjects.add(yellowKey);
         
         //Level locks
-        blueLock = new Lock(98, 97, LockType.BLUE);
-        yellowLock = new Lock(98, 129, LockType.YELLOW);
-        socket = new Lock(98, 161, LockType.SOCKET);
+        blueLock = new Lock(3, 3, LockType.BLUE);
+        yellowLock = new Lock(3, 4, LockType.YELLOW);
+        socket = new Lock(3, 5, LockType.SOCKET);
         gameObjects.add(blueLock);
         gameObjects.add(yellowLock);
         gameObjects.add(socket);
@@ -84,6 +85,9 @@ public class GameData {
         gameObjects.add(new Chip(354, 97));
         gameObjects.add(new Chip(322, 97));
         gameObjects.add(new Chip(322, 129));
+        
+        //Level blocks
+        gameObjects.add(new Block(4, 4));
     }
     
     public void resetGameData()

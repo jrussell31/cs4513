@@ -30,9 +30,7 @@ public class Boot extends Collectible{
             
             image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Flippers.png");
             bootImg[3] = image;
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+        } catch(Exception e){}
     }
 
     @Override
@@ -55,8 +53,8 @@ public class Boot extends Collectible{
             g.drawImage(image, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
             
             //Draw Collision Box
-            g.setColor(Color.blue);
-            g.draw(this.getCollisionBox());
+            //g.setColor(Color.blue);
+            //g.draw(this.getCollisionBox());
         }
     }
 }
