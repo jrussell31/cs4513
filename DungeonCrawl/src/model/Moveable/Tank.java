@@ -16,6 +16,7 @@ import java.awt.Graphics2D;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
+import model.GameObject;
 
 public class Tank extends Monster{
         
@@ -157,5 +158,10 @@ public class Tank extends Monster{
             }tankMoves.update();
         }
         
+    }
+    
+    @Override
+    public void collide(GameObject O){
+    
     }
 }

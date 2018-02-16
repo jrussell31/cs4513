@@ -15,6 +15,7 @@ import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameObject;
 
 public class Gamer extends MoveableObject {
     private final int width = 32;
@@ -167,5 +168,10 @@ public class Gamer extends MoveableObject {
     public void noMove() {
         super.x = dx;
         super.y = dy;
+    }
+    
+    @Override
+    public void collide(GameObject O){
+    //Leave this empty for now JL 2-15-18
     }
 }

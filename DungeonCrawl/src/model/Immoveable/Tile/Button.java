@@ -7,6 +7,7 @@ package model.Immoveable.Tile;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import model.GameObject;
 
 /**
  *
@@ -27,4 +28,8 @@ public class Button extends Tile {
         //g.draw(this.getCollisionBox());
     }
     
+    @Override
+     public void collide(GameObject O){
+    
+    }
 }

@@ -11,6 +11,7 @@ import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameObject;
 
 /**
  *
@@ -137,4 +138,10 @@ public class Ball extends Monster {
         }
         ballMoves.update();
     }
+    
+        @Override
+     public void collide(GameObject O){
+    
+    }
+    
 }

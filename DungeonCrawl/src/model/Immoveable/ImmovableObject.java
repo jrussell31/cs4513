@@ -29,4 +29,9 @@ public abstract class ImmovableObject implements GameObject {
         this.alive = a;
     }
     
+    public void update(){}
+    
+    @Override
+    public abstract void collide(GameObject O);
+    
 }

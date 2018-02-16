@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
+import model.GameObject;
 
 public class Boot extends Collectible{
     
@@ -56,5 +57,9 @@ public class Boot extends Collectible{
             //g.setColor(Color.blue);
             //g.draw(this.getCollisionBox());
         }
+    }
+    @Override
+     public void collide(GameObject O){
+    
     }
 }

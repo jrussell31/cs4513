@@ -7,6 +7,7 @@ package model.Moveable;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import model.GameObject;
 
 /**
  *
@@ -35,5 +36,10 @@ public class Frog extends Monster {
     @Override
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+     public void collide(GameObject O){
+    
     }
 }
