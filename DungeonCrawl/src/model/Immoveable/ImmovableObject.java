@@ -30,4 +30,7 @@ public abstract class ImmovableObject implements GameObject {
     
     public void update(){}
     
+    @Override
+    public abstract void collide(GameObject O);
+    
 }
