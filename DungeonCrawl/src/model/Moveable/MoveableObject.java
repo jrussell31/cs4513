@@ -38,4 +38,6 @@ public abstract class MoveableObject implements GameObject {
     public Rectangle2D.Double getCollisionBox(){
         return new Rectangle2D.Double(x, y, width, height);
     }
+    
+    public abstract void collide(GameObject O);
 }
