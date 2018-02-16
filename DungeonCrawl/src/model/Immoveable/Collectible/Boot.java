@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
+import model.GameData;
 import model.GameObject;
+import model.Moveable.Gamer;
 
 public class Boot extends Collectible{
     
@@ -60,6 +62,10 @@ public class Boot extends Collectible{
     }
     @Override
      public void collide(GameObject O){
+         if(O instanceof Gamer){
+             this.isDisplayed = false;
+             GameData.gamerInventory.add(this);
+         }
     
     }
 }
