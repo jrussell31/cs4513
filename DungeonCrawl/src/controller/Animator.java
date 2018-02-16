@@ -60,26 +60,16 @@ public class Animator implements Runnable {
 
     private void processCollisions() {
         for (GameObject object : GameData.gameObjects) {
+            // If there is a collision between the gamer and a game object
             if (GameData.gamer.getCollisionBox().intersects(
                     object.getCollisionBox())) {
                 GameData.gamer.collide(object);
                 object.collide(GameData.gamer);
-
-                        } else if (object instanceof ToggleWall) {
-                            if (!((ToggleWall)object).isOpen()) {
-                                GameData.gamer.noMove();
-                            }
-                        }
-                    }
-                    else if(object instanceof Button){
-                            if(((Button)object).getType() == ButtonType.GREEN){
-                                for(int count = 0; count < GameData.gameObjects.size(); count++){
-                                    GameObject currObj = GameData.gameObjects.get(count);
-                                    if(currObj instanceof ToggleWall){
-                                        ((ToggleWall) currObj).setOpen(!((ToggleWall) currObj).isOpen());
-                                        GameData.gameObjects.set(count, currObj);
-                                    }
-                                }
+            }
+            else{ 
+                if(object instanceof Button){
+                    ((Button) object).pressed = false;
+                }
             }
         }
         //TODO: Handle Object on Object Violence

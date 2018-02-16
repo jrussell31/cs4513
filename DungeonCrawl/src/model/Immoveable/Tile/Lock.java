@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
+import model.GameData;
 import model.GameObject;
 import model.LockType;
 
@@ -70,6 +71,15 @@ public class Lock extends Wall{
     
     @Override
      public void collide(GameObject O){
-    
+         switch(type){
+             case SOCKET:
+                 if(GameData.chipsLeft == 0){
+                     this.setAlive(false);
+                 }
+                 else{
+                     GameData.gamer.noMove();
+                 }
+                 break;
+         }
     }
 }

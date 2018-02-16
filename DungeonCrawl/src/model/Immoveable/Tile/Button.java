@@ -9,9 +9,12 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashSet;
 import model.ButtonType;
 import model.GameData;
 import model.GameObject;
+import model.Moveable.Gamer;
 
 /**
  *
@@ -20,12 +23,16 @@ import model.GameObject;
 public class Button extends Tile {
 
     ButtonType type;
+    ArrayList<GameObject> associatedObjects = new ArrayList<GameObject>();
 
     BufferedImage[] buttonImgs;
+    public boolean pressed = false;
 
-    public Button(float x, float y, ButtonType type) {
+    public Button(float x, float y, ButtonType type, ArrayList<GameObject> associatedObjects) {
         super(x, y);
         this.type = type;
+        
+        this.associatedObjects.addAll(associatedObjects);
         
         showImages();
     }
@@ -76,8 +83,26 @@ public class Button extends Tile {
     public ButtonType getType(){
         return type;
     }
-    @Override
-     public void collide(GameObject O){
     
+    @Override
+    public void collide(GameObject O){
+        if(!pressed){
+            pressed = true;
+            
+            if(type == ButtonType.GREEN){
+                if(O instanceof Gamer){
+                    this.associatedObjects.forEach((o)-> setObject(o));
+                }
+            }
+        }
+    }
+
+    public void setObject(GameObject object){
+        int indexOfObject = GameData.gameObjects.indexOf(object);
+
+        if(object instanceof ToggleWall){
+            ((ToggleWall) object).setOpen(!((ToggleWall) object).isOpen());
+            GameData.gameObjects.set(indexOfObject, object);
+        }
     }
 }

@@ -22,6 +22,7 @@ import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.ToggleWall;
+import model.Moveable.Block;
 
 /**
  *
@@ -78,15 +79,22 @@ public class GameData {
         //Level blocks
         gameObjects.add(new Block(15, 3));
         
-        //Portal Tile (x = tile count from origin * 32 + 2, y = tile count from origin * 32 + 1)
-        portal = new Portal((2 * 32) + 2, (5 * 32) + 1); 
+        socket = new Lock(16, 25, LockType.SOCKET);
+        gameObjects.add(socket);
+        
+        portal = new Portal(16, 26); 
         gameObjects.add(portal);
         
         //Toggle wall tile
-        gameObjects.add(new ToggleWall((2 * 32) + 2, (6 * 32) + 1));
+        ArrayList<GameObject> toggleWalls = new ArrayList<>();
+        toggleWalls.add(new ToggleWall(14, 14, true));
+        toggleWalls.add(new ToggleWall(14, 18, false));
+        toggleWalls.add(new ToggleWall(18, 14, false));
+        toggleWalls.add(new ToggleWall(18, 18, true));
+        gameObjects.addAll(toggleWalls);
         
         //Green Button
-        gameObjects.add(new Button((2 * 32) + 2, (7 * 32) + 1, ButtonType.GREEN));
+        gameObjects.add(new Button(16, 11, ButtonType.GREEN, toggleWalls));
     }
     
     public void resetGameData()
