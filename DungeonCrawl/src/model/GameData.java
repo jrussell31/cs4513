@@ -61,40 +61,47 @@ public class GameData {
         
         GameData.level = 1;
         GameData.time = 120;
-        GameData.chipsLeft = 3;
         timerCounter = 0;
         
+        //Level Chips
+        gameObjects.add(new Chip(4,3));
+        gameObjects.add(new Chip(4,5));
+        gameObjects.add(new Chip(3,4));
+        gameObjects.add(new Chip(5,4));
+        gameObjects.add(new Chip(19,17));
+        GameData.chipsLeft = 5;
+        
         //Level keys
-        gameObjects.add(new Key(29, 1, LockType.GREEN));
+        gameObjects.add(new Key(4, 4, LockType.BLUE));
+        gameObjects.add(new Key(11, 13, LockType.GREEN));
+        gameObjects.add(new Key(11, 17, LockType.RED));
+        gameObjects.add(new Key(19, 13, LockType.BLUE));
+        gameObjects.add(new Key(15, 21, LockType.YELLOW));
         
         //Level locks
-        gameObjects.add(new Lock(0, 1, LockType.BLUE));
-        gameObjects.add(new Lock(30, 1, LockType.BLUE));
-        for(int j = 0; j < 31; ++j){
-            gameObjects.add(new Lock(j, 0, LockType.BLUE));
-            if(j == 15) gameObjects.add(new Lock(j, 2, LockType.GREEN));
-            else gameObjects.add(new Lock(j, 2, LockType.BLUE));
-        }
+        gameObjects.add(new Lock(8, 4, LockType.BLUE));
+        gameObjects.add(new Lock(12, 13, LockType.RED));
+        gameObjects.add(new Lock(12, 17, LockType.YELLOW));
+        gameObjects.add(new Lock(18, 13, LockType.GREEN));
+        gameObjects.add(new Lock(18, 17, LockType.BLUE));
+        gameObjects.add(new Lock(15, 25, LockType.SOCKET));
         
         //Level blocks
         gameObjects.add(new Block(15, 3));
         
-        socket = new Lock(16, 25, LockType.SOCKET);
-        gameObjects.add(socket);
-        
-        portal = new Portal(16, 26); 
-        gameObjects.add(portal);
+        //Level portal
+        gameObjects.add(new Portal(15, 26));
         
         //Toggle wall tile
         ArrayList<GameObject> toggleWalls = new ArrayList<>();
-        toggleWalls.add(new ToggleWall(14, 14, true));
-        toggleWalls.add(new ToggleWall(14, 18, false));
-        toggleWalls.add(new ToggleWall(18, 14, false));
-        toggleWalls.add(new ToggleWall(18, 18, true));
+        toggleWalls.add(new ToggleWall(13, 13, true));
+        toggleWalls.add(new ToggleWall(13, 17, false));
+        toggleWalls.add(new ToggleWall(17, 13, false));
+        toggleWalls.add(new ToggleWall(17, 17, true));
         gameObjects.addAll(toggleWalls);
         
-        //Green Button
-        gameObjects.add(new Button(16, 11, ButtonType.GREEN, toggleWalls));
+        //Buttons
+        gameObjects.add(new Button(15, 11, ButtonType.GREEN, toggleWalls));
     }
     
     public void resetGameData()
