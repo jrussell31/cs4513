@@ -43,14 +43,14 @@ public class GameData {
     public static int time;
     public static int chipsLeft;
     private int timerCounter;
-
+    
     public GameData() 
     {
         gameObjects = Collections.synchronizedList(new ArrayList<GameObject>());
         gamerInventory = Collections.synchronizedList(new ArrayList<GameObject>());
         
         // Level specific items
-        gamer = new Gamer(2, 1);
+        gamer = new Gamer(1, 1);
         fireball = new Fireball (354,321); 
         tank = new Tank (706, 321);
         ball = new Ball(642,289);
@@ -64,29 +64,19 @@ public class GameData {
         timerCounter = 0;
         
         //Level keys
-        redKey = new Key(610, 97, LockType.RED);
-        yellowKey = new Key(642, 97, LockType.YELLOW);
-        gameObjects.add(redKey);
-        gameObjects.add(yellowKey);
+        gameObjects.add(new Key(29, 1, LockType.GREEN));
         
         //Level locks
-        blueLock = new Lock(98, 97, LockType.BLUE);
-        yellowLock = new Lock(98, 129, LockType.YELLOW);
-        socket = new Lock(98, 161, LockType.SOCKET);
-        gameObjects.add(blueLock);
-        gameObjects.add(yellowLock);
-        gameObjects.add(socket);
+        gameObjects.add(new Lock(0, 1, LockType.BLUE));
+        gameObjects.add(new Lock(30, 1, LockType.BLUE));
+        for(int j = 0; j < 31; ++j){
+            gameObjects.add(new Lock(j, 0, LockType.BLUE));
+            if(j == 15) gameObjects.add(new Lock(j, 2, LockType.GREEN));
+            else gameObjects.add(new Lock(j, 2, LockType.BLUE));
+        }
         
-        //Level boots
-        fireBoot = new Boot(898, 97, BootType.FIRE);
-        iceBoot = new Boot(898, 129, BootType.ICE);
-        gameObjects.add(fireBoot);
-        gameObjects.add(iceBoot);
-        
-        //Level chips
-        gameObjects.add(new Chip(354, 97));
-        gameObjects.add(new Chip(322, 97));
-        gameObjects.add(new Chip(322, 129));
+        //Level blocks
+        gameObjects.add(new Block(15, 3));
         
         //Portal Tile (x = tile count from origin * 32 + 2, y = tile count from origin * 32 + 1)
         portal = new Portal((2 * 32) + 2, (5 * 32) + 1); 
@@ -101,7 +91,7 @@ public class GameData {
     
     public void resetGameData()
     {
-        GameData.gamer = new Gamer(2, 1);
+        GameData.gamer = new Gamer(1, 1);
         GameData.gamer.update();
     }
     

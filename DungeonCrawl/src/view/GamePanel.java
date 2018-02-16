@@ -50,7 +50,7 @@ public final class GamePanel extends JPanel
         
 
         graphics.clearRect(0, 0, GamePanel.pwidth, GamePanel.pheight);
-        graphics.drawImage(ImageFinder.getImage("ImagesFolder", "map.png"), HEIGHT, WIDTH, this);
+        graphics.drawImage(ImageFinder.getImage("ImagesFolder", "map.png"), 0, 0, this);
 
         synchronized(GameData.gameObjects) 
         {
