@@ -7,6 +7,7 @@ package model.Immoveable.Tile;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import model.GameObject;
 
 /**
  *
@@ -21,6 +22,11 @@ public class Floor extends Tile {
     @Override
     public void render(Graphics2D g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+     public void collide(GameObject O){
+    
     }
     
 }

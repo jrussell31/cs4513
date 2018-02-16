@@ -5,6 +5,7 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameObject;
 
 
 
@@ -62,5 +63,8 @@ public class Key extends Collectible {
         }
     };
 
+    @Override
+     public void collide(GameObject O){
     
+    }
 }

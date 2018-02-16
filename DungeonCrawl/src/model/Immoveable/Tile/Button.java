@@ -76,4 +76,8 @@ public class Button extends Tile {
     public ButtonType getType(){
         return type;
     }
+    @Override
+     public void collide(GameObject O){
+    
+    }
 }

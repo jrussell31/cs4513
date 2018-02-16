@@ -62,44 +62,9 @@ public class Animator implements Runnable {
         for (GameObject object : GameData.gameObjects) {
             if (GameData.gamer.getCollisionBox().intersects(
                     object.getCollisionBox())) {
-                if (object instanceof Monster) {
+                GameData.gamer.collide(object);
+                object.collide(GameData.gamer);
 
-                } else if (object instanceof Collectible) {
-                    if (object instanceof Key) {
-                        ((Key) object).isDisplayed = false;
-                        GameData.gamerInventory.add(object);
-                    } else if (object instanceof Boot) {
-                        ((Boot) object).isDisplayed = false;
-                        GameData.gamerInventory.add(object);
-                    } else if (object instanceof Chip) {
-                        ((Chip) object).setAlive(false);
-                        DungeonCrawl.gameData.collectChip();
-                    }
-                } else if (object instanceof Tile) {
-                    if (object instanceof Wall) {
-                        if (object instanceof Lock) {
-                            if (((Lock) object).type == LockType.SOCKET) {
-                                if (GameData.chipsLeft <= 0) {
-                                    ((Lock) object).setAlive(false);
-                                } else {
-                                    GameData.gamer.noMove();
-                                }
-                            } else {
-                                boolean key = false;
-                                for (GameObject o : GameData.gamerInventory) {
-                                    if (o instanceof Key) {
-                                        if (((Key) o).type == ((Lock) object).type) {
-                                            ((Lock) object).setAlive(false);
-                                            ((Key) o).setAlive(false);
-                                            key = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (!key) {
-                                    GameData.gamer.noMove();
-                                }
-                            }
                         } else if (object instanceof ToggleWall) {
                             if (!((ToggleWall)object).isOpen()) {
                                 GameData.gamer.noMove();
@@ -115,10 +80,9 @@ public class Animator implements Runnable {
                                         GameData.gameObjects.set(count, currObj);
                                     }
                                 }
-                            }
-                        }
-                }
             }
         }
+        //TODO: Handle Object on Object Violence
+        
     }
 }

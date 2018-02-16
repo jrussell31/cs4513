@@ -11,6 +11,7 @@ import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameObject;
 
 /**
  *
@@ -138,5 +139,10 @@ public class Fireball extends Monster {
                 }                
             }           
         fireballMoves.update();             
+    }
+    
+        @Override
+     public void collide(GameObject O){
+    
     }
 }

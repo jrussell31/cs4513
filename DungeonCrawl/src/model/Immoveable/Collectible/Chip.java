@@ -4,6 +4,7 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameObject;
 
 
 public class Chip extends Collectible {
@@ -33,5 +34,10 @@ public class Chip extends Collectible {
         //Draw Collision Box
         g.setColor(Color.blue);
         g.draw(this.getCollisionBox());
+    }
+    
+        @Override
+     public void collide(GameObject O){
+    
     }
 }

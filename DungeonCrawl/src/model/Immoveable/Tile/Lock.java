@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
+import model.GameObject;
 import model.LockType;
 
 public class Lock extends Wall{
@@ -65,5 +66,10 @@ public class Lock extends Wall{
             g.setColor(Color.blue);
             g.draw(this.getCollisionBox());
         }
+    }
+    
+    @Override
+     public void collide(GameObject O){
+    
     }
 }
