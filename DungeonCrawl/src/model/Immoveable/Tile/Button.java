@@ -20,6 +20,7 @@ import model.Moveable.Gamer;
  * @author russe_000
  */
 public class Button extends Tile {
+    public BufferedImage image;
 
     ButtonType type;
     ArrayList<GameObject> associatedObjects = new ArrayList<GameObject>();
@@ -57,7 +58,7 @@ public class Button extends Tile {
     }
 
     @Override
-    public void render(Graphics2D g) {
+    public void render(Graphics2D g) {  
         BufferedImage image;
         switch (type) {
             case GREEN:
