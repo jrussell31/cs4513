@@ -45,8 +45,8 @@ public class Block extends MoveableObject {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-        @Override
-     public void collide(GameObject O){
+    @Override
+    public void collide(GameObject O){
     
     }
 }

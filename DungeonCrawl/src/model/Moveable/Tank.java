@@ -68,7 +68,7 @@ public class Tank extends Monster{
     
     @Override
     public void update() {
-        if (GameData.time > 0) {     
+        if (GameData.currentLevel.getLevelTime() > 0) {     
             if (down) {
                 tankMoves.setFrames(tank_S);
                 if (counter == 1000) {
