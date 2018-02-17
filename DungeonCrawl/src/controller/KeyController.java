@@ -8,6 +8,7 @@ package controller;
 import DungeonCrawl.DungeonCrawl;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
 
@@ -45,9 +46,24 @@ public class KeyController implements KeyListener  {
                     gamer.setDown(true);
                     break;
                 case KeyEvent.VK_SPACE:
+                    // If game hasn't started yet
                     if(!DungeonCrawl.thread.isAlive())
+                    {
                         DungeonCrawl.bannerPanel.setVisible(false);
-                    DungeonCrawl.startGame();
+                        DungeonCrawl.startGame();
+                    }
+                    // If game already started
+                    else
+                    {
+                        // If gamer is alive
+                        if(GameData.gamer.isAlive()){
+                            // If the level is not in progress (End of Level)
+                            if(!GameData.levelInProgress){
+                                GameData.resetGameData();
+                                DungeonCrawl.bannerPanel.setVisible(false);
+                            }
+                        }
+                    }
             }
         }
     }

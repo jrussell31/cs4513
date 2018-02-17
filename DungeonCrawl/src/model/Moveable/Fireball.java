@@ -11,6 +11,7 @@ import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameData;
 import model.GameObject;
 
 /**
@@ -56,7 +57,7 @@ public class Fireball extends Monster {
     public void update() {
             fireballMoves.setFrames(fireballSprites);             
             if (turnLeft){
-                if (gameData.time >0){
+                if (GameData.time >0){
                     if (counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){
@@ -77,7 +78,7 @@ public class Fireball extends Monster {
             } 
             else if(turnDown)
             {
-                if(gameData.time > 0){
+                if(GameData.time > 0){
                     if(counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){
@@ -98,7 +99,7 @@ public class Fireball extends Monster {
             }
             else if(turnRight)
             {
-                if(gameData.time > 0){                    
+                if(GameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){
@@ -119,7 +120,7 @@ public class Fireball extends Monster {
             } 
             else if(turnUp)
             {
-                if(gameData.time > 0){                    
+                if(GameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){

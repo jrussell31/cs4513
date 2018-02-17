@@ -6,21 +6,11 @@
 package controller;
 
 import DungeonCrawl.DungeonCrawl;
-import java.util.HashSet;
-import model.ButtonType;
+import java.util.ArrayList;
 import model.GameData;
+import static model.GameData.gamerInventory;
 import model.GameObject;
-import model.Immoveable.Collectible.Boot;
-import model.Immoveable.Collectible.Chip;
-import model.Immoveable.Collectible.Collectible;
-import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
-import model.Immoveable.Tile.Lock;
-import model.Immoveable.Tile.Tile;
-import model.Immoveable.Tile.ToggleWall;
-import model.Immoveable.Tile.Wall;
-import model.LockType;
-import model.Moveable.Monster;
 
 /**
  *
@@ -38,11 +28,17 @@ public class Animator implements Runnable {
         while (running) {
             long startTime = System.currentTimeMillis();
 
-            DungeonCrawl.gameData.update();
-            processCollisions();
-            DungeonCrawl.gamePanel.gameRender();
-            DungeonCrawl.gamePanel.printScreen();
-            DungeonCrawl.inventoryPanel.updateInventoryPanel();
+            if(GameData.levelInProgress){
+                DungeonCrawl.gameData.update();
+                processCollisions();
+                DungeonCrawl.gamePanel.gameRender();
+                DungeonCrawl.gamePanel.printScreen();
+                DungeonCrawl.inventoryPanel.updateInventoryPanel();
+            }
+            else{
+                DungeonCrawl.bannerPanel.setVisible(true);
+                DungeonCrawl.gamePanel.requestFocus();
+            }
 
             long endTime = System.currentTimeMillis();
             int sleepTime = (int) (1.0 / FRAMES_PER_SECOND * 1000)
@@ -74,5 +70,15 @@ public class Animator implements Runnable {
         }
         //TODO: Handle Object on Object Violence
         
+        
+        ArrayList<GameObject> removeInventory = new ArrayList<>();
+        synchronized(gamerInventory){
+            for(GameObject object : gamerInventory){
+                if(!object.isAlive()){
+                    removeInventory.add(object);
+                }             
+            }
+        }
+        gamerInventory.removeAll(removeInventory);
     }
 }

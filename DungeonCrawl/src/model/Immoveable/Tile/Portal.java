@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
+import DungeonCrawl.DungeonCrawl;
 
 /**
  *
@@ -30,7 +31,7 @@ public class Portal extends Tile {
             BufferedImage image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Portal.png");
             portalImg = image;
         } catch(Exception e){
-            e.printStackTrace();
+            DungeonCrawl.thread.interrupt();
         }
     }
     
@@ -43,7 +44,9 @@ public class Portal extends Tile {
     @Override
     public void collide(GameObject O) {
         if(GameData.chipsLeft == 0){
-            
+            // Need to display banner explaining level is complete
+            DungeonCrawl.bannerPanel.setBannerText("You Completed Level " + GameData.currentLevel.getLevelValue());
+            GameData.goToNextLevel();
         }
     }
 }
