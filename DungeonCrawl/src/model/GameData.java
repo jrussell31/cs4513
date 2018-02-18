@@ -10,89 +10,67 @@ import model.Moveable.Gamer;
 import model.Moveable.Monster;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import model.Immoveable.Tile.Wall;
-import model.Moveable.Ball;
-import model.Moveable.Fireball;
-import model.Moveable.Tank;
-import model.Immoveable.Collectible.Boot;
-import model.Immoveable.Collectible.Chip;
-import model.Immoveable.Collectible.Key;
-import model.Immoveable.Tile.Lock;
+import java.util.Map;
 
 /**
  *
  * @author russe_000
  */
 public class GameData {
+    public static final int MAP_WIDTH = 30;
+    public static final int MAP_HEIGHT = 27;
     public static List<GameObject> gameObjects;
     public static List<GameObject> gamerInventory;
-    public static Gamer gamer;
-    public static Key redKey, yellowKey;
-    public static Lock blueLock, yellowLock, socket;
-    public static Boot fireBoot, iceBoot;
-    public static int level;
-    public static Fireball fireball;
-    public static Tank tank;
-    public static Ball ball;
-    public static Wall wall;
+    private static Map<LevelNumber, Level> gameLevels;
+    public static Level currentLevel;
     public static int time;
+    public static Gamer gamer;
     public static int chipsLeft;
-    private int timerCounter;
-
+    private static int timerCounter;
+    public static boolean levelInProgress = false;
+    
     public GameData() 
     {
-        gameObjects = Collections.synchronizedList(new ArrayList<GameObject>());
-        gamerInventory = Collections.synchronizedList(new ArrayList<GameObject>());
+        gameObjects = Collections.synchronizedList(new ArrayList<>());
+        gamerInventory = Collections.synchronizedList(new ArrayList<>());
         
-        // Level specific items
-        gamer = new Gamer(2, 1);
-        fireball = new Fireball (354,321); 
-        tank = new Tank (706, 321);
-        ball = new Ball(642,289);
-        GameData.gameObjects.add(GameData.fireball); 
-        GameData.gameObjects.add(GameData.tank); 
-        GameData.gameObjects.add(this.ball);
+        // List of Levels
+        gameLevels = new HashMap();
+        gameLevels.put(LevelNumber.LEVELONE, new LevelOne());
+        gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
         
+        currentLevel = gameLevels.get(LevelNumber.LEVELONE);
         
-        GameData.level = 1;
-        GameData.time = 120;
-        GameData.chipsLeft = 3;
+        resetGameData();
+    }
+    
+    public static void resetGameData()
+    {
+        currentLevel.resetLevel();
+        time = currentLevel.getLevelTime();
+        chipsLeft = currentLevel.getLevelChipCount();
         timerCounter = 0;
         
-        //Level keys
-        redKey = new Key(610, 97, LockType.RED);
-        yellowKey = new Key(642, 97, LockType.YELLOW);
-        gameObjects.add(redKey);
-        gameObjects.add(yellowKey);
+        //Clear out game objects
+        gameObjects.clear();
+        gamerInventory.clear();
         
-        //Level locks
-        blueLock = new Lock(98, 97, LockType.BLUE);
-        yellowLock = new Lock(98, 129, LockType.YELLOW);
-        socket = new Lock(98, 161, LockType.SOCKET);
-        gameObjects.add(blueLock);
-        gameObjects.add(yellowLock);
-        gameObjects.add(socket);
+        //Immoveable Objects
+        gameObjects.addAll(currentLevel.getMoveableObjects());
         
-        //Level boots
-        fireBoot = new Boot(898, 97, BootType.FIRE);
-        iceBoot = new Boot(898, 129, BootType.ICE);
-        gameObjects.add(fireBoot);
-        gameObjects.add(iceBoot);
+        //Moveable Objects
+        gameObjects.addAll(currentLevel.getImmovableObjects());
+        gamer = currentLevel.getGamer();
         
-        //Level chips
-        gameObjects.add(new Chip(354, 97));
-        gameObjects.add(new Chip(322, 97));
-        gameObjects.add(new Chip(322, 129));
+        //Gamer Object
+        gamer.update();
+        
+        levelInProgress = true;
     }
     
-    public void resetGameData()
-    {
-        GameData.gamer = new Gamer(2, 1);
-        GameData.gamer.update();
-    }
-    
-    public void collectChip(){
+    public static void collectChip(){
         --chipsLeft;
     }
     
@@ -118,21 +96,15 @@ public class GameData {
                 if(object instanceof Monster)
                 {
                     ((Monster)object).update();
-                    
-                    // ((Monster)object).findCollision();
                 }
             }
         }
+    }
+    
+    public static void goToNextLevel(){
+        levelInProgress = false;
         
-        ArrayList<GameObject> removeInventory = new ArrayList<>();
-        synchronized(gamerInventory){
-            for(GameObject object : gamerInventory){
-                if(!object.isAlive()){
-                    removeInventory.add(object);
-                }             
-            }
-        }
-        gamerInventory.removeAll(removeInventory);
-                       
+        //Logic for next level
+        currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
     }
 }

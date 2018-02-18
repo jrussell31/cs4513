@@ -1,4 +1,3 @@
-
 package model.Immoveable.Tile;
 
 import controller.ImageFinder;
@@ -6,45 +5,51 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
+import model.GameData;
 import model.GameObject;
+import model.Immoveable.Collectible.Key;
 import model.LockType;
+import model.Moveable.Gamer;
 
-public class Lock extends Wall{
-    
+public class Lock extends Wall {
+
     public LockType type;
-    
+
     public BufferedImage[] lockImg;
+
     public Lock(float x, float y, LockType k) {
         super(x, y);
         this.type = k;
-        
+
         lockImg = new BufferedImage[5];
-        
-        try{
-            BufferedImage image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Blue_Lock.png");
+
+        try {
+            BufferedImage image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Blue_Lock.png");
             lockImg[0] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Green_Lock.png");
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Green_Lock.png");
             lockImg[1] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Red_Lock.png");
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Red_Lock.png");
             lockImg[2] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Yellow_Lock.png");
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Yellow_Lock.png");
             lockImg[3] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Socket.png");
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Socket.png");
             lockImg[4] = image;
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    };
+    }
+
+    ;
 
     @Override
     public void render(Graphics2D g) {
-        if(this.isAlive()){
+        if (this.isAlive()) {
             BufferedImage image;
-            switch(type){
+            switch (type) {
                 case BLUE:
                     image = lockImg[0];
                     break;
@@ -60,16 +65,25 @@ public class Lock extends Wall{
                 default:
                     image = lockImg[3];
             }
-            g.drawImage(image, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
-            
+            g.drawImage(image, (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+
             //Draw Collision Box
-            g.setColor(Color.blue);
-            g.draw(this.getCollisionBox());
+            //g.setColor(Color.blue);
+            //g.draw(this.getCollisionBox());
         }
     }
-    
+
     @Override
-     public void collide(GameObject O){
-    
+    public void collide(GameObject O) {
+         switch(type){
+             case SOCKET:
+                 if(GameData.chipsLeft == 0){
+                     this.setAlive(false);
+                 }
+                 else{
+                     GameData.gamer.noMove();
+                 }
+                 break;
+         }
     }
 }
