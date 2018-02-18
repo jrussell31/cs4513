@@ -41,5 +41,6 @@ public abstract class MoveableObject implements GameObject {
         return new Rectangle2D.Double(x, y, width, height);
     }
     
+    @Override
     public abstract void collide(GameObject O);
 }

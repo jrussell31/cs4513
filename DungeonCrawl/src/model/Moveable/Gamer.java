@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
 
 public class Gamer extends MoveableObject {
     private final int width = 32;

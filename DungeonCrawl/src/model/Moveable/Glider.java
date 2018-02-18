@@ -5,8 +5,10 @@
  */
 package model.Moveable;
 
+import DungeonCrawl.DungeonCrawl;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import model.GameData;
 import model.GameObject;
 
 /**
@@ -39,6 +41,9 @@ public class Glider extends Monster {
     
     @Override
     public void collide(GameObject O){
-    
+                if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Glider on Level  " + GameData.currentLevel.getLevelValue());
+             GameData.levelInProgress = false;
+         }
     }
 }
