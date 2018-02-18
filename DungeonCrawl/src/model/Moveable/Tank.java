@@ -10,6 +10,7 @@
  */
 package model.Moveable;
 
+import DungeonCrawl.DungeonCrawl;
 import java.awt.Color;
 import model.GameData;
 import java.awt.Graphics2D;
@@ -162,6 +163,9 @@ public class Tank extends Monster{
     
     @Override
     public void collide(GameObject O){
-    
+            if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Tank on Level  " + GameData.currentLevel.getLevelValue());
+             GameData.levelInProgress = false;
+         }
     }
 }

@@ -59,14 +59,12 @@ public class Animator implements Runnable {
             // If there is a collision between the gamer and a game object
             if (GameData.gamer.getCollisionBox().intersects(
                     object.getCollisionBox())) {
-                GameData.gamer.collide(object);
+                //GameData.gamer.collide(object);
                 object.collide(GameData.gamer);
             }
-            else{ 
-                if(object instanceof Button){
+            else if(object instanceof Button){
                     ((Button) object).pressed = false;
                 }
-            }
         }
         //TODO: Handle Object on Object Violence
         

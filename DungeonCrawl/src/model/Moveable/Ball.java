@@ -5,12 +5,14 @@
  */
 package model.Moveable;
 
+import DungeonCrawl.DungeonCrawl;
 import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameData;
 import model.GameObject;
 
 /**
@@ -141,7 +143,10 @@ public class Ball extends Monster {
     
         @Override
      public void collide(GameObject O){
-    
-    }
+         if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+             GameData.levelInProgress = false;
+         }
+     }
     
 }
