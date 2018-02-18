@@ -31,8 +31,8 @@ public class Gamer extends MoveableObject {
     private boolean up = false;
     private boolean down = false;
     
-    private float dx;
-    private float dy;
+    public float dx;
+    public float dy;
     
     public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
     

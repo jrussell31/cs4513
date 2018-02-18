@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameObject;
+import model.Moveable.Block;
 
 /**
  *
@@ -30,7 +31,9 @@ public class Wall extends Tile {
 
     @Override
     public void collide(GameObject O) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*if(O instanceof Block){
+            ((Block)O).noMove();
+        }*/
     }
 
     @Override

@@ -83,13 +83,14 @@ public class GameData {
         gameObjects.add(new Chip(4, 5));
         gameObjects.add(new Chip(3, 4));
         gameObjects.add(new Chip(5, 4));
-        gameObjects.add(new Chip(19, 17));
-        
-        //Level blocks
-        //gameObjects.add(new Block(15, 3));
+        gameObjects.add(new Chip(19, 17));                
         
         //Level buttons
         gameObjects.add(new Button(15, 10, ButtonType.GREEN));
+        
+        //Level blocks
+        gameObjects.add(new Block(9, 4));
+        gameObjects.add(new Block(15, 4));
         
         //Level walls
         //Toggle Walls
@@ -199,8 +200,9 @@ public class GameData {
                 if(object instanceof Monster)
                 {
                     ((Monster)object).update();
-                    
-                    // ((Monster)object).findCollision();
+                }
+                if(object instanceof Block){
+                    ((Block)object).update();
                 }
             }
         }

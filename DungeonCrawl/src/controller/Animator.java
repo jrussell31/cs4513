@@ -8,15 +8,7 @@ package controller;
 import DungeonCrawl.DungeonCrawl;
 import model.GameData;
 import model.GameObject;
-import model.Immoveable.Collectible.Boot;
-import model.Immoveable.Collectible.Chip;
-import model.Immoveable.Collectible.Collectible;
-import model.Immoveable.Collectible.Key;
-import model.Immoveable.Tile.Lock;
-import model.Immoveable.Tile.Tile;
-import model.Immoveable.Tile.Wall;
-import model.LockType;
-import model.Moveable.Monster;
+
 
 /**
  *
@@ -62,8 +54,12 @@ public class Animator implements Runnable {
                 object.collide(GameData.gamer);
 
             }
-        }
-        //TODO: Handle Object on Object Violence
-        
+            for(GameObject go: GameData.gameObjects){
+                if(object != go && object.getCollisionBox().intersects(
+                        go.getCollisionBox())){
+                    object.collide(go);
+                }
+            }
+        }                
     }
 }
