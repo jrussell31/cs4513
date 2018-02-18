@@ -40,11 +40,11 @@ public class Frog extends Monster {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
+    /*      @Override
      public void collide(GameObject O){
-                if(O instanceof Gamer){
-             DungeonCrawl.bannerPanel.setBannerText("You colided with the Frog on Level  " + GameData.currentLevel.getLevelValue());
+         if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
              GameData.levelInProgress = false;
          }
-    }
+     }*/
 }
