@@ -39,11 +39,11 @@ public class Glider extends Monster {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    public void collide(GameObject O){
-                if(O instanceof Gamer){
-             DungeonCrawl.bannerPanel.setBannerText("You colided with the Glider on Level  " + GameData.currentLevel.getLevelValue());
+    /*      @Override
+     public void collide(GameObject O){
+         if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
              GameData.levelInProgress = false;
          }
-    }
+     }*/
 }
