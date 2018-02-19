@@ -9,8 +9,9 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameData;
 import model.GameObject;
-import model.Moveable.Block;
+import model.Moveable.Gamer;
 
 /**
  *
@@ -31,6 +32,8 @@ public class Wall extends Tile {
 
     @Override
     public void collide(GameObject O) {
+        if(O instanceof Gamer)
+            GameData.gamer.noMove();
     }
 
     @Override
