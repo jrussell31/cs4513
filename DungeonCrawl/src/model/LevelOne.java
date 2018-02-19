@@ -10,6 +10,7 @@ import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.ToggleWall;
 import model.Immoveable.Tile.Wall;
+import model.Immoveable.Tile.Water;
 import model.Moveable.Ball;
 import model.Moveable.Block;
 import model.Moveable.Fireball;
@@ -79,7 +80,7 @@ public final class LevelOne extends Level{
         
         super.immovableObjects.add(new Wall(11, 15));
         super.immovableObjects.add(new Wall(19, 15));
-        
+        super.immovableObjects.add(new Water(15,20));
         super.immovableObjects.add(new Wall(14, 8));
         super.immovableObjects.add(new Wall(14, 9));
         super.immovableObjects.add(new Wall(14, 21));
