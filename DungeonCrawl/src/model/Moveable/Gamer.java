@@ -32,7 +32,7 @@ public class Gamer extends MoveableObject {
     private boolean right = false;
     private boolean up = false;
     private boolean down = false;
-
+    
     public float dx;
     public float dy;
 
