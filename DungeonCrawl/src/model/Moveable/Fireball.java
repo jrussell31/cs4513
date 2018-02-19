@@ -46,7 +46,7 @@ public class Fireball extends Monster {
     
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(fireballMoves.getImage(), (int)super.x, (int)super.y, (int)super.width, (int)super.height, 
+        g.drawImage(fireballMoves.getImage(), (int)super.x, (int)super.y, (int)super.WIDTH, (int)super.HEIGHT, 
             null);
         
         //Draw Collision Box

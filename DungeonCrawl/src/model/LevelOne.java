@@ -6,6 +6,7 @@ import static model.GameData.MAP_WIDTH;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
+import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.ToggleWall;
@@ -133,6 +134,11 @@ public final class LevelOne extends Level{
         
         //Exit Portal
         super.immovableObjects.add(new Portal(15, 26));
+        
+        //Floors
+        for(int i = 15; i < 25; ++i){
+            super.immovableObjects.add(new Ice(i, 4));
+        }
     }
 
     @Override

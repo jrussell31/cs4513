@@ -36,7 +36,7 @@ public class Block extends MoveableObject {
     @Override
     public void render(Graphics2D g) {
         if (this.isAlive()) {
-            g.drawImage(blockImg, (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+            g.drawImage(blockImg, (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
 
             //Draw Collision Box
             //g.setColor(Color.blue);

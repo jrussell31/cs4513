@@ -8,6 +8,7 @@ package controller;
 import DungeonCrawl.DungeonCrawl;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import model.Direction;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
@@ -34,16 +35,16 @@ public class KeyController implements KeyListener  {
             switch (ke.getKeyCode()) 
             {
                 case KeyEvent.VK_LEFT:
-                    gamer.setLeft(true);
+                    gamer.setDirection(Direction.LEFT);
                     break;
                 case KeyEvent.VK_RIGHT:
-                    gamer.setRight(true);
+                    gamer.setDirection(Direction.RIGHT);
                     break;
                 case KeyEvent.VK_UP:
-                    gamer.setUp(true);
+                    gamer.setDirection(Direction.UP);
                     break;
                 case KeyEvent.VK_DOWN:
-                    gamer.setDown(true);
+                    gamer.setDirection(Direction.DOWN);
                     break;
                 case KeyEvent.VK_SPACE:
                     // If game hasn't started yet
@@ -75,20 +76,7 @@ public class KeyController implements KeyListener  {
         if(firstGameObject instanceof Gamer)
         {
             Gamer gamer = (Gamer)firstGameObject;
-            switch (ke.getKeyCode()){
-                case KeyEvent.VK_LEFT:
-                    gamer.setLeft(false);
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    gamer.setRight(false);
-                    break;
-                case KeyEvent.VK_DOWN:
-                    gamer.setDown(false);
-                    break;
-                case KeyEvent.VK_UP:
-                    gamer.setUp(false);
-                    break;
-            }
+            gamer.setDirection(Direction.NONE);
         }
     }
     
