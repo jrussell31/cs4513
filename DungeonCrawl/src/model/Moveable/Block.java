@@ -50,11 +50,6 @@ public class Block extends MoveableObject {
         dy = y;
     }
 
-    public void noMove() {
-        x = dx;
-        y = dy;
-    }
-
     @Override
     public void collide(GameObject O) {
         if (O instanceof Gamer) {
