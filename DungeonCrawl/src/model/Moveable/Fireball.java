@@ -5,6 +5,7 @@
  */
 package model.Moveable;
 
+import DungeonCrawl.DungeonCrawl;
 import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
@@ -142,8 +143,11 @@ public class Fireball extends Monster {
         fireballMoves.update();             
     }
     
-        @Override
+    /*      @Override
      public void collide(GameObject O){
-    
-    }
+         if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+             GameData.levelInProgress = false;
+         }
+     }*/
 }
