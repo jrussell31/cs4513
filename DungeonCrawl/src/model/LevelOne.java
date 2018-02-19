@@ -6,6 +6,7 @@ import static model.GameData.MAP_WIDTH;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
+import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.ToggleWall;
@@ -80,7 +81,7 @@ public final class LevelOne extends Level{
         
         super.immovableObjects.add(new Wall(11, 15));
         super.immovableObjects.add(new Wall(19, 15));
-        super.immovableObjects.add(new Water(15,20));
+        
         super.immovableObjects.add(new Wall(14, 8));
         super.immovableObjects.add(new Wall(14, 9));
         super.immovableObjects.add(new Wall(14, 21));
@@ -120,6 +121,10 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Chip(3, 4));
         super.immovableObjects.add(new Chip(5, 4));
         super.immovableObjects.add(new Chip(19, 17));
+        
+        //Level Elemental Walls
+        super.immovableObjects.add(new Water(13,19));
+        super.immovableObjects.add(new Fire(17,19));
         
         //Toggle Walls
         ArrayList<GameObject> toggleWalls = new ArrayList<>();
