@@ -12,6 +12,7 @@ import static model.GameData.gamerInventory;
 import model.GameObject;
 import model.Immoveable.Tile.Button;
 
+
 /**
  *
  * @author russe_000
@@ -65,10 +66,13 @@ public class Animator implements Runnable {
             else if(object instanceof Button){
                     ((Button) object).pressed = false;
                 }
-        }
-        //TODO: Handle Object on Object Violence
-        
-        
+            for(GameObject go: GameData.gameObjects){
+                if(object != go && object.getCollisionBox().intersects(
+                        go.getCollisionBox())){
+                    object.collide(go);
+                }
+            }
+        }                
         ArrayList<GameObject> removeInventory = new ArrayList<>();
         synchronized(gamerInventory){
             for(GameObject object : gamerInventory){
