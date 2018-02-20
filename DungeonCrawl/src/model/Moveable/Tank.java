@@ -28,6 +28,9 @@ public class Tank extends Monster{
     
     int counter = 0;
     
+    public float dx;
+    public float dy;
+    
     public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
     public boolean right, up, left = false; 
     public boolean down = true; 
@@ -69,17 +72,16 @@ public class Tank extends Monster{
     
     @Override
     public void update() {
+        dx = super.x;
+        dy = super.y;
+        
         if (GameData.currentLevel.getLevelTime() > 0) {     
             if (down) {
                 tankMoves.setFrames(tank_S);
                 if (counter == 1000) {
                     counter = 0;
                     for (int i = 0; i < 1; i++) {                        
-<<<<<<< HEAD
-                        super.y += super.MOVERMENT;
-=======
                         super.y += super.MOVEMENT;
->>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_S);
                     }
                     if (super.y >= 500) {
@@ -103,11 +105,7 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
-<<<<<<< HEAD
-                        super.x += super.MOVERMENT;
-=======
                         super.x += super.MOVEMENT;
->>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_E);
                     }                    
                     if (super.x >= 800) {
@@ -128,11 +126,7 @@ public class Tank extends Monster{
                     counter = 0;
                     
                     for (int i = 0; i < 1; i++) {                        
-<<<<<<< HEAD
-                        super.y -= super.MOVERMENT;
-=======
                         super.y -= super.MOVEMENT;
->>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_N);
                     }
                     if (super.y <= 300) {
@@ -152,12 +146,8 @@ public class Tank extends Monster{
                 if (counter == 1000) {
                     counter = 0;
                     
-                    for (int i = 0; i < 1; i++) {                        
-<<<<<<< HEAD
-                        super.x -= super.MOVERMENT;
-=======
+                    for (int i = 0; i < 1; i++) {      
                         super.x -= super.MOVEMENT;
->>>>>>> 195cf645b44400dfb306d721f3a5c23a277d7302
                         //tankMoves.setFrames(tank_W);
                     }
                     
@@ -177,11 +167,16 @@ public class Tank extends Monster{
         
     }
     
-  /*      @Override
-     public void collide(GameObject O){
-         if(O instanceof Gamer){
-             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
-             GameData.levelInProgress = false;
-         }
-     }*/
+    public void noMove() {
+        super.x = dx;
+        super.y = dy;
+    }
+    
+    @Override
+    public void collide(GameObject O){
+        if(O instanceof Gamer){
+            DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+            GameData.levelInProgress = false;
+        }
+    }
 }

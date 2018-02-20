@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
+import model.Moveable.Tank;
 
 /**
  *
@@ -32,8 +33,12 @@ public class Wall extends Tile {
 
     @Override
     public void collide(GameObject O) {
-        if(O instanceof Gamer)
+        if(O instanceof Gamer) {
             GameData.gamer.noMove();
+        } 
+        /*else if (O instanceof Tank) {
+            GameData.tank.noMove();
+        }*/
     }
 
     @Override

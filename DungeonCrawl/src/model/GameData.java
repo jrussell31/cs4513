@@ -8,6 +8,7 @@ package model;
 
 import model.Moveable.Gamer;
 import model.Moveable.Monster;
+import model.Moveable.Tank;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class GameData {
     public static Level currentLevel;
     public static int time;
     public static Gamer gamer;
+    public static Tank tank;
     public static int chipsLeft;
     private static int timerCounter;
     public static boolean levelInProgress = false;
@@ -43,12 +45,7 @@ public class GameData {
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
         
         currentLevel = gameLevels.get(LevelNumber.LEVELONE);
-        
-<<<<<<< HEAD
-        GameData.level = 1;
-        GameData.time = 20;
-        GameData.chipsLeft = 3;
-=======
+  
         resetGameData();
     }
     
@@ -57,7 +54,6 @@ public class GameData {
         currentLevel.resetLevel();
         time = currentLevel.getLevelTime();
         chipsLeft = currentLevel.getLevelChipCount();
->>>>>>> upstream/Dev
         timerCounter = 0;
         
         //Clear out game objects
