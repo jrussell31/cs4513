@@ -4,10 +4,7 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -20,7 +17,6 @@ import static model.GameData.gamerInventory;
 import model.GameObject;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Key;
-import model.LockType;
 
 public class InventoryPanel extends JPanel
 {
@@ -43,7 +39,7 @@ public class InventoryPanel extends JPanel
     public void updateInventoryPanel()
     {
         this.txtTime.setText(String.valueOf(GameData.time));
-        this.txtLevel.setText(String.valueOf(GameData.level));
+        this.txtLevel.setText(String.valueOf(GameData.currentLevel.getLevelValue()));
         this.txtChipsLeft.setText(String.valueOf(GameData.chipsLeft));
         
         int bKey = 0, gKey = 0, rKey = 0, yKey = 0,
@@ -103,7 +99,7 @@ public class InventoryPanel extends JPanel
         lblLevel.setFont(new Font("Tahoma", 0, 36)); // NOI18N
         lblLevel.setForeground(new Color(255, 0, 0));
         
-        txtLevel = new JTextField(String.valueOf(GameData.level));
+        txtLevel = new JTextField(String.valueOf(GameData.currentLevel.getLevelValue()));
         txtLevel.setFont(new Font("Tahoma", 0, 36));
         txtLevel.setHorizontalAlignment(JTextField.CENTER);
         txtLevel.setEditable(false);
@@ -114,7 +110,7 @@ public class InventoryPanel extends JPanel
         lblTime.setForeground(new Color(255, 0, 0));
         lblTime.setText("TIME (s)");
         
-        txtTime = new JTextField(String.valueOf(GameData.time));
+        txtTime = new JTextField(String.valueOf(GameData.currentLevel.getLevelTime()));
         txtTime.setFont(new Font("Tahoma", 0, 36));
         txtTime.setHorizontalAlignment(JTextField.CENTER);
         txtTime.setEditable(false);

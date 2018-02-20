@@ -5,12 +5,15 @@
  */
 package model.Moveable;
 
+import DungeonCrawl.DungeonCrawl;
 import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameData;
+import model.GameObject;
 
 /**
  *
@@ -55,17 +58,19 @@ public class Fireball extends Monster {
     public void update() {
             fireballMoves.setFrames(fireballSprites);             
             if (turnLeft){
-                if (gameData.time >0){
+                if (GameData.time >0){
                     if (counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.x -= super.MOVEMENT;
+                        for(int i = 0; i < 1; i++){
+                            super.x -= super.MOVEMENT; 
                         }
+                        if (super.x <= 200) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = false; 
                         turnUp = false; 
                         turnDown = true;
+                        }
                     }
                     else{
                         counter += 100; 
@@ -74,17 +79,19 @@ public class Fireball extends Monster {
             } 
             else if(turnDown)
             {
-                if(gameData.time > 0){
+                if(GameData.time > 0){
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
+                        for(int i = 0; i < 1; i++){
                             super.y += super.MOVEMENT;
                         }
+                        if (super.y >= 500) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = true; 
                         turnUp = false; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100;                         
@@ -93,17 +100,19 @@ public class Fireball extends Monster {
             }
             else if(turnRight)
             {
-                if(gameData.time > 0){                    
+                if(GameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.x += super.MOVEMENT;
+                        for(int i = 0; i < 1; i++){
+                            super.x += super.MOVEMENT;                            
                         }
+                        if (super.x >= 350) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = false; 
                         turnRight = false; 
                         turnUp = true; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100; 
@@ -112,17 +121,19 @@ public class Fireball extends Monster {
             } 
             else if(turnUp)
             {
-                if(gameData.time > 0){                    
+                if(GameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
-                        for(int i = 0; i < 4; i++){
-                            super.y -= super.MOVEMENT;
+                        for(int i = 0; i < 1; i++){
+                            super.y -= super.MOVEMENT;                      
                         }
+                        if (super.y <= 350) {
                         fireballMoves.setFrames(fireballSprites);
                         turnLeft = true; 
                         turnRight = false; 
                         turnUp = false; 
                         turnDown = false;
+                        }
                     }
                     else{
                         counter += 100; 
@@ -131,4 +142,12 @@ public class Fireball extends Monster {
             }           
         fireballMoves.update();             
     }
+    
+    /*      @Override
+     public void collide(GameObject O){
+         if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+             GameData.levelInProgress = false;
+         }
+     }*/
 }

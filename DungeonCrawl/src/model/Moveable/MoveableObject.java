@@ -17,10 +17,11 @@ public abstract class MoveableObject implements GameObject {
     public float x, y, height = 32, width = 32;
     private boolean alive;
     public static final int MOVEMENT = 32;
+    public static int offset = 32;
     
     public MoveableObject(float x, float y){
-        this.x = x;
-        this.y = y;
+        this.x = x * offset;
+        this.y = y * offset;
         this.alive = true;
     }
     
@@ -28,6 +29,7 @@ public abstract class MoveableObject implements GameObject {
         this.alive = alive;
     }
     
+    @Override
     public boolean isAlive(){
         return alive;
     }
@@ -38,4 +40,7 @@ public abstract class MoveableObject implements GameObject {
     public Rectangle2D.Double getCollisionBox(){
         return new Rectangle2D.Double(x, y, width, height);
     }
+    
+    @Override
+    public abstract void collide(GameObject O);
 }

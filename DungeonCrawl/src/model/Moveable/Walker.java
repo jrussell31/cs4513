@@ -5,8 +5,11 @@
  */
 package model.Moveable;
 
+import DungeonCrawl.DungeonCrawl;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import model.GameData;
+import model.GameObject;
 
 /**
  *
@@ -35,4 +38,12 @@ public class Walker extends Monster {
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    /*      @Override
+     public void collide(GameObject O){
+         if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+             GameData.levelInProgress = false;
+         }
+     }*/
 }
