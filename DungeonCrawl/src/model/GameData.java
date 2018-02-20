@@ -56,7 +56,7 @@ public class GameData {
         
         
         GameData.level = 1;
-        GameData.time = 120;
+        GameData.time = 20;
         GameData.chipsLeft = 3;
         timerCounter = 0;
         
