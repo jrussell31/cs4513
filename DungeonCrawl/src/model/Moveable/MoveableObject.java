@@ -14,6 +14,7 @@ import java.awt.geom.Rectangle2D;
 import model.GameObject;
 
 public abstract class MoveableObject implements GameObject {
+    public boolean isDisplayed = true;
     public float x, y, height = 32, width = 32;
     private boolean alive;
     public static final int MOVEMENT = 32;

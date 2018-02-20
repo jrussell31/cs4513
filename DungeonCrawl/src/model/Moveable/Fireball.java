@@ -14,6 +14,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
+import model.Level;
+
 
 /**
  *
@@ -56,98 +59,112 @@ public class Fireball extends Monster {
        
     @Override
     public void update() {
-            fireballMoves.setFrames(fireballSprites);             
+        fireballMoves.setFrames(fireballSprites);        
+        if (Level.fLevelOne){
             if (turnLeft){
-                if (GameData.time >0){
+                if (gameData.time > 0){
                     if (counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){
                             super.x -= super.MOVEMENT; 
                         }
-                        if (super.x <= 200) {
-                        fireballMoves.setFrames(fireballSprites);
-                        turnLeft = false; 
-                        turnRight = false; 
-                        turnUp = false; 
-                        turnDown = true;
-                        }
+                        if (super.x <= 64) {
+                            fireballMoves.setFrames(fireballSprites);
+                            turnLeft = false; 
+                            turnRight = false; 
+                            turnUp = false; 
+                            turnDown = true;
+                        }                      
                     }
                     else{
-                        counter += 100; 
+                        counter += 250; 
                     }
                 } 
-            } 
-            else if(turnDown)
-            {
-                if(GameData.time > 0){
+            }    
+            else if(turnDown){
+                if(gameData.time > 0){
                     if(counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){
                             super.y += super.MOVEMENT;
                         }
-                        if (super.y >= 500) {
-                        fireballMoves.setFrames(fireballSprites);
-                        turnLeft = false; 
-                        turnRight = true; 
-                        turnUp = false; 
-                        turnDown = false;
+                        if (super.y >= 192) {
+                            fireballMoves.setFrames(fireballSprites);
+                            turnLeft = false; 
+                            turnRight = true; 
+                            turnUp = false; 
+                            turnDown = false;
                         }
                     }
                     else{
-                        counter += 100;                         
+                        counter += 250;                         
                     }
                 }   
             }
-            else if(turnRight)
-            {
-                if(GameData.time > 0){                    
+            else if(turnRight){
+                if(gameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){
-                            super.x += super.MOVEMENT;                            
+                            super.x += super.MOVEMENT; 
                         }
-                        if (super.x >= 350) {
-                        fireballMoves.setFrames(fireballSprites);
-                        turnLeft = false; 
-                        turnRight = false; 
-                        turnUp = true; 
-                        turnDown = false;
-                        }
+                     /*   if (super.x >= 192) {
+                            fireballMoves.setFrames(fireballSprites);
+                            turnLeft = false; 
+                            turnRight = false; 
+                            turnUp = true; 
+                            turnDown = false;
+                        }*/
                     }
                     else{
-                        counter += 100; 
+                        counter += 250; 
                     }
                 }                    
             } 
-            else if(turnUp)
-            {
-                if(GameData.time > 0){                    
+            else if(turnUp){
+                if(gameData.time > 0){                    
                     if(counter == 1000){
                         counter = 0; 
                         for(int i = 0; i < 1; i++){
-                            super.y -= super.MOVEMENT;                      
+                            super.y -= super.MOVEMENT;       
                         }
-                        if (super.y <= 350) {
-                        fireballMoves.setFrames(fireballSprites);
-                        turnLeft = true; 
-                        turnRight = false; 
-                        turnUp = false; 
-                        turnDown = false;
+                        if (super.y <= 64) {
+                            fireballMoves.setFrames(fireballSprites);
+                            turnLeft = true; 
+                            turnRight = false; 
+                            turnUp = false; 
+                            turnDown = false;
                         }
                     }
                     else{
-                        counter += 100; 
+                        counter += 250; 
                     }
                 }                
-            }           
-        fireballMoves.update();             
+            } 
+            fireballMoves.update();
+        }
+        else if (Level.fLevelTwo){
+            
+        }
+        else{
+            
+        } 
     }
     
-    /*      @Override
-     public void collide(GameObject O){
-         if(O instanceof Gamer){
-             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
-             GameData.levelInProgress = false;
-         }
-     }*/
+    @Override
+    public void collide(GameObject O){           
+        if(O instanceof Gamer){ 
+           this.setAlive(false);
+           GameData.gamer.setAlive(false);
+           //GameData.gamer.isDisplayed = false;
+           //this.isDisplayed = false;            
+           GameData.killedMonsters.add(this);
+           GameData.killedMonsters.add(GameData.gamer);
+           DungeonCrawl.bannerPanel.setBannerText("You collided with the Fireball on Level  " + GameData.currentLevel.getLevelValue());
+           GameData.levelInProgress = false;        
+        } 
+        if(O instanceof Wall){
+           System.out.println("hit");
+        }
+    }        
 }

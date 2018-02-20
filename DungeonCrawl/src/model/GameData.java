@@ -23,6 +23,9 @@ public class GameData {
     public static final int MAP_HEIGHT = 27;
     public static List<GameObject> gameObjects;
     public static List<GameObject> gamerInventory;
+    
+    public static List<GameObject> killedMonsters; 
+    
     private static Map<LevelNumber, Level> gameLevels;
     public static Level currentLevel;
     public static int time;
@@ -35,6 +38,8 @@ public class GameData {
     {
         gameObjects = Collections.synchronizedList(new ArrayList<>());
         gamerInventory = Collections.synchronizedList(new ArrayList<>());
+        
+        killedMonsters = Collections.synchronizedList(new ArrayList<>());
         
         // List of Levels
         gameLevels = new HashMap();
@@ -56,6 +61,8 @@ public class GameData {
         //Clear out game objects
         gameObjects.clear();
         gamerInventory.clear();
+        
+        killedMonsters.clear(); 
         
         //Immoveable Objects
         gameObjects.addAll(currentLevel.getMoveableObjects());
