@@ -38,6 +38,7 @@ public final class LevelOne extends Level{
             super.immovableObjects.add(new Wall(i, 0));
             super.immovableObjects.add(new Wall(i, MAP_HEIGHT));
         }
+        
         for(int i = 0; i <= MAP_HEIGHT; ++i){
             super.immovableObjects.add(new Wall(0, i));
             super.immovableObjects.add(new Wall(MAP_WIDTH, i));
@@ -148,7 +149,7 @@ public final class LevelOne extends Level{
         //Monsters
         super.moveableObjects.add(new Fireball(4, 2));
         super.moveableObjects.add(new Fireball(4, 6));
-        super.moveableObjects.add(new Tank (17, 20));
+        super.moveableObjects.add(new Tank (24, 15));
         super.moveableObjects.add(new Ball(14,15));
         
         //Level blocks

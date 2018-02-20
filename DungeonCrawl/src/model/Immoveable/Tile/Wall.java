@@ -12,7 +12,6 @@ import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
-import model.Moveable.Tank;
 
 /**
  *
@@ -36,9 +35,9 @@ public class Wall extends Tile {
         if(O instanceof Gamer) {
             GameData.gamer.noMove();
         } 
-        /*else if (O instanceof Tank) {
-            GameData.tank.noMove();
-        }*/
+        //if (O instanceof Tank) {
+        //    GameData.tank.noMove();
+        //}
     }
 
     @Override

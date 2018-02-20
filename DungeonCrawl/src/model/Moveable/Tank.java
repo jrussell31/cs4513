@@ -11,6 +11,8 @@
 package model.Moveable;
 
 import DungeonCrawl.DungeonCrawl;
+import static model.GameData.MAP_WIDTH;
+import static model.GameData.MAP_HEIGHT;
 import java.awt.Color;
 import model.GameData;
 import java.awt.Graphics2D;
@@ -18,6 +20,7 @@ import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
 
 public class Tank extends Monster{
         
@@ -31,9 +34,9 @@ public class Tank extends Monster{
     public float dx;
     public float dy;
     
-    public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
-    public boolean right, up, left = false; 
-    public boolean down = true; 
+    public int facing = 1; //0 = North, 1 = East, 2 = South, 3 = West,
+    public boolean down, up, left = false; 
+    public boolean right = true; 
     
     private final ObjectAnimator tankMoves;
     
@@ -75,7 +78,51 @@ public class Tank extends Monster{
         dx = super.x;
         dy = super.y;
         
-        if (GameData.currentLevel.getLevelTime() > 0) {     
+        if (GameData.currentLevel.getLevelTime() > 0) {  
+            
+            if (right) {
+                tankMoves.setFrames(tank_E);
+                if (counter == 1000) {
+                    counter = 0;
+                    for (int i = 0; i < 1; i++) {
+                        super.x += super.MOVEMENT;
+                    }
+                    if (super.x >= 33 * MAP_WIDTH) {
+                        facing = 1;
+                        tankMoves.setFrames(tank_E);
+                        left = true; 
+                        right = false; 
+                        up = false; 
+                        down = false; 
+                    }
+                    tankMoves.setFrames(tank_E);
+                } else {
+                    counter += 100;
+                }
+            }
+            else if (left) {
+                tankMoves.setFrames(tank_W);
+                if (counter == 1000) {
+                    counter = 0;
+                    
+                    for (int i = 0; i < 1; i++) {      
+                        super.x -= super.MOVEMENT;
+                        //tankMoves.setFrames(tank_W);
+                    }
+                    
+                    if (super.x <= 23 * MAP_WIDTH) {
+                        facing = 3;
+                        left = false; 
+                        right = true; 
+                        up = false; 
+                        down = false; 
+                    } 
+                    tankMoves.setFrames(tank_W);
+                } else {
+                    counter += 100;
+                }
+            }
+            /*
             if (down) {
                 tankMoves.setFrames(tank_S);
                 if (counter == 1000) {
@@ -91,13 +138,12 @@ public class Tank extends Monster{
                         right = true; 
                         up = false; 
                         down = false; 
-                    }                    
+                    }
                     tankMoves.setFrames(tank_S);
                 }
                 else {
                     counter += 100;
                 }
-                
             }
             else if (right) {  
                 tankMoves.setFrames(tank_E);
@@ -151,7 +197,7 @@ public class Tank extends Monster{
                         //tankMoves.setFrames(tank_W);
                     }
                     
-                    if (super.x >= 700) {
+                    if (super.x >= 500) {
                         facing = 3;
                         left = false; 
                         right = false; 
@@ -162,9 +208,8 @@ public class Tank extends Monster{
                 } else {
                     counter += 100;
                 }
-            }tankMoves.update();
-        }
-        
+            }*/
+        }tankMoves.update();
     }
     
     public void noMove() {
@@ -172,11 +217,17 @@ public class Tank extends Monster{
         super.y = dy;
     }
     
+    
     @Override
-    public void collide(GameObject O){
+    public void collide(GameObject O){       
+        if(O instanceof Wall)
+            noMove();
+        
+        /*
         if(O instanceof Gamer){
-            DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+            DungeonCrawl.bannerPanel.setBannerText("You colided with the tank on Level  " + GameData.currentLevel.getLevelValue());
             GameData.levelInProgress = false;
         }
+        */
     }
 }
