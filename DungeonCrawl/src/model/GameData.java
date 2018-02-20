@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import model.Moveable.Block;
 
 /**
  *
@@ -103,6 +104,9 @@ public class GameData {
                 if(object instanceof Monster)
                 {
                     ((Monster)object).update();
+                }
+                if(object instanceof Block){
+                    ((Block)object).update();
                 }
             }
         }
