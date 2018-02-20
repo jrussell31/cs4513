@@ -9,44 +9,71 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
 
 /**
  *
  * @author russe_000
  */
 public class Block extends MoveableObject {
-    
+
     public BufferedImage blockImg;
-    
+    private float dx;
+    private float dy;
+
     public Block(float x, float y) {
         super(x, y);
-        
-        try{
-            blockImg = (BufferedImage)ImageFinder.getImage("ImagesFolder", "Block.png");
+
+        try {
+            blockImg = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Block.png");
+        } catch (Exception e) {
         }
-        catch(Exception e){ }
-        
+
     }
-    
+
     @Override
     public void render(Graphics2D g) {
-        if(this.isAlive()){            
-            g.drawImage(blockImg, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
-            
+        if (this.isAlive()) {
+            g.drawImage(blockImg, (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+
             //Draw Collision Box
             //g.setColor(Color.blue);
             //g.draw(this.getCollisionBox());        
-        }                
+        }
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dx = x;
+        dy = y;
     }
-    
+
     @Override
-    public void collide(GameObject O){
-    
+    public void collide(GameObject O) {
+        if (O instanceof Gamer) {
+            float tempX = x + ((Gamer) O).x - ((Gamer) O).dx;
+            float tempY = y + ((Gamer) O).y - ((Gamer) O).dy;
+            if (isMovable(tempX / super.MOVEMENT, tempY / super.MOVEMENT)) {
+                x = tempX;
+                y = tempY;
+            } 
+            else {
+                ((Gamer) O).noMove();
+            }
+        }
+    }
+
+    private boolean isMovable(float x, float y) {
+        Block temp = new Block(x, y);
+        for (GameObject o : GameData.gameObjects) {
+            if (o instanceof Wall || o instanceof Block && o != this) {
+                if (temp.getCollisionBox().intersects(o.getCollisionBox())) {
+                    return false;
+                }                
+            }            
+        }
+        return true;
     }
 }

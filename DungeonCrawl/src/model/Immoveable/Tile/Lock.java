@@ -75,15 +75,29 @@ public class Lock extends Wall {
 
     @Override
     public void collide(GameObject O) {
-         switch(type){
-             case SOCKET:
-                 if(GameData.chipsLeft == 0){
-                     this.setAlive(false);
-                 }
-                 else{
-                     GameData.gamer.noMove();
-                 }
-                 break;
-         }
+        switch (type) {
+            case SOCKET:
+                if (GameData.chipsLeft == 0) {
+                    this.setAlive(false);
+                } else {
+                    GameData.gamer.noMove();
+                }
+                break;
+            default:
+                boolean locked = true;
+                for (GameObject o : GameData.gamerInventory) {
+                    if (o instanceof Key) {
+                        if (((Key) o).type == this.type) {
+                            this.setAlive(false);
+                            ((Key) o).setAlive(false);
+                            locked = false;
+                            break;
+                        }
+                    }
+                }
+                if (locked) {
+                    GameData.gamer.noMove();
+                }
+        }
     }
 }
