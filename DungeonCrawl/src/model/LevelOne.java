@@ -153,6 +153,7 @@ public final class LevelOne extends Level{
         
         //Level blocks
         super.moveableObjects.add(new Block(15, 3));
+        super.moveableObjects.add(new Block(17, 3));
     }
 
     @Override
