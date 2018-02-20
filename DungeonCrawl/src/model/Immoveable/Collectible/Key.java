@@ -5,6 +5,9 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.GameData;
+import model.GameObject;
+import model.Moveable.Gamer;
 
 
 
@@ -57,10 +60,16 @@ public class Key extends Collectible {
             g.drawImage(image, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
             
             //Draw Collision Box
-            g.setColor(Color.blue);
-            g.draw(this.getCollisionBox());
+            //g.setColor(Color.blue);
+            //g.draw(this.getCollisionBox());
         }
     };
 
-    
+    @Override
+     public void collide(GameObject O){
+         if(O instanceof Gamer){
+            GameData.gamerInventory.add(this);
+            this.isDisplayed = false;
+         }
+    }
 }

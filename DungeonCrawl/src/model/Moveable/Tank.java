@@ -10,12 +10,14 @@
  */
 package model.Moveable;
 
+import DungeonCrawl.DungeonCrawl;
 import java.awt.Color;
 import model.GameData;
 import java.awt.Graphics2D;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
+import model.GameObject;
 
 public class Tank extends Monster{
         
@@ -67,7 +69,7 @@ public class Tank extends Monster{
     
     @Override
     public void update() {
-        if (GameData.time > 0) {     
+        if (GameData.currentLevel.getLevelTime() > 0) {     
             if (down) {
                 tankMoves.setFrames(tank_S);
                 if (counter == 1000) {
@@ -158,4 +160,12 @@ public class Tank extends Monster{
         }
         
     }
+    
+  /*      @Override
+     public void collide(GameObject O){
+         if(O instanceof Gamer){
+             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+             GameData.levelInProgress = false;
+         }
+     }*/
 }

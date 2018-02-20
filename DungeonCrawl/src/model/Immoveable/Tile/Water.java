@@ -5,6 +5,7 @@
  */
 package model.Immoveable.Tile;
 
+import DungeonCrawl.DungeonCrawl;
 import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -17,23 +18,26 @@ import model.Moveable.Gamer;
  *
  * @author russe_000
  */
-public class Wall extends Tile {
+public class Water extends Tile {
 
     public BufferedImage image;
     
-    public Wall(float x, float y) {
+    public Water(float x, float y) {
         super(x, y);
         
         try{
-            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Wall.png");
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Water.png");
         }
         catch(Exception e){}
     }
 
     @Override
     public void collide(GameObject O) {
-        if(O instanceof Gamer)
-            GameData.gamer.noMove();
+        if(O instanceof Gamer){
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
+            DungeonCrawl.bannerPanel.setBannerText("You drowned on Level  " + GameData.currentLevel.getLevelValue());
+            GameData.levelInProgress = false;
+        }
     }
 
     @Override

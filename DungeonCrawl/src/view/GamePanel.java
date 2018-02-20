@@ -1,13 +1,11 @@
 package view;
 
 import controller.ImageFinder;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import model.GameData;
 import model.GameObject;
@@ -32,7 +30,6 @@ public final class GamePanel extends JPanel
         
         setPreferredSize(new Dimension(GamePanel.pwidth, GamePanel.pheight));
         setFocusable(true);
-        requestFocus();
     }    
 
     public void gameRender() 
@@ -50,7 +47,7 @@ public final class GamePanel extends JPanel
         
 
         graphics.clearRect(0, 0, GamePanel.pwidth, GamePanel.pheight);
-        graphics.drawImage(ImageFinder.getImage("ImagesFolder", "map.png"), HEIGHT, WIDTH, this);
+        graphics.drawImage(ImageFinder.getImage("ImagesFolder", "map.png"), 0, 0, this);
 
         synchronized(GameData.gameObjects) 
         {

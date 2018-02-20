@@ -16,7 +16,8 @@ import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import view.GamePanel;
+import model.GameObject;
+import model.Immoveable.Tile.Wall;
 
 public class Gamer extends MoveableObject {
        
@@ -30,8 +31,8 @@ public class Gamer extends MoveableObject {
     private boolean up = false;
     private boolean down = false;
     
-    private float dx;
-    private float dy;
+    public float dx;
+    public float dy;
     
     public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
     
@@ -104,42 +105,40 @@ public class Gamer extends MoveableObject {
     public void update() {
         dx = super.x;
         dy = super.y;
-        if (gameData.time > 0) {
-            if(left)
-            {
-                super.x -= super.MOVEMENT;
-
-                facing = 3;
-                gamerMoves.setFrames(leftIdle);
-                left = false;
-            } 
-            else if(right)
-            {
-                super.x += super.MOVEMENT;
-
-                facing = 1;
-                gamerMoves.setFrames(rightIdle);
-                right = false;
-            }
-
-            if(down)
-            {
-                super.y += super.MOVEMENT;
-
-                facing = 2;
-                gamerMoves.setFrames(downIdle);
-                down = false;
-            } 
-            else if(up)
-            {
-                super.y -= super.MOVEMENT;
-
-                facing = 0;
-                gamerMoves.setFrames(upIdle);
-                up = false;
-            }
+        
+        if(left)
+        {
+            super.x -= super.MOVEMENT;
+            
+            facing = 3;
+            gamerMoves.setFrames(leftIdle);
+            left = false;
+        } 
+        else if(right)
+        {
+            super.x += super.MOVEMENT;
+            
+            facing = 1;
+            gamerMoves.setFrames(rightIdle);
+            right = false;
         }
-        if (!(right && down && left && up))
+        else if(down)
+        {
+            super.y += super.MOVEMENT;
+            
+            facing = 2;
+            gamerMoves.setFrames(downIdle);
+            down = false;
+        } 
+        else if(up)
+        {
+            super.y -= super.MOVEMENT;
+            
+            facing = 0;
+            gamerMoves.setFrames(upIdle);
+            up = false;
+        }
+        else
         {
             switch(facing){
                 case 0:
@@ -155,11 +154,6 @@ public class Gamer extends MoveableObject {
                     gamerMoves.setFrames(leftIdle);
                     break;
             }
-            gamerMoves.setDelay(-1);
-        }
-        else
-        {
-            gamerMoves.setDelay(100);
         }
         
         gamerMoves.update();                
@@ -168,5 +162,10 @@ public class Gamer extends MoveableObject {
     public void noMove() {
         super.x = dx;
         super.y = dy;
+    }
+    
+    @Override
+    public void collide(GameObject O){
+    //Leave this empty for now JL 2-15-18
     }
 }
