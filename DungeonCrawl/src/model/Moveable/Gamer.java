@@ -135,7 +135,7 @@ public class Gamer extends MoveableObject {
             }
         }
         gamerMoves.update();
-        //setDirection(Direction.NONE);
+        setDirection(Direction.NONE);
     }
 
     public void noMove() {

@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import model.Immoveable.Tile.Button;
 import model.Moveable.Block;
 
 /**
@@ -58,11 +59,12 @@ public class GameData {
         gameObjects.clear();
         gamerInventory.clear();
         
-        //Immoveable Objects
-        gameObjects.addAll(currentLevel.getMoveableObjects());
-        
         //Moveable Objects
         gameObjects.addAll(currentLevel.getImmovableObjects());
+        
+        //Immoveable Objects
+        gameObjects.addAll(currentLevel.getMoveableObjects());
+                
         gamer = currentLevel.getGamer();
         
         //Gamer Object
@@ -100,6 +102,9 @@ public class GameData {
                 }
                 if(object instanceof Block){
                     ((Block)object).update();
+                }
+                if(object instanceof Button){
+                    ((Button)object).update();
                 }
             }
         }

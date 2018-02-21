@@ -21,7 +21,9 @@ import model.Moveable.Gamer;
  */
 public class Button extends Tile {
     public BufferedImage image;
-
+    ArrayList<GameObject> onButton = new ArrayList<>();
+    ArrayList<GameObject> prevOnButton = new ArrayList<>();
+    
     ButtonType type;
     ArrayList<GameObject> associatedObjects = new ArrayList<GameObject>();
 
@@ -86,15 +88,19 @@ public class Button extends Tile {
     
     @Override
     public void collide(GameObject O){
-        if(!pressed){
-            pressed = true;
-            
+        onButton.add(O);
+        if(!(prevOnButton.contains(O))){        
             if(type == ButtonType.GREEN){
-                if(O instanceof Gamer){
                     this.associatedObjects.forEach((o)-> setObject(o));
-                }
             }
-        }
+        }        
+    }
+    
+    @Override
+    public void update(){
+        prevOnButton.clear();
+        prevOnButton.addAll(onButton);
+        onButton.clear();
     }
 
     public void setObject(GameObject object){
