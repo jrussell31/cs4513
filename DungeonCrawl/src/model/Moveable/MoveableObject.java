@@ -35,6 +35,11 @@ public abstract class MoveableObject implements GameObject {
         return alive;
     }
     
+    public void setDead()
+    {
+        alive = false;
+    }
+    
     public abstract void update();
     
     @Override
