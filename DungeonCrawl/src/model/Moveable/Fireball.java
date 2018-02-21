@@ -66,6 +66,20 @@ public class Fireball extends Monster {
         dy = super.y;
         fireballMoves.setFrames(fireballSprites);
         if (Level.fLevelOne) {
+            
+            if(super.x > 64 && super.y == 64){
+                super.x -= super.MOVEMENT;                 
+            }
+            else if(super.y < 192 && super.x == 64){
+                super.y += super.MOVEMENT;                
+            }
+            else if(super.x < 192 && super.y == 192){
+                super.x += super.MOVEMENT;               
+            }
+            else if (super.x == 192){
+                super.y -= super.MOVEMENT;               
+            }
+            /*
             switch (direction) {
                 case LEFT:
                     if (counter == 1000) {
@@ -115,7 +129,7 @@ public class Fireball extends Monster {
                         counter += 100;
                     }
                     break;
-            }
+            }*/
             fireballMoves.update();
         } else if (Level.fLevelTwo) {
             switch (direction) {
