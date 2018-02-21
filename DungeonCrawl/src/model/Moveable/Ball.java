@@ -12,8 +12,12 @@ import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Direction;
 import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Wall;
+import model.Immoveable.Tile.Water;
 
 /**
  *
@@ -27,14 +31,15 @@ public class Ball extends Monster {
     private int counter;
     private int moveTiles = 1; //moveTiles determines the number of tiles that will be moved each frame
     private int movePixels = 32; //movePixels determines the number of pixels that will be moved each frame;
+    public float dx;
+    public float dy;
+    public Direction direction;
 
-    public Ball(float x, float y) {
+    public Ball(float x, float y, Direction D) {
         super(x, y);
         ballMoves = new ObjectAnimator();
         ballSprites = new BufferedImage[1];
-        turnLeft = false;
-        turnRight = turnUp = false;
-        turnDown = true;
+        setDirection(D);
         try {
             BufferedImage image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Pink_Ball.png");
             ballSprites[0] = image;
@@ -42,10 +47,28 @@ public class Ball extends Monster {
             e.printStackTrace();
         }
     }
+    public void setDirection(Direction D)
+    {   direction = D;
+        if(D == Direction.DOWN){turnDown = true;
+        turnUp = turnLeft = turnRight = false;
+        }
+        if(D == Direction.UP){turnUp = true;
+        turnDown = turnLeft = turnRight = false;}
+        if(D == Direction.LEFT){turnLeft = true;
+        turnUp = turnDown = turnRight = false;}
+        if(D == Direction.RIGHT){turnRight = true;
+        turnUp = turnLeft = turnDown = false;}
+        
+    }
+
+    public void turnAround() {
+      direction = direction.getOppositeDirection();
+      setDirection(direction);
+    }
 
     @Override
     public void render(Graphics2D g) {
-                g.drawImage(ballMoves.getImage(), (int) super.x, (int) super.y, 32, 32,
+        g.drawImage(ballMoves.getImage(), (int) super.x, (int) super.y, 32, 32,
                 null);
         //Draw Collision Box
         g.setColor(Color.blue);
@@ -60,6 +83,8 @@ public class Ball extends Monster {
 
     @Override
     public void update() {
+        dx = super.x;
+        dy = super.y;
         ballMoves.setFrames(ballSprites);
         if (turnLeft) {
             if (gameData.time > 0) {
@@ -140,13 +165,22 @@ public class Ball extends Monster {
         }
         ballMoves.update();
     }
+
+    @Override
+    public void collide(GameObject O) {
+        if (O instanceof Gamer) {
+            DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
+            GameData.levelInProgress = false;
+        } else if (O instanceof Wall || O instanceof Fire || O instanceof Block || O instanceof Water) {
+            this.turnAround();
+        }
+
+    }
     
-  /*      @Override
-     public void collide(GameObject O){
-         if(O instanceof Gamer){
-             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
-             GameData.levelInProgress = false;
-         }
-     }*/
-    
+        public void noMove() {
+        super.x = dx;
+        super.y = dy;
+        this.turnAround();
+    }
+
 }
