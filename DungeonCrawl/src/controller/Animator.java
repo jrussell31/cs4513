@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import model.GameData;
 import static model.GameData.gameObjects;
 import static model.GameData.gamerInventory;
+import static model.GameData.killedMonsters;
 import model.GameObject;
 import model.Immoveable.Tile.Button;
 
@@ -83,6 +84,7 @@ public class Animator implements Runnable {
             }
         }
         gamerInventory.removeAll(removeInventory);
+
     
             ArrayList<GameObject> removeGameObject = new ArrayList<>();
         synchronized(gameObjects){
@@ -93,5 +95,6 @@ public class Animator implements Runnable {
             }
         }
         gameObjects.removeAll(removeGameObject);
+
     }
 }

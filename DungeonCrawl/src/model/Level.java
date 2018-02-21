@@ -10,7 +10,9 @@ public abstract class Level {
     Gamer gamer;
     ArrayList<GameObject> immovableObjects;
     ArrayList<GameObject> moveableObjects;
-
+    
+    public static boolean fLevelOne, fLevelTwo, fLevelThree = false; 
+    
     public Level() {
         this.immovableObjects = new ArrayList<>();
         this.moveableObjects = new ArrayList<>();
