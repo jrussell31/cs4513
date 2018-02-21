@@ -37,10 +37,10 @@ public class Toggle extends Wall{
     @Override
     public void render(Graphics2D g) {
         if(close){
-            g.drawImage(image[0], (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+            g.drawImage(image[0], (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
         }
         else{
-            g.drawImage(image[1], (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+            g.drawImage(image[1], (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
         }
 
         //Draw Collision Box

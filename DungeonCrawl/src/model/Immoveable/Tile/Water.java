@@ -52,22 +52,21 @@ public class Water extends Tile {
                 image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
                 //TODO Remove the Gamer so That you can see the drowned image. JL 2/19
                 DungeonCrawl.bannerPanel.setBannerText("You drowned on Level  " + GameData.currentLevel.getLevelValue());
-                GameData.levelInProgress = false;
+                ((Gamer)O).setAlive(false);
             }
 
         }
         //Collide with Block
         if(O instanceof Block)
         {
-            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Block.png");
-            ((Block) O).setDead();
             this.setAlive(false);
+            ((Block)O).setAlive(false);
         }
     }
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(image, (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+        g.drawImage(image, (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
 
         //Draw Collision Box
         //g.setColor(Color.blue);

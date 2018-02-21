@@ -45,10 +45,8 @@ public class DungeonCrawl {
        thread = new Thread(animator);
     }
     
-    public static void startGame(){
-         
+    public static void startGame(){         
         GameData.resetGameData();
-        GameData.levelInProgress = true;
         thread.start();
     }
 }
