@@ -1,23 +1,24 @@
 package model.Immoveable;
 
 import java.awt.geom.Rectangle2D;
+import model.Direction;
 import model.GameObject;
 
 public abstract class ImmovableObject implements GameObject {
     
-    public float x, y, height = 32, width = 32;
-    public static int offset = 32;
+    public float x, y;
+    public Direction direction;
     private boolean alive;    
     
     public ImmovableObject(float x, float y){
-        this.x = x * offset;
-        this.y = y * offset;
+        this.x = x * OFFSET;
+        this.y = y * OFFSET;
         alive = true;
     }
     
     @Override
     public Rectangle2D.Double getCollisionBox(){
-        return new Rectangle2D.Double(x, y, width, height);
+        return new Rectangle2D.Double(x, y, WIDTH, HEIGHT);
     }
     
     @Override
@@ -29,9 +30,10 @@ public abstract class ImmovableObject implements GameObject {
         this.alive = a;
     }
     
-    public void update(){}
+    @Override
+    public void update(){}    
     
     @Override
-    public abstract void collide(GameObject O);
+    public void slide(){   }
     
 }

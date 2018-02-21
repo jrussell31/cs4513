@@ -12,6 +12,9 @@ import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
+import model.Moveable.Monster;
+import model.Moveable.Tank;
+import model.Moveable.Tank2;
 
 /**
  *
@@ -35,14 +38,16 @@ public class Wall extends Tile {
         if(O instanceof Gamer) {
             GameData.gamer.noMove();
         } 
-        //if (O instanceof Tank) {
-        //    GameData.tank.noMove();
-        //}
+        /*
+        if (O instanceof Monster) {
+            GameData.monster.noMove();
+        }
+        */
     }
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(image, (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+        g.drawImage(image, (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
 
         //Draw Collision Box
         //g.setColor(Color.blue);

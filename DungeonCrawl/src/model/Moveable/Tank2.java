@@ -22,7 +22,7 @@ import java.awt.image.BufferedImage;
 import model.GameObject;
 import model.Immoveable.Tile.Wall;
 
-public class Tank extends Monster{
+public class Tank2 extends Monster{
         
     public BufferedImage[] tank_S;
     public BufferedImage[] tank_N;
@@ -34,14 +34,13 @@ public class Tank extends Monster{
     public float dx;
     public float dy;
     
-    public int facing = 1; //0 = North, 1 = East, 2 = South, 3 = West,
-    public boolean down, up, left = false; 
-    public boolean right = true; 
+    public int facing = 3; //0 = North, 1 = East, 2 = South, 3 = West,
+    public boolean down, up, right = false; 
+    public boolean left = true; 
     
-    private boolean makeTurn;
     private final ObjectAnimator tankMoves;
     
-    public Tank(float x, float y) {
+    public Tank2(float x, float y) {
         super(x, y);        
         tankMoves = new ObjectAnimator();
         
@@ -64,15 +63,7 @@ public class Tank extends Monster{
         }
         
     }
-    
-    public boolean turn() {
-        return makeTurn;
-    }
-    
-    public void setTurn(boolean makeTurn) {
-        this.makeTurn = makeTurn;
-    }
-        
+
     @Override
     public void render(Graphics2D g) {
         g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, (int)super.HEIGHT, (int)super.WIDTH, 

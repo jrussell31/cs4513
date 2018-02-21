@@ -9,6 +9,7 @@ import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.ToggleWall;
@@ -19,13 +20,14 @@ import model.Moveable.Block;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
+import model.Moveable.Tank2;
 
 public final class LevelOne extends Level{
     
     public LevelOne(){
         resetLevel();
-        Level.fLevelOne = false; 
-        Level.fLevelTwo = true;  
+        Level.fLevelOne = true; 
+        Level.fLevelTwo = false;  
         Level.fLevelThree = false; 
     }
     
@@ -49,9 +51,9 @@ public final class LevelOne extends Level{
             super.immovableObjects.add(new Wall(MAP_WIDTH, i));
         }        
         
-        for(int i = 0; i <= 8; ++i){
+        for(int i = 0; i <= 13; ++i){
             super.immovableObjects.add(new Wall(i, 8));
-            if(i != 4){
+            if(i != 4 && i < 8){
                 super.immovableObjects.add(new Wall(8, i));
             }
         }
@@ -120,7 +122,7 @@ public final class LevelOne extends Level{
         
         //Level boots
         super.immovableObjects.add(new Boot(3, 3, BootType.FIRE));
-        super.immovableObjects.add(new Boot(3, 2, BootType.WATER));
+        super.immovableObjects.add(new Boot(15, 10, BootType.WATER));
         
         //Level Chips
         super.immovableObjects.add(new Chip(4, 3));
@@ -131,7 +133,12 @@ public final class LevelOne extends Level{
         
         //Level Elemental Walls
         super.immovableObjects.add(new Water(13,19));
+        super.immovableObjects.add(new Water(15, 8));
+        super.immovableObjects.add(new Water(15, 9));
+        super.immovableObjects.add(new Water(15, 12));
         super.immovableObjects.add(new Fire(17,19));
+        super.immovableObjects.add(new Fire(9, 4));
+        super.immovableObjects.add(new Fire(14, 6));
         
         //Toggle Walls
         ArrayList<GameObject> toggleWalls = new ArrayList<>();
@@ -146,6 +153,11 @@ public final class LevelOne extends Level{
         
         //Exit Portal
         super.immovableObjects.add(new Portal(15, 26));
+        
+        //Floors
+        /*for(int i = 15; i < 25; ++i){
+            super.immovableObjects.add(new Ice(i, 4));
+        }*/
     }
 
     @Override
@@ -158,13 +170,16 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Fireball(10,19));
         super.moveableObjects.add(new Fireball(20,19));
         super.moveableObjects.add(new Tank (24, 10));
-        super.moveableObjects.add(new Tank (24, 12));
+        super.moveableObjects.add(new Tank2 (28, 12));
         super.moveableObjects.add(new Tank (24, 14));
+        super.moveableObjects.add(new Tank2 (28, 16));
+        super.moveableObjects.add(new Tank (24, 18));
+        super.moveableObjects.add(new Tank2 (28, 20));
         super.moveableObjects.add(new Ball(14,15));
         
         //Level blocks
-        super.moveableObjects.add(new Block(15, 3));
-        super.moveableObjects.add(new Block(17, 3));
+        super.moveableObjects.add(new Block(12, 6));
+        super.moveableObjects.add(new Block(13, 6));
     }
 
     @Override

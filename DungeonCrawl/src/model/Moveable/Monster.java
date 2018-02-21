@@ -18,15 +18,22 @@ import DungeonCrawl.DungeonCrawl;
  */
 public abstract class Monster extends MoveableObject {
     public boolean isDisplayed = true;
-    
+    public float dx;
+    public float dy;
     public Monster(float x, float y) {
         super(x, y);
+        
     }
 
     public abstract void render(Graphics2D g);
 
     public boolean isAlive(){
         return super.isAlive(); 
+    }
+    
+    public void noMove() {
+        super.x = dx;
+        super.y = dy;
     }
     
     public abstract void update();
