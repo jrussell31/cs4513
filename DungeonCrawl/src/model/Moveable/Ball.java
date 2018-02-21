@@ -27,6 +27,8 @@ public class Ball extends Monster {
     private int counter;
     private int moveTiles = 1; //moveTiles determines the number of tiles that will be moved each frame
     private int movePixels = 32; //movePixels determines the number of pixels that will be moved each frame;
+    public float dx;
+    public float dy;
 
     public Ball(float x, float y) {
         super(x, y);
@@ -42,11 +44,11 @@ public class Ball extends Monster {
             e.printStackTrace();
         }
     }
-
+    
     @Override
     public void render(Graphics2D g) {
-                g.drawImage(ballMoves.getImage(), (int) super.x, (int) super.y, 32, 32,
-                null);
+        g.drawImage(ballMoves.getImage(), (int) super.x, (int) super.y, 32, 32,
+        null);
         //Draw Collision Box
         g.setColor(Color.blue);
         g.draw(this.getCollisionBox());
@@ -141,12 +143,17 @@ public class Ball extends Monster {
         ballMoves.update();
     }
     
-  /*      @Override
+    public void noMove(){
+        super.x = dx;
+        super.y = dy;
+    }
+    
+        @Override
      public void collide(GameObject O){
          if(O instanceof Gamer){
              DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
              GameData.levelInProgress = false;
          }
-     }*/
+     }
     
 }
