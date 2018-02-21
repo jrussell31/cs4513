@@ -66,9 +66,23 @@ public class Fireball extends Monster {
     public void update() {
         dx = super.x;
         dy = super.y;
+        
         fireballMoves.setFrames(fireballSprites);        
-        if (Level.fLevelOne){            
-            if (turnLeft){
+        if (Level.fLevelOne){
+            
+            if(super.x > 64 && super.y == 64){
+                super.x -= super.MOVEMENT;                 
+            }
+            else if(super.y < 192 && super.x == 64){
+                super.y += super.MOVEMENT;                
+            }
+            else if(super.x < 192 && super.y == 192){
+                super.x += super.MOVEMENT;               
+            }
+            else if (super.x == 192){
+                super.y -= super.MOVEMENT;               
+            }
+            /*if (turnLeft){
                 if (gameData.time > 0){
                     if (counter == 1000){
                         counter = 0;                         
@@ -79,6 +93,7 @@ public class Fireball extends Monster {
                             turnRight = false; 
                             turnUp = false; 
                             turnDown = true;
+                            System.out.println("turn left: x: " + super.x + " y: " + super.y);
                         }                      
                     }
                     else{
@@ -97,6 +112,7 @@ public class Fireball extends Monster {
                             turnRight = true; 
                             turnUp = false; 
                             turnDown = false;
+                            System.out.println("turn down: y: " + super.y + "x: " + super.x);
                         }
                     }
                     else{
@@ -115,6 +131,7 @@ public class Fireball extends Monster {
                             turnRight = false; 
                             turnUp = true; 
                             turnDown = false;
+                            System.out.println("turn right: x: " + super.x + " y: " + super.y);
                         }
                     }
                     else{
@@ -133,13 +150,14 @@ public class Fireball extends Monster {
                             turnRight = false; 
                             turnUp = false; 
                             turnDown = false;
+                            System.out.println("turn up: y: " + super.y + " x: " + super.x);
                         }
                     }
                     else{
                         counter += 100; 
                     }
                 }               
-            } 
+            }*/  
             fireballMoves.update();
         }
         else if (Level.fLevelTwo){
