@@ -38,6 +38,7 @@ public class Block extends MoveableObject {
         if (this.isAlive()) {
             g.drawImage(blockImg, (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
 
+
             //Draw Collision Box
             //g.setColor(Color.blue);
             //g.draw(this.getCollisionBox());        
