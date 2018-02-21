@@ -59,7 +59,7 @@ public class ToggleWall extends Wall {
     public void render(Graphics2D g) {
         loadImages();
         
-        g.drawImage(toggleWallImg, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
+        g.drawImage(toggleWallImg, (int)super.x, (int)super.y, (int)super.WIDTH, (int)super.HEIGHT, null);
     }
 
     @Override
