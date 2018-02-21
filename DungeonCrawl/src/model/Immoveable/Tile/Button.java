@@ -93,7 +93,14 @@ public class Button extends Tile {
                 if(O instanceof Gamer){
                     this.associatedObjects.forEach((o)-> setObject(o));
                 }
+            } 
+            /*
+            else if(type == ButtonType.BLUE) {
+                if (O instanceof Gamer) {
+                   this.associatedObjects.forEach((o)-> setObject(o));
+                }
             }
+            */
         }
     }
 

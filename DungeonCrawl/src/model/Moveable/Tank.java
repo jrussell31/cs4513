@@ -122,93 +122,6 @@ public class Tank extends Monster{
                     counter += 100;
                 }
             }
-            /*
-            if (down) {
-                tankMoves.setFrames(tank_S);
-                if (counter == 1000) {
-                    counter = 0;
-                    for (int i = 0; i < 1; i++) {                        
-                        super.y += super.MOVEMENT;
-                        //tankMoves.setFrames(tank_S);
-                    }
-                    if (super.y >= 500) {
-                        facing = 2;
-                        tankMoves.setFrames(tank_S);
-                        left = false; 
-                        right = true; 
-                        up = false; 
-                        down = false; 
-                    }
-                    tankMoves.setFrames(tank_S);
-                }
-                else {
-                    counter += 100;
-                }
-            }
-            else if (right) {  
-                tankMoves.setFrames(tank_E);
-                if (counter == 1000) {
-                    counter = 0;
-                    
-                    for (int i = 0; i < 1; i++) {                        
-                        super.x += super.MOVEMENT;
-                        //tankMoves.setFrames(tank_E);
-                    }                    
-                    if (super.x >= 800) {
-                        facing = 1;
-                        left = false; 
-                        right = false; 
-                        up = true; 
-                        down = false; 
-                    }
-                    tankMoves.setFrames(tank_E);
-                } else {
-                    counter += 100;
-                }
-            }
-            else if (up) {
-                tankMoves.setFrames(tank_N);
-                if (counter >= 1000) {
-                    counter = 0;
-                    
-                    for (int i = 0; i < 1; i++) {                        
-                        super.y -= super.MOVEMENT;
-                        //tankMoves.setFrames(tank_N);
-                    }
-                    if (super.y <= 300) {
-                        facing = 0;
-                        left = true; 
-                        right = false; 
-                        up = false; 
-                        down = false; 
-                    }
-                    tankMoves.setFrames(tank_N);
-                } else {
-                    counter += 100;
-                }
-            }
-            else if (left) {
-                tankMoves.setFrames(tank_W);
-                if (counter == 1000) {
-                    counter = 0;
-                    
-                    for (int i = 0; i < 1; i++) {      
-                        super.x -= super.MOVEMENT;
-                        //tankMoves.setFrames(tank_W);
-                    }
-                    
-                    if (super.x >= 500) {
-                        facing = 3;
-                        left = false; 
-                        right = false; 
-                        up = false; 
-                        down = true; 
-                    } 
-                    tankMoves.setFrames(tank_W);
-                } else {
-                    counter += 100;
-                }
-            }*/
         }tankMoves.update();
     }
     
@@ -220,14 +133,25 @@ public class Tank extends Monster{
     
     @Override
     public void collide(GameObject O){       
-        if(O instanceof Wall)
+        if(O instanceof Wall) {
             noMove();
+            /*
+            if(blue button pressed) {
+                if(left) {
+                    left = false;
+                    right = true;
+                } else if (right) {
+                    right = false;
+                    left = true;
+                }
+            }
+            */
+        }
         
-        /*
         if(O instanceof Gamer){
             DungeonCrawl.bannerPanel.setBannerText("You colided with the tank on Level  " + GameData.currentLevel.getLevelValue());
             GameData.levelInProgress = false;
         }
-        */
+        
     }
 }
