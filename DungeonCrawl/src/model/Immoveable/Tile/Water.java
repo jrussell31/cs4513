@@ -56,7 +56,9 @@ public class Water extends Tile {
             }
 
         }
-        if(O instanceof Block){
+        //Collide with Block
+        if(O instanceof Block)
+        {
             this.setAlive(false);
             ((Block)O).setAlive(false);
         }

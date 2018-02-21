@@ -8,6 +8,7 @@ package controller;
 import DungeonCrawl.DungeonCrawl;
 import java.util.ArrayList;
 import model.GameData;
+import static model.GameData.gameObjects;
 import static model.GameData.gamerInventory;
 import static model.GameData.killedMonsters;
 import model.GameObject;
