@@ -24,6 +24,9 @@ public final class LevelOne extends Level{
     
     public LevelOne(){
         resetLevel();
+        Level.fLevelOne = false; 
+        Level.fLevelTwo = true;  
+        Level.fLevelThree = false; 
     }
     
     @Override
@@ -150,7 +153,9 @@ public final class LevelOne extends Level{
         
         //Monsters
         super.moveableObjects.add(new Fireball(4, 2));
-        super.moveableObjects.add(new Fireball(4, 6));
+        super.moveableObjects.add(new Fireball(6, 2));
+        super.moveableObjects.add(new Fireball(10,19));
+        super.moveableObjects.add(new Fireball(20,19));
         super.moveableObjects.add(new Tank (17, 20));
         super.moveableObjects.add(new Ball(14,15));
         

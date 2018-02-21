@@ -17,7 +17,8 @@ import DungeonCrawl.DungeonCrawl;
  * 
  */
 public abstract class Monster extends MoveableObject {
-
+    public boolean isDisplayed = true;
+    
     public Monster(float x, float y) {
         super(x, y);
     }
