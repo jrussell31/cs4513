@@ -41,7 +41,7 @@ public abstract class Monster extends MoveableObject {
     @Override
     public void collide(GameObject O){
         if(O instanceof Gamer){
-            DungeonCrawl.bannerPanel.setBannerText("You colided with a monster on Level  " + GameData.currentLevel.getLevelValue());
+            DungeonCrawl.bannerPanel.setBannerText("You colided with a " + getClass().getSimpleName() + " on Level  " + GameData.currentLevel.getLevelValue());
             GameData.levelInProgress = false;
         }
     }

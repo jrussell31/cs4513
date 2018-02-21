@@ -3,13 +3,11 @@ package model;
 import java.util.ArrayList;
 import static model.GameData.MAP_HEIGHT;
 import static model.GameData.MAP_WIDTH;
-import static model.GameData.gameObjects;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Fire;
-import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.ToggleWall;
@@ -20,7 +18,6 @@ import model.Moveable.Block;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
-import model.Direction;
 
 public final class LevelOne extends Level{
     

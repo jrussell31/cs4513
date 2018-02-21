@@ -110,10 +110,12 @@ public class Tank extends Monster{
         if(O instanceof Wall || O instanceof Block) {
             noMove();
         }         
+        
+        super.collide(O);
+        
         if(O instanceof Gamer){
             this.setAlive(false);
             ((Gamer)O).setAlive(false);
-            DungeonCrawl.bannerPanel.setBannerText("You colided with the tank on Level  " + GameData.currentLevel.getLevelValue());
         }
         if(O instanceof Water || O instanceof Fire) {
             this.setAlive(false);
