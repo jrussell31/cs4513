@@ -59,7 +59,7 @@ public class Water extends Tile {
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(image, (int) super.x, (int) super.y, (int) super.width, (int) super.height, null);
+        g.drawImage(image, (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
 
         //Draw Collision Box
         //g.setColor(Color.blue);
