@@ -14,6 +14,7 @@ import model.BootType;
 import model.GameData;
 import model.GameObject;
 import model.Immoveable.Collectible.Boot;
+import model.Moveable.Block;
 import model.Moveable.Gamer;
 
 /**
@@ -54,6 +55,10 @@ public class Water extends Tile {
                 GameData.levelInProgress = false;
             }
 
+        }
+        if(O instanceof Block){
+            this.setAlive(false);
+            ((Block)O).setAlive(false);
         }
     }
 
