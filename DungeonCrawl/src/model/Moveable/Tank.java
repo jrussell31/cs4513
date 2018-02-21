@@ -103,30 +103,17 @@ public class Tank extends Monster{
     public void noMove() {
         super.x = dx;
         super.y = dy;
-    }
-    
+    }    
     
     @Override
     public void collide(GameObject O){       
         if(O instanceof Wall || O instanceof Block) {
             noMove();
-            /*
-            if(blue button pressed) {
-                if(left) {
-                    left = false;
-                    right = true;
-                } else if (right) {
-                    right = false;
-                    left = true;
-                }
-            }
-            */
         }         
         if(O instanceof Gamer){
             this.setAlive(false);
             ((Gamer)O).setAlive(false);
             DungeonCrawl.bannerPanel.setBannerText("You colided with the tank on Level  " + GameData.currentLevel.getLevelValue());
-            //GameData.levelInProgress = false;
         }
         if(O instanceof Water || O instanceof Fire) {
             this.setAlive(false);

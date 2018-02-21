@@ -14,6 +14,7 @@ import model.ButtonType;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
+import model.Moveable.Tank;
 
 /**
  *
@@ -94,9 +95,7 @@ public class Button extends Tile {
                     this.associatedObjects.forEach((o)-> setObject(o));
             } 
             else if(type == ButtonType.BLUE) {
-                if (O instanceof Gamer) {
-                   this.associatedObjects.forEach((o)-> setObject(o));
-                }
+                this.associatedObjects.forEach((o)-> setObject(o));
             }
         }    
     }
@@ -114,8 +113,9 @@ public class Button extends Tile {
         if(object instanceof ToggleWall){
             ((ToggleWall) object).setOpen(!((ToggleWall) object).isOpen());
             GameData.gameObjects.set(indexOfObject, object);
-        } //else if(object instanceof Tank) {
-            //((Tank) object).
-        //}
+        } 
+        else if(object instanceof Tank) {
+            ((Tank) object).direction = ((Tank) object).direction.getOppositeDirection();
+        }
     }
 }

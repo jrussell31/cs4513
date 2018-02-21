@@ -150,7 +150,6 @@ public final class LevelOne extends Level{
         
         //Buttons
         super.immovableObjects.add(new Button(15, 11, ButtonType.GREEN, toggleWalls));
-        super.immovableObjects.add(new Button(26, 8, ButtonType.BLUE, toggleWalls));
         
         //Exit Portal
         super.immovableObjects.add(new Portal(15, 26));
@@ -170,13 +169,19 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Fireball(6, 2));
         super.moveableObjects.add(new Fireball(10,19));
         super.moveableObjects.add(new Fireball(20,19));
-        super.moveableObjects.add(new Tank (23, 10, Direction.RIGHT));
-        super.moveableObjects.add(new Tank (29, 12, Direction.LEFT));
-        super.moveableObjects.add(new Tank (23, 14, Direction.RIGHT));
-        super.moveableObjects.add(new Tank (29, 16, Direction.LEFT));
-        super.moveableObjects.add(new Tank (23, 18, Direction.RIGHT));
-        super.moveableObjects.add(new Tank (29, 20, Direction.LEFT));
         super.moveableObjects.add(new Ball(14,15));
+        
+        ArrayList<GameObject> tanks = new ArrayList<>();
+        tanks.add(new Tank (23, 10, Direction.RIGHT));
+        tanks.add(new Tank (29, 12, Direction.LEFT));
+        tanks.add(new Tank (23, 14, Direction.RIGHT));
+        tanks.add(new Tank (29, 16, Direction.LEFT));
+        tanks.add(new Tank (23, 18, Direction.RIGHT));
+        tanks.add(new Tank (29, 20, Direction.LEFT));
+        super.moveableObjects.addAll(tanks);
+        
+        //Button
+        super.moveableObjects.add(new Button(26, 8, ButtonType.BLUE, tanks));
         
         //Level blocks
         super.moveableObjects.add(new Block(12, 6));

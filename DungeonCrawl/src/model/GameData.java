@@ -32,6 +32,7 @@ public class GameData {
     public static Level currentLevel;
     public static int time;
     public static Gamer gamer;
+    public static Monster monster;
     public static int chipsLeft;
     private static int timerCounter;
     public static boolean levelInProgress = false;
