@@ -68,59 +68,51 @@ public class Fireball extends Monster {
         if (Level.fLevelOne) {
             switch (direction) {
                 case LEFT:
-                    if (gameData.time > 0) {
-                        if (counter == 1000) {
-                            counter = 0;
-                            super.x -= super.MOVEMENT;
-                            if (super.x <= 64) {
-                                fireballMoves.setFrames(fireballSprites);
-                                direction = Direction.DOWN;
-                            }
-                        } else {
-                            counter += 100;
+                    if (counter == 1000) {
+                        counter = 0;
+                        super.x -= super.MOVEMENT;
+                        if (super.x <= 64) {
+                            fireballMoves.setFrames(fireballSprites);
+                            direction = Direction.DOWN;
                         }
+                    } else {
+                        counter += 100;
                     }
                     break;
                 case DOWN:
-                    if (gameData.time > 0) {
-                        if (counter == 1000) {
-                            counter = 0;
-                            super.y += super.MOVEMENT;
-                            if (super.y >= 192) {
-                                fireballMoves.setFrames(fireballSprites);
-                                direction = Direction.RIGHT;
-                            }
-                        } else {
-                            counter += 100;
+                    if (counter == 1000) {
+                        counter = 0;
+                        super.y += super.MOVEMENT;
+                        if (super.y >= 192) {
+                            fireballMoves.setFrames(fireballSprites);
+                            direction = Direction.RIGHT;
                         }
+                    } else {
+                        counter += 100;
                     }
                     break;
                 case RIGHT:
-                    if (gameData.time > 0) {
-                        if (counter == 1000) {
-                            counter = 0;
-                            super.x += super.MOVEMENT;
-                            if (super.x >= 192) {
-                                fireballMoves.setFrames(fireballSprites);
-                                direction = Direction.UP;
-                            }
-                        } else {
-                            counter += 100;
+                    if (counter == 1000) {
+                        counter = 0;
+                        super.x += super.MOVEMENT;
+                        if (super.x >= 192) {
+                            fireballMoves.setFrames(fireballSprites);
+                            direction = Direction.UP;
                         }
+                    } else {
+                        counter += 100;
                     }
                     break;
                 case UP:
-                    if (gameData.time > 0) {
-                        if (counter == 1000) {
-                            counter = 0;
-                            super.y -= super.MOVEMENT;
-                            if (super.y <= 64) {
-                                fireballMoves.setFrames(fireballSprites);
-                                direction = Direction.LEFT;
-                            }
-                        } else {
-                            counter += 100;
+                    if (counter == 1000) {
+                        counter = 0;
+                        super.y -= super.MOVEMENT;
+                        if (super.y <= 64) {
+                            fireballMoves.setFrames(fireballSprites);
+                            direction = Direction.LEFT;
                         }
+                    } else {
+                        counter += 100;
                     }
                     break;
             }
@@ -171,7 +163,7 @@ public class Fireball extends Monster {
             GameData.levelInProgress = false;
         } else if (O instanceof Wall || O instanceof Fire || O instanceof Water || O instanceof Block) {
             noMove();
-            direction = direction.getOppositeDirection();            
+            direction = direction.getOppositeDirection();
         }
     }
 }

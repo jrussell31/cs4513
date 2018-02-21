@@ -26,7 +26,7 @@ public class Animator implements Runnable {
     public void run() {
         running = true;
 
-        while (running) {
+        while (running && GameData.time > 0) {
             long startTime = System.currentTimeMillis();
 
             if (GameData.levelInProgress) {
