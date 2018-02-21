@@ -130,7 +130,6 @@ public class Tank2 extends Monster{
         super.y = dy;
     }
     
-    
     @Override
     public void collide(GameObject O){       
         if(O instanceof Wall) {
