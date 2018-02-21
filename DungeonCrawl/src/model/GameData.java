@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import model.Immoveable.Tile.Button;
 import model.Moveable.Block;
 
 /**
@@ -39,9 +40,7 @@ public class GameData {
     {
         gameObjects = Collections.synchronizedList(new ArrayList<>());
         gamerInventory = Collections.synchronizedList(new ArrayList<>());
-        
-        killedMonsters = Collections.synchronizedList(new ArrayList<>());
-        
+                
         // List of Levels
         gameLevels = new HashMap();
         gameLevels.put(LevelNumber.LEVELONE, new LevelOne());
@@ -62,19 +61,16 @@ public class GameData {
         //Clear out game objects
         gameObjects.clear();
         gamerInventory.clear();
-        
-        killedMonsters.clear(); 
+                
+        //Moveable Objects
+        gameObjects.addAll(currentLevel.getImmovableObjects());
         
         //Immoveable Objects
         gameObjects.addAll(currentLevel.getMoveableObjects());
-        
-        //Moveable Objects
-        gameObjects.addAll(currentLevel.getImmovableObjects());
+                
         gamer = currentLevel.getGamer();
-        
-        //Gamer Object
-        gamer.update();
-        
+        gameObjects.add(gamer);
+
         levelInProgress = true;
     }
     
@@ -94,21 +90,37 @@ public class GameData {
                 timerCounter++;
             }
         }
-        
-        gamer.update();
-        
+                
         synchronized(gameObjects)
         {
             for(GameObject object: gameObjects)
             {
-                if(object instanceof Monster)
-                {
-                    ((Monster)object).update();
-                }
-                if(object instanceof Block){
-                    ((Block)object).update();
+                object.update();
+            }
+        }
+        
+        ArrayList<GameObject> removeInventory = new ArrayList<>();
+        synchronized (gamerInventory) {
+            for (GameObject object : gamerInventory) {
+                if (!object.isAlive()) {
+                    removeInventory.add(object);
                 }
             }
+        }
+        gamerInventory.removeAll(removeInventory);
+        
+        ArrayList<GameObject> removeKilledObjects = new ArrayList<>();
+        synchronized(GameData.gameObjects){
+            for(GameObject object : GameData.gameObjects){
+                if(!object.isAlive()){
+                    removeKilledObjects.add(object);
+                }             
+            }
+        }
+        GameData.gameObjects.removeAll(removeKilledObjects);
+        
+        if(!gamer.isAlive()){
+            levelInProgress = false;
         }
     }
     
