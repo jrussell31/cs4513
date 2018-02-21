@@ -14,6 +14,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Wall;
 
 /**
  *
@@ -154,6 +156,10 @@ public class Ball extends Monster {
              DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
              GameData.levelInProgress = false;
          }
+         else if (O instanceof Wall || O instanceof Fire || O instanceof Block) {
+            noMove();
+            direction = direction.getOppositeDirection();
+        }
      }
     
 }
