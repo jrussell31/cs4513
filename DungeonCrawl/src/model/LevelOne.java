@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import static model.GameData.MAP_HEIGHT;
 import static model.GameData.MAP_WIDTH;
+import static model.GameData.gameObjects;
+import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
@@ -113,7 +115,8 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Lock(15, 25, LockType.SOCKET));
         
         //Level boots
-        //gameObjects.add(new Boot(3, 3, BootType.FIRE));
+        super.immovableObjects.add(new Boot(3, 3, BootType.FIRE));
+        super.immovableObjects.add(new Boot(3, 2, BootType.WATER));
         
         //Level Chips
         super.immovableObjects.add(new Chip(4, 3));
