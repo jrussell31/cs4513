@@ -20,7 +20,7 @@ import model.Moveable.Block;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
-import model.Moveable.Tank2;
+import model.Direction;
 
 public final class LevelOne extends Level{
     
@@ -170,12 +170,12 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Fireball(6, 2));
         super.moveableObjects.add(new Fireball(10,19));
         super.moveableObjects.add(new Fireball(20,19));
-        super.moveableObjects.add(new Tank (24, 10));
-        super.moveableObjects.add(new Tank2 (28, 12));
-        super.moveableObjects.add(new Tank (24, 14));
-        super.moveableObjects.add(new Tank2 (28, 16));
-        super.moveableObjects.add(new Tank (24, 18));
-        super.moveableObjects.add(new Tank2 (28, 20));
+        super.moveableObjects.add(new Tank (23, 10, Direction.RIGHT));
+        super.moveableObjects.add(new Tank (29, 12, Direction.LEFT));
+        super.moveableObjects.add(new Tank (23, 14, Direction.RIGHT));
+        super.moveableObjects.add(new Tank (29, 16, Direction.LEFT));
+        super.moveableObjects.add(new Tank (23, 18, Direction.RIGHT));
+        super.moveableObjects.add(new Tank (29, 20, Direction.LEFT));
         super.moveableObjects.add(new Ball(14,15));
         
         //Level blocks

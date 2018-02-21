@@ -11,10 +11,10 @@
 package model.Moveable;
 
 import DungeonCrawl.DungeonCrawl;
-import com.sun.javafx.scene.traversal.Direction;
 import static model.GameData.MAP_WIDTH;
 import java.awt.Color;
 import model.GameData;
+import model.Direction;
 import java.awt.Graphics2D;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
@@ -23,6 +23,7 @@ import model.GameObject;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Water;
+import model.Level;
 
 public class Tank extends Monster{
         
@@ -36,18 +37,12 @@ public class Tank extends Monster{
     public float dx;
     public float dy;
     
-    /*
-    public int facing = 1; //0 = North, 1 = East, 2 = South, 3 = West,
-    public boolean down, up, left = false; 
-    public boolean right = true; 
-    */
-    
     private final ObjectAnimator tankMoves;
     
-    public Tank(float x, float y) {
+    public Tank(float x, float y, Direction d) {
         super(x, y);        
         tankMoves = new ObjectAnimator();
-        super.direction = Direction.LEFT;
+        super.direction = d;
         
         tank_S = new BufferedImage[1];
         tank_N = new BufferedImage[1];
@@ -81,53 +76,28 @@ public class Tank extends Monster{
     @Override
     public void update() {
         dx = super.x;
-        dy = super.y;
+        dy = super.y;        
+        tankMoves.setFrames(tank_S);
         
-        if (GameData.currentLevel.getLevelTime() > 0) {  
-            
-            if (right) {
-                tankMoves.setFrames(tank_E);
-                if (counter == 1000) {
-                    counter = 0;
-                    for (int i = 0; i < 1; i++) {
-                        super.x += super.MOVEMENT;
-                    }
-                    if (super.x >= 33 * MAP_WIDTH) {
-                        facing = 1;
-                        tankMoves.setFrames(tank_E);
-                        left = true; 
-                        right = false; 
-                        up = false; 
-                        down = false; 
-                    }
-                    tankMoves.setFrames(tank_E);
-                } else {
-                    counter += 100;
-                }
-            }
-            else if (left) {
-                tankMoves.setFrames(tank_W);
-                if (counter == 1000) {
-                    counter = 0;
-                    
-                    for (int i = 0; i < 1; i++) {      
+        if (Level.fLevelOne) {
+            if (counter == 1000) {
+                counter = 0;
+                switch(direction) {
+                    case LEFT:
+                        tankMoves.setFrames(tank_W);
                         super.x -= super.MOVEMENT;
-                        //tankMoves.setFrames(tank_W);
-                    }
-                    
-                    if (super.x <= 23 * MAP_WIDTH) {
-                        facing = 3;
-                        left = false; 
-                        right = true; 
-                        up = false; 
-                        down = false; 
-                    } 
-                    tankMoves.setFrames(tank_W);
-                } else {
-                    counter += 100;
+                        break;
+                    case RIGHT:
+                        tankMoves.setFrames(tank_E);
+                        super.x += super.MOVEMENT;
+                        break;
                 }
+
+            } else {
+                counter += 100;
             }
-        }tankMoves.update();
+            tankMoves.update();
+        }
     }
     
     public void noMove() {
