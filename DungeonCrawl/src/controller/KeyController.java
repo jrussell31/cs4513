@@ -17,23 +17,21 @@ import model.Moveable.Gamer;
  *
  * @author russe_000
  */
-public class KeyController implements KeyListener  {
+public class KeyController implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        
+
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
         GameObject firstGameObject = DungeonCrawl.gameData.gamer;
-        
-        if(firstGameObject instanceof Gamer)
-        {
-            Gamer gamer = (Gamer)firstGameObject;
 
-            switch (ke.getKeyCode()) 
-            {
+        if (firstGameObject instanceof Gamer) {
+            Gamer gamer = (Gamer) firstGameObject;
+
+            switch (ke.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
                     gamer.setDirection(Direction.LEFT);
                     break;
@@ -48,22 +46,15 @@ public class KeyController implements KeyListener  {
                     break;
                 case KeyEvent.VK_SPACE:
                     // If game hasn't started yet
-                    if(!DungeonCrawl.thread.isAlive())
-                    {
+                    if (!DungeonCrawl.thread.isAlive()) {
                         DungeonCrawl.bannerPanel.setVisible(false);
                         DungeonCrawl.startGame();
-                    }
+                    } 
                     // If game already started
-                    else
-                    {
-                        // If gamer is alive
-                        if(GameData.gamer.isAlive()){
-                            // If the level is not in progress (End of Level)
-                            if(!GameData.levelInProgress){
-                                GameData.resetGameData();
-                                DungeonCrawl.bannerPanel.setVisible(false);
-                            }
-                        }
+                    // If the level is not in progress (End of Level)
+                    else if (!GameData.levelInProgress) {
+                        GameData.resetGameData();
+                        DungeonCrawl.bannerPanel.setVisible(false);
                     }
             }
         }
@@ -72,12 +63,11 @@ public class KeyController implements KeyListener  {
     @Override
     public void keyReleased(KeyEvent ke) {
         Object firstGameObject = DungeonCrawl.gameData.gamer;
-        
-        if(firstGameObject instanceof Gamer)
-        {
-            Gamer gamer = (Gamer)firstGameObject;
+
+        if (firstGameObject instanceof Gamer) {
+            Gamer gamer = (Gamer) firstGameObject;
             gamer.setDirection(Direction.NONE);
         }
     }
-    
+
 }

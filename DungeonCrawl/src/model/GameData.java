@@ -40,9 +40,7 @@ public class GameData {
     {
         gameObjects = Collections.synchronizedList(new ArrayList<>());
         gamerInventory = Collections.synchronizedList(new ArrayList<>());
-        
-        killedMonsters = Collections.synchronizedList(new ArrayList<>());
-        
+                
         // List of Levels
         gameLevels = new HashMap();
         gameLevels.put(LevelNumber.LEVELONE, new LevelOne());
@@ -63,9 +61,7 @@ public class GameData {
         //Clear out game objects
         gameObjects.clear();
         gamerInventory.clear();
-        
-        killedMonsters.clear(); 
-        
+                
         //Moveable Objects
         gameObjects.addAll(currentLevel.getImmovableObjects());
         
@@ -74,10 +70,7 @@ public class GameData {
                 
         gamer = currentLevel.getGamer();
         gameObjects.add(gamer);
-        
-        //Gamer Object
-        gamer.update();
-        
+
         levelInProgress = true;
     }
     
