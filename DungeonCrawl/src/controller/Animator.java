@@ -9,6 +9,7 @@ import DungeonCrawl.DungeonCrawl;
 import java.util.ArrayList;
 import model.GameData;
 import static model.GameData.gamerInventory;
+import static model.GameData.killedMonsters;
 import model.GameObject;
 import model.Immoveable.Tile.Button;
 
@@ -84,5 +85,15 @@ public class Animator implements Runnable {
             }
         }
         gamerInventory.removeAll(removeInventory);
+        
+        ArrayList<GameObject> removeKilledMonster = new ArrayList<>();
+        synchronized(killedMonsters){
+            for(GameObject object : killedMonsters){
+                if(!object.isAlive()){
+                    removeKilledMonster.add(object);
+                }             
+            }
+        }
+        killedMonsters.removeAll(removeKilledMonster);
     }
 }
