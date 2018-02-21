@@ -50,27 +50,12 @@ public final class GamePanel extends JPanel
         graphics.drawImage(ImageFinder.getImage("ImagesFolder", "map.png"), 0, 0, this);
 
         synchronized(GameData.gameObjects) 
-        {
-            ArrayList<GameObject> remove = new ArrayList<>();
-                    
+        {                    
             for(GameObject object : GameData.gameObjects) 
             {
-                if(object.isAlive())
-                {
                     object.render(graphics);
-                }
-                else
-                {
-                    remove.add(object);
-                }
-                
-                object.render(graphics);
             }
-            
-            GameData.gameObjects.removeAll(remove);
-        }
-        
-        GameData.gamer.render(graphics);
+        }        
     }      
 
     public void printScreen() {

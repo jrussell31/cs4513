@@ -14,7 +14,6 @@ import static model.GameData.killedMonsters;
 import model.GameObject;
 import model.Immoveable.Tile.Button;
 
-
 /**
  *
  * @author russe_000
@@ -28,17 +27,16 @@ public class Animator implements Runnable {
     public void run() {
         running = true;
 
-        while (running) {
+        while (running && GameData.time > 0) {
             long startTime = System.currentTimeMillis();
 
-            if(GameData.levelInProgress){
+            if (GameData.levelInProgress) {
                 DungeonCrawl.gameData.update();
                 processCollisions();
                 DungeonCrawl.gamePanel.gameRender();
                 DungeonCrawl.gamePanel.printScreen();
                 DungeonCrawl.inventoryPanel.updateInventoryPanel();
-            }
-            else{
+            } else {
                 DungeonCrawl.bannerPanel.setVisible(true);
                 DungeonCrawl.gamePanel.requestFocus();
             }
@@ -59,42 +57,13 @@ public class Animator implements Runnable {
 
     private void processCollisions() {
         for (GameObject object : GameData.gameObjects) {
-            // If there is a collision between the gamer and a game object
-            if (GameData.gamer.getCollisionBox().intersects(
-                    object.getCollisionBox())) {
-                //GameData.gamer.collide(object);
-                object.collide(GameData.gamer);
-            }
-            else if(object instanceof Button){
-                    ((Button) object).pressed = false;
-                }
-            for(GameObject go: GameData.gameObjects){
-                if(object != go && object.getCollisionBox().intersects(
-                        go.getCollisionBox())){
+            for (GameObject go : GameData.gameObjects) {
+                if (object != go && object.getCollisionBox().intersects(
+                        go.getCollisionBox())) {
+                    //System.out.println(object.getClass() + " " + go.getClass());
                     object.collide(go);
                 }
-            }
-        }                
-        ArrayList<GameObject> removeInventory = new ArrayList<>();
-        synchronized(gamerInventory){
-            for(GameObject object : gamerInventory){
-                if(!object.isAlive()){
-                    removeInventory.add(object);
-                }             
-            }
-        }
-        gamerInventory.removeAll(removeInventory);
-
-    
-            ArrayList<GameObject> removeGameObject = new ArrayList<>();
-        synchronized(gameObjects){
-            for(GameObject object : gameObjects){
-                if(!object.isAlive()){
-                    removeGameObject.add(object);
-                }             
-            }
-        }
-        gameObjects.removeAll(removeGameObject);
-
+            }            
+        }                                
     }
 }

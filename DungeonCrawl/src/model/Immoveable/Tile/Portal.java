@@ -37,7 +37,7 @@ public class Portal extends Tile {
     
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(portalImg, (int)super.x, (int)super.y, (int)super.width, (int)super.height, null);
+        g.drawImage(portalImg, (int)super.x, (int)super.y, (int)super.WIDTH, (int)super.HEIGHT, null);
         g.draw(this.getCollisionBox());
     }
 
