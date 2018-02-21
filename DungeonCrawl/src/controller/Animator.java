@@ -59,36 +59,10 @@ public class Animator implements Runnable {
             for (GameObject go : GameData.gameObjects) {
                 if (object != go && object.getCollisionBox().intersects(
                         go.getCollisionBox())) {
+                    //System.out.println(object.getClass() + " " + go.getClass());
                     object.collide(go);
                 }
-            }
-            
-            // If there is a collision between the gamer and a game object
-            if (GameData.gamer.getCollisionBox().intersects(
-                    object.getCollisionBox())) {
-                //GameData.gamer.collide(object);
-                object.collide(GameData.gamer);
-            }
-        }
-        
-        ArrayList<GameObject> removeInventory = new ArrayList<>();
-        synchronized (gamerInventory) {
-            for (GameObject object : gamerInventory) {
-                if (!object.isAlive()) {
-                    removeInventory.add(object);
-                }
-            }
-        }
-        gamerInventory.removeAll(removeInventory);
-        
-        ArrayList<GameObject> removeKilledMonster = new ArrayList<>();
-        synchronized(killedMonsters){
-            for(GameObject object : killedMonsters){
-                if(!object.isAlive()){
-                    removeKilledMonster.add(object);
-                }             
-            }
-        }
-        killedMonsters.removeAll(removeKilledMonster);
+            }            
+        }                                
     }
 }

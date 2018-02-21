@@ -30,6 +30,7 @@ public abstract class ImmovableObject implements GameObject {
         this.alive = a;
     }
     
+    @Override
     public void update(){}    
     
     @Override

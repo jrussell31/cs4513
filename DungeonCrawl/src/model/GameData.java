@@ -73,6 +73,7 @@ public class GameData {
         gameObjects.addAll(currentLevel.getMoveableObjects());
                 
         gamer = currentLevel.getGamer();
+        gameObjects.add(gamer);
         
         //Gamer Object
         gamer.update();
@@ -96,24 +97,37 @@ public class GameData {
                 timerCounter++;
             }
         }
-        
-        gamer.update();
-        
+                
         synchronized(gameObjects)
         {
             for(GameObject object: gameObjects)
             {
-                if(object instanceof Monster)
-                {
-                    ((Monster)object).update();
-                }
-                if(object instanceof Block){
-                    ((Block)object).update();
-                }
-                if(object instanceof Button){
-                    ((Button)object).update();
+                object.update();
+            }
+        }
+        
+        ArrayList<GameObject> removeInventory = new ArrayList<>();
+        synchronized (gamerInventory) {
+            for (GameObject object : gamerInventory) {
+                if (!object.isAlive()) {
+                    removeInventory.add(object);
                 }
             }
+        }
+        gamerInventory.removeAll(removeInventory);
+        
+        ArrayList<GameObject> removeKilledObjects = new ArrayList<>();
+        synchronized(GameData.gameObjects){
+            for(GameObject object : GameData.gameObjects){
+                if(!object.isAlive()){
+                    removeKilledObjects.add(object);
+                }             
+            }
+        }
+        GameData.gameObjects.removeAll(removeKilledObjects);
+        
+        if(!gamer.isAlive()){
+            levelInProgress = false;
         }
     }
     

@@ -21,6 +21,8 @@ public interface GameObject {
     
     public abstract void render(Graphics2D g);
     
+    public abstract void update();
+    
     public Rectangle2D.Double getCollisionBox();
     
     public abstract boolean isAlive();
