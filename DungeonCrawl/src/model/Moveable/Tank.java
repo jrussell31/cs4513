@@ -43,7 +43,7 @@ public class Tank extends Monster{
         super(x, y);        
         tankMoves = new ObjectAnimator();
         super.direction = d;
-        
+         
         tank_S = new BufferedImage[1];
         tank_N = new BufferedImage[1];
         tank_W = new BufferedImage[1];
@@ -61,7 +61,7 @@ public class Tank extends Monster{
         } catch(Exception e){
             e.printStackTrace();
         }
-        
+        tankMoves.setFrames(tank_S);
     }
         
     @Override
@@ -77,7 +77,7 @@ public class Tank extends Monster{
     public void update() {
         dx = super.x;
         dy = super.y;        
-        tankMoves.setFrames(tank_S);
+        //tankMoves.setFrames(tank_S);
         
         if (Level.fLevelOne) {
             if (counter == 1000) {
