@@ -92,7 +92,6 @@ public class Button extends Tile {
         if(!(prevOnButton.contains(O))){        
             if(type == ButtonType.GREEN){
                     this.associatedObjects.forEach((o)-> setObject(o));
-
             } 
             else if(type == ButtonType.BLUE) {
                 if (O instanceof Gamer) {
@@ -115,6 +114,8 @@ public class Button extends Tile {
         if(object instanceof ToggleWall){
             ((ToggleWall) object).setOpen(!((ToggleWall) object).isOpen());
             GameData.gameObjects.set(indexOfObject, object);
-        }
+        } //else if(object instanceof Tank) {
+            //((Tank) object).
+        //}
     }
 }

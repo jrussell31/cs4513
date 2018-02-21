@@ -11,8 +11,8 @@
 package model.Moveable;
 
 import DungeonCrawl.DungeonCrawl;
+import com.sun.javafx.scene.traversal.Direction;
 import static model.GameData.MAP_WIDTH;
-import static model.GameData.MAP_HEIGHT;
 import java.awt.Color;
 import model.GameData;
 import java.awt.Graphics2D;
@@ -21,6 +21,8 @@ import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
 import model.GameObject;
 import model.Immoveable.Tile.Wall;
+import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Water;
 
 public class Tank extends Monster{
         
@@ -34,16 +36,18 @@ public class Tank extends Monster{
     public float dx;
     public float dy;
     
+    /*
     public int facing = 1; //0 = North, 1 = East, 2 = South, 3 = West,
     public boolean down, up, left = false; 
     public boolean right = true; 
+    */
     
-    private boolean makeTurn;
     private final ObjectAnimator tankMoves;
     
     public Tank(float x, float y) {
         super(x, y);        
         tankMoves = new ObjectAnimator();
+        super.direction = Direction.LEFT;
         
         tank_S = new BufferedImage[1];
         tank_N = new BufferedImage[1];
@@ -63,14 +67,6 @@ public class Tank extends Monster{
             e.printStackTrace();
         }
         
-    }
-    
-    public boolean turn() {
-        return makeTurn;
-    }
-    
-    public void setTurn(boolean makeTurn) {
-        this.makeTurn = makeTurn;
     }
         
     @Override
@@ -142,7 +138,7 @@ public class Tank extends Monster{
     
     @Override
     public void collide(GameObject O){       
-        if(O instanceof Wall) {
+        if(O instanceof Wall || O instanceof Block) {
             noMove();
             /*
             if(blue button pressed) {
@@ -155,11 +151,15 @@ public class Tank extends Monster{
                 }
             }
             */
-        }
-        
+        }         
         if(O instanceof Gamer){
+            this.setAlive(false);
+            ((Gamer)O).setAlive(false);
             DungeonCrawl.bannerPanel.setBannerText("You colided with the tank on Level  " + GameData.currentLevel.getLevelValue());
-            GameData.levelInProgress = false;
+            //GameData.levelInProgress = false;
+        }
+        if(O instanceof Water || O instanceof Fire) {
+            this.setAlive(false);
         }
         
     }

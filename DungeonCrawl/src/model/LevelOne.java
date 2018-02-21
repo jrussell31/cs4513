@@ -150,6 +150,7 @@ public final class LevelOne extends Level{
         
         //Buttons
         super.immovableObjects.add(new Button(15, 11, ButtonType.GREEN, toggleWalls));
+        super.immovableObjects.add(new Button(26, 8, ButtonType.BLUE, toggleWalls));
         
         //Exit Portal
         super.immovableObjects.add(new Portal(15, 26));
