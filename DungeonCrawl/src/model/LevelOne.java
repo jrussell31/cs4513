@@ -136,6 +136,7 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Water(15, 12));
         super.immovableObjects.add(new Fire(17,19));
         super.immovableObjects.add(new Fire(9, 4));
+        super.immovableObjects.add(new Fire(14, 6));
         
         //Toggle Walls
         ArrayList<GameObject> toggleWalls = new ArrayList<>();

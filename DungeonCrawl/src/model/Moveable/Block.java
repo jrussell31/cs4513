@@ -11,6 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Wall;
 
 /**
@@ -69,7 +70,7 @@ public class Block extends MoveableObject {
     private boolean isMovable(float x, float y) {
         Block temp = new Block(x, y);
         for (GameObject o : GameData.gameObjects) {
-            if (o instanceof Wall || o instanceof Block && o != this) {
+            if (o instanceof Wall || o instanceof Block || o instanceof Fire && o != this) {
                 if (temp.getCollisionBox().intersects(o.getCollisionBox())) {
                     return false;
                 }                
