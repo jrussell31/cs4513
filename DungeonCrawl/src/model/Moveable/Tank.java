@@ -60,7 +60,7 @@ public class Tank extends Monster{
 
     @Override
     public void render(Graphics2D g) {
-        g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, (int)super.height, (int)super.width, 
+        g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, (int)super.HEIGHT, (int)super.WIDTH, 
             null);
         //Draw Collision Box
         g.setColor(Color.blue);
