@@ -7,7 +7,6 @@ package model.Immoveable.Tile;
 
 import DungeonCrawl.DungeonCrawl;
 import controller.ImageFinder;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;

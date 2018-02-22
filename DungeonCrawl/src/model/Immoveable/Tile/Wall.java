@@ -13,6 +13,8 @@ import model.GameData;
 import model.GameObject;
 import model.Moveable.Ball;
 import model.Moveable.Gamer;
+import model.Moveable.Monster;
+import model.Moveable.Tank;
 
 /**
  *
