@@ -168,7 +168,8 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Fireball(10,19));
         super.moveableObjects.add(new Fireball(20,19));
         super.moveableObjects.add(new Tank (17, 20));
-        super.moveableObjects.add(new Ball(14,15));
+        super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
+        super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
         
         //Level blocks
         super.moveableObjects.add(new Block(12, 6));

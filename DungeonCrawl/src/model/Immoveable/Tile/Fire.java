@@ -14,6 +14,7 @@ import model.BootType;
 import model.GameData;
 import model.GameObject;
 import model.Immoveable.Collectible.Boot;
+import model.Moveable.Ball;
 import model.Moveable.Gamer;
 
 /**
@@ -52,6 +53,10 @@ public class Fire extends Tile {
                 DungeonCrawl.bannerPanel.setBannerText("You burned on Level  " + GameData.currentLevel.getLevelValue());
                 GameData.levelInProgress = false;
             }
+        }
+                //Collide with Ball
+        if(O instanceof Ball){
+            ((Ball) O).noMove();
         }
     }
 
