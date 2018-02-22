@@ -69,7 +69,19 @@ public class Fireball extends Monster {
         if (Level.fLevelOne) {
             if (counter == 1000) {
                 counter = 0;
-                switch (direction) {
+                if(super.x > 64 && super.y == 64){
+                    super.x -= super.MOVEMENT;                
+                }
+                else if(super.y < 192 && super.x == 64){
+                    super.y += super.MOVEMENT;                
+                }
+                else if(super.x < 192 && super.y == 192){
+                    super.x += super.MOVEMENT;              
+                }
+                else if (super.x == 192){
+                    super.y -= super.MOVEMENT;              
+                }
+                /*switch (direction) {
                     case LEFT:
                         super.x -= super.MOVEMENT;
                         if (super.x == 64) {
@@ -93,7 +105,7 @@ public class Fireball extends Monster {
                         if (super.y == 192) {
                             direction = Direction.RIGHT;
                         }
-                }
+                }*/
             } else {
                 counter += 100;
             }
