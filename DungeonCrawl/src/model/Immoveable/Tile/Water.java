@@ -14,6 +14,7 @@ import model.BootType;
 import model.GameData;
 import model.GameObject;
 import model.Immoveable.Collectible.Boot;
+import model.Moveable.Ball;
 import model.Moveable.Block;
 import model.Moveable.Gamer;
 
@@ -61,6 +62,10 @@ public class Water extends Tile {
         {
             this.setAlive(false);
             ((Block)O).setAlive(false);
+        }
+        //Collide with Ball
+        if(O instanceof Ball){
+            ((Ball) O).noMove();
         }
     }
 
