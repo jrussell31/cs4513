@@ -112,11 +112,6 @@ public class Tank extends Monster{
         }         
         
         super.collide(O);
-        
-        if(O instanceof Gamer){
-            this.setAlive(false);
-            ((Gamer)O).setAlive(false);
-        }
         if(O instanceof Water || O instanceof Fire) {
             this.setAlive(false);
         }

@@ -139,16 +139,20 @@ public class Fireball extends Monster {
     }
 
     @Override
-    public void collide(GameObject O) {
-        if (O instanceof Gamer) {
-            this.setAlive(false);
-            ((Gamer) O).setAlive(false);
-            DungeonCrawl.bannerPanel.setBannerText("You collided with the Fireball on Level  " + GameData.currentLevel.getLevelValue());
-        } else if (O instanceof Water) {
-            this.setAlive(false);
-        } else if (O instanceof Wall || O instanceof Fire || O instanceof Block) {
-            noMove();
-            direction = direction.getOppositeDirection();
+    public void collide(GameObject O) 
+    {
+        if(O instanceof Gamer)
+        {
+        super.collide(O);
         }
+            else if (O instanceof Water) 
+            {
+                this.setAlive(false);
+            } 
+            else if (O instanceof Wall || O instanceof Fire || O instanceof Block) 
+            {
+                noMove();
+                direction = direction.getOppositeDirection();
+            }
     }
 }
