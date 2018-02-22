@@ -5,40 +5,77 @@
  */
 package model.Moveable;
 
-import java.awt.Graphics;
-import java.awt.geom.Rectangle2D;
+import controller.ImageFinder;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import model.GameData;
+import model.GameObject;
+import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Wall;
 
 /**
  *
  * @author russe_000
  */
 public class Block extends MoveableObject {
+
+    public BufferedImage blockImg;
+    private float dx;
+    private float dy;
+
     public Block(float x, float y) {
         super(x, y);
-    }
-    
-    @Override
-    public void render(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+            blockImg = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Block.png");
+        } catch (Exception e) {
+        }
+
     }
 
     @Override
-    public boolean isAlive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void render(Graphics2D g) {
+        if (this.isAlive()) {
+            g.drawImage(blockImg, (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT, null);
+
+
+            //Draw Collision Box
+            //g.setColor(Color.blue);
+            //g.draw(this.getCollisionBox());        
+        }
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dx = x;
+        dy = y;
     }
 
     @Override
-    public void findCollision() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void collide(GameObject O) {
+        if (O instanceof Gamer) {
+            float tempX = x + ((Gamer) O).x - ((Gamer) O).dx;
+            float tempY = y + ((Gamer) O).y - ((Gamer) O).dy;
+            if (isMovable(tempX / super.MOVEMENT, tempY / super.MOVEMENT)) {
+                x = tempX;
+                y = tempY;
+            } 
+            else {
+                ((Gamer) O).noMove();
+            }
+        }
     }
 
-    @Override
-    public Rectangle2D.Double getCollisionBox() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private boolean isMovable(float x, float y) {
+        Block temp = new Block(x, y);
+        for (GameObject o : GameData.gameObjects) {
+            if (o instanceof Wall || o instanceof Block || o instanceof Fire && o != this) {
+                if (temp.getCollisionBox().intersects(o.getCollisionBox())) {
+                    return false;
+                }                
+            }            
+        }
+        return true;
     }
 }

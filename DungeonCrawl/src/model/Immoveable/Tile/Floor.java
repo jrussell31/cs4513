@@ -5,10 +5,17 @@
  */
 package model.Immoveable.Tile;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import model.GameObject;
+
 /**
  *
  * @author russe_000
  */
-public class Floor extends Tile {
+public abstract class Floor extends Tile {
     
+    public Floor(float x, float y) {
+        super(x, y);
+    }
 }

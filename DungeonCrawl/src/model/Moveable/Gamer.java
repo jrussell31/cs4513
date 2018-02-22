@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author russe_000
@@ -12,171 +11,115 @@ package model.Moveable;
 
 import controller.ImageFinder;
 import controller.ObjectAnimator;
-import java.awt.Graphics;
-import java.awt.geom.Rectangle2D;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import model.GameData;
+import model.Direction;
 import model.GameObject;
-import model.Immoveable.Collectible.Boot;
-import model.Immoveable.Collectible.Chip;
-import model.Immoveable.Collectible.Collectible;
-import model.Immoveable.Collectible.Key;
+import model.Immoveable.Tile.Wall;
 
 public class Gamer extends MoveableObject {
-    private final int width = 16;
-    private final int height = 24;
-    
-    private float dx;
-    private float dy;
-    
-    public float moveSpeed;
-    public float maxSpeed;
-    public float stopSpeed;
-    
-    public BufferedImage[] leftSprites;
-    public BufferedImage[] rightSprites;
-    public BufferedImage[] downSprites;
-    public BufferedImage[] upSprites;
+
+    private final int width = 32;
+    private final int height = 32;
+
     public BufferedImage[] leftIdle;
     public BufferedImage[] rightIdle;
     public BufferedImage[] downIdle;
     public BufferedImage[] upIdle;
-    
+
     private boolean left = false;
     private boolean right = false;
     private boolean up = false;
     private boolean down = false;
     
+    public float dx;
+    public float dy;
+
     public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
-    
+
     private final ObjectAnimator gamerMoves;
-    
+
     public Gamer(float x, float y) {
         super(x, y);
-        
+
+        direction = Direction.NONE;
         gamerMoves = new ObjectAnimator();
-        gamerMoves.setDelay(100);
-        
-        upSprites = new BufferedImage[9];
-        rightSprites = new BufferedImage[8];
-        downSprites = new BufferedImage[9];
-        leftSprites = new BufferedImage[8];
         upIdle = new BufferedImage[1];
         rightIdle = new BufferedImage[1];
         downIdle = new BufferedImage[1];
         leftIdle = new BufferedImage[1];
-        try{
-            BufferedImage image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkIdleDown.gif");
-            
+        setImages();
+    }
+
+    public void setImages() {
+        try {
+            BufferedImage image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_S.png");
+
             downIdle[0] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkIdleUp.gif");
-            
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_N.png");
+
             upIdle[0] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkIdleLeft.gif");
-            
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_W.png");
+
             leftIdle[0] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkIdleRight.gif");
-            
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_E.png");
+
             rightIdle[0] = image;
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkWalkDown.gif");
-        
-            for(int i = 0; i < downSprites.length; i++){
-                downSprites[i] = image.getSubimage(i*width + i, 0, width, height);
-            }
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkWalkLeft.gif");
-            
-            for(int i = 0; i < leftSprites.length; i++){
-                leftSprites[i] = image.getSubimage(i*width + i, 0, width, height);
-            }
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkWalkRight.gif");
-            
-            for(int i = 0; i < rightSprites.length; i++){
-                rightSprites[i] = image.getSubimage(i*width + i, 0, width, height);
-            }
-            
-            image = (BufferedImage)ImageFinder.getImage("ImagesFolder", "LinkWalkUp.gif");
-            
-            for(int i = 0; i < upSprites.length; i++){
-                upSprites[i] = image.getSubimage(i*width + i, 0, width, height);
-            }
-        } catch(Exception e){
+
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_S.png");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void setLeft(boolean b)
-    {
-        left = b;
-    }
-    
-    public void setRight(boolean b)
-    {
-        right = b;
-    }
-    
-    public void setUp(boolean b)
-    {
-        up = b;
-    }
-    
-    public void setDown(boolean b)
-    {
-        down = b;
+
+    public void setDirection(Direction d) {
+        super.direction = d;
     }
 
     @Override
-    public void render(Graphics g) {
-        g.drawImage(gamerMoves.getImage(), (int)super.x, (int)super.y, 60, 60, 
-            null);
-    }
-
-    @Override
-    public Rectangle2D.Double getCollisionBox() {
-        // May need to change to adjust to correct height and width
-        return new Rectangle2D.Double(super.x, super.y, width*3.5, height*2.5);
+    public void render(Graphics2D g) {
+        g.drawImage(gamerMoves.getImage(), (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT,
+                null);
+        g.setColor(Color.blue);
+        g.draw(this.getCollisionBox());
     }
 
     @Override
     public void update() {
-        if(left)
-        {
-            super.x -= 50;
-            
-            facing = 3;
-            gamerMoves.setFrames(leftSprites);
-        } 
-        else if(right)
-        {
-            super.x += 50;
-            
-            facing = 1;
-            gamerMoves.setFrames(rightSprites);
-        }
-        
-        if(down)
-        {
-            super.y += 50;
-            
-            facing = 2;
-            gamerMoves.setFrames(downSprites);
-        } 
-        else if(up)
-        {
-            super.y -= 50;
-            
-            facing = 0;
-            gamerMoves.setFrames(upSprites);
-        }
-        
-        if (!(right && down && left && up))
-        {
-            switch(facing){
+        dx = super.x;
+        dy = super.y;
+
+        switch (super.direction) {
+            case LEFT:
+                super.x -= super.MOVEMENT;
+
+                facing = 3;
+                gamerMoves.setFrames(leftIdle);                
+                break;
+            case RIGHT:
+                super.x += super.MOVEMENT;
+
+                facing = 1;
+                gamerMoves.setFrames(rightIdle);
+                break;
+            case DOWN:
+                super.y += super.MOVEMENT;
+
+                facing = 2;
+                gamerMoves.setFrames(downIdle);
+                break;
+            case UP:
+                super.y -= super.MOVEMENT;
+
+                facing = 0;
+                gamerMoves.setFrames(upIdle);
+                break;
+            default:
+                switch (facing) {
                 case 0:
                     gamerMoves.setFrames(upIdle);
                     break;
@@ -190,58 +133,18 @@ public class Gamer extends MoveableObject {
                     gamerMoves.setFrames(leftIdle);
                     break;
             }
-            gamerMoves.setDelay(-1);
         }
-        else
-        {
-            gamerMoves.setDelay(100);
-        }
-        
         gamerMoves.update();
-        
-        Gamer ghostGamer = new Gamer(super.x + dx, super.y - dy);
-        
-        // Need to check for collisions between ghostGamer and collidibles
+        setDirection(Direction.NONE);
+    }
+
+    public void noMove() {
+        super.x = dx;
+        super.y = dy;
     }
 
     @Override
-    public void findCollision() {
-        for(GameObject object: GameData.gameObjects)
-        {
-            if(object instanceof Monster)
-            {
-                if(this.getCollisionBox().intersects(
-                    object.getCollisionBox()))
-                {
-                    
-                }
-            }
-            else if(object instanceof Collectible)
-            {
-                if(object instanceof Key)
-                {
-                    if(this.getCollisionBox().intersects(
-                        object.getCollisionBox()))
-                    {
-                        
-                    }
-                }
-                else if(object instanceof Boot)
-                {
-                    if(this.getCollisionBox().intersects(
-                        object.getCollisionBox()))
-                    {
-                    }
-                }
-                else if(object instanceof Chip)
-                {
-                    if(this.getCollisionBox().intersects(
-                        object.getCollisionBox()))
-                    {
-                        
-                    }
-                }
-            }
-        }
+    public void collide(GameObject O) {
+        //Leave this empty for now JL 2-15-18
     }
 }

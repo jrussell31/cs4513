@@ -1,8 +1,8 @@
 package view;
 
-import java.awt.Color;
+import controller.ImageFinder;
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -10,62 +10,58 @@ import javax.swing.JPanel;
 import model.GameData;
 import model.GameObject;
 
-public class GamePanel extends JPanel 
+public final class GamePanel extends JPanel 
 {
-    public static final int PWIDTH = 1000; 
-    public static final int PHEIGHT = 900;
+    public static int pwidth, pheight;
 
-    private Graphics graphics;
+    private Graphics2D graphics;
     private Image dbImage = null;
 
-    public GamePanel() 
-    {
-        setBackground(Color.black);
-        setPreferredSize(new Dimension(PWIDTH, PHEIGHT));
-        setFocusable(true);
-        requestFocus();
+    public GamePanel(Image dbImage) {
+        dbImage = ImageFinder.getImage("ImagesFolder", "Floor25pxT.png");
+        this.paintComponent(graphics);
+        System.out.println("I Ran!");
     }
+    
+    public GamePanel(int pwidth, int pheight) 
+    {
+        GamePanel.pwidth = pwidth;
+        GamePanel.pheight = pheight;
+        
+        setPreferredSize(new Dimension(GamePanel.pwidth, GamePanel.pheight));
+        setFocusable(true);
+    }    
 
     public void gameRender() 
     {        
         if (dbImage == null) {
-            dbImage = createImage(PWIDTH, PHEIGHT);
+            dbImage = createImage(pwidth, pheight);
             if (dbImage == null) {
                 System.out.println("dbImage is null");
                 return;
             } else {
-                graphics = dbImage.getGraphics();
+                graphics = (Graphics2D)dbImage.getGraphics();
             }
         }
+        
+        
 
-        graphics.clearRect(0, 0, GamePanel.PWIDTH, GamePanel.PHEIGHT);
+        graphics.clearRect(0, 0, GamePanel.pwidth, GamePanel.pheight);
+        graphics.drawImage(ImageFinder.getImage("ImagesFolder", "map.png"), 0, 0, this);
 
         synchronized(GameData.gameObjects) 
-        {
-            ArrayList<GameObject> remove = new ArrayList<>();
-                    
+        {                    
             for(GameObject object : GameData.gameObjects) 
             {
-                if(object.isAlive())
-                {
                     object.render(graphics);
-                }
-                else
-                {
-                    remove.add(object);
-                }
-                
-                object.render(graphics);
             }
-            
-            GameData.gameObjects.removeAll(remove);
-        }
+        }        
     }      
 
     public void printScreen() {
-        Graphics g;
+        Graphics2D g;
         try {
-            g = this.getGraphics();
+            g = (Graphics2D)this.getGraphics();
             if ((g != null) && (dbImage != null)) {
                 g.drawImage(dbImage, 0, 0, null);
             }

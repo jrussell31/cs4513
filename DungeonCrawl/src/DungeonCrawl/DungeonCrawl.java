@@ -5,11 +5,13 @@
  */
 package DungeonCrawl;
 import controller.Animator;
+import java.awt.Color;
 import javax.swing.JFrame;
 import model.GameData;
 import view.MainWindow;
 import view.GamePanel;
 import view.InventoryPanel;
+import view.BannerPanel;
 /**
  *
  * @author cameron
@@ -17,8 +19,10 @@ import view.InventoryPanel;
 public class DungeonCrawl {
     public static GameData gameData;
     public static Animator animator;
+    public static JFrame mainWindow;
     public static InventoryPanel inventoryPanel;
     public static GamePanel gamePanel;
+    public static BannerPanel bannerPanel;
     public static Thread thread;
     
     /**
@@ -27,23 +31,22 @@ public class DungeonCrawl {
     public static void main(String[] args) {
         animator = new Animator();
         gameData = new GameData();
-        gamePanel = new GamePanel();
-        inventoryPanel = new InventoryPanel();
+        gamePanel = new GamePanel(1000, 900);
+        inventoryPanel = new InventoryPanel(350, 900);
+        bannerPanel =  new BannerPanel(650, 300);
         
-        JFrame gameForReal = new MainWindow();
-        gameForReal.setTitle("Level 1!");
-        gameForReal.setSize(1500, 1000);
-        gameForReal.setLocation(0, 0);
-        gameForReal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameForReal.setVisible(true);
+        mainWindow = new MainWindow();
+        mainWindow.setTitle("Level 1!");
+        mainWindow.setSize(1500, 1000);
+        mainWindow.setLocation(0, 0);
+        mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainWindow.setVisible(true);
         
-        thread = new Thread(animator);
-        
-        startGame();
+       thread = new Thread(animator);
     }
     
-    public static void startGame(){
-        DungeonCrawl.gameData.resetGameData();
+    public static void startGame(){         
+        GameData.resetGameData();
         thread.start();
     }
 }
