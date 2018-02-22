@@ -11,6 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
+import model.Moveable.Ball;
 import model.Moveable.Gamer;
 import model.Moveable.Monster;
 import model.Moveable.Tank;
@@ -22,18 +23,19 @@ import model.Moveable.Tank;
 public class Wall extends Tile {
 
     public BufferedImage image;
-    
+
     public Wall(float x, float y) {
         super(x, y);
-        
-        try{
+
+        try {
             image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Wall.png");
+        } catch (Exception e) {
         }
-        catch(Exception e){}
     }
 
     @Override
     public void collide(GameObject O) {
+<<<<<<< HEAD
         if(O instanceof Gamer) {
             GameData.gamer.noMove();
         } 
@@ -42,6 +44,13 @@ public class Wall extends Tile {
             GameData.monster.noMove();
         }
         */
+=======
+        if (O instanceof Gamer) {
+            GameData.gamer.noMove();
+        }else if (O instanceof Ball){
+            ((Ball) O).noMove();
+        }
+>>>>>>> upstream/Dev
     }
 
     @Override

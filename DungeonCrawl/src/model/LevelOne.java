@@ -166,7 +166,13 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Fireball(6, 2));
         super.moveableObjects.add(new Fireball(10,19));
         super.moveableObjects.add(new Fireball(20,19));
+<<<<<<< HEAD
         super.moveableObjects.add(new Ball(14,15));
+=======
+        super.moveableObjects.add(new Tank (17, 20));
+        super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
+        super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
+>>>>>>> upstream/Dev
         
         ArrayList<GameObject> tanks = new ArrayList<>();
         tanks.add(new Tank (23, 10, Direction.RIGHT));
