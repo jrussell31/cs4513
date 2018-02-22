@@ -35,22 +35,11 @@ public class Wall extends Tile {
 
     @Override
     public void collide(GameObject O) {
-<<<<<<< HEAD
-        if(O instanceof Gamer) {
-            GameData.gamer.noMove();
-        } 
-        /*
-        if (O instanceof Monster) {
-            GameData.monster.noMove();
-        }
-        */
-=======
         if (O instanceof Gamer) {
             GameData.gamer.noMove();
         }else if (O instanceof Ball){
             ((Ball) O).noMove();
         }
->>>>>>> upstream/Dev
     }
 
     @Override
