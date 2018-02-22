@@ -177,7 +177,10 @@ public final class LevelOne extends Level{
         super.moveableObjects.addAll(tanks);
         
         //Button
-        super.moveableObjects.add(new Button(26, 8, ButtonType.BLUE, tanks));
+        for (int i = 23; i < 30; ++i) {            
+            super.moveableObjects.add(new Button(i, 9, ButtonType.BLUE, tanks));
+        }
+        
         
         //Level blocks
         super.moveableObjects.add(new Block(12, 6));
