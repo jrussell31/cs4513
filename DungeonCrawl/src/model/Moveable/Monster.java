@@ -43,7 +43,7 @@ public abstract class Monster extends MoveableObject {
         if(O instanceof Gamer){
             this.setAlive(false);
             ((Gamer)O).setAlive(false);
-            DungeonCrawl.bannerPanel.setBannerText("You colided with a " + getClass().getSimpleName() + " on Level  " + GameData.currentLevel.getLevelValue());
+            DungeonCrawl.bannerPanel.setBannerText("You collided with a " + getClass().getSimpleName() + " on Level  " + GameData.currentLevel.getLevelValue());
             GameData.levelInProgress = false;
         }
     }
