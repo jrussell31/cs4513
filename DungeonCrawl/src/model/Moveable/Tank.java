@@ -11,13 +11,19 @@
 package model.Moveable;
 
 import DungeonCrawl.DungeonCrawl;
+import static model.GameData.MAP_WIDTH;
 import java.awt.Color;
 import model.GameData;
+import model.Direction;
 import java.awt.Graphics2D;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
+import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Water;
+import model.Level;
 
 public class Tank extends Monster{
         
@@ -28,16 +34,16 @@ public class Tank extends Monster{
     
     int counter = 0;
     
-    public int facing = 2; //0 = North, 1 = East, 2 = South, 3 = West,
-    public boolean right, up, left = false; 
-    public boolean down = true; 
+    public float dx;
+    public float dy;
     
     private final ObjectAnimator tankMoves;
     
-    public Tank(float x, float y) {
+    public Tank(float x, float y, Direction d) {
         super(x, y);        
         tankMoves = new ObjectAnimator();
-        
+        super.direction = d;
+         
         tank_S = new BufferedImage[1];
         tank_N = new BufferedImage[1];
         tank_W = new BufferedImage[1];
@@ -55,9 +61,9 @@ public class Tank extends Monster{
         } catch(Exception e){
             e.printStackTrace();
         }
-        
+        tankMoves.setFrames(tank_S);
     }
-
+        
     @Override
     public void render(Graphics2D g) {
         g.drawImage(tankMoves.getImage(), (int)super.x, (int)super.y, (int)super.HEIGHT, (int)super.WIDTH, 
@@ -69,103 +75,46 @@ public class Tank extends Monster{
     
     @Override
     public void update() {
-        if (GameData.currentLevel.getLevelTime() > 0) {     
-            if (down) {
-                tankMoves.setFrames(tank_S);
-                if (counter == 1000) {
-                    counter = 0;
-                    for (int i = 0; i < 1; i++) {                        
-                        super.y += super.MOVEMENT;
-                        //tankMoves.setFrames(tank_S);
-                    }
-                    if (super.y >= 500) {
-                        facing = 2;
-                        tankMoves.setFrames(tank_S);
-                        left = false; 
-                        right = true; 
-                        up = false; 
-                        down = false; 
-                    }                    
-                    tankMoves.setFrames(tank_S);
-                }
-                else {
-                    counter += 100;
-                }
-                
-            }
-            else if (right) {  
-                tankMoves.setFrames(tank_E);
-                if (counter == 1000) {
-                    counter = 0;
-                    
-                    for (int i = 0; i < 1; i++) {                        
-                        super.x += super.MOVEMENT;
-                        //tankMoves.setFrames(tank_E);
-                    }                    
-                    if (super.x >= 800) {
-                        facing = 1;
-                        left = false; 
-                        right = false; 
-                        up = true; 
-                        down = false; 
-                    }
-                    tankMoves.setFrames(tank_E);
-                } else {
-                    counter += 100;
-                }
-            }
-            else if (up) {
-                tankMoves.setFrames(tank_N);
-                if (counter >= 1000) {
-                    counter = 0;
-                    
-                    for (int i = 0; i < 1; i++) {                        
-                        super.y -= super.MOVEMENT;
-                        //tankMoves.setFrames(tank_N);
-                    }
-                    if (super.y <= 300) {
-                        facing = 0;
-                        left = true; 
-                        right = false; 
-                        up = false; 
-                        down = false; 
-                    }
-                    tankMoves.setFrames(tank_N);
-                } else {
-                    counter += 100;
-                }
-            }
-            else if (left) {
-                tankMoves.setFrames(tank_W);
-                if (counter == 1000) {
-                    counter = 0;
-                    
-                    for (int i = 0; i < 1; i++) {                        
+        dx = super.x;
+        dy = super.y;        
+        //tankMoves.setFrames(tank_S);
+        
+        if (Level.fLevelOne) {
+            if (counter == 1000) {
+                counter = 0;
+                switch(direction) {
+                    case LEFT:
+                        tankMoves.setFrames(tank_W);
                         super.x -= super.MOVEMENT;
-                        //tankMoves.setFrames(tank_W);
-                    }
-                    
-                    if (super.x >= 700) {
-                        facing = 3;
-                        left = false; 
-                        right = false; 
-                        up = false; 
-                        down = true; 
-                    } 
-                    tankMoves.setFrames(tank_W);
-                } else {
-                    counter += 100;
+                        break;
+                    case RIGHT:
+                        tankMoves.setFrames(tank_E);
+                        super.x += super.MOVEMENT;
+                        break;
                 }
-            }tankMoves.update();
+
+            } else {
+                counter += 100;
+            }
+            tankMoves.update();
+        }
+    }
+    
+    public void noMove() {
+        super.x = dx;
+        super.y = dy;
+    }    
+    
+    @Override
+    public void collide(GameObject O){       
+        if(O instanceof Wall || O instanceof Block) {
+            noMove();
+        }         
+        
+        super.collide(O);
+        if(O instanceof Water || O instanceof Fire) {
+            this.setAlive(false);
         }
         
     }
-    
-  /*      @Override
-     public void collide(GameObject O){
-         if(O instanceof Gamer){
-             DungeonCrawl.bannerPanel.setBannerText("You colided with the Ball on Level  " + GameData.currentLevel.getLevelValue());
-             GameData.levelInProgress = false;
-         }
-     }*/
 }

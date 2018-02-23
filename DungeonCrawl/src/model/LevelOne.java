@@ -3,13 +3,11 @@ package model;
 import java.util.ArrayList;
 import static model.GameData.MAP_HEIGHT;
 import static model.GameData.MAP_WIDTH;
-import static model.GameData.gameObjects;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Fire;
-import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.ToggleWall;
@@ -44,6 +42,7 @@ public final class LevelOne extends Level{
             super.immovableObjects.add(new Wall(i, 0));
             super.immovableObjects.add(new Wall(i, MAP_HEIGHT));
         }
+        
         for(int i = 0; i <= MAP_HEIGHT; ++i){
             super.immovableObjects.add(new Wall(0, i));
             super.immovableObjects.add(new Wall(MAP_WIDTH, i));
@@ -165,11 +164,23 @@ public final class LevelOne extends Level{
         //Monsters
         super.moveableObjects.add(new Fireball(4, 2));
         super.moveableObjects.add(new Fireball(4, 6));
-        //super.moveableObjects.add(new Fireball(10,19));
-        //super.moveableObjects.add(new Fireball(20,19));
-        super.moveableObjects.add(new Tank (17, 20));
         super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
+        
+        ArrayList<GameObject> tanks = new ArrayList<>();
+        tanks.add(new Tank (23, 10, Direction.RIGHT));
+        tanks.add(new Tank (29, 12, Direction.LEFT));
+        tanks.add(new Tank (23, 14, Direction.RIGHT));
+        tanks.add(new Tank (29, 16, Direction.LEFT));
+        tanks.add(new Tank (23, 18, Direction.RIGHT));
+        tanks.add(new Tank (29, 20, Direction.LEFT));
+        super.moveableObjects.addAll(tanks);
+        
+        //Button
+        for (int i = 23; i < 30; ++i) {            
+            super.moveableObjects.add(new Button(i, 9, ButtonType.BLUE, tanks));
+        }
+        
         
         //Level blocks
         super.moveableObjects.add(new Block(12, 6));

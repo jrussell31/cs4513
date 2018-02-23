@@ -18,9 +18,11 @@ import DungeonCrawl.DungeonCrawl;
  */
 public abstract class Monster extends MoveableObject {
     public boolean isDisplayed = true;
-    
+    public float dx;
+    public float dy;
     public Monster(float x, float y) {
         super(x, y);
+        
     }
 
     public abstract void render(Graphics2D g);
@@ -29,13 +31,20 @@ public abstract class Monster extends MoveableObject {
         return super.isAlive(); 
     }
     
+    public void noMove() {
+        super.x = dx;
+        super.y = dy;
+    }
+    
     public abstract void update();
     
-      @Override
-     public void collide(GameObject O){
-         if(O instanceof Gamer){
-             DungeonCrawl.bannerPanel.setBannerText("You colided with a monster on Level  " + GameData.currentLevel.getLevelValue());
-             GameData.levelInProgress = false;
-         }
-     }
+    @Override
+    public void collide(GameObject O){
+        if(O instanceof Gamer){
+            this.setAlive(false);
+            ((Gamer)O).setAlive(false);
+            DungeonCrawl.bannerPanel.setBannerText("You collided with a " + getClass().getSimpleName() + " on Level  " + GameData.currentLevel.getLevelValue());
+            GameData.levelInProgress = false;
+        }
+    }
 }

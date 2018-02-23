@@ -1,21 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import DungeonCrawl.DungeonCrawl;
 import controller.KeyController;
-import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
-/**
- *
- * @author russe_000
- */
 public class MainWindow extends JFrame {    
     public MainWindow(){
         initComponents();
@@ -29,10 +19,6 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
         JLayeredPane jLayeredPane1 = new JLayeredPane();
-        
-        // Inventory Panel layout section
-        GroupLayout inventoryPanelLayout = new GroupLayout(DungeonCrawl.inventoryPanel);
-        
         
         GroupLayout gamePanelLayout = new GroupLayout(DungeonCrawl.gamePanel);
         DungeonCrawl.gamePanel.setLayout(gamePanelLayout);
@@ -88,8 +74,6 @@ public class MainWindow extends JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         
-        
-
         pack();
     }
 }
