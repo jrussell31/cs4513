@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DungeonCrawl;
 import controller.Animator;
 import java.awt.Color;
@@ -12,10 +7,7 @@ import view.MainWindow;
 import view.GamePanel;
 import view.InventoryPanel;
 import view.BannerPanel;
-/**
- *
- * @author cameron
- */
+
 public class DungeonCrawl {
     public static GameData gameData;
     public static Animator animator;
@@ -24,10 +16,7 @@ public class DungeonCrawl {
     public static GamePanel gamePanel;
     public static BannerPanel bannerPanel;
     public static Thread thread;
-    
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         animator = new Animator();
         gameData = new GameData();

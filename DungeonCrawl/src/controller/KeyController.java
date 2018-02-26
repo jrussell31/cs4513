@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import DungeonCrawl.DungeonCrawl;
@@ -13,10 +8,6 @@ import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
 
-/**
- *
- * @author russe_000
- */
 public class KeyController implements KeyListener {
 
     @Override
@@ -66,7 +57,6 @@ public class KeyController implements KeyListener {
 
         if (firstGameObject instanceof Gamer) {
             Gamer gamer = (Gamer) firstGameObject;
-            gamer.setDirection(Direction.NONE);
         }
     }
 
