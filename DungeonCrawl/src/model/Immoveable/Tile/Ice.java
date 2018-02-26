@@ -33,11 +33,11 @@ public class Ice extends Floor {
                     switch (((MoveableObject) O).moving) {
                         case RIGHT:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.DOWN;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCW();
                             break;
                         case UP:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.LEFT;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCCW();
                             break;
                         default:                            
                             ((MoveableObject) O).noMove();
@@ -48,11 +48,11 @@ public class Ice extends Floor {
                     switch (((MoveableObject) O).moving) {
                         case LEFT:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.DOWN;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCCW();
                             break;
                         case UP:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.RIGHT;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCW();
                             break;
                         default:
                             ((MoveableObject) O).noMove();
@@ -63,11 +63,11 @@ public class Ice extends Floor {
                     switch (((MoveableObject) O).moving) {
                         case RIGHT:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.UP;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCCW();
                             break;
                         case DOWN:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.LEFT;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCW();
                             break;
                         default:
                             ((MoveableObject) O).noMove();
@@ -78,11 +78,11 @@ public class Ice extends Floor {
                     switch (((MoveableObject) O).moving) {
                         case LEFT:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.UP;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCW();
                             break;
                         case DOWN:
                             ((MoveableObject) O).sliding(true);
-                            ((MoveableObject) O).moving = Direction.RIGHT;
+                            ((MoveableObject) O).moving = ((MoveableObject) O).moving.turnCCW();
                             break;
                         default:
                             ((MoveableObject) O).noMove();
@@ -100,19 +100,19 @@ public class Ice extends Floor {
     public void render(Graphics2D g) {
         switch (direction) {
             case NE:
-                g.drawImage(image[1], (int) super.x, (int) super.y, (int) super.HEIGHT, (int) super.WIDTH, null);
+                g.drawImage(image[1], (int) super.x, (int) super.y, (int) HEIGHT, (int) WIDTH, null);
                 break;
             case NW:
-                g.drawImage(image[2], (int) super.x, (int) super.y, (int) super.HEIGHT, (int) super.WIDTH, null);
+                g.drawImage(image[2], (int) super.x, (int) super.y, (int) HEIGHT, (int) WIDTH, null);
                 break;
             case SE:
-                g.drawImage(image[3], (int) super.x, (int) super.y, (int) super.HEIGHT, (int) super.WIDTH, null);
+                g.drawImage(image[3], (int) super.x, (int) super.y, (int) HEIGHT, (int) WIDTH, null);
                 break;
             case SW:
-                g.drawImage(image[4], (int) super.x, (int) super.y, (int) super.HEIGHT, (int) super.WIDTH, null);
+                g.drawImage(image[4], (int) super.x, (int) super.y, (int) HEIGHT, (int) WIDTH, null);
                 break;
             default:
-                g.drawImage(image[0], (int) super.x, (int) super.y, (int) super.HEIGHT, (int) super.WIDTH, null);
+                g.drawImage(image[0], (int) super.x, (int) super.y, (int) HEIGHT, (int) WIDTH, null);
                 break;
         }
     }
