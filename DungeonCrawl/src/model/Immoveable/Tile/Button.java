@@ -16,10 +16,6 @@ import model.GameObject;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
 
-/**
- *
- * @author russe_000
- */
 public class Button extends Tile {
     public BufferedImage image;
     ArrayList<GameObject> onButton = new ArrayList<>();

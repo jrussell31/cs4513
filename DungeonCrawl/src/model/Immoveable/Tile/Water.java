@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.Immoveable.Tile;
 
 import DungeonCrawl.DungeonCrawl;
@@ -16,12 +11,9 @@ import model.GameObject;
 import model.Immoveable.Collectible.Boot;
 import model.Moveable.Ball;
 import model.Moveable.Block;
+import model.Moveable.Fireball;
 import model.Moveable.Gamer;
 
-/**
- *
- * @author russe_000
- */
 public class Water extends Tile {
 
     public BufferedImage image;
@@ -66,6 +58,11 @@ public class Water extends Tile {
         //Collide with Ball
         if(O instanceof Ball){
             ((Ball) O).noMove();
+            ((Ball) O).turnAround();
+        }
+        //Collide with Fireball
+        if(O instanceof Fireball){
+            ((Fireball) O).setAlive(false);
         }
     }
 
