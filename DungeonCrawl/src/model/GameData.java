@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 
@@ -13,20 +8,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import model.Immoveable.Tile.Button;
-import model.Moveable.Block;
 
-/**
- *
- * @author russe_000
- */
 public class GameData {
     public static final int MAP_WIDTH = 30;
     public static final int MAP_HEIGHT = 27;
     public static List<GameObject> gameObjects;
-    public static List<GameObject> gamerInventory;
-    
-    public static List<GameObject> killedMonsters; 
+    public static List<GameObject> gamerInventory;    
     
     private static Map<LevelNumber, Level> gameLevels;
     public static Level currentLevel;
@@ -111,7 +98,7 @@ public class GameData {
         gamerInventory.removeAll(removeInventory);
         
         ArrayList<GameObject> removeKilledObjects = new ArrayList<>();
-        synchronized(GameData.gameObjects){
+        synchronized(gameObjects){
             for(GameObject object : GameData.gameObjects){
                 if(!object.isAlive()){
                     removeKilledObjects.add(object);
