@@ -1,7 +1,6 @@
 package model.Immoveable.Tile;
 
 import controller.ImageFinder;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
@@ -9,7 +8,6 @@ import model.GameData;
 import model.GameObject;
 import model.Immoveable.Collectible.Key;
 import model.LockType;
-import model.Moveable.Gamer;
 
 public class Lock extends Wall {
 
