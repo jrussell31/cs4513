@@ -38,26 +38,5 @@ public class DungeonCrawl {
     public static void startGame(){         
         GameData.resetGameData();
         thread.start();
-        
-        new Thread(new Runnable() {
-            boolean running = false;
-            long currentTime, previousTime;
-            
-            public void run() {
-                running = true;
-                currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
-                previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
-                
-                while(running){
-                    currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
-                    if(currentTime > previousTime){
-                        previousTime = currentTime;
-                        if(GameData.time > 0){
-                            GameData.time--;
-                        }
-                    }
-                }
-            }
-        }).start();
     }
 }

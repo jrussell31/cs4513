@@ -23,7 +23,7 @@ public class GameData {
     public static Monster monster;
     public static int chipsLeft;
     private static int timerCounter;
-    private long previousTime = 0;
+    private static long currentTime, previousTime;
     public static boolean levelInProgress = false;
     
     public GameData() 
@@ -44,6 +44,7 @@ public class GameData {
     public static void resetGameData()
     {
         time = currentLevel.getLevelTime();
+        previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
         currentLevel.resetLevel();
         chipsLeft = currentLevel.getLevelChipCount();
         timerCounter = 0;
@@ -70,9 +71,10 @@ public class GameData {
     
     public void update() 
     {
-        /*if(GameData.time > 0)
+        if(GameData.time > 0)
         {
-            long currentTime = (TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000);
+            currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+            
             if(currentTime > previousTime){
                 previousTime = currentTime;
                 GameData.time--;
@@ -80,7 +82,7 @@ public class GameData {
             else{
                 timerCounter++;
             }
-        }*/
+        }
                 
         synchronized(gameObjects)
         {

@@ -4,8 +4,10 @@ import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Direction;
 import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
 
 public class Frog extends Monster {
 
@@ -18,13 +20,17 @@ public class Frog extends Monster {
 
         frogMoves = new ObjectAnimator();
         previousTime = GameData.time;
+        this.direction = Direction.UP;
         loadImages();
     }
 
     public void loadImages() {
-        frogSprites = new BufferedImage[1];
+        frogSprites = new BufferedImage[4];
         try {
             frogSprites[0] = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Frog_N.png");
+            frogSprites[1] = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Frog_S.png");
+            frogSprites[2] = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Frog_E.png");
+            frogSprites[3] = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Frog_W.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,53 +48,74 @@ public class Frog extends Monster {
 
     @Override
     public void update() {
-        this.frogMoves.setFrames(frogSprites);
-
-        if (GameData.time < previousTime) {
-            
-            float xDistanceBetweenGamer = Math.abs(this.x - (GameData.gamer.x / 32));
-            float yDistanceBetweenGamer = Math.abs(this.y - (GameData.gamer.y / 32));
-
-            if (GameData.gamer.x == this.x && GameData.gamer.y != this.y) {
-                if (GameData.gamer.y > this.y) {
-                    this.y += 32;
-                } else {
-                    this.y -= 32;
-                }
-            } else if (GameData.gamer.y == this.y && GameData.gamer.x != this.x) {
-                if (GameData.gamer.x > this.x) {
-                    this.x += 32;
-                } else {
-                    this.x -= 32;
-                }
-            } else if (GameData.gamer.y != this.y && GameData.gamer.x != this.x) {
-                if (xDistanceBetweenGamer < yDistanceBetweenGamer) {
-                    if (GameData.gamer.x > this.x) {
-                        this.x += 32;
-                    } else {
-                        this.x -= 32;
-                    }
-                } else if (xDistanceBetweenGamer > yDistanceBetweenGamer) {
-                    if (GameData.gamer.y > this.y) {
-                        this.y += 32;
-                    } else {
-                        this.y -= 32;
-                    }
-                } else {
-                    if (GameData.gamer.x > this.x) {
-                        this.x += 32;
-                    } else {
-                        this.x -= 32;
-                    }
+        super.update();
+        
+        if (null != this.direction) {
+                switch (this.direction) {
+                    case UP:
+                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[0]});
+                        break;
+                    case DOWN:
+                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[1]});
+                        break;
+                    case LEFT:
+                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[2]});
+                        break;
+                    case RIGHT:
+                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[3]});
+                        break;
+                    default:
+                        break;
                 }
             }
-            
-            previousTime = GameData.time;
+
+        if (GameData.time < previousTime) {
+
+            float xDistanceBetweenGamer = GameData.gamer.x - this.x;
+            float yDistanceBetweenGamer = GameData.gamer.y - this.y;
+            float sign;
+
+            // If x distance greater than y distance
+            if (Math.abs(xDistanceBetweenGamer) > Math.abs(yDistanceBetweenGamer)) {
+                if (yDistanceBetweenGamer == 0) {
+                    // Add tile space in x direction based on whether gamer is in positive or negative direction
+                    this.x += (Math.signum(xDistanceBetweenGamer) * Monster.MOVEMENT);
+                    this.direction = (Math.signum(xDistanceBetweenGamer) > 0) ? Direction.LEFT : Direction.RIGHT;
+                } else {
+                    // Add tile space in y direction based on whether gamer is in positive or negative direction
+                    this.y += (Math.signum(yDistanceBetweenGamer) * Monster.MOVEMENT);
+                    this.direction = (Math.signum(yDistanceBetweenGamer) > 0) ? Direction.DOWN : Direction.UP;
+                }
+            } // If y distance greater than x distance
+            else if (Math.abs(xDistanceBetweenGamer) < Math.abs(yDistanceBetweenGamer)) {
+                if (xDistanceBetweenGamer == 0) {
+                    // Add tile space in y direction based on whether gamer is in positive or negative direction
+                    this.y += (Math.signum(yDistanceBetweenGamer) * Monster.MOVEMENT);
+                    this.direction = (Math.signum(yDistanceBetweenGamer) > 0) ? Direction.DOWN : Direction.UP;
+                } else {
+                    // Add tile space in x direction based on whether gamer is in positive or negative direction
+                    this.x += (Math.signum(xDistanceBetweenGamer) * Monster.MOVEMENT);
+                    this.direction = (Math.signum(xDistanceBetweenGamer) > 0) ? Direction.LEFT : Direction.RIGHT;
+                }
+            } // If x and y distance are equal
+            else {
+                if (xDistanceBetweenGamer != 0) {
+                    // Add tile space in x direction based on whether gamer is in positive or negative direction
+                    this.x += (Math.signum(xDistanceBetweenGamer) * Monster.MOVEMENT);
+                    this.direction = (Math.signum(xDistanceBetweenGamer) > 0) ? Direction.LEFT : Direction.RIGHT;
+                }
+            }
         }
+
+        previousTime = GameData.time;
     }
 
     @Override
     public void collide(GameObject O) {
         super.collide(O);
+
+        if (O instanceof Block || O instanceof Wall) {
+            noMove();
+        }
     }
 }
