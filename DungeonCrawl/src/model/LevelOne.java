@@ -18,6 +18,7 @@ import model.Immoveable.Tile.Water;
 import model.Moveable.Ball;
 import model.Moveable.Block;
 import model.Moveable.Fireball;
+import model.Moveable.Frog;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
 
@@ -32,7 +33,7 @@ public final class LevelOne extends Level{
     
     @Override
     public void setGamer(){
-        super.gamer = new Gamer(1, 1);
+        super.gamer = new Gamer(4, 1);
     }
 
     @Override
@@ -188,6 +189,8 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
         
+        super.moveableObjects.add(new Frog(1, 5));
+                
         ArrayList<GameObject> tanks = new ArrayList<>();
         tanks.add(new Tank (23, 10, Direction.RIGHT));
         tanks.add(new Tank (29, 12, Direction.LEFT));
