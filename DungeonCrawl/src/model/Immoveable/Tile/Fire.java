@@ -54,7 +54,8 @@ public class Fire extends Tile {
             }
             //Collide with Fireball
             if (O instanceof Fireball) {
-                ((Fireball) O).turn(((Fireball) O).direction.turnCCW());
+                //((Fireball) O).turn(((Fireball) O).direction.turnCCW());
+                ((Fireball) O).turn(((Fireball) O).direction.getOppositeDirection());
             }
         }
     }

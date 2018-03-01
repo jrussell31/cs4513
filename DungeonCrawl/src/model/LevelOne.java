@@ -11,6 +11,7 @@ import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
+import model.Immoveable.Tile.Theif;
 import model.Immoveable.Tile.ToggleWall;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
@@ -138,6 +139,9 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Fire(9, 4));
         super.immovableObjects.add(new Fire(14, 6));
         
+        //Theif tile
+        super.immovableObjects.add(new Theif(15, 15));
+        
         //Toggle Walls
         ArrayList<GameObject> toggleWalls = new ArrayList<>();
         toggleWalls.add(new ToggleWall(13, 13, true));
@@ -178,6 +182,8 @@ public final class LevelOne extends Level{
         //Monsters
         super.moveableObjects.add(new Fireball(4, 2, Direction.LEFT));
         super.moveableObjects.add(new Fireball(4, 6, Direction.RIGHT));
+        super.moveableObjects.add(new Fireball(2, 4, Direction.DOWN));
+        super.moveableObjects.add(new Fireball(6, 4, Direction.UP));
         super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
