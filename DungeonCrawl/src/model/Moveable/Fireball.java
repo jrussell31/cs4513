@@ -101,11 +101,11 @@ public class Fireball extends Monster {
                         fireballMoves.setFrames(fireballSprites);
 
                         break;
-                }
-            }
-        } else {
+                }               
+            }else {
             counter += 100;
         }
+        } 
     }
 
     public void turn(Direction d) {
@@ -120,6 +120,6 @@ public class Fireball extends Monster {
         } else if (O instanceof Block) {
             noMove();
             direction = direction.getOppositeDirection();
-        }
+        }        
     }
 }
