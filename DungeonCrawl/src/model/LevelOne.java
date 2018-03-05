@@ -20,6 +20,7 @@ import model.Moveable.Block;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
+import model.Moveable.Glider;
 
 public final class LevelOne extends Level{
     
@@ -187,6 +188,7 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
+        super.moveableObjects.add(new Glider(5,26,Direction.UP));
         
         ArrayList<GameObject> tanks = new ArrayList<>();
         tanks.add(new Tank (23, 10, Direction.RIGHT));
