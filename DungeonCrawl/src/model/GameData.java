@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class GameData {
     public static final int MAP_WIDTH = 30;
@@ -22,6 +23,7 @@ public class GameData {
     public static Monster monster;
     public static int chipsLeft;
     private static int timerCounter;
+    private static long currentTime, previousTime;
     public static boolean levelInProgress = false;
     
     public GameData() 
@@ -41,8 +43,9 @@ public class GameData {
     
     public static void resetGameData()
     {
-        currentLevel.resetLevel();
         time = currentLevel.getLevelTime();
+        previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+        currentLevel.resetLevel();
         chipsLeft = currentLevel.getLevelChipCount();
         timerCounter = 0;
         
@@ -70,8 +73,10 @@ public class GameData {
     {
         if(GameData.time > 0)
         {
-            if(timerCounter == 10){
-                timerCounter = 0;
+            currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+            
+            if(currentTime > previousTime){
+                previousTime = currentTime;
                 GameData.time--;
             }
             else{
