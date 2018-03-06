@@ -73,7 +73,7 @@ public class MainWindow extends JFrame {
                     .addComponent(jLayeredPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
-        
+
         pack();
     }
 }
