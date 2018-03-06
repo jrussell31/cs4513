@@ -7,6 +7,7 @@ import model.GameObject;
 import model.Moveable.Ball;
 import model.Moveable.Fireball;
 import model.Moveable.MoveableObject;
+import model.Moveable.Glider;
 
 public class Wall extends Tile {
 
@@ -33,6 +34,9 @@ public class Wall extends Tile {
             if(O instanceof Fireball){
                 //((Fireball) O).turn(((Fireball) O).direction.turnCCW());
                 ((Fireball) O).turn(((Fireball) O).direction.getOppositeDirection());
+            }
+           if(O instanceof Glider){
+                ((Glider) O).turn(((Glider) O).direction.turnCW());
             }
             
         }
