@@ -1,6 +1,7 @@
 package DungeonCrawl;
 import controller.Animator;
 import java.awt.Color;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import model.GameData;
 import view.MainWindow;
