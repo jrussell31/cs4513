@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 
@@ -13,20 +8,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import model.Immoveable.Tile.Button;
-import model.Moveable.Block;
+import java.util.concurrent.TimeUnit;
 
-/**
- *
- * @author russe_000
- */
 public class GameData {
     public static final int MAP_WIDTH = 30;
     public static final int MAP_HEIGHT = 27;
     public static List<GameObject> gameObjects;
-    public static List<GameObject> gamerInventory;
-    
-    public static List<GameObject> killedMonsters; 
+    public static List<GameObject> gamerInventory;    
     
     private static Map<LevelNumber, Level> gameLevels;
     public static Level currentLevel;
@@ -35,6 +23,7 @@ public class GameData {
     public static Monster monster;
     public static int chipsLeft;
     private static int timerCounter;
+    private static long currentTime, previousTime;
     public static boolean levelInProgress = false;
     
     public GameData() 
@@ -54,8 +43,9 @@ public class GameData {
     
     public static void resetGameData()
     {
-        currentLevel.resetLevel();
         time = currentLevel.getLevelTime();
+        previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+        currentLevel.resetLevel();
         chipsLeft = currentLevel.getLevelChipCount();
         timerCounter = 0;
         
@@ -83,8 +73,10 @@ public class GameData {
     {
         if(GameData.time > 0)
         {
-            if(timerCounter == 10){
-                timerCounter = 0;
+            currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+            
+            if(currentTime > previousTime){
+                previousTime = currentTime;
                 GameData.time--;
             }
             else{
@@ -111,7 +103,7 @@ public class GameData {
         gamerInventory.removeAll(removeInventory);
         
         ArrayList<GameObject> removeKilledObjects = new ArrayList<>();
-        synchronized(GameData.gameObjects){
+        synchronized(gameObjects){
             for(GameObject object : GameData.gameObjects){
                 if(!object.isAlive()){
                     removeKilledObjects.add(object);

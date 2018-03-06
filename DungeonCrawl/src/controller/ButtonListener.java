@@ -1,11 +1,8 @@
 package controller;
 
-import DungeonCrawl.DungeonCrawl;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import model.Moveable.Gamer;
 
 public class ButtonListener implements ActionListener {
 

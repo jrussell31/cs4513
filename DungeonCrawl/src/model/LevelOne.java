@@ -8,16 +8,20 @@ import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
+import model.Immoveable.Tile.Theif;
 import model.Immoveable.Tile.ToggleWall;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
 import model.Moveable.Ball;
 import model.Moveable.Block;
 import model.Moveable.Fireball;
+import model.Moveable.Frog;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
+import model.Moveable.Glider;
 
 public final class LevelOne extends Level{
     
@@ -30,7 +34,7 @@ public final class LevelOne extends Level{
     
     @Override
     public void setGamer(){
-        super.gamer = new Gamer(1, 1);
+        super.gamer = new Gamer(4, 1);
     }
 
     @Override
@@ -137,6 +141,9 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Fire(9, 4));
         super.immovableObjects.add(new Fire(14, 6));
         
+        //Theif tile
+        super.immovableObjects.add(new Theif(15, 15));
+        
         //Toggle Walls
         ArrayList<GameObject> toggleWalls = new ArrayList<>();
         toggleWalls.add(new ToggleWall(13, 13, true));
@@ -152,9 +159,22 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Portal(15, 26));
         
         //Floors
-        /*for(int i = 15; i < 25; ++i){
+        for(int i = 15; i < 20; ++i){
             super.immovableObjects.add(new Ice(i, 4));
-        }*/
+        }
+        super.immovableObjects.add(new Ice(20, 4, Direction.NE));
+        super.immovableObjects.add(new Ice(20, 5));
+        super.immovableObjects.add(new Ice(20, 6, Direction.SE));
+        super.immovableObjects.add(new Ice(19, 6));
+        super.immovableObjects.add(new Ice(18, 6));
+        super.immovableObjects.add(new Ice(17, 6, Direction.SW));
+        super.immovableObjects.add(new Ice(17,5));
+        super.immovableObjects.add(new Ice(17, 3, Direction.NW));
+        super.immovableObjects.add(new Ice(18, 3));
+        super.immovableObjects.add(new Ice(19, 3));
+        super.immovableObjects.add(new Ice(20, 3));
+        super.immovableObjects.add(new Ice(21, 3, Direction.NW));
+        
     }
 
     @Override
@@ -162,11 +182,17 @@ public final class LevelOne extends Level{
         super.moveableObjects = new ArrayList<>();
         
         //Monsters
-        super.moveableObjects.add(new Fireball(4, 2));
-        super.moveableObjects.add(new Fireball(4, 6));
+        super.moveableObjects.add(new Fireball(4, 2, Direction.LEFT));
+        super.moveableObjects.add(new Fireball(4, 6, Direction.RIGHT));
+        super.moveableObjects.add(new Fireball(2, 4, Direction.DOWN));
+        super.moveableObjects.add(new Fireball(6, 4, Direction.UP));
         super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
+        super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
+        super.moveableObjects.add(new Glider(5,26,Direction.UP));
         
+        super.moveableObjects.add(new Frog(1, 5));
+                
         ArrayList<GameObject> tanks = new ArrayList<>();
         tanks.add(new Tank (23, 10, Direction.RIGHT));
         tanks.add(new Tank (29, 12, Direction.LEFT));
