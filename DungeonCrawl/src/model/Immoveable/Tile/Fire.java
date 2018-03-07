@@ -57,6 +57,7 @@ public class Fire extends Tile {
             if (O instanceof Fireball) {               
                 ((Fireball) O).turn(((Fireball) O).direction.getOppositeDirection());
             }
+            //Collision with Bug
             if(O instanceof Bug){                
                 ((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
             }

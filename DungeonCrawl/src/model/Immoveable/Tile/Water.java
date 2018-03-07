@@ -65,6 +65,7 @@ public class Water extends Tile {
         if(O instanceof Fireball){
             ((Fireball) O).setAlive(false);
         }
+        //Collision with Bug
         if(O instanceof Bug){
             ((Bug) O).noMove();
             ((Bug) O).turn(((Bug) O).direction.getOppositeDirection());

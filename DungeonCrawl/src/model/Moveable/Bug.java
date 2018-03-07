@@ -6,6 +6,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
 import model.GameObject;
+import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Wall;
+import model.Immoveable.Tile.Water;
 
 public class Bug extends Monster {
     public BufferedImage[] Bug_S;
@@ -65,31 +68,31 @@ public class Bug extends Monster {
                     case LEFT:
                         bugMoves.setFrames(Bug_W);
                         super.x -= MOVEMENT;
-                        if (super.x == 32) {
+                        if (super.x == 64) {
                             direction = Direction.UP;
                         }
                         break;
                     case RIGHT:
                         bugMoves.setFrames(Bug_E);
                         super.x += MOVEMENT;                        
-                        if (super.x == 32) {
+                        if (super.x == 64) {
                             direction = Direction.DOWN;
                         }
                         break;
                     case UP:
                         bugMoves.setFrames(Bug_N);
                         super.y -= MOVEMENT;
-                        if (super.x == 32) {
+                        if (super.x == 64) {
                             direction = Direction.RIGHT;
                         }
                         break;
                     case DOWN:
                         bugMoves.setFrames(Bug_S);
                         super.y += MOVEMENT;
-                        if (super.x == 32) {
+                        if (super.x == 64) {
                             direction = Direction.LEFT;
                         }
-                        break;
+                        break; 
                 }
                 moving = direction;
             } else {

@@ -3,6 +3,7 @@ package model.Immoveable.Tile;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Direction;
 import model.GameObject;
 import model.Moveable.Ball;
 import model.Moveable.Bug;
@@ -36,9 +37,16 @@ public class Wall extends Tile {
                 //((Fireball) O).turn(((Fireball) O).direction.turnCCW());
                 ((Fireball) O).turn(((Fireball) O).direction.getOppositeDirection());
             }
+            //Collision with Bug
             if(O instanceof Bug){
-                //((Fireball) O).turn(((Fireball) O).direction.turnCCW());
-                ((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
+                if (direction.RIGHT == direction.RIGHT) {
+                    //((Bug) O).turn(((Bug) O).direction.turnCCW());                    
+                } else if (direction.LEFT == direction.LEFT) {                    
+                    ((Bug) O).turn(((Bug)O).direction.turnCW());                    
+                }
+                else 
+                    ((Bug) O).turn(((Bug)O).direction.turnCW());
+                //((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
             }
            if(O instanceof Glider){
                 ((Glider) O).turn(((Glider) O).direction.turnCW());
