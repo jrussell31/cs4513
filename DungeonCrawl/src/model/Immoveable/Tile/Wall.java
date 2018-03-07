@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import model.GameObject;
 import model.Moveable.Ball;
 import model.Moveable.Fireball;
+import model.Moveable.Gamer;
 import model.Moveable.MoveableObject;
 import model.Moveable.Glider;
 import model.Moveable.Walker;
@@ -41,6 +42,9 @@ public class Wall extends Tile {
             }
             if(O instanceof Walker) {
                 ((Walker) O).changeDirection();
+            }
+            if(O instanceof Gamer){
+                ((Gamer )O).moving = ((Gamer)O).moving.getOppositeDirection();
             }
         }
     }

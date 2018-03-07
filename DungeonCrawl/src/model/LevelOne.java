@@ -154,8 +154,8 @@ public final class LevelOne extends Level{
         //Level boots
         super.immovableObjects.add(new Boot(3, 3, BootType.FIRE));
         super.immovableObjects.add(new Boot(15, 10, BootType.WATER));
-        super.immovableObjects.add(new Boot(9, 7, BootType.FORCE));
-        super.immovableObjects.add(new Boot(10, 7, BootType.ICE));
+        super.immovableObjects.add(new Boot(13, 21, BootType.FORCE));
+        super.immovableObjects.add(new Boot(13, 26, BootType.ICE));
         
         //Level Chips
         super.immovableObjects.add(new Chip(4, 3));
@@ -163,6 +163,7 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Chip(3, 4));
         super.immovableObjects.add(new Chip(5, 4));
         super.immovableObjects.add(new Chip(19, 17));
+        super.immovableObjects.add(new Chip(23, 26));
         
         //Level Elemental Walls
         super.immovableObjects.add(new Water(13,19));
@@ -197,7 +198,7 @@ public final class LevelOne extends Level{
         //Floors
         for(int i = 15; i < 20; ++i){
             super.immovableObjects.add(new Ice(i, 4));
-        }
+        }        
         super.immovableObjects.add(new Ice(20, 4, Direction.NE));
         super.immovableObjects.add(new Ice(20, 5));
         super.immovableObjects.add(new Ice(20, 6, Direction.SE));
@@ -206,6 +207,8 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(17, 6, Direction.SW));
         super.immovableObjects.add(new Ice(17,5));
         super.immovableObjects.add(new Ice(17, 3, Direction.NW));
+        super.immovableObjects.add(new Ice(18, 2));
+        super.immovableObjects.add(new Ice(18, 1));
         super.immovableObjects.add(new Ice(18, 3));
         super.immovableObjects.add(new Ice(19, 3));
         super.immovableObjects.add(new Ice(20, 3));
@@ -220,10 +223,10 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(29, 26, Direction.SE));
         super.immovableObjects.add(new Ice(29, 25));
         super.immovableObjects.add(new Ice(29, 24));
-        super.immovableObjects.add(new Ice(29, 26, Direction.SE));
-        for (int i = 25; i < 30; i++) {
+        for (int i = 25; i < 29; i++) {
             super.immovableObjects.add(new Ice(i, 23));
         }
+        super.immovableObjects.add(new Ice(29, 23, Direction.NE));
         super.immovableObjects.add(new Ice(24, 23, Direction.NW));
         super.immovableObjects.add(new Ice(24, 24));
         super.immovableObjects.add(new Ice(24, 25, Direction.SW));
@@ -233,14 +236,14 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(28, 24  , Direction.NE));
         super.immovableObjects.add(new Ice(27, 24));
         super.immovableObjects.add(new Ice(25, 24));
-        for(int i = 9; i < 29; ++i){
-            super.immovableObjects.add(new Force(i, 1, Direction.RIGHT));
+        
+        
+        for(int i = 14; i < 18; ++i){
+            super.immovableObjects.add(new Force(i, 24, Direction.UP));
         }
-        for(int i = 1; i < 9; ++i){
-            super.immovableObjects.add(new Force(29, i, Direction.DOWN));
+        for(int i = 14; i < 18; ++i){
+            super.immovableObjects.add(new Force(i, 23, Direction.LEFT));
         }
-        super.immovableObjects.add(new Force(9, 2, Direction.UP));
-        super.immovableObjects.add(new Force(9, 3, Direction.UP));
         
     }
 
@@ -264,7 +267,7 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Glider(5,26,Direction.UP));
         
         //Frog
-        super.moveableObjects.add(new Frog(1, 5));
+        //super.moveableObjects.add(new Frog(1, 5));
                 
         //Tank
         ArrayList<GameObject> tanks = new ArrayList<>();
@@ -307,7 +310,7 @@ public final class LevelOne extends Level{
 
     @Override
     public void setLevelChipCount() {
-        super.levelChipCount = 5;
+        super.levelChipCount = 6;
     }
     
     @Override
