@@ -8,6 +8,7 @@ import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Force;
 import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
@@ -124,6 +125,8 @@ public final class LevelOne extends Level{
         //Level boots
         super.immovableObjects.add(new Boot(3, 3, BootType.FIRE));
         super.immovableObjects.add(new Boot(15, 10, BootType.WATER));
+        super.immovableObjects.add(new Boot(9, 7, BootType.FORCE));
+        super.immovableObjects.add(new Boot(10, 7, BootType.ICE));
         
         //Level Chips
         super.immovableObjects.add(new Chip(4, 3));
@@ -175,6 +178,15 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(20, 3));
         super.immovableObjects.add(new Ice(21, 3, Direction.NW));
         
+        for(int i = 9; i < 29; ++i){
+            super.immovableObjects.add(new Force(i, 1, Direction.RIGHT));
+        }
+        for(int i = 1; i < 9; ++i){
+            super.immovableObjects.add(new Force(29, i, Direction.DOWN));
+        }
+        super.immovableObjects.add(new Force(9, 2, Direction.UP));
+        super.immovableObjects.add(new Force(9, 3, Direction.UP));
+        
     }
 
     @Override
@@ -191,7 +203,7 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
         super.moveableObjects.add(new Glider(5,26,Direction.UP));
         
-        super.moveableObjects.add(new Frog(1, 5));
+        //super.moveableObjects.add(new Frog(1, 5));
                 
         ArrayList<GameObject> tanks = new ArrayList<>();
         tanks.add(new Tank (23, 10, Direction.RIGHT));
