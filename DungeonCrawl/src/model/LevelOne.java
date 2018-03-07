@@ -107,8 +107,8 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Wall(16, 25));
         super.immovableObjects.add(new Wall(16, 26));
         
-        super.immovableObjects.add(new Wall(17, 22));
-        super.immovableObjects.add(new Wall(17, 25));
+        //super.immovableObjects.add(new Wall(17, 22));
+        //super.immovableObjects.add(new Wall(17, 25));
         super.immovableObjects.add(new Wall(18, 21));
         super.immovableObjects.add(new Wall(18, 26));
         super.immovableObjects.add(new Wall(22, 21));        
@@ -171,6 +171,8 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Fire(9, 4));
         super.immovableObjects.add(new Fire(14, 6));
         super.immovableObjects.add(new Fire(20, 24));
+        super.immovableObjects.add(new Fire(17, 22));
+        super.immovableObjects.add(new Fire(17, 25));
         
         //Theif tile
         super.immovableObjects.add(new Theif(15, 15));

@@ -36,6 +36,11 @@ public class Walker extends Monster {
         }
     }
 
+    public void turnAround() {
+        direction = direction.getOppositeDirection();
+        moving = direction;
+    }
+            
     public void changeDirection() {
         direction = direction.walkerMovement();
         moving = direction;
