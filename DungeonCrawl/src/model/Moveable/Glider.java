@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
 import model.GameObject;
+import model.Immoveable.Tile.Ice;
 import model.Level;
 import model.Immoveable.Tile.Wall;
 
@@ -95,7 +96,12 @@ public class Glider extends Monster {
     //This collide never gets called for walls. 
     @Override
      public void collide(GameObject O){
-         super.collide(O);
+         
+         if(O instanceof Ice)
+         {
+             this.direction = this.direction.getOppositeDirection();
+         }
+         //super.collide(O);
         // if(O instanceof Wall){
          //    direction= direction.getOppositeDirection();
          //    moving= direction;
