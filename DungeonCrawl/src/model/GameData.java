@@ -42,8 +42,8 @@ public class GameData {
     public static void resetGameData()
     {
         time = currentLevel.getLevelTime();
-        currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
-        previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+        currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+        previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         currentLevel.resetLevel();
         chipsLeft = currentLevel.getLevelChipCount();
         
