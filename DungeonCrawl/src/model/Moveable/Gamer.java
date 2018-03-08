@@ -1,5 +1,6 @@
 package model.Moveable;
 
+import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Color;
