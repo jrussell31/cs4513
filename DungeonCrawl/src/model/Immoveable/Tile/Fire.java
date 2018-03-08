@@ -13,6 +13,7 @@ import model.Moveable.Ball;
 import model.Moveable.Bug;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
+import model.Moveable.Walker;
 import model.Moveable.MoveableObject;
 
 public class Fire extends Tile {
@@ -60,6 +61,9 @@ public class Fire extends Tile {
             //Collision with Bug
             if(O instanceof Bug){                
                 ((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
+            }
+            if (O instanceof Walker) {
+                ((Walker) O).turnAround();
             }
         }
     }

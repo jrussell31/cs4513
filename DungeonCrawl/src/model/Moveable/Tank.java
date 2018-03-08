@@ -1,6 +1,5 @@
 package model.Moveable;
 
-import java.awt.Color;
 import model.Direction;
 import java.awt.Graphics2D;
 import controller.ImageFinder;
@@ -43,7 +42,6 @@ public class Tank extends Monster {
             tank_E[0] = image;
         } catch (Exception e) {
         }
-        tankMoves.setFrames(tank_S);
     }
 
     @Override
@@ -81,8 +79,7 @@ public class Tank extends Monster {
                     case DOWN:
                         tankMoves.setFrames(tank_S);
                         super.y += MOVEMENT;
-                        break;
-                        
+                        break;                        
                 }
                 moving = direction;
             } else {
@@ -104,7 +101,6 @@ public class Tank extends Monster {
                 tankMoves.setFrames(tank_S);
                 break;
         }
-        
         tankMoves.update();
     }
 
@@ -116,6 +112,5 @@ public class Tank extends Monster {
         if (O instanceof Water || O instanceof Fire) {
             this.setAlive(false);
         }
-
     }
 }
