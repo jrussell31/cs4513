@@ -170,6 +170,7 @@ public final class LevelOne extends Level{
         //Level Elemental Walls
         super.immovableObjects.add(new Water(13,19));
         super.immovableObjects.add(new Bomb(2,9));
+        super.immovableObjects.add(new Bomb(9,6));
         super.immovableObjects.add(new Water(15, 8));
         super.immovableObjects.add(new Water(15, 9));
         super.immovableObjects.add(new Water(15, 12));
@@ -265,7 +266,8 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
-        super.moveableObjects.add(new Glider(5,26,Direction.UP));        
+
+        super.moveableObjects.add(new Glider(17,7,Direction.UP));        
         //super.moveableObjects.add(new Bug(18, 19, Direction.RIGHT));
         super.moveableObjects.add(new Bug(12, 19, Direction.LEFT));
         //super.moveableObjects.add(new Frog(1, 5));
@@ -297,6 +299,7 @@ public final class LevelOne extends Level{
         //Level blocks
         super.moveableObjects.add(new Block(12, 6));
         super.moveableObjects.add(new Block(13, 6));
+        
     }
 
     @Override

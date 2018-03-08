@@ -13,6 +13,7 @@ import model.Moveable.Ball;
 import model.Moveable.Bug;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
+import model.Moveable.Glider;
 import model.Moveable.Walker;
 import model.Moveable.MoveableObject;
 
@@ -64,6 +65,9 @@ public class Fire extends Tile {
             }
             if (O instanceof Walker) {
                 ((Walker) O).turnAround();
+            }
+            if (O instanceof Glider) {
+                ((Glider) O).turn(((Glider) O).direction.getOppositeDirection());
             }
         }
     }
