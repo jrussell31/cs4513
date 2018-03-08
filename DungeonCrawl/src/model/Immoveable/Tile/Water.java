@@ -11,6 +11,7 @@ import model.GameObject;
 import model.Immoveable.Collectible.Boot;
 import model.Moveable.Ball;
 import model.Moveable.Block;
+import model.Moveable.Bug;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
 
@@ -63,6 +64,11 @@ public class Water extends Tile {
         //Collide with Fireball
         if(O instanceof Fireball){
             ((Fireball) O).setAlive(false);
+        }
+        //Collision with Bug
+        if(O instanceof Bug){
+            ((Bug) O).noMove();
+            ((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
         }
     }
 

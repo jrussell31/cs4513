@@ -18,6 +18,7 @@ import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
 import model.Moveable.Ball;
 import model.Moveable.Block;
+import model.Moveable.Bug;
 import model.Moveable.Fireball;
 import model.Moveable.Frog;
 import model.Moveable.Gamer;
@@ -190,9 +191,10 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Ball(14,15,Direction.DOWN));
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
-        super.moveableObjects.add(new Glider(5,26,Direction.UP));
-        
-        super.moveableObjects.add(new Frog(1, 5));
+        super.moveableObjects.add(new Glider(5,26,Direction.UP));        
+        //super.moveableObjects.add(new Bug(18, 19, Direction.RIGHT));
+        super.moveableObjects.add(new Bug(12, 19, Direction.LEFT));
+        //super.moveableObjects.add(new Frog(1, 5));
                 
         ArrayList<GameObject> tanks = new ArrayList<>();
         tanks.add(new Tank (23, 10, Direction.RIGHT));
