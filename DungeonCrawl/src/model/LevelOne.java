@@ -176,7 +176,6 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(19, 3));
         super.immovableObjects.add(new Ice(20, 3));
         super.immovableObjects.add(new Ice(21, 3, Direction.NW));
-        
     }
 
     @Override
