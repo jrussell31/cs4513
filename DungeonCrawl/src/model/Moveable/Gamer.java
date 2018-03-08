@@ -1,5 +1,6 @@
 package model.Moveable;
 
+import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Color;
@@ -14,6 +15,7 @@ public class Gamer extends MoveableObject {
     public BufferedImage[] rightIdle;
     public BufferedImage[] downIdle;
     public BufferedImage[] upIdle;
+    public boolean keepSliding;
 
     private final ObjectAnimator gamerMoves;
 
@@ -46,7 +48,8 @@ public class Gamer extends MoveableObject {
             image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_E.png");
 
             rightIdle[0] = image;
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
     }
 
     public void setDirection(Direction d) {
@@ -64,11 +67,10 @@ public class Gamer extends MoveableObject {
     @Override
     public void update() {
         super.update();
-
         if (isSliding()) {
-            direction = moving;
             slide(moving);
-        } else {
+        }
+        if (!keepSliding) {
             switch (direction) {
                 case LEFT:
                     super.x -= MOVEMENT;
@@ -92,7 +94,7 @@ public class Gamer extends MoveableObject {
                     break;
             }
         }
-        
+
         switch (moving) {
             case LEFT:
                 gamerMoves.setFrames(leftIdle);
@@ -107,13 +109,14 @@ public class Gamer extends MoveableObject {
                 gamerMoves.setFrames(downIdle);
                 break;
         }
-                
+
         gamerMoves.update();
         setDirection(Direction.NONE);
+        keepSliding = false;
     }
 
     @Override
     public void collide(GameObject O) {
-        //Leave this empty for now JL 2-15-18
+
     }
 }

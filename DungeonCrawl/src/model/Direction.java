@@ -43,4 +43,17 @@ public enum Direction {
         }
         return null;
     }
+    public Direction walkerMovement() {
+        switch(this){
+            case LEFT:
+                return RIGHT;
+            case RIGHT:
+                return DOWN;
+            case UP:
+                return LEFT;
+            case DOWN:
+                return UP;
+        }
+        return null;
+    }
 }

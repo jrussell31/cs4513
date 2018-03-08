@@ -12,8 +12,6 @@ import model.Moveable.Gamer;
 
 
 public class Key extends Collectible {
-    private final int width = 32;
-    private final int height = 32;
     public LockType type;    
     public BufferedImage[] keyImg;
     

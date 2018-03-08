@@ -11,19 +11,19 @@ import model.GameObject;
 import model.Immoveable.Collectible.Boot;
 import model.Moveable.Ball;
 import model.Moveable.Block;
-import model.Moveable.Bug;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
+import model.Moveable.Monster;
 
-public class Water extends Tile {
+public class Bomb extends Tile {
 
     public BufferedImage image;
 
-    public Water(float x, float y) {
+    public Bomb(float x, float y) {
         super(x, y);
 
         try {
-            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Water.png");
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Bomb.png");
         } catch (Exception e) {
         }
     }
@@ -56,20 +56,12 @@ public class Water extends Tile {
             this.setAlive(false);
             ((Block)O).setAlive(false);
         }
-        //Collide with Ball
-        if(O instanceof Ball){
-            ((Ball) O).noMove();
-            ((Ball) O).turnAround();
+        //Collide with Monster
+        if(O instanceof Monster){
+            ((Monster) O).setAlive(false);
+            this.setAlive(false);
         }
-        //Collide with Fireball
-        if(O instanceof Fireball){
-            ((Fireball) O).setAlive(false);
-        }
-        //Collision with Bug
-        if(O instanceof Bug){
-            ((Bug) O).noMove();
-            ((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
-        }
+
     }
 
     @Override
