@@ -99,10 +99,7 @@ public class Glider extends Monster {
     @Override
      public void collide(GameObject O){
          
-         if(O instanceof Ice)
-         {
-             this.direction = this.direction.getOppositeDirection();
-         }
+     
          //super.collide(O);
         // if(O instanceof Wall){
          //    direction= direction.getOppositeDirection();
