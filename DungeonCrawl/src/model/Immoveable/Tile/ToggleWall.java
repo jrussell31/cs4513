@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
-
+import model.Moveable.Gamer;
 public class ToggleWall extends Wall {
     
     BufferedImage toggleWallImg;
@@ -54,7 +54,7 @@ public class ToggleWall extends Wall {
 
     @Override
     public void collide(GameObject O) {
-        if(!open){
+        if(!open & O instanceof Gamer){
             GameData.gamer.noMove();
         }
     }
