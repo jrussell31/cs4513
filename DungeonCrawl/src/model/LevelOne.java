@@ -6,6 +6,7 @@ import static model.GameData.MAP_WIDTH;
 import model.Immoveable.Collectible.Boot;
 import model.Immoveable.Collectible.Chip;
 import model.Immoveable.Collectible.Key;
+import model.Immoveable.Tile.Bomb;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Ice;
@@ -135,6 +136,7 @@ public final class LevelOne extends Level{
         
         //Level Elemental Walls
         super.immovableObjects.add(new Water(13,19));
+        super.immovableObjects.add(new Bomb(2,9));
         super.immovableObjects.add(new Water(15, 8));
         super.immovableObjects.add(new Water(15, 9));
         super.immovableObjects.add(new Water(15, 12));
@@ -175,7 +177,6 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(19, 3));
         super.immovableObjects.add(new Ice(20, 3));
         super.immovableObjects.add(new Ice(21, 3, Direction.NW));
-        
     }
 
     @Override
@@ -222,7 +223,7 @@ public final class LevelOne extends Level{
 
     @Override
     public void setLevelTime() {
-        super.levelTime = 120;
+        super.levelTime = 3600;
     }
 
     @Override
