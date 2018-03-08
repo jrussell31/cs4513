@@ -1,6 +1,5 @@
 package model;
 
-
 import model.Moveable.Gamer;
 import model.Moveable.Monster;
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ public class GameData {
     public static Gamer gamer;
     public static Monster monster;
     public static int chipsLeft;
-    private static int timerCounter;
     private static long currentTime, previousTime;
     public static boolean levelInProgress = false;
     
@@ -44,10 +42,10 @@ public class GameData {
     public static void resetGameData()
     {
         time = currentLevel.getLevelTime();
-        previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+        currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+        previousTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         currentLevel.resetLevel();
         chipsLeft = currentLevel.getLevelChipCount();
-        timerCounter = 0;
         
         //Clear out game objects
         gameObjects.clear();
@@ -73,14 +71,11 @@ public class GameData {
     {
         if(GameData.time > 0)
         {
-            currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) % 1000;
+            currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
             
             if(currentTime > previousTime){
                 previousTime = currentTime;
                 GameData.time--;
-            }
-            else{
-                timerCounter++;
             }
         }
                 
