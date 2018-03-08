@@ -87,6 +87,21 @@ public class Glider extends Monster {
                 counter += 100;
             }
         }
+        
+        switch (direction) {
+                    case LEFT:
+                        gliderMoves.setFrames(glider_W); 
+                        break;
+                    case RIGHT:
+                        gliderMoves.setFrames(glider_E);
+                        break;
+                    case UP:
+                        gliderMoves.setFrames(glider_N);
+                        break;
+                    case DOWN:
+                        gliderMoves.setFrames(glider_S);
+                        break;
+                }
     }
     
     public void turn(Direction d) {
