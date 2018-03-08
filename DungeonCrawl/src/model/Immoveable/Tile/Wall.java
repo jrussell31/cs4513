@@ -39,13 +39,24 @@ public class Wall extends Tile {
             }
             //Collision with Bug
             if(O instanceof Bug){
-                if (direction.RIGHT == direction.RIGHT) {
-                    //((Bug) O).turn(((Bug) O).direction.turnCCW());                    
-                } else if (direction.LEFT == direction.LEFT) {                    
-                    ((Bug) O).turn(((Bug)O).direction.turnCW());                    
-                }
-                else 
+                ((Bug) O).turn(((Bug) O).direction.turnCW());
+                
+               /* if (((Bug) O).direction == direction.LEFT) {
+                    ((Bug) O).turn(((Bug) O).direction.turnCW());                    
+                }                                 
+                 if (((Bug) O).direction == direction.RIGHT) {                    
+                    ((Bug) O).turn(((Bug)O).direction.turnCCW());
+                    
+                }              
+                if (((Bug) O).direction == direction.DOWN) {
                     ((Bug) O).turn(((Bug)O).direction.turnCW());
+                }
+                
+                if (((Bug) O).direction == direction.UP) {
+                    ((Bug) O).turn(((Bug)O).direction.turnCW());
+                }*/ 
+                
+                
                 //((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
             }
            if(O instanceof Glider){

@@ -68,30 +68,18 @@ public class Bug extends Monster {
                     case LEFT:
                         bugMoves.setFrames(Bug_W);
                         super.x -= MOVEMENT;
-                        if (super.x == 64) {
-                            direction = Direction.UP;
-                        }
                         break;
                     case RIGHT:
                         bugMoves.setFrames(Bug_E);
-                        super.x += MOVEMENT;                        
-                        if (super.x == 64) {
-                            direction = Direction.DOWN;
-                        }
+                        super.x += MOVEMENT;                                                
                         break;
                     case UP:
                         bugMoves.setFrames(Bug_N);
-                        super.y -= MOVEMENT;
-                        if (super.x == 64) {
-                            direction = Direction.RIGHT;
-                        }
+                        super.y -= MOVEMENT;                        
                         break;
                     case DOWN:
                         bugMoves.setFrames(Bug_S);
-                        super.y += MOVEMENT;
-                        if (super.x == 64) {
-                            direction = Direction.LEFT;
-                        }
+                        super.y += MOVEMENT;                        
                         break; 
                 }
                 moving = direction;
@@ -105,13 +93,13 @@ public class Bug extends Monster {
     public void turn(Direction d) {
         direction = d;
         moving = d;
-    }
+    }               
     
     @Override
     public void collide(GameObject O){
         if(O instanceof Gamer){
             super.collide(O);
-        } else if (O instanceof Block) {            
+        } else if (O instanceof Wall) {            
             direction = direction.getOppositeDirection();
         }
     }
