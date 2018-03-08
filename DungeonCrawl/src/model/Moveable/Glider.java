@@ -60,7 +60,6 @@ public class Glider extends Monster {
         super.update();
         
         if(isSliding()){
-           direction = moving;
             slide(moving);
         }else {
              if (counter == 1000) {
@@ -83,7 +82,7 @@ public class Glider extends Monster {
                         super.y += MOVEMENT;
                         break;
                 }
-                moving = direction;
+                //moving = direction;
             } else {
                 counter += 100;
             }
