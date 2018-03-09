@@ -49,6 +49,7 @@ public class Animator implements Runnable {
                         go.getCollisionBox())) {
                     //System.out.println(object.getClass() + " " + go.getClass());
                     object.collide(go);
+                    //go.collide(object);
                 }
             }            
         }                                

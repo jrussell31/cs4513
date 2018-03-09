@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
 import model.GameObject;
+import model.Immoveable.Tile.Ice;
 import model.Level;
 import model.Immoveable.Tile.Wall;
 
@@ -86,6 +87,21 @@ public class Glider extends Monster {
                 counter += 100;
             }
         }
+        
+        switch (direction) {
+                    case LEFT:
+                        gliderMoves.setFrames(glider_W); 
+                        break;
+                    case RIGHT:
+                        gliderMoves.setFrames(glider_E);
+                        break;
+                    case UP:
+                        gliderMoves.setFrames(glider_N);
+                        break;
+                    case DOWN:
+                        gliderMoves.setFrames(glider_S);
+                        break;
+                }
     }
     
     public void turn(Direction d) {
@@ -96,6 +112,12 @@ public class Glider extends Monster {
     @Override
      public void collide(GameObject O){
          super.collide(O);
+         if(O instanceof Ice)
+         {
+             this.direction = this.direction.getOppositeDirection();
+         }
+         
+         //super.collide(O);
         // if(O instanceof Wall){
          //    direction= direction.getOppositeDirection();
          //    moving= direction;

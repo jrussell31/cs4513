@@ -59,6 +59,7 @@ public class Ice extends Tile {
                             break;
                         default:                            
                             ((MoveableObject) O).noMove();
+                            ((MoveableObject) O).sliding(true);
                             ((MoveableObject) O).moving = ((MoveableObject) O).moving.getOppositeDirection();
                     }
                     break;
@@ -74,6 +75,7 @@ public class Ice extends Tile {
                             break;
                         default:
                             ((MoveableObject) O).noMove();
+                            ((MoveableObject) O).sliding(true);
                             ((MoveableObject) O).moving = ((MoveableObject) O).moving.getOppositeDirection();
                     }
                     break;
@@ -89,6 +91,7 @@ public class Ice extends Tile {
                             break;
                         default:
                             ((MoveableObject) O).noMove();
+                            ((MoveableObject) O).sliding(true);
                             ((MoveableObject) O).moving = ((MoveableObject) O).moving.getOppositeDirection();
                     }
                     break;
@@ -104,6 +107,7 @@ public class Ice extends Tile {
                             break;
                         default:
                             ((MoveableObject) O).noMove();
+                            ((MoveableObject) O).sliding(true);
                             ((MoveableObject) O).moving = ((MoveableObject) O).moving.getOppositeDirection();
                     }
                     break;
