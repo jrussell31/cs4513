@@ -3,11 +3,15 @@ package model.Immoveable.Tile;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.BootType;
 import model.Direction;
+import model.GameData;
 import model.GameObject;
+import model.Immoveable.Collectible.Boot;
+import model.Moveable.Gamer;
 import model.Moveable.MoveableObject;
 
-public class Ice extends Floor {
+public class Ice extends Tile {
 
     public BufferedImage[] image;
 
@@ -27,7 +31,21 @@ public class Ice extends Floor {
 
     @Override
     public void collide(GameObject O) {
-        if (O instanceof MoveableObject) {              
+        boolean boot = false;
+        if (O instanceof Gamer) {
+            for (Object item : GameData.gamerInventory) {
+                if (item instanceof Boot) {
+                    if (((Boot) item).type == BootType.ICE) {
+                        boot = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if (O instanceof MoveableObject && !boot) {  
+            if(O instanceof Gamer){
+                ((Gamer)O).keepSliding = true;
+            }
             switch (this.direction) {
                 case NE:
                     switch (((MoveableObject) O).moving) {

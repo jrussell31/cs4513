@@ -67,15 +67,19 @@ public class Glider extends Monster {
                 counter = 0;
                 switch (direction) {
                     case LEFT:
+                        gliderMoves.setFrames(glider_W);
                         super.x -= MOVEMENT;
                         break;
                     case RIGHT:
+                        gliderMoves.setFrames(glider_E);
                         super.x += MOVEMENT;
                         break;
                     case UP:
+                        gliderMoves.setFrames(glider_N);
                         super.y -= MOVEMENT;
                         break;
                     case DOWN:
+                        gliderMoves.setFrames(glider_S);
                         super.y += MOVEMENT;
                         break;
                 }

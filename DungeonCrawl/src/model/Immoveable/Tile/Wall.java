@@ -3,9 +3,12 @@ package model.Immoveable.Tile;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Direction;
 import model.GameObject;
 import model.Moveable.Ball;
+import model.Moveable.Bug;
 import model.Moveable.Fireball;
+import model.Moveable.Gamer;
 import model.Moveable.MoveableObject;
 import model.Moveable.Glider;
 import model.Moveable.Walker;
@@ -36,11 +39,36 @@ public class Wall extends Tile {
                 //((Fireball) O).turn(((Fireball) O).direction.turnCCW());
                 ((Fireball) O).turn(((Fireball) O).direction.getOppositeDirection());
             }
-            if(O instanceof Glider){
+            //Collision with Bug
+            if(O instanceof Bug){
+                ((Bug) O).turn(((Bug) O).direction.turnCW());
+                
+               /* if (((Bug) O).direction == direction.LEFT) {
+                    ((Bug) O).turn(((Bug) O).direction.turnCW());                    
+                }                                 
+                 if (((Bug) O).direction == direction.RIGHT) {                    
+                    ((Bug) O).turn(((Bug)O).direction.turnCCW());
+                    
+                }              
+                if (((Bug) O).direction == direction.DOWN) {
+                    ((Bug) O).turn(((Bug)O).direction.turnCW());
+                }
+                
+                if (((Bug) O).direction == direction.UP) {
+                    ((Bug) O).turn(((Bug)O).direction.turnCW());
+                }*/ 
+                
+                
+                //((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
+            }
+           if(O instanceof Glider){
                 ((Glider) O).turn(((Glider) O).direction.turnCW());
             }
             if(O instanceof Walker) {
                 ((Walker) O).changeDirection();
+            }
+            if(O instanceof Gamer){
+                ((Gamer )O).moving = ((Gamer)O).moving.getOppositeDirection();
             }
         }
     }

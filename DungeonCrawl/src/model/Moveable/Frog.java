@@ -4,6 +4,7 @@ import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 import model.Direction;
 import model.GameData;
 import model.GameObject;
@@ -13,7 +14,7 @@ public class Frog extends Monster {
 
     public BufferedImage[] frogSprites;
     private ObjectAnimator frogMoves;
-    private int previousTime;
+    private double previousTime;
 
     public Frog(float x, float y) {
         super(x, y);
@@ -39,7 +40,7 @@ public class Frog extends Monster {
     @Override
     public void render(Graphics2D g) {
         loadImages();
-        g.drawImage(frogMoves.getImage(), (int) super.x, (int) super.y, (int) super.WIDTH, (int) super.HEIGHT,
+        g.drawImage(frogMoves.getImage(), (int) super.x, (int) super.y, (int) Monster.WIDTH, (int) Monster.HEIGHT,
                 null);
         //Draw Collision Box
         //g.setColor(Color.blue);
@@ -49,34 +50,35 @@ public class Frog extends Monster {
     @Override
     public void update() {
         super.update();
-        
-        if (null != this.direction) {
-                switch (this.direction) {
-                    case UP:
-                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[0]});
-                        break;
-                    case DOWN:
-                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[1]});
-                        break;
-                    case LEFT:
-                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[2]});
-                        break;
-                    case RIGHT:
-                        this.frogMoves.setFrames(new BufferedImage[]{frogSprites[3]});
-                        break;
-                    default:
-                        break;
-                }
+
+        if (this.direction != null) {
+            switch (this.direction) {
+                case UP:
+                    this.frogMoves.setFrames(new BufferedImage[]{frogSprites[0]});
+                    break;
+                case DOWN:
+                    this.frogMoves.setFrames(new BufferedImage[]{frogSprites[1]});
+                    break;
+                case LEFT:
+                    this.frogMoves.setFrames(new BufferedImage[]{frogSprites[2]});
+                    break;
+                case RIGHT:
+                    this.frogMoves.setFrames(new BufferedImage[]{frogSprites[3]});
+                    break;
+                default:
+                    break;
             }
+        }
 
         if (GameData.time < previousTime) {
 
             float xDistanceBetweenGamer = GameData.gamer.x - this.x;
             float yDistanceBetweenGamer = GameData.gamer.y - this.y;
-            float sign;
+            float absXDistance = Math.abs(xDistanceBetweenGamer);
+            float absYDistance = Math.abs(yDistanceBetweenGamer);
 
             // If x distance greater than y distance
-            if (Math.abs(xDistanceBetweenGamer) > Math.abs(yDistanceBetweenGamer)) {
+            if (absXDistance > absYDistance) {
                 if (yDistanceBetweenGamer == 0) {
                     // Add tile space in x direction based on whether gamer is in positive or negative direction
                     this.x += (Math.signum(xDistanceBetweenGamer) * Monster.MOVEMENT);
@@ -87,7 +89,7 @@ public class Frog extends Monster {
                     this.direction = (Math.signum(yDistanceBetweenGamer) > 0) ? Direction.DOWN : Direction.UP;
                 }
             } // If y distance greater than x distance
-            else if (Math.abs(xDistanceBetweenGamer) < Math.abs(yDistanceBetweenGamer)) {
+            else if (absXDistance < absYDistance) {
                 if (xDistanceBetweenGamer == 0) {
                     // Add tile space in y direction based on whether gamer is in positive or negative direction
                     this.y += (Math.signum(yDistanceBetweenGamer) * Monster.MOVEMENT);
@@ -99,10 +101,18 @@ public class Frog extends Monster {
                 }
             } // If x and y distance are equal
             else {
-                if (xDistanceBetweenGamer != 0) {
-                    // Add tile space in x direction based on whether gamer is in positive or negative direction
+                Random rand = new Random();
+                boolean chooseX = (rand.nextFloat() < 0.5);
+                
+                // Jump tile space in x direction based on whether gamer is in positive or negative direction
+                if(chooseX){
                     this.x += (Math.signum(xDistanceBetweenGamer) * Monster.MOVEMENT);
                     this.direction = (Math.signum(xDistanceBetweenGamer) > 0) ? Direction.LEFT : Direction.RIGHT;
+                }
+                // Jump tile space in y direction based on whether gamer is in positive or negative direction
+                else{
+                    this.y += (Math.signum(yDistanceBetweenGamer) * Monster.MOVEMENT);
+                    this.direction = (Math.signum(yDistanceBetweenGamer) > 0) ? Direction.DOWN : Direction.UP;
                 }
             }
         }
@@ -114,7 +124,7 @@ public class Frog extends Monster {
     public void collide(GameObject O) {
         super.collide(O);
 
-        if (O instanceof Block || O instanceof Wall) {
+        if (O instanceof Block || O instanceof Wall || O instanceof Monster) {
             noMove();
         }
     }
