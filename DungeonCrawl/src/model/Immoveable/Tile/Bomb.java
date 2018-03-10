@@ -45,7 +45,7 @@ public class Bomb extends Tile {
             if (gameOver) {
                 image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
                 //TODO Remove the Gamer so That you can see the drowned image. JL 2/19
-                DungeonCrawl.bannerPanel.setBannerText("You drowned on Level  " + GameData.currentLevel.getLevelValue());
+                DungeonCrawl.bannerPanel.setBannerText("¯\\_(ツ)_/¯  " + GameData.currentLevel.getLevelValue());
                 ((Gamer)O).setAlive(false);
             }
 
