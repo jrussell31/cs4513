@@ -224,10 +224,7 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(29, 26, Direction.SE));
         super.immovableObjects.add(new Ice(29, 25));
         super.immovableObjects.add(new Ice(29, 24));
-<<<<<<< HEAD
-        super.immovableObjects.add(new Ice(29, 23, Direction.NE));
-=======
->>>>>>> f77cb2b3a185de0ca39beb52708fc3208940d32d
+
         for (int i = 25; i < 29; i++) {
             super.immovableObjects.add(new Ice(i, 23));
         }
