@@ -116,6 +116,7 @@ public class Glider extends Monster {
          {
              this.direction = this.direction.getOppositeDirection();
          }
+         
          //super.collide(O);
         // if(O instanceof Wall){
          //    direction= direction.getOppositeDirection();
