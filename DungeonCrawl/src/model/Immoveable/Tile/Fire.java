@@ -5,6 +5,7 @@ import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
+import model.Collidable;
 import model.Direction;
 import model.GameData;
 import model.GameObject;
@@ -17,7 +18,7 @@ import model.Moveable.Glider;
 import model.Moveable.Walker;
 import model.Moveable.MoveableObject;
 
-public class Fire extends Tile {
+public class Fire extends Tile implements Collidable {
 
     public BufferedImage image;
 

@@ -3,10 +3,11 @@ package model.Immoveable.Tile;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import static model.GameData.gamerInventory;
 import model.GameObject;
 
-public class Theif extends Tile{
+public class Theif extends Tile implements Collidable{
     
     public BufferedImage image;
 

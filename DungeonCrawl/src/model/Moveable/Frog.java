@@ -124,8 +124,41 @@ public class Frog extends Monster {
     public void collide(GameObject O) {
         super.collide(O);
 
-        if (O instanceof Block || O instanceof Wall || O instanceof Monster) {
-            noMove();
+        if (O instanceof Block || O instanceof Wall) {
+            switch(this.direction){
+                case UP:
+                    break;
+                case DOWN:
+                    break;
+                case LEFT:
+                    break;
+                case RIGHT:
+                    // Check next two hops UP and to the RIGHT
+                    Frog frogSimOne = new Frog(this.x + MOVEMENT, this.y - MOVEMENT);
+                    boolean chooseSimOne = true;
+                    
+                    // Check next two hops DOWN and to the RIGHT
+                    Frog frogSimTwo = new Frog(this.x + MOVEMENT, this.y + MOVEMENT);
+                    boolean chooseSimTwo = true;
+                    
+                    for(GameObject object : GameData.gameObjects){
+                        if(object.getCollisionBox().intersects(
+                        frogSimOne.getCollisionBox())){
+                            chooseSimOne = false;
+                        }
+                        
+                        if(object.getCollisionBox().intersects(
+                        frogSimTwo.getCollisionBox())){
+                            chooseSimTwo = false;
+                        }
+                    }
+                    
+                    if(chooseSimOne){
+                        this.x = frogSimOne.x;
+                    }
+                    
+                    break;
+            }
         }
     }
 }

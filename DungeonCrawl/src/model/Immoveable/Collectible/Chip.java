@@ -3,11 +3,12 @@ package model.Immoveable.Collectible;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
 
-public class Chip extends Collectible {
+public class Chip extends Collectible implements Collidable {
 
     public BufferedImage chip;
 

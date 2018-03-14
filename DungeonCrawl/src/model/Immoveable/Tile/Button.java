@@ -11,12 +11,13 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import model.ButtonType;
+import model.Collidable;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
 import model.Moveable.Tank;
 
-public class Button extends Tile {
+public class Button extends Tile implements Collidable{
     public BufferedImage image;
     ArrayList<GameObject> onButton = new ArrayList<>();
     ArrayList<GameObject> prevOnButton = new ArrayList<>();

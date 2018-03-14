@@ -275,7 +275,7 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
 
         super.moveableObjects.add(new Glider(5,20,Direction.UP)); 
-        super.moveableObjects.add(new Glider(28,5,Direction.UP));
+        super.moveableObjects.add(new Glider(17,9,Direction.UP));
         //super.moveableObjects.add(new Bug(18, 19, Direction.RIGHT));
         super.moveableObjects.add(new Bug(12, 19, Direction.LEFT));
         //super.moveableObjects.add(new Frog(1, 5));
