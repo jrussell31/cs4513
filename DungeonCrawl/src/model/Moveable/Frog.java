@@ -82,27 +82,26 @@ public class Frog extends Monster {
             //Frog
             Point frog = new Point((int) this.x / OFFSET, (int) this.y / OFFSET);
             Point gamer = new Point((int) GameData.gamer.x / OFFSET, (int) GameData.gamer.y / OFFSET);
-            
+
             //Check to see if the gamer is in a surrounding block before trying to find the shortest path
             //North
             if (frog.x == gamer.x && frog.y - 1 == gamer.y) {
-                this.y = (int)gamer.y/OFFSET;
+                this.y = (int) gamer.y / OFFSET;
                 this.collide(GameData.gamer);
             } //South
             else if (frog.x == gamer.x && frog.y + 1 == gamer.y) {
-                this.y = (int)gamer.y/OFFSET;
+                this.y = (int) gamer.y / OFFSET;
                 this.collide(GameData.gamer);
             } //East
             else if (frog.x + 1 == gamer.x && frog.y == gamer.y) {
-                this.x = (int)gamer.x/OFFSET;
+                this.x = (int) gamer.x / OFFSET;
                 this.collide(GameData.gamer);
             } //West
             else if (frog.x - 1 == gamer.x && frog.y == gamer.y) {
-                this.x = (int)gamer.x/OFFSET;
+                this.x = (int) gamer.x / OFFSET;
                 this.collide(GameData.gamer);
-            } 
-            else {
-                // Idendify all gameobjects on grid and assign 1
+            } else {
+                // Identify all gameobjects on grid and assign 1
                 // Frog, Gamer, Button and Bomb are kept as 0 so they can be part of the frogs path 
                 for (GameObject O : GameData.gameObjects) {
                     if (O != this && !(O instanceof Gamer) && !(O instanceof Bomb) && !(O instanceof Button)) {
@@ -117,6 +116,7 @@ public class Frog extends Monster {
                 // Identify gamer on grid and assign 0
                 grid[gamer.y][gamer.x] = 0;
 
+                // Find shortest path using BFS
                 Point pathFound = this.ShortestPath(frog, gamer);
                 if (pathFound != null) {
                     if (pathFound.x != 0 && pathFound.y != 0) {
@@ -129,7 +129,8 @@ public class Frog extends Monster {
                         } //East
                         else if (pathFound.y == (int) this.x / OFFSET + 1) {
                             this.direction = Direction.LEFT;
-                        } else if (pathFound.y == (int) this.x / OFFSET - 1) {
+                        } //West 
+                        else if (pathFound.y == (int) this.x / OFFSET - 1) {
                             this.direction = Direction.RIGHT;
                         }
 
@@ -151,7 +152,7 @@ public class Frog extends Monster {
             this.noMove();
         }
     }
-    
+
     private void ChangeNodeContents(int[][] iMaze, int iNodeNo, int iNewValue) {
         if (iNodeNo < 0) {
             iMaze[(int) this.y / OFFSET][(int) this.x / OFFSET] = iNewValue;
@@ -171,10 +172,10 @@ public class Frog extends Monster {
     private Point ShortestPath(Point from, Point to) {
         int start = (from.y * COLS) + from.x;
         int stop = (to.y * COLS) + to.x;
-        
+
         // Point representing the frogs next jump if path is found
         Point nextJump = new Point();
-        
+
         int max = ROWS * COLS;
         int[] Queue = new int[max];
         int[] Origin = new int[max];
