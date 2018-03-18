@@ -118,11 +118,9 @@ public class Fireball extends Monster {
     public void collide(GameObject O) {
         super.collide(O);
         
-        if (O instanceof Block) {
+        if (O instanceof Block || O instanceof Wall || O instanceof Monster) {
             noMove();
             direction = direction.getOppositeDirection();
-        } else if (O instanceof Wall) {
-            this.turn(this.direction.getOppositeDirection());
         }
     }
 }

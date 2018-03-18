@@ -38,7 +38,7 @@ public final class LevelOne extends Level{
     
     @Override
     public void setGamer(){
-        super.gamer = new Gamer(7, 2);
+        super.gamer = new Gamer(4, 1);
     }
 
     @Override
@@ -278,7 +278,7 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Glider(17,9,Direction.UP));
         //super.moveableObjects.add(new Bug(18, 19, Direction.RIGHT));
         super.moveableObjects.add(new Bug(12, 19, Direction.LEFT));
-        super.moveableObjects.add(new Frog(2, 5));
+        super.moveableObjects.add(new Frog(1, 4));
                 
         //Tank
         ArrayList<GameObject> tanks = new ArrayList<>();
