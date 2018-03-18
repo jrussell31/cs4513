@@ -33,8 +33,9 @@ public class GameData {
         gameLevels = new HashMap();
         gameLevels.put(LevelNumber.LEVELONE, new LevelOne());
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
+        gameLevels.put(LevelNumber.LEVELTHREE, new LevelThree());
         
-        currentLevel = gameLevels.get(LevelNumber.LEVELONE);
+        currentLevel = gameLevels.get(LevelNumber.LEVELTHREE);
   
         resetGameData();
     }

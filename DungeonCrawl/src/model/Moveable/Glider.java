@@ -61,6 +61,7 @@ public class Glider extends Monster {
         super.update();
         
         if(isSliding()){
+            direction = moving;
             slide(moving);
         }else {
              if (counter == 1000) {
@@ -102,6 +103,7 @@ public class Glider extends Monster {
                         gliderMoves.setFrames(glider_S);
                         break;
                 }
+        gliderMoves.update();
     }
     
     public void turn(Direction d) {
@@ -111,11 +113,9 @@ public class Glider extends Monster {
     //This collide never gets called for walls. 
     @Override
      public void collide(GameObject O){
-         super.collide(O);
-         if(O instanceof Ice)
-         {
-             this.direction = this.direction.getOppositeDirection();
-         }
+         if(O instanceof Gamer){
+            super.collide(O);
+        }
          
          //super.collide(O);
         // if(O instanceof Wall){
