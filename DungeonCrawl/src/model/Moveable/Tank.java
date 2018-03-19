@@ -7,6 +7,7 @@ import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
 import model.GameObject;
 import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
 
 public class Tank extends Monster {
@@ -106,11 +107,13 @@ public class Tank extends Monster {
 
     @Override
     public void collide(GameObject O) {
-        if(O instanceof Gamer){
-            super.collide(O);
-        }        
+        super.collide(O);
+        
         if (O instanceof Water || O instanceof Fire) {
             this.setAlive(false);
+        }
+        if(O instanceof Wall){
+            this.noMove();
         }
     }
 }
