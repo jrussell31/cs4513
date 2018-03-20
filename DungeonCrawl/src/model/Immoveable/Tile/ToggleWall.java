@@ -3,10 +3,12 @@ package model.Immoveable.Tile;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
-public class ToggleWall extends Wall {
+import model.Moveable.MoveableObject;
+public class ToggleWall extends Wall implements Collidable{
     
     BufferedImage toggleWallImg;
     
@@ -54,8 +56,11 @@ public class ToggleWall extends Wall {
 
     @Override
     public void collide(GameObject O) {
-        if(!open & O instanceof Gamer){
-            GameData.gamer.noMove();
+        if(!open){
+            ((MoveableObject)O).noMove();
+        }
+        else{
+            O.update();
         }
     }
 }

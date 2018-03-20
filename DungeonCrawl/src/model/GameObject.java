@@ -16,6 +16,4 @@ public interface GameObject {
     public Rectangle2D.Double getCollisionBox();
     
     public abstract boolean isAlive();
-    
-    public abstract void collide(GameObject O);
 }

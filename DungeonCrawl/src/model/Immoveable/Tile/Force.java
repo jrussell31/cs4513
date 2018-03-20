@@ -4,6 +4,7 @@ import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
+import model.Collidable;
 import model.Direction;
 import model.GameData;
 import model.GameObject;
@@ -11,7 +12,7 @@ import model.Immoveable.Collectible.Boot;
 import model.Moveable.Gamer;
 import model.Moveable.MoveableObject;
 
-public class Force extends Tile {
+public class Force extends Tile implements Collidable {
 
     private BufferedImage[] image;
 

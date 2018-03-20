@@ -1,16 +1,16 @@
 package model.Moveable;
 
-import static DungeonCrawl.DungeonCrawl.gameData;
 import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import model.Direction;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
 
-public class Gamer extends MoveableObject {
-
+public class Gamer extends MoveableObject implements Collidable {
     public BufferedImage[] leftIdle;
     public BufferedImage[] rightIdle;
     public BufferedImage[] downIdle;
@@ -117,6 +117,8 @@ public class Gamer extends MoveableObject {
 
     @Override
     public void collide(GameObject O) {
-
+        if(O instanceof Wall){
+            this.noMove();
+        }
     }
 }
