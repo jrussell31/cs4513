@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import static model.GameData.MAP_HEIGHT;
 import static model.GameData.MAP_WIDTH;
+import model.Immoveable.Tile.FakePortal;
+import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.Wall;
 import model.Moveable.Gamer;
 
@@ -30,6 +32,8 @@ public final class LevelTwo extends Level {
             super.immovableObjects.add(new Wall(0, i));
             super.immovableObjects.add(new Wall(MAP_WIDTH, i));
         }
+        
+        super.immovableObjects.add(new FakePortal(15, 26,1));
     }
 
     @Override
