@@ -4,13 +4,14 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import model.Direction;
 import model.GameData;
 import model.GameObject;
 import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Wall;
 
-public class Block extends MoveableObject {
+public class Block extends MoveableObject implements Collidable{
 
     public BufferedImage blockImg;
 

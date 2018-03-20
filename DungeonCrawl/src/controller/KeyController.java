@@ -17,6 +17,11 @@ public class KeyController implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent ke) {
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
         GameObject firstGameObject = DungeonCrawl.gameData.gamer;
 
         if (firstGameObject instanceof Gamer) {
@@ -48,15 +53,6 @@ public class KeyController implements KeyListener {
                         DungeonCrawl.bannerPanel.setVisible(false);
                     }
             }
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent ke) {
-        Object firstGameObject = DungeonCrawl.gameData.gamer;
-
-        if (firstGameObject instanceof Gamer) {
-            Gamer gamer = (Gamer) firstGameObject;
         }
     }
 
