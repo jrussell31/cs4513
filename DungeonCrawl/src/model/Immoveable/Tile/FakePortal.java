@@ -5,10 +5,11 @@ import DungeonCrawl.DungeonCrawl;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import model.GameData;
 import model.GameObject;
 
-public class FakePortal extends Tile{
+public class FakePortal extends Tile implements Collidable{
     
     public BufferedImage fakePortalImg;
     public static boolean goBack = false; 
