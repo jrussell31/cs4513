@@ -12,7 +12,7 @@ import model.Level;
 import model.Immoveable.Tile.Wall;
 
 public class Glider extends Monster {
-    
+
     public BufferedImage[] glider_N;
     public BufferedImage[] glider_E;
     public BufferedImage[] glider_S;
@@ -20,7 +20,7 @@ public class Glider extends Monster {
 
     private final ObjectAnimator gliderMoves;
     private int counter;
-    
+
     public Glider(float x, float y, Direction d) {
         super(x, y);
         gliderMoves = new ObjectAnimator();
@@ -31,7 +31,7 @@ public class Glider extends Monster {
         glider_E = new BufferedImage[1];
         glider_S = new BufferedImage[1];
         glider_W = new BufferedImage[1];
-        
+
         try {
             BufferedImage image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Glider_N.png");
             glider_N[0] = image;
@@ -50,7 +50,7 @@ public class Glider extends Monster {
     public void render(Graphics2D g) {
         g.drawImage(gliderMoves.getImage(), (int) super.x, (int) super.y, (int) HEIGHT, (int) WIDTH,
                 null);
-        
+
         //Draw Collision Box
         //g.setColor(Color.blue);
         //g.draw(this.getCollisionBox());
@@ -63,24 +63,20 @@ public class Glider extends Monster {
         if(isSliding()){
             direction = moving;
             slide(moving);
-        }else {
-             if (counter == 1000) {
+        } else {
+            if (counter == 1000) {
                 counter = 0;
                 switch (direction) {
                     case LEFT:
-                        gliderMoves.setFrames(glider_W);
                         super.x -= MOVEMENT;
                         break;
                     case RIGHT:
-                        gliderMoves.setFrames(glider_E);
                         super.x += MOVEMENT;
                         break;
                     case UP:
-                        gliderMoves.setFrames(glider_N);
                         super.y -= MOVEMENT;
                         break;
                     case DOWN:
-                        gliderMoves.setFrames(glider_S);
                         super.y += MOVEMENT;
                         break;
                 }
@@ -88,7 +84,7 @@ public class Glider extends Monster {
                 counter += 100;
             }
         }
-        
+
         switch (direction) {
                     case LEFT:
                         gliderMoves.setFrames(glider_W); 
@@ -105,12 +101,12 @@ public class Glider extends Monster {
                 }
         gliderMoves.update();
     }
-    
+
     public void turn(Direction d) {
         direction = d;
         moving = d;
     }
-    //This collide never gets called for walls. 
+ 
     @Override
      public void collide(GameObject O){
          if(O instanceof Gamer){

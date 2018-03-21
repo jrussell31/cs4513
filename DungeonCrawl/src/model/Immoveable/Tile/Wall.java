@@ -27,53 +27,6 @@ public class Wall extends Tile {
     }
 
     @Override
-    public void collide(GameObject O) {
-        if (O instanceof MoveableObject) {
-            ((MoveableObject) O).noMove();
-            //Collide with Ball
-            if(O instanceof Ball){
-                ((Ball) O).turnAround();
-            }
-            //Collide with Fireball
-            if(O instanceof Fireball){
-                //((Fireball) O).turn(((Fireball) O).direction.turnCCW());
-                ((Fireball) O).turn(((Fireball) O).direction.getOppositeDirection());
-            }
-            //Collision with Bug
-            if(O instanceof Bug){
-                ((Bug) O).turn(((Bug) O).direction.turnCW());
-                
-               /* if (((Bug) O).direction == direction.LEFT) {
-                    ((Bug) O).turn(((Bug) O).direction.turnCW());                    
-                }                                 
-                 if (((Bug) O).direction == direction.RIGHT) {                    
-                    ((Bug) O).turn(((Bug)O).direction.turnCCW());
-                    
-                }              
-                if (((Bug) O).direction == direction.DOWN) {
-                    ((Bug) O).turn(((Bug)O).direction.turnCW());
-                }
-                
-                if (((Bug) O).direction == direction.UP) {
-                    ((Bug) O).turn(((Bug)O).direction.turnCW());
-                }*/ 
-                
-                
-                //((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
-            }
-           if(O instanceof Glider){
-                ((Glider) O).turn(((Glider) O).direction.turnCW());
-            }
-            if(O instanceof Walker) {
-                ((Walker) O).changeDirection();
-            }
-            if(O instanceof Gamer){
-                ((Gamer )O).moving = ((Gamer)O).moving.getOppositeDirection();
-            }
-        }
-    }
-
-    @Override
     public void render(Graphics2D g) {
         g.drawImage(image, (int) super.x, (int) super.y, (int) WIDTH, (int) HEIGHT, null);
 

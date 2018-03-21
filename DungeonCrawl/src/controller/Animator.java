@@ -1,9 +1,10 @@
-
 package controller;
 
 import DungeonCrawl.DungeonCrawl;
+import model.Collidable;
 import model.GameData;
 import model.GameObject;
+import model.Moveable.MoveableObject;
 
 public class Animator implements Runnable {
 
@@ -44,14 +45,16 @@ public class Animator implements Runnable {
 
     private void processCollisions() {
         for (GameObject object : GameData.gameObjects) {
-            for (GameObject go : GameData.gameObjects) {
-                if (object != go && object.getCollisionBox().intersects(
-                        go.getCollisionBox())) {
-                    //System.out.println(object.getClass() + " " + go.getClass());
-                    object.collide(go);
-                    //go.collide(object);
+            if (object instanceof Collidable) {
+                for (GameObject go : GameData.gameObjects) {
+                    if (object != go && object.getCollisionBox().intersects(
+                            go.getCollisionBox())) {
+                        //System.out.println(object.getClass() + " " + go.getClass());
+                        ((Collidable)object).collide(go);
+                        //go.collide(object);
+                    }
                 }
-            }            
-        }                                
+            }
+        }
     }
 }

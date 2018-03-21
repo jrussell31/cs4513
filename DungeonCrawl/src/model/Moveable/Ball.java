@@ -2,10 +2,11 @@ package model.Moveable;
 
 import controller.ImageFinder;
 import controller.ObjectAnimator;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
+import model.GameObject;
+import model.Immoveable.Tile.Wall;
 
 public class Ball extends Monster {
 
@@ -30,6 +31,26 @@ public class Ball extends Monster {
     public void turnAround() {
         direction = direction.getOppositeDirection();
         moving = direction;
+
+        moveOneTile();
+    }
+
+    public void moveOneTile() {
+        switch (direction) {
+            case LEFT:
+                super.x -= MOVEMENT;
+                break;
+            case RIGHT:
+                super.x += MOVEMENT;
+                break;
+            case UP:
+                super.y -= MOVEMENT;
+                break;
+            case DOWN:
+                super.y += MOVEMENT;
+                break;
+        }
+        moving = direction;
     }
 
     @Override
@@ -53,25 +74,21 @@ public class Ball extends Monster {
         } else {
             if (counter == 1000) {
                 counter = 0;
-                switch (direction) {
-                    case LEFT:
-                        super.x -= MOVEMENT;
-                        break;
-                    case RIGHT:
-                        super.x += MOVEMENT;
-                        break;
-                    case UP:
-                        super.y -= MOVEMENT;
-                        break;
-                    case DOWN:
-                        super.y += MOVEMENT;
-                        break;
-                }
-                moving = direction;
+                moveOneTile();
             } else {
                 counter += 100;
             }
         }
         ballMoves.update();
+    }
+
+    @Override
+    public void collide(GameObject O) {
+        super.collide(O);
+                
+        if(O instanceof Wall){
+            this.noMove();
+            this.turnAround();
+        }
     }
 }

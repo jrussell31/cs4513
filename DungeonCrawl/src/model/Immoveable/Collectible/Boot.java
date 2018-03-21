@@ -5,11 +5,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
+import model.Collidable;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
 
-public class Boot extends Collectible{
+public class Boot extends Collectible implements Collidable{
     
     public BootType type;
     
@@ -66,6 +67,5 @@ public class Boot extends Collectible{
              this.isDisplayed = false;
              GameData.gamerInventory.add(this);
          }
-    
     }
 }

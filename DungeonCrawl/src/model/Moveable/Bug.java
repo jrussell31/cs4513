@@ -112,9 +112,11 @@ public class Bug extends Monster {
     
     @Override
     public void collide(GameObject O){
-        if(O instanceof Gamer){
-            super.collide(O);
-        } else if (O instanceof Wall) {            
+        super.collide(O);
+        
+        if (O instanceof Wall) {            
+            this.noMove();
+            this.turn(this.direction.turnCW());
             direction = direction.getOppositeDirection();
         }
     }

@@ -6,8 +6,9 @@ import java.awt.image.BufferedImage;
 import model.GameData;
 import model.GameObject;
 import DungeonCrawl.DungeonCrawl;
+import model.Collidable;
 
-public class Portal extends Tile {
+public class Portal extends Tile implements Collidable {
 
     public BufferedImage portalImg;
     
