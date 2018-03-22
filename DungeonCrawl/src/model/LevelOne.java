@@ -31,9 +31,9 @@ public final class LevelOne extends Level{
     
     public LevelOne(){
         resetLevel();
-        Level.fLevelOne = false; 
+        /*Level.fLevelOne = true; 
         Level.fLevelTwo = false;  
-        Level.fLevelThree = true; 
+        Level.fLevelThree = false; */
     }
     
     @Override

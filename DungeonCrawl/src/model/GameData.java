@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import model.Immoveable.Tile.FakePortal;
 
 public class GameData {
     public static final int MAP_WIDTH = 30;
@@ -119,4 +120,21 @@ public class GameData {
         //Logic for next level
         currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
     }
+    
+    public static void goToPreviousLevel(){
+        levelInProgress = false;
+        
+        //Logic for next level
+        if (FakePortal.goBack == true){
+            if(FakePortal.levelChange == 1){
+                currentLevel = gameLevels.get(LevelNumber.LEVELONE);
+                FakePortal.goBack = false; 
+            }
+            else{
+                currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
+                FakePortal.goBack = false;
+            }
+        }
+    }
+    
 }
