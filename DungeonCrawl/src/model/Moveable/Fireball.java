@@ -6,7 +6,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
+import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.Wall;
 import model.Level;
 
 public class Fireball extends Monster {
@@ -47,9 +49,9 @@ public class Fireball extends Monster {
         super.update();
         fireballMoves.setFrames(fireballSprites);
 
-        if (Level.fLevelOne) {
+        if (GameData.currentLevel.getLevelValue() == 1) {
             if (isSliding()) {
-                direction = moving;                
+                direction = moving;
                 slide(moving);
             } else {
                 if (counter == 1000) {
@@ -58,7 +60,7 @@ public class Fireball extends Monster {
                         case LEFT:
                             super.x -= MOVEMENT;
                             if (super.x == 64) {
-                                direction = Direction.DOWN;                                
+                                direction = Direction.DOWN;
                             }
                             break;
                         case RIGHT:
@@ -85,7 +87,7 @@ public class Fireball extends Monster {
                 }
             }
             fireballMoves.update();
-        } else if (Level.fLevelTwo) {
+        } else if (GameData.currentLevel.getLevelValue() == 2) {
             if (counter == 1000) {
                 counter = 0;
                 switch (direction) {
@@ -101,11 +103,37 @@ public class Fireball extends Monster {
                         fireballMoves.setFrames(fireballSprites);
 
                         break;
-                }               
-            }else {
-            counter += 100;
+                }
+            } else {
+                counter += 100;
+            }
+        }else if (GameData.currentLevel.getLevelValue() == 3) {
+            if (isSliding()) {
+            direction = moving;
+            slide(moving);
+        } else {
+            if (counter == 1000) {
+                counter = 0;
+                switch (direction) {
+                    case LEFT:
+                        super.x -= MOVEMENT;
+                        break;
+                    case RIGHT:
+                        super.x += MOVEMENT;
+                        break;
+                    case UP:
+                        super.y -= MOVEMENT;
+                        break;
+                    case DOWN:
+                        super.y += MOVEMENT;
+                        break;
+                }
+                moving = direction;
+            } else {
+                counter += 100;
+            }
         }
-        } 
+        }
     }
 
     public void turn(Direction d) {
@@ -115,11 +143,11 @@ public class Fireball extends Monster {
 
     @Override
     public void collide(GameObject O) {
-        if (O instanceof Gamer) {
-            super.collide(O);
-        } else if (O instanceof Block) {
+        super.collide(O);
+        
+        if (O instanceof Block || O instanceof Wall || O instanceof Monster) {
             noMove();
             direction = direction.getOppositeDirection();
-        }        
+        }
     }
 }

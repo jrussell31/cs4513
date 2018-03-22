@@ -5,13 +5,12 @@ import controller.ImageFinder;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import model.GameData;
 import model.GameObject;
 import model.Moveable.Gamer;
 
-
-
-public class Key extends Collectible {
+public class Key extends Collectible implements Collidable {
     public LockType type;    
     public BufferedImage[] keyImg;
     

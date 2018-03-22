@@ -87,6 +87,21 @@ public class Bug extends Monster {
                 counter += 100;
             }
         }
+        
+        switch (moving) {
+            case LEFT:
+                bugMoves.setFrames(Bug_W);
+                break;
+            case RIGHT:
+                bugMoves.setFrames(Bug_E);
+                break;
+            case UP:
+                bugMoves.setFrames(Bug_N);
+                break;
+            case DOWN:
+                bugMoves.setFrames(Bug_S);
+                break;
+        }
         bugMoves.update();
     }
     
@@ -97,9 +112,11 @@ public class Bug extends Monster {
     
     @Override
     public void collide(GameObject O){
-        if(O instanceof Gamer){
-            super.collide(O);
-        } else if (O instanceof Wall) {            
+        super.collide(O);
+        
+        if (O instanceof Wall) {            
+            this.noMove();
+            this.turn(this.direction.turnCW());
             direction = direction.getOppositeDirection();
         }
     }

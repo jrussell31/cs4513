@@ -65,9 +65,6 @@ public class Walker extends Monster {
                     case LEFT:
                         walkerMoves.setFrames(walker_WE);
                         super.x -= MOVEMENT;
-                        //if (super.x == 400) {
-                        //    
-                        //}
                         break;
                     case RIGHT:
                         walkerMoves.setFrames(walker_WE);
@@ -107,11 +104,14 @@ public class Walker extends Monster {
     
     @Override
      public void collide(GameObject O){
-         if(O instanceof Gamer){
-             super.collide(O);
-         }
+         super.collide(O);
+         
          if (O instanceof Water || O instanceof Fire) {
             direction = direction.getOppositeDirection();
         }
+         if(O instanceof Wall){
+            this.noMove();
+            this.changeDirection();
+         }
      }
 }

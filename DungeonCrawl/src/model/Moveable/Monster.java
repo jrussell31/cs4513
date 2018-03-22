@@ -3,8 +3,9 @@ package model.Moveable;
 import model.GameData;
 import model.GameObject;
 import DungeonCrawl.DungeonCrawl;
+import model.Collidable;
 
-public abstract class Monster extends MoveableObject {
+public abstract class Monster extends MoveableObject implements Collidable {
     public boolean isDisplayed = true;
     public Monster(float x, float y) {
         super(x, y);

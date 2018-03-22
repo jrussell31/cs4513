@@ -3,9 +3,10 @@ package model.Immoveable.Tile;
 import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import model.Collidable;
 import model.GameObject;
 
-public class Toggle extends Wall{    
+public class Toggle extends Wall implements Collidable{    
     private boolean close;
     public BufferedImage[] image;
     

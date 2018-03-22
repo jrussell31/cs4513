@@ -4,14 +4,16 @@ import controller.ImageFinder;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
+import model.Collidable;
 import model.Direction;
 import model.GameData;
 import model.GameObject;
 import model.Immoveable.Collectible.Boot;
 import model.Moveable.Gamer;
+import model.Moveable.Glider;
 import model.Moveable.MoveableObject;
 
-public class Ice extends Tile {
+public class Ice extends Tile implements Collidable {
 
     public BufferedImage[] image;
 
@@ -114,7 +116,6 @@ public class Ice extends Tile {
                 default:
                     ((MoveableObject) O).sliding(true);
             }
-            
         }
     }
 
