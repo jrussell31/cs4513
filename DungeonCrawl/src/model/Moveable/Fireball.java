@@ -107,6 +107,32 @@ public class Fireball extends Monster {
             } else {
                 counter += 100;
             }
+        }else if (GameData.currentLevel.getLevelValue() == 3) {
+            if (isSliding()) {
+            direction = moving;
+            slide(moving);
+        } else {
+            if (counter == 1000) {
+                counter = 0;
+                switch (direction) {
+                    case LEFT:
+                        super.x -= MOVEMENT;
+                        break;
+                    case RIGHT:
+                        super.x += MOVEMENT;
+                        break;
+                    case UP:
+                        super.y -= MOVEMENT;
+                        break;
+                    case DOWN:
+                        super.y += MOVEMENT;
+                        break;
+                }
+                moving = direction;
+            } else {
+                counter += 100;
+            }
+        }
         }
     }
 
