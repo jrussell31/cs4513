@@ -31,9 +31,9 @@ public final class LevelOne extends Level{
     
     public LevelOne(){
         resetLevel();
-        Level.fLevelOne = true; 
+        /*Level.fLevelOne = true; 
         Level.fLevelTwo = false;  
-        Level.fLevelThree = false; 
+        Level.fLevelThree = false; */
     }
     
     @Override
@@ -175,8 +175,15 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Water(15, 9));
         super.immovableObjects.add(new Water(15, 12));
         super.immovableObjects.add(new Water(20, 23));
+        //for testing of glider
+        super.immovableObjects.add(new Water(5, 18));
+        super.immovableObjects.add(new Water(4, 18));
+        super.immovableObjects.add(new Water(6, 18));
+        super.immovableObjects.add(new Water(5, 17));
+        super.immovableObjects.add(new Water(5, 16));
+        
         super.immovableObjects.add(new Fire(17,19));
-        super.immovableObjects.add(new Fire(9, 4));
+        super.immovableObjects.add(new Fire(10, 4));
         super.immovableObjects.add(new Fire(14, 6));
         super.immovableObjects.add(new Fire(20, 24));
         //super.immovableObjects.add(new Fire(17, 22));
@@ -267,10 +274,11 @@ public final class LevelOne extends Level{
         super.moveableObjects.add(new Ball(15,19,Direction.LEFT));
         super.moveableObjects.add(new Ball(13,4,Direction.RIGHT));
 
-        super.moveableObjects.add(new Glider(17,7,Direction.UP));        
+        super.moveableObjects.add(new Glider(5,20,Direction.UP)); 
+        super.moveableObjects.add(new Glider(17,9,Direction.UP));
         //super.moveableObjects.add(new Bug(18, 19, Direction.RIGHT));
         super.moveableObjects.add(new Bug(12, 19, Direction.LEFT));
-        //super.moveableObjects.add(new Frog(1, 5));
+        super.moveableObjects.add(new Frog(1, 4));
                 
         //Tank
         ArrayList<GameObject> tanks = new ArrayList<>();

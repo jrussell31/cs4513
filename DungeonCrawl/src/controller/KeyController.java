@@ -17,6 +17,11 @@ public class KeyController implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent ke) {
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
         GameObject firstGameObject = DungeonCrawl.gameData.gamer;
 
         if (firstGameObject instanceof Gamer) {
@@ -47,16 +52,15 @@ public class KeyController implements KeyListener {
                         GameData.resetGameData();
                         DungeonCrawl.bannerPanel.setVisible(false);
                     }
+                    else if(GameData.levelInProgress && !GameData.paused){
+                        GameData.paused = true;
+                  //      DungeonCrawl.menuPanel.setVisible(true);
+                    }
+                    else if(GameData.levelInProgress && GameData.paused){
+                        GameData.paused = false;
+                        DungeonCrawl.menuPanel.setVisible(false);
+                    } 
             }
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent ke) {
-        Object firstGameObject = DungeonCrawl.gameData.gamer;
-
-        if (firstGameObject instanceof Gamer) {
-            Gamer gamer = (Gamer) firstGameObject;
         }
     }
 

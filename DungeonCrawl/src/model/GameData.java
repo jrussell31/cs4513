@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import model.Immoveable.Tile.FakePortal;
 
 public class GameData {
     public static final int MAP_WIDTH = 30;
@@ -23,6 +24,7 @@ public class GameData {
     public static int chipsLeft;
     private static long currentTime, previousTime;
     public static boolean levelInProgress = false;
+    public static boolean paused = false;
     
     public GameData() 
     {
@@ -33,8 +35,9 @@ public class GameData {
         gameLevels = new HashMap();
         gameLevels.put(LevelNumber.LEVELONE, new LevelOne());
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
+        gameLevels.put(LevelNumber.LEVELTHREE, new LevelThree());
         
-        currentLevel = gameLevels.get(LevelNumber.LEVELONE);
+        currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
   
         resetGameData();
     }
@@ -69,6 +72,7 @@ public class GameData {
     
     public void update() 
     {
+        if(!GameData.paused){
         if(GameData.time > 0)
         {
             currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
@@ -110,12 +114,29 @@ public class GameData {
         if(!gamer.isAlive()){
             levelInProgress = false;
         }
+      }
     }
-    
     public static void goToNextLevel(){
         levelInProgress = false;
         
         //Logic for next level
         currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
     }
+    
+    public static void goToPreviousLevel(){
+        levelInProgress = false;
+        
+        //Logic for next level
+        if (FakePortal.goBack == true){
+            if(FakePortal.levelChange == 1){
+                currentLevel = gameLevels.get(LevelNumber.LEVELONE);
+                FakePortal.goBack = false; 
+            }
+            else{
+                currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
+                FakePortal.goBack = false;
+            }
+        }
+    }
+    
 }
