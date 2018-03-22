@@ -87,6 +87,21 @@ public class Bug extends Monster {
                 counter += 100;
             }
         }
+        
+        switch (moving) {
+            case LEFT:
+                bugMoves.setFrames(Bug_W);
+                break;
+            case RIGHT:
+                bugMoves.setFrames(Bug_E);
+                break;
+            case UP:
+                bugMoves.setFrames(Bug_N);
+                break;
+            case DOWN:
+                bugMoves.setFrames(Bug_S);
+                break;
+        }
         bugMoves.update();
     }
     
