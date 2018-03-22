@@ -14,11 +14,14 @@ import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
+import model.Immoveable.Tile.Fire;
 import model.Moveable.Ball;
 import model.Moveable.Fireball;
 import model.Moveable.Frog;
 import model.Moveable.Gamer;
 import model.Moveable.Glider;
+import model.Moveable.Tank;
+import model.Moveable.Walker;
 
 public final class LevelTwo extends Level {
     
@@ -76,9 +79,13 @@ public final class LevelTwo extends Level {
             super.immovableObjects.add(new Wall(i, 26));
         }
         
+        for (int i = 0; i < 6; i++) {
+            super.immovableObjects.add(new Wall(i, 13));
+            super.immovableObjects.add(new Wall(5, 13+i));
+        }
         
         
-        //Force Floors
+        //Force Floors 
         super.immovableObjects.add(new Force(2, 26, Direction.RIGHT));
         for(int i = 3; i < 8; ++i){
             super.immovableObjects.add(new Force(i, 26, Direction.UP));
@@ -132,6 +139,8 @@ public final class LevelTwo extends Level {
             super.immovableObjects.add(new Water(i,21));
             super.immovableObjects.add(new Water(i,23));
         }  
+        super.immovableObjects.add(new Water(1,15));
+        super.immovableObjects.add(new Water(1,17));
                
         //Fake Portal 
         super.immovableObjects.add(new FakePortal(26, 26,1));
@@ -175,7 +184,9 @@ public final class LevelTwo extends Level {
         //Bombs
         super.immovableObjects.add(new Bomb(2,9));
         super.immovableObjects.add(new Bomb(15,15));
-        super.immovableObjects.add(new Bomb(22,5));
+        super.immovableObjects.add(new Bomb(22,5));        
+        super.immovableObjects.add(new Bomb(1,14));
+        super.immovableObjects.add(new Bomb(1,16));
     }
 
     @Override
@@ -194,7 +205,10 @@ public final class LevelTwo extends Level {
         super.moveableObjects.add(new Fireball(27, 2, Direction.LEFT));
         super.moveableObjects.add(new Fireball(1, 6, Direction.RIGHT));
         super.moveableObjects.add(new Glider(17,9,Direction.UP));
-        
+        super.moveableObjects.add(new Walker(4, 14, Direction.LEFT));
+        super.moveableObjects.add(new Walker(4, 15, Direction.LEFT));
+        super.moveableObjects.add(new Tank(4, 17, Direction.LEFT));
+        super.moveableObjects.add(new Tank(4, 16, Direction.LEFT));
     }
 
     @Override
