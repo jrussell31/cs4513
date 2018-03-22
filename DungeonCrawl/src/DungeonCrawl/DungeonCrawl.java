@@ -6,6 +6,7 @@ import view.MainWindow;
 import view.GamePanel;
 import view.InventoryPanel;
 import view.BannerPanel;
+import view.MenuPanel;
 
 public class DungeonCrawl {
     public static GameData gameData;
@@ -15,6 +16,7 @@ public class DungeonCrawl {
     public static GamePanel gamePanel;
     public static BannerPanel bannerPanel;
     public static Thread thread;
+    public static MenuPanel menuPanel;
 
     public static void main(String[] args) {
         animator = new Animator();
@@ -22,6 +24,8 @@ public class DungeonCrawl {
         gamePanel = new GamePanel(1000, 900);
         inventoryPanel = new InventoryPanel(350, 900);
         bannerPanel =  new BannerPanel(650, 300);
+        menuPanel = new MenuPanel(700, 500);
+        menuPanel.setVisible(false);
         
         mainWindow = new MainWindow();
         mainWindow.setTitle("Level 1!");
