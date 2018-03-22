@@ -24,6 +24,7 @@ public class GameData {
     public static int chipsLeft;
     private static long currentTime, previousTime;
     public static boolean levelInProgress = false;
+    public static boolean paused = false;
     
     public GameData() 
     {
@@ -71,6 +72,7 @@ public class GameData {
     
     public void update() 
     {
+        if(!GameData.paused){
         if(GameData.time > 0)
         {
             currentTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
@@ -112,8 +114,8 @@ public class GameData {
         if(!gamer.isAlive()){
             levelInProgress = false;
         }
+      }
     }
-    
     public static void goToNextLevel(){
         levelInProgress = false;
         
