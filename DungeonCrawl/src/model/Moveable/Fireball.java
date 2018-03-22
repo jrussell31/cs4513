@@ -107,7 +107,7 @@ public class Fireball extends Monster {
             } else {
                 counter += 100;
             }
-        }else if (Level.fLevelThree) {
+        }else if (GameData.currentLevel.getLevelValue() == 3) {
             if (isSliding()) {
             direction = moving;
             slide(moving);
