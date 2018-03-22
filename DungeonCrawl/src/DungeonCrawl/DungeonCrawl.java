@@ -28,7 +28,7 @@ public class DungeonCrawl {
         menuPanel.setVisible(false);
         
         mainWindow = new MainWindow();
-        mainWindow.setTitle("Level 1!");
+        mainWindow.setTitle("Dungeon Crawl!");
         mainWindow.setSize(1500, 1000);
         mainWindow.setLocation(0, 0);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
