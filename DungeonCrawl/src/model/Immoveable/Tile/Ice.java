@@ -44,7 +44,7 @@ public class Ice extends Tile implements Collidable {
                 }
             }
         }
-        if (O instanceof MoveableObject && !(O instanceof Glider) && !boot) {  
+        if (O instanceof MoveableObject && !boot) {  
             if(O instanceof Gamer){
                 ((Gamer)O).keepSliding = true;
             }

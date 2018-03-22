@@ -59,8 +59,8 @@ public class Glider extends Monster {
     @Override
     public void update() {
         super.update();
-        
-        if(isSliding()){
+
+        if (isSliding()) {
             direction = moving;
             slide(moving);
         } else {
@@ -86,19 +86,19 @@ public class Glider extends Monster {
         }
 
         switch (direction) {
-                    case LEFT:
-                        gliderMoves.setFrames(glider_W); 
-                        break;
-                    case RIGHT:
-                        gliderMoves.setFrames(glider_E);
-                        break;
-                    case UP:
-                        gliderMoves.setFrames(glider_N);
-                        break;
-                    case DOWN:
-                        gliderMoves.setFrames(glider_S);
-                        break;
-                }
+            case LEFT:
+                gliderMoves.setFrames(glider_W);
+                break;
+            case RIGHT:
+                gliderMoves.setFrames(glider_E);
+                break;
+            case UP:
+                gliderMoves.setFrames(glider_N);
+                break;
+            case DOWN:
+                gliderMoves.setFrames(glider_S);
+                break;
+        }
         gliderMoves.update();
     }
 
@@ -106,17 +106,14 @@ public class Glider extends Monster {
         direction = d;
         moving = d;
     }
- 
+
     @Override
-     public void collide(GameObject O){
-         if(O instanceof Gamer){
-            super.collide(O);
+    public void collide(GameObject O) {
+        super.collide(O);
+         if(O instanceof Wall){
+            this.noMove();
+            direction = direction.turnCW();
+            moving = direction;
         }
-         
-         //super.collide(O);
-        // if(O instanceof Wall){
-         //    direction= direction.getOppositeDirection();
-         //    moving= direction;
-        // }
-     }
+    }
 }
