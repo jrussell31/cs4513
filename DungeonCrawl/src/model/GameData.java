@@ -37,7 +37,7 @@ public class GameData {
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
         gameLevels.put(LevelNumber.LEVELTHREE, new LevelThree());
         
-        currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
+        currentLevel = gameLevels.get(LevelNumber.LEVELONE);
   
         resetGameData();
     }
@@ -120,7 +120,13 @@ public class GameData {
         levelInProgress = false;
         
         //Logic for next level
-        currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
+        if(currentLevel == gameLevels.get(LevelNumber.LEVELONE)){
+            currentLevel = gameLevels.get(LevelNumber.LEVELTWO); 
+        }
+        else{
+            currentLevel = gameLevels.get(LevelNumber.LEVELTHREE); 
+        }        
+        
     }
     
     public static void goToPreviousLevel(){
