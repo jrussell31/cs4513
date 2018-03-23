@@ -37,10 +37,11 @@ public class GameData {
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
         gameLevels.put(LevelNumber.LEVELTHREE, new LevelThree());
         
-        currentLevel = gameLevels.get(LevelNumber.LEVELONE);
+        currentLevel = gameLevels.get(LevelNumber.LEVELTHREE);
   
         resetGameData();
     }
+    public static long getTime(){return currentTime;}
     
     public static void resetGameData()
     {
