@@ -116,8 +116,6 @@ public class Tank extends Monster {
         if(O instanceof Wall){
             this.noMove();
         }
-        if(O instanceof Trap){
-            ((Trap) O).trigger(this);
-        }
+
     }
 }

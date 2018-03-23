@@ -24,7 +24,7 @@ public class Trap extends Tile {
     public Direction direction;
     private boolean isTrapped;
     private Button releaseButton;
-    private int releaseTime;
+    private long releaseTime;
 
     public Trap(float x, float y, Button B ) {
         super(x, y);
@@ -67,7 +67,7 @@ public class Trap extends Tile {
     }
 
     private void trap(Monster M) {
-        if (isTrapped && releaseTime>DungeonCrawl.gameData.time+2 ) {
+        if (isTrapped && releaseTime<DungeonCrawl.gameData.getTime() ) {
             trapped = M;
             direction = M.direction;
             trapped.direction = Direction.NONE;
@@ -76,10 +76,11 @@ public class Trap extends Tile {
     }
 
     public void release() {
-       releaseTime = DungeonCrawl.gameData.time;
+        if(isTrapped){
+       releaseTime = DungeonCrawl.gameData.getTime();
       //  System.out.println("RELEASE! " + releaseTime );
         isTrapped = false;
-        trapped.direction = direction;
+        trapped.direction = direction;}
     }
 
 }
