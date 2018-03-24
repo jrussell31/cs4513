@@ -65,9 +65,6 @@ public class Walker extends Monster {
                     case LEFT:
                         walkerMoves.setFrames(walker_WE);
                         super.x -= MOVEMENT;
-                        //if (super.x == 400) {
-                        //    
-                        //}
                         break;
                     case RIGHT:
                         walkerMoves.setFrames(walker_WE);

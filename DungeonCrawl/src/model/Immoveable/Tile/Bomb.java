@@ -2,7 +2,6 @@ package model.Immoveable.Tile;
 
 import DungeonCrawl.DungeonCrawl;
 import controller.ImageFinder;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
@@ -15,10 +14,12 @@ import model.Moveable.Block;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
 import model.Moveable.Monster;
+import model.Moveable.Tank;
 
 public class Bomb extends Tile implements Collidable {
 
     public BufferedImage image;
+    int counter = 0;
 
     public Bomb(float x, float y) {
         super(x, y);
@@ -44,7 +45,7 @@ public class Bomb extends Tile implements Collidable {
             }
             //Trigger Game End
             if (gameOver) {
-                image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
+                image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "explosion.gif");
                 //TODO Remove the Gamer so That you can see the drowned image. JL 2/19
                 DungeonCrawl.bannerPanel.setBannerText("¯\\_(ツ)_/¯  " + GameData.currentLevel.getLevelValue());
                 ((Gamer)O).setAlive(false);
@@ -60,7 +61,14 @@ public class Bomb extends Tile implements Collidable {
         //Collide with Monster
         if(O instanceof Monster){
             ((Monster) O).setAlive(false);
-            this.setAlive(false);
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "explosion.gif");
+            //how do I remove the explosion image from the screen after 1~2 sec.
+            
+            if (counter == 10000) {
+                counter = 0;
+                this.setAlive(false);
+            }
+            
         }
 
     }

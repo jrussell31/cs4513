@@ -7,6 +7,7 @@ import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
 import model.GameObject;
 import model.Immoveable.Tile.Fire;
+import model.Immoveable.Tile.Trap;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
 
@@ -115,5 +116,6 @@ public class Tank extends Monster {
         if(O instanceof Wall){
             this.noMove();
         }
+
     }
 }
