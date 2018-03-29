@@ -7,6 +7,7 @@ import model.GameData;
 import model.GameObject;
 import DungeonCrawl.DungeonCrawl;
 import model.Collidable;
+import model.Moveable.Gamer;
 
 public class Portal extends Tile implements Collidable {
 
@@ -35,7 +36,7 @@ public class Portal extends Tile implements Collidable {
 
     @Override
     public void collide(GameObject O) {
-        if(GameData.chipsLeft == 0){
+        if(GameData.chipsLeft == 0 && O.equals(GameData.gamer)){
             // Need to display banner explaining level is complete
             DungeonCrawl.bannerPanel.setBannerText("You Completed Level " + GameData.currentLevel.getLevelValue());
             GameData.goToNextLevel();
