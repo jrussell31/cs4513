@@ -60,18 +60,15 @@ public final class LevelTwo extends Level {
         
         for(int i = 25; i >= 21; i--){
             super.immovableObjects.add(new Wall(2, i)); 
-            for(int j = 24; j >= 21; j--){
+            for(int j = 23; j >= 21; j--){
                 super.immovableObjects.add(new Wall(3, j));            
             }
             for(int k = 23; k >= 21; k--){
                 super.immovableObjects.add(new Wall(4, k));            
             }
-            for(int l = 22; l >= 21; l--){
+            for(int l = 21; l >= 21; l--){
                 super.immovableObjects.add(new Wall(5, l));            
-            }
-            for(int m = 21; m >= 21; m--){
-                super.immovableObjects.add(new Wall(6, m));            
-            }
+            }           
         }
         
         for(int i = 25; i <= 28; i += 3){
@@ -187,6 +184,8 @@ public final class LevelTwo extends Level {
         super.immovableObjects.add(new Bomb(22,5));        
         super.immovableObjects.add(new Bomb(1,14));
         super.immovableObjects.add(new Bomb(1,16));
+        
+        //Buttons
     }
 
     @Override
