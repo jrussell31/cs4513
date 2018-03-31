@@ -223,7 +223,7 @@ public final class LevelTwo extends Level {
         
         //ToggleWalls
         ArrayList<GameObject> togglewalls = new ArrayList<>();
-        togglewalls.add(new ToggleWall(23, 10, true));
+        togglewalls.add(new ToggleWall(23, 10, false));
         super.immovableObjects.addAll(togglewalls);
         
         //Buttons
