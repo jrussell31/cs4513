@@ -7,11 +7,11 @@ import model.Collidable;
 import static model.GameData.gamerInventory;
 import model.GameObject;
 
-public class Theif extends Tile implements Collidable{
+public class Thief extends Tile implements Collidable{
     
     public BufferedImage image;
 
-    public Theif(float x, float y) {
+    public Thief(float x, float y) {
         super(x, y);
         
         try {
