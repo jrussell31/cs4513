@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
 import model.GameObject;
+import model.Immoveable.Tile.FakeWall;
 import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
@@ -114,7 +115,7 @@ public class Bug extends Monster {
     public void collide(GameObject O){
         super.collide(O);
         
-        if (O instanceof Wall) {            
+        if (O instanceof Wall || O instanceof FakeWall) {            
             this.noMove();
             this.turn(this.direction.turnCW());
             direction = direction.getOppositeDirection();

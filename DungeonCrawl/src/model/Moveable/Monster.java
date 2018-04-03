@@ -27,6 +27,6 @@ public abstract class Monster extends MoveableObject implements Collidable {
         }
                 if(O instanceof Trap){
             ((Trap) O).trigger(this);
-        }
+        }       
     }
 }
