@@ -93,20 +93,16 @@ public class Fireball extends Monster {
                 counter = 0;
                 switch (direction) {
                     case LEFT:
-
                         super.x -= MOVEMENT;
-                        if (super.x == 512) {
-                                direction = Direction.DOWN;
-                        }
-                        
+
                         break;
                     case RIGHT:
-
                         super.x += MOVEMENT;
                         if (super.x == 928) {
                             direction = Direction.UP;
                         }
                         
+
                         break;
                     case UP:
                         super.y -= MOVEMENT;
@@ -121,7 +117,7 @@ public class Fireball extends Monster {
                         }
                         break; 
                 }
-            } else {
+            }else {
                 counter += 100;
             }
         }else if (GameData.currentLevel.getLevelValue() == 3) {
