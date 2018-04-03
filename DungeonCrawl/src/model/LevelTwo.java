@@ -9,12 +9,14 @@ import model.Immoveable.Collectible.Key;
 import model.Immoveable.Tile.Bomb;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.FakePortal;
+import model.Immoveable.Tile.FakeWall;
 import model.Immoveable.Tile.Force;
 import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
+import model.Immoveable.Tile.Trap;
 import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Spawner;
 import model.Immoveable.Tile.ToggleWall;
@@ -22,9 +24,6 @@ import model.Moveable.Ball;
 import model.Moveable.Fireball;
 import model.Moveable.Frog;
 import model.Moveable.Gamer;
-import model.Moveable.Glider;
-import model.Moveable.Tank;
-import model.Moveable.Walker;
 
 public final class LevelTwo extends Level {
     
@@ -40,6 +39,27 @@ public final class LevelTwo extends Level {
     @Override
     public void setImmovableObjects() {   
         super.immovableObjects = new ArrayList<>();
+        
+        //Fake Walls
+        super.immovableObjects.add(new FakeWall(1,12,true,false));
+        super.immovableObjects.add(new FakeWall(29,12,false,true));
+        super.immovableObjects.add(new FakeWall(1,6,false,true));
+        super.immovableObjects.add(new FakeWall(29,6,true,false));
+        
+        for(int i = 1; i <= 4; i++){
+            super.immovableObjects.add(new FakeWall(15,i,false,true));
+        }
+        for(int i = 7; i <= 9; i++){
+            super.immovableObjects.add(new FakeWall(15,i,false,true));
+        }
+        super.immovableObjects.add(new FakeWall(15,11,false,true));
+        for(int i = 14; i <= 18; i++){
+            super.immovableObjects.add(new FakeWall(15,i,false,true));
+        }
+        
+        super.immovableObjects.add(new FakeWall(15,5,true,false));
+        super.immovableObjects.add(new FakeWall(15,10,true,false));
+        super.immovableObjects.add(new FakeWall(15,13,true,false));
         
         //Walls
         for(int i = 0; i <= MAP_WIDTH; ++i){
@@ -60,6 +80,13 @@ public final class LevelTwo extends Level {
         for(int i = 18; i <= 25; i++){
             super.immovableObjects.add(new Wall(22, i));            
         }
+        for(int i = 2; i <= 28; i++){
+            super.immovableObjects.add(new Wall(i, 12));            
+        }
+        
+        for(int i = 2; i <= 28; i++){
+            super.immovableObjects.add(new Wall(i, 6));            
+        }
         
         for(int i = 25; i >= 21; i--){
             super.immovableObjects.add(new Wall(2, i)); 
@@ -79,31 +106,14 @@ public final class LevelTwo extends Level {
             super.immovableObjects.add(new Wall(i, 26));
         }
         
-        for (int i = 0; i < 6; i++) {
-            super.immovableObjects.add(new Wall(i, 13));
-            super.immovableObjects.add(new Wall(5, 13+i));
+        for(int i = 2; i <= 28; i++){
+            super.immovableObjects.add(new Wall(i, 12));            
         }
         
-        for(int i = 28; i >= 24; --i){
-            super.immovableObjects.add(new Wall(i, 12));
-            super.immovableObjects.add(new Wall(i, 10));
+        for(int i = 2; i <= 28; i++){
+            super.immovableObjects.add(new Wall(i, 6));            
         }
-        super.immovableObjects.add(new Wall(24, 13));
-        super.immovableObjects.add(new Wall(24, 14));
-        super.immovableObjects.add(new Wall(24, 16));
-        super.immovableObjects.add(new Wall(24, 17));
-        super.immovableObjects.add(new Wall(23, 14));
-        super.immovableObjects.add(new Wall(22, 14));
-        super.immovableObjects.add(new Wall(22, 15));
-        super.immovableObjects.add(new Wall(22, 16));
-        super.immovableObjects.add(new Wall(23, 16));
-        super.immovableObjects.add(new Wall(24, 11));
-        super.immovableObjects.add(new Wall(24, 10));
-        super.immovableObjects.add(new Wall(22, 10));
-        super.immovableObjects.add(new Wall(22, 11));
-        super.immovableObjects.add(new Wall(22, 12));
-        super.immovableObjects.add(new Wall(22, 13));        
-        
+
         //Force Floors 
         super.immovableObjects.add(new Force(2, 26, Direction.RIGHT));
         for(int i = 3; i < 8; ++i){
@@ -158,6 +168,9 @@ public final class LevelTwo extends Level {
             super.immovableObjects.add(new Water(i,21));
             super.immovableObjects.add(new Water(i,23));
         }  
+
+                       
+//may need to remove these?
         super.immovableObjects.add(new Water(1,15));
         super.immovableObjects.add(new Water(1,17));
         super.immovableObjects.add(new Water(28, 13));
@@ -165,6 +178,7 @@ public final class LevelTwo extends Level {
         super.immovableObjects.add(new Water(27, 17));
         super.immovableObjects.add(new Water(25, 17));
                
+//^^^Those may need to be removed
         //Fake Portal 
         super.immovableObjects.add(new FakePortal(26, 26,1));
         
@@ -190,25 +204,32 @@ public final class LevelTwo extends Level {
         super.immovableObjects.add(new Chip(14, 22));
         super.immovableObjects.add(new Chip(16, 22));
         
-        super.immovableObjects.add(new Chip(11, 5));
-        super.immovableObjects.add(new Chip(12, 5));
+        super.immovableObjects.add(new Chip(23, 17));
+        super.immovableObjects.add(new Chip(23, 13));
         
-        super.immovableObjects.add(new Chip(18, 5));
-        super.immovableObjects.add(new Chip(19, 5));
+        super.immovableObjects.add(new Chip(8, 15));
         
+
+        for(int i = 2; i <= 4; i++){
+            super.immovableObjects.add(new Chip(22, i));
+            super.immovableObjects.add(new Chip(23, i));
+        }
+               
+        super.immovableObjects.add(new Chip(8, 3));
+/*
         super.immovableObjects.add(new Chip(3, 9));
         super.immovableObjects.add(new Chip(4, 9));
         super.immovableObjects.add(new Chip(13, 5));
         super.immovableObjects.add(new Chip(13, 10));
         super.immovableObjects.add(new Chip(21, 9));
         super.immovableObjects.add(new Chip(23, 15));
+*/
         
         //Boots
         super.immovableObjects.add(new Boot(9, 26, BootType.WATER));
         
         //Bombs
         super.immovableObjects.add(new Bomb(2,9));
-        super.immovableObjects.add(new Bomb(15,15));
         super.immovableObjects.add(new Bomb(22,5));        
         super.immovableObjects.add(new Bomb(1,14));
         super.immovableObjects.add(new Bomb(1,16));
@@ -234,23 +255,29 @@ public final class LevelTwo extends Level {
     @Override
     public void setMovableObjects() {
         super.moveableObjects = new ArrayList<>();
-        /*
+
+        
+        //Ball button
+        super.immovableObjects.add(new Button(29, 17, ButtonType.BROWN, new ArrayList<GameObject>()));
+        //ball trap
+        super.immovableObjects.add(new Trap(23, 15, (Button) super.immovableObjects.get(super.immovableObjects.size() - 1)));
+        //Ball
+        super.moveableObjects.add(new Ball(23, 15, Direction.UP));
+        
+        //Frog
+
         super.moveableObjects.add(new Frog(5, 19));
         super.moveableObjects.add(new Frog(13, 22));
         super.moveableObjects.add(new Frog(17, 23));  
+        super.moveableObjects.add(new Frog(1, 15));
+        super.moveableObjects.add(new Frog(29, 1));
+        super.moveableObjects.add(new Frog(8, 9));
         
-        super.moveableObjects.add(new Frog(2, 10));
-        super.moveableObjects.add(new Frog(14, 15));
-        super.moveableObjects.add(new Frog(23, 4));  */
-        
-        super.moveableObjects.add(new Ball(23,13,Direction.UP));
-        super.moveableObjects.add(new Fireball(27, 2, Direction.LEFT));
-        super.moveableObjects.add(new Fireball(1, 6, Direction.RIGHT));
-        super.moveableObjects.add(new Glider(17,9,Direction.UP));
-        super.moveableObjects.add(new Walker(4, 14, Direction.LEFT));
-        super.moveableObjects.add(new Walker(4, 15, Direction.LEFT));
-        super.moveableObjects.add(new Tank(4, 17, Direction.LEFT));
-        super.moveableObjects.add(new Tank(4, 16, Direction.LEFT));
+        //Fireball
+        super.moveableObjects.add(new Fireball(16, 9, Direction.DOWN));
+        super.moveableObjects.add(new Fireball(23, 11, Direction.RIGHT));
+        super.moveableObjects.add(new Fireball(23, 7, Direction.LEFT));
+        super.moveableObjects.add(new Fireball(29, 9, Direction.UP));   
     }
 
     @Override
