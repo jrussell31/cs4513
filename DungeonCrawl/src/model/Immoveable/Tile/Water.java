@@ -2,7 +2,6 @@ package model.Immoveable.Tile;
 
 import DungeonCrawl.DungeonCrawl;
 import controller.ImageFinder;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.BootType;
@@ -15,6 +14,8 @@ import model.Moveable.Block;
 import model.Moveable.Bug;
 import model.Moveable.Fireball;
 import model.Moveable.Gamer;
+import model.Moveable.Tank;
+import model.Moveable.Walker;
 
 public class Water extends Tile implements Collidable{
 
@@ -70,6 +71,20 @@ public class Water extends Tile implements Collidable{
         if(O instanceof Bug){
             ((Bug) O).noMove();
             ((Bug) O).turn(((Bug) O).direction.getOppositeDirection());
+        }
+        if(O instanceof Tank) {
+            ((Tank) O).noMove();
+            ((Tank) O).setAlive(false);
+            
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
+            //how do I chage it back to normal water image after 1~2 sec.
+        }
+        if(O instanceof Walker) {
+            ((Walker) O).noMove();
+            ((Walker) O).setAlive(false);
+            
+            image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
+            //how do I chage it back to normal water image after 1~2 sec.
         }
     }
 

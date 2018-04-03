@@ -14,17 +14,19 @@ public class Animator implements Runnable {
     @Override
     public void run() {
         running = true;
-
+        
         while (running && GameData.time > 0) {
             long startTime = System.currentTimeMillis();
 
-            if (GameData.levelInProgress) {
+            if (GameData.levelInProgress && !GameData.paused) {
                 DungeonCrawl.gameData.update();
                 processCollisions();
                 DungeonCrawl.gamePanel.gameRender();
                 DungeonCrawl.gamePanel.printScreen();
                 DungeonCrawl.inventoryPanel.updateInventoryPanel();
-            } else {
+            }else if(GameData.paused == true)
+                    DungeonCrawl.menuPanel.setVisible(true);
+            else {
                 DungeonCrawl.bannerPanel.setVisible(true);
                 DungeonCrawl.gamePanel.requestFocus();
             }

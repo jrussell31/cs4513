@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
+import model.GameData;
 import model.GameObject;
 import model.Immoveable.Tile.Wall;
 import model.Level;
@@ -48,7 +49,7 @@ public class Fireball extends Monster {
         super.update();
         fireballMoves.setFrames(fireballSprites);
 
-        if (Level.fLevelOne) {
+        if (GameData.currentLevel.getLevelValue() == 1) {
             if (isSliding()) {
                 direction = moving;
                 slide(moving);
@@ -86,27 +87,27 @@ public class Fireball extends Monster {
                 }
             }
             fireballMoves.update();
-        } else if (Level.fLevelTwo) {
+        } else if (GameData.currentLevel.getLevelValue() == 2) {
             if (counter == 1000) {
                 counter = 0;
                 switch (direction) {
                     case LEFT:
-
                         super.x -= MOVEMENT;
-                        fireballMoves.setFrames(fireballSprites);
-
                         break;
                     case RIGHT:
-
                         super.x += MOVEMENT;
-                        fireballMoves.setFrames(fireballSprites);
-
+                        break;
+                    case UP:
+                        super.y -= MOVEMENT;
+                        break;
+                    case DOWN:
+                        super.y += MOVEMENT;
                         break;
                 }
-            } else {
+            }else {
                 counter += 100;
             }
-        }else if (Level.fLevelThree) {
+        }else if (GameData.currentLevel.getLevelValue() == 3) {
             if (isSliding()) {
             direction = moving;
             slide(moving);

@@ -31,9 +31,9 @@ public final class LevelOne extends Level{
     
     public LevelOne(){
         resetLevel();
-        Level.fLevelOne = false; 
+        /*Level.fLevelOne = true; 
         Level.fLevelTwo = false;  
-        Level.fLevelThree = true; 
+        Level.fLevelThree = false; */
     }
     
     @Override
@@ -186,8 +186,6 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Fire(10, 4));
         super.immovableObjects.add(new Fire(14, 6));
         super.immovableObjects.add(new Fire(20, 24));
-        //super.immovableObjects.add(new Fire(17, 22));
-        //super.immovableObjects.add(new Fire(17, 25));
         
         //Theif tile
         super.immovableObjects.add(new Theif(15, 15));
@@ -234,6 +232,7 @@ public final class LevelOne extends Level{
         super.immovableObjects.add(new Ice(29, 26, Direction.SE));
         super.immovableObjects.add(new Ice(29, 25));
         super.immovableObjects.add(new Ice(29, 24));
+
         for (int i = 25; i < 29; i++) {
             super.immovableObjects.add(new Ice(i, 23));
         }

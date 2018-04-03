@@ -52,6 +52,14 @@ public class KeyController implements KeyListener {
                         GameData.resetGameData();
                         DungeonCrawl.bannerPanel.setVisible(false);
                     }
+                    else if(GameData.levelInProgress && !GameData.paused){
+                        GameData.paused = true;
+                  //      DungeonCrawl.menuPanel.setVisible(true);
+                    }
+                    else if(GameData.levelInProgress && GameData.paused){
+                        GameData.paused = false;
+                        DungeonCrawl.menuPanel.setVisible(false);
+                    } 
             }
         }
     }
