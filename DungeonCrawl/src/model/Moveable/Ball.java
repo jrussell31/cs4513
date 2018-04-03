@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import model.Direction;
 import model.GameObject;
 import model.Immoveable.Tile.FakeWall;
+import model.Immoveable.Tile.ToggleWall;
 import model.Immoveable.Tile.Wall;
 
 public class Ball extends Monster {
@@ -82,6 +83,13 @@ public class Ball extends Monster {
         }
         ballMoves.update();
     }
+    
+    @Override
+    public void noMove() {
+        x = dx;
+        y = dy;
+        this.turnAround();
+    }
 
     @Override
     public void collide(GameObject O) {
@@ -90,6 +98,7 @@ public class Ball extends Monster {
         if(O instanceof Wall || O instanceof FakeWall){
             this.noMove();
             this.turnAround();
+
         }
     }
 }

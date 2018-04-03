@@ -5,6 +5,7 @@ import static model.GameData.MAP_HEIGHT;
 import static model.GameData.MAP_WIDTH;
 import model.Immoveable.Tile.Button;
 import model.Immoveable.Tile.Ice;
+import model.Immoveable.Tile.Teleporter;
 import model.Immoveable.Tile.Trap;
 import model.Immoveable.Tile.Wall;
 import model.Moveable.Ball;
@@ -204,7 +205,11 @@ public final class LevelThree extends Level {
         super.immovableObjects.add(new Button(28, 5, ButtonType.BROWN, new ArrayList<GameObject>()));
         //Tank Trap
         super.immovableObjects.add(new Trap(16, 14, (Button) super.immovableObjects.get(super.immovableObjects.size() - 1)));
-
+        
+        Teleporter teleportOne = new Teleporter(22, 25);
+        Teleporter teleportTwo = new Teleporter(10, 25, teleportOne);
+        super.immovableObjects.add(teleportOne);
+        super.immovableObjects.add(teleportTwo);
     }
 
     @Override
