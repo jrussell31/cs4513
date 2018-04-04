@@ -29,7 +29,7 @@ public abstract class Monster extends MoveableObject implements Collidable, Clon
         }
         if (O instanceof Trap) {
             ((Trap) O).trigger(this);
-        }
+        }       
     }
 
     @Override

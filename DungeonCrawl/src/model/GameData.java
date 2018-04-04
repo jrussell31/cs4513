@@ -1,4 +1,4 @@
-package model;
+ package model;
 
 import model.Moveable.Gamer;
 import model.Moveable.Monster;
@@ -37,8 +37,8 @@ public class GameData {
         gameLevels.put(LevelNumber.LEVELONE, new LevelOne());
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
         gameLevels.put(LevelNumber.LEVELTHREE, new LevelThree());
-
-        currentLevel = gameLevels.get(LevelNumber.LEVELTHREE);
+        
+        currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
 
         resetGameData();
     }
