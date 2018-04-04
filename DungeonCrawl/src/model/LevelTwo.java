@@ -255,10 +255,6 @@ public final class LevelTwo extends Level {
     @Override
     public void setMovableObjects() {
         super.moveableObjects = new ArrayList<>();
-
-<<<<<<< HEAD
-        /*
-=======
         
         //Ball button
         super.immovableObjects.add(new Button(29, 17, ButtonType.BROWN, new ArrayList<GameObject>()));
@@ -268,16 +264,13 @@ public final class LevelTwo extends Level {
         super.moveableObjects.add(new Ball(23, 15, Direction.UP));
         
         //Frog
-
->>>>>>> upstream/dev
         super.moveableObjects.add(new Frog(5, 19));
->>>>>>> upstream/Dev
         super.moveableObjects.add(new Frog(13, 22));
         super.moveableObjects.add(new Frog(17, 23));  
         super.moveableObjects.add(new Frog(1, 15));
         super.moveableObjects.add(new Frog(29, 1));
         super.moveableObjects.add(new Frog(8, 9));
-        
+  
         //Fireball
         super.moveableObjects.add(new Fireball(16, 9, Direction.DOWN));
         super.moveableObjects.add(new Fireball(23, 11, Direction.RIGHT));

@@ -109,6 +109,6 @@ public class Button extends Tile implements Collidable {
             ((Tank) object).direction = ((Tank) object).direction.getOppositeDirection();
         } else if (object instanceof Spawner) {
             ((Spawner)object).spawn();
-        }
+        } 
     }
 }

@@ -18,6 +18,7 @@ public class MenuPanel extends JPanel{
     public static int pwidth, pheight;
     
     private String menuText;
+    private String restartText;
 
  public MenuPanel(int pwidth, int pheight)
     {
@@ -31,8 +32,17 @@ public class MenuPanel extends JPanel{
         setPreferredSize(new Dimension(MenuPanel.pwidth, MenuPanel.pheight));
         setBorder(BorderFactory.createLineBorder(Color.gray, 20));
         // Could be moved to class where level attributes are tracked
+        /*
         menuText = "Main menu Options coming soon" ;
         txtLevel = new JTextField(menuText);
+        txtLevel.setFont(new Font("Tahoma", 0, 36));
+        txtLevel.setHorizontalAlignment(JTextField.CENTER);
+        txtLevel.setEditable(false);
+        txtLevel.setFocusable(false);
+        */
+        
+        restartText = "Press \"R\" to restart game";
+        txtLevel = new JTextField(restartText);
         txtLevel.setFont(new Font("Tahoma", 0, 36));
         txtLevel.setHorizontalAlignment(JTextField.CENTER);
         txtLevel.setEditable(false);
@@ -47,7 +57,7 @@ public class MenuPanel extends JPanel{
     }
  
  public void setMenuText(String newmenuText){
-        this.menuText = newmenuText;
-        txtLevel.setText(this.menuText);
+        this.restartText = newmenuText;
+        txtLevel.setText(this.restartText);
     }
 }
