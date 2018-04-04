@@ -3,8 +3,12 @@ package model;
 import java.util.ArrayList;
 import static model.GameData.MAP_HEIGHT;
 import static model.GameData.MAP_WIDTH;
+import model.Immoveable.Collectible.Chip;
+import model.Immoveable.Collectible.FakeChip;
 import model.Immoveable.Tile.Button;
+import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Ice;
+import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.Trap;
 import model.Immoveable.Tile.Wall;
 import model.Moveable.Ball;
@@ -25,7 +29,7 @@ public final class LevelThree extends Level {
 
     @Override
     public void setGamer() {
-        super.gamer = new Gamer(28, 4);
+        super.gamer = new Gamer(1, 1);
     }
 
     @Override
@@ -41,7 +45,21 @@ public final class LevelThree extends Level {
             super.immovableObjects.add(new Wall(0, i));
             super.immovableObjects.add(new Wall(MAP_WIDTH, i));
         }
-
+        
+        super.immovableObjects.add(new FakeChip(3,3));
+        super.immovableObjects.add(new FakeChip(10,5));
+        super.immovableObjects.add(new Fire(11,5));
+        super.immovableObjects.add(new Fire(3,4));
+        
+        //Level Chips
+        super.immovableObjects.add(new Chip(2, 2));
+        super.immovableObjects.add(new Chip(2, 3));
+        super.immovableObjects.add(new Chip(2, 4));
+        //Portal 
+        super.immovableObjects.add(new Portal(9, 2));
+/*        
+        
+        
         for (int i = 2; i <= MAP_HEIGHT; ++i) {
             super.immovableObjects.add(new Wall(13, i));
         }
@@ -204,12 +222,12 @@ public final class LevelThree extends Level {
         super.immovableObjects.add(new Button(28, 5, ButtonType.BROWN, new ArrayList<GameObject>()));
         //Tank Trap
         super.immovableObjects.add(new Trap(16, 14, (Button) super.immovableObjects.get(super.immovableObjects.size() - 1)));
-
+*/
     }
 
     @Override
     public void setMovableObjects() {
-        super.moveableObjects = new ArrayList<>();
+/*        super.moveableObjects = new ArrayList<>();
 
         super.moveableObjects.add(new Ball(4, 4, Direction.RIGHT));
         super.moveableObjects.add(new Bug(4, 9, Direction.RIGHT));
@@ -219,7 +237,7 @@ public final class LevelThree extends Level {
         super.moveableObjects.add(new Glider(17, 9, Direction.RIGHT));
         super.moveableObjects.add(new Tank(17, 14, Direction.RIGHT));
         super.moveableObjects.add(new Block(17, 19));
-    }
+*/    }
 
     @Override
     public void setLevelValue() {
@@ -233,7 +251,7 @@ public final class LevelThree extends Level {
 
     @Override
     public void setLevelChipCount() {
-        super.levelChipCount = 0;
+        super.levelChipCount = 5;
     }
 
     @Override
