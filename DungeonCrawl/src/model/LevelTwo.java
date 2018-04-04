@@ -234,10 +234,7 @@ public final class LevelTwo extends Level {
     @Override
     public void setMovableObjects() {
         super.moveableObjects = new ArrayList<>();
-<<<<<<< HEAD
-        
-        //super.moveableObjects.add(new Frog(5, 19));
-=======
+
         /*
         super.moveableObjects.add(new Frog(5, 19));
 >>>>>>> upstream/Dev
