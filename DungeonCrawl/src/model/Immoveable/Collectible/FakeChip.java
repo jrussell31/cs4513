@@ -37,13 +37,10 @@ public class FakeChip extends Collectible implements Collidable{
     @Override
     public void collide(GameObject O) {
         if(O instanceof Gamer){
-            boolean isChip = true;                        
-            fakechip = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip.png");            
-            if (isChip) {
-                GameData.gamer.noMove();
-                this.setAlive(false);                                
-                GameData.collectChip();
-            }                               
+            fakechip = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip.png");
+            GameData.gamer.noMove();
+            this.setAlive(false);                                
+            GameData.collectChip();                                           
         }           
         else if (O instanceof MoveableObject) {
             ((MoveableObject) O).noMove();

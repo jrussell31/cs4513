@@ -38,7 +38,7 @@ public class GameData {
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
         gameLevels.put(LevelNumber.LEVELTHREE, new LevelThree());
         
-        currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
+        currentLevel = gameLevels.get(LevelNumber.LEVELTHREE);
 
         resetGameData();
     }
