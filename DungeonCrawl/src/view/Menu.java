@@ -5,10 +5,8 @@
  */
 package view;
 
-/**
- *
- * @author cameron
- */
+import model.GameData;
+import model.LevelNumber;
 public class Menu extends javax.swing.JPanel {
 
     /**
@@ -43,8 +41,10 @@ public class Menu extends javax.swing.JPanel {
         jLabel3.setText("jLabel3");
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        setFocusable(false);
 
         jButton1.setText("Skip Level");
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -53,6 +53,7 @@ public class Menu extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("The game is paused You may choose for any option below or hit spacebar to continue.");
+        jLabel1.setFocusable(false);
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("Level Skip Code");
@@ -60,13 +61,16 @@ public class Menu extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("You may press the spacebar to continue playing the game. You may also choose from either of the options below");
+        jLabel2.setFocusable(false);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jTextPane1.setText("If you have one you may enter the code to skip the level in the text box below.");
+        jTextPane1.setFocusable(false);
         jScrollPane1.setViewportView(jTextPane1);
 
         jTextPane2.setText("If you are stuck and need to restart the level you may infact press the 'R' key and the level will restart.");
+        jTextPane2.setFocusable(false);
         jScrollPane2.setViewportView(jTextPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -136,6 +140,15 @@ public class Menu extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       String skipCode = jTextField1.getText();
+       switch(skipCode){
+           case "sklv2":
+               GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTWO);
+           case "sklv3":
+               GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTHREE);
+       }
+       jTextField1.setFocusable(false);
+       GameData.resetGameData();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

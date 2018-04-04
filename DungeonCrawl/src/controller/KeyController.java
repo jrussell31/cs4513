@@ -42,6 +42,7 @@ public class KeyController implements KeyListener {
                     break;
                 case KeyEvent.VK_SPACE:
                     // If game hasn't started yet
+                    
                     if (!DungeonCrawl.thread.isAlive()) {
                         DungeonCrawl.bannerPanel.setVisible(false);
                         DungeonCrawl.startGame();
