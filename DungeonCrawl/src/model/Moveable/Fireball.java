@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import model.Direction;
 import model.GameData;
 import model.GameObject;
+import model.Immoveable.Tile.FakeWall;
 import model.Immoveable.Tile.Wall;
 import model.Level;
 
@@ -93,16 +94,28 @@ public class Fireball extends Monster {
                 switch (direction) {
                     case LEFT:
                         super.x -= MOVEMENT;
+                        if (super.x == 512) {
+                                direction = Direction.DOWN;
+                        }
                         break;
                     case RIGHT:
                         super.x += MOVEMENT;
+                        if (super.x == 928) {
+                            direction = Direction.UP;
+                        }                      
                         break;
                     case UP:
                         super.y -= MOVEMENT;
-                        break;
-                    case DOWN:
+                        if (super.y == 224) {
+                            direction = Direction.LEFT;
+                        }
+                        break; 
+                    case DOWN: 
                         super.y += MOVEMENT;
-                        break;
+                        if (super.y == 352) {
+                            direction = Direction.RIGHT;
+                        }
+                        break; 
                 }
             }else {
                 counter += 100;
@@ -145,7 +158,7 @@ public class Fireball extends Monster {
     public void collide(GameObject O) {
         super.collide(O);
         
-        if (O instanceof Block || O instanceof Wall || O instanceof Monster) {
+        if (O instanceof Block || O instanceof Wall || O instanceof Monster || O instanceof FakeWall) {
             noMove();
             direction = direction.getOppositeDirection();
         }

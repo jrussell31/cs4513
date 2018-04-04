@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import model.Collidable;
 import model.Direction;
 import model.GameObject;
+import model.Immoveable.Tile.FakeWall;
 import model.Immoveable.Tile.Wall;
 
 public class Gamer extends MoveableObject implements Collidable {
@@ -119,6 +120,15 @@ public class Gamer extends MoveableObject implements Collidable {
     public void collide(GameObject O) {
         if(O instanceof Wall){
             this.noMove();
+        }
+        if(O instanceof FakeWall){
+            if(((FakeWall) O).wall){
+                ((FakeWall) O).image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Wall.png");
+                this.noMove();
+            }
+            if(((FakeWall) O).floor){
+                ((FakeWall) O).setAlive(false);
+            }
         }
     }
 }

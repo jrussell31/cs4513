@@ -6,8 +6,10 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Direction;
 import model.GameObject;
+import model.Immoveable.Tile.FakeWall;
 import model.Immoveable.Tile.ToggleWall;
 import model.Immoveable.Tile.Wall;
+import model.Immoveable.Tile.Button;
 
 public class Ball extends Monster {
 
@@ -93,11 +95,11 @@ public class Ball extends Monster {
     @Override
     public void collide(GameObject O) {
         super.collide(O);
+                
+        if(O instanceof Wall || O instanceof FakeWall || O instanceof Button) {
+            this.noMove();
+            this.turnAround();
 
-        if (!(O instanceof ToggleWall)) {
-            if (O instanceof Wall) {
-                this.noMove();
-            }
         }
     }
 }

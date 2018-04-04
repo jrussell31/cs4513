@@ -1,4 +1,4 @@
-package model;
+ package model;
 
 import model.Moveable.Gamer;
 import model.Moveable.Monster;
@@ -18,7 +18,7 @@ public class GameData {
     public static List<GameObject> gamerInventory;
     public static ArrayList<Monster> spawnMonsters = new ArrayList<>();
 
-    private static Map<LevelNumber, Level> gameLevels;
+    public static Map<LevelNumber, Level> gameLevels;
     public static Level currentLevel;
     public static int time;
     public static Gamer gamer;
@@ -27,6 +27,7 @@ public class GameData {
     private static long currentTime, previousTime;
     public static boolean levelInProgress = false;
     public static boolean paused = false;
+    
 
     public GameData() {
         gameObjects = Collections.synchronizedList(new ArrayList<>());
@@ -37,8 +38,8 @@ public class GameData {
         gameLevels.put(LevelNumber.LEVELONE, new LevelOne());
         gameLevels.put(LevelNumber.LEVELTWO, new LevelTwo());
         gameLevels.put(LevelNumber.LEVELTHREE, new LevelThree());
-
-        currentLevel = gameLevels.get(LevelNumber.LEVELTWO);
+        
+        currentLevel = gameLevels.get(LevelNumber.LEVELTHREE);
 
         resetGameData();
     }
