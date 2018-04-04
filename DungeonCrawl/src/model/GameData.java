@@ -1,4 +1,4 @@
-package model;
+ package model;
 
 import model.Moveable.Gamer;
 import model.Moveable.Monster;

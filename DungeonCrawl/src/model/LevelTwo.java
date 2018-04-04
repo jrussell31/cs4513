@@ -233,7 +233,7 @@ public final class LevelTwo extends Level {
         super.moveableObjects.add(new Frog(1, 15));
         super.moveableObjects.add(new Frog(29, 1));
         super.moveableObjects.add(new Frog(8, 9));
-        
+  
         //Fireball
         super.moveableObjects.add(new Fireball(16, 9, Direction.DOWN));
         super.moveableObjects.add(new Fireball(23, 11, Direction.RIGHT));
