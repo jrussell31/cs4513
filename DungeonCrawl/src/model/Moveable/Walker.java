@@ -6,6 +6,7 @@ import controller.ImageFinder;
 import controller.ObjectAnimator;
 import java.awt.image.BufferedImage;
 import model.GameObject;
+import model.Immoveable.Tile.FakeWall;
 import model.Immoveable.Tile.Fire;
 import model.Immoveable.Tile.Water;
 import model.Immoveable.Tile.Wall;
@@ -109,7 +110,7 @@ public class Walker extends Monster {
          if (O instanceof Water || O instanceof Fire) {
             direction = direction.getOppositeDirection();
         }
-         if(O instanceof Wall){
+         if(O instanceof Wall || O instanceof FakeWall){
             this.noMove();
             this.changeDirection();
          }
