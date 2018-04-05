@@ -65,6 +65,7 @@ public final class LevelThree extends Level {
 
     @Override
     public void setMovableObjects() {
+        super.moveableObjects = new ArrayList<>();
         super.moveableObjects.add(new Block(10,6));
     }
 
