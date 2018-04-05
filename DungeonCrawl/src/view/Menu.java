@@ -6,6 +6,7 @@
 package view;
 
 import model.GameData;
+import DungeonCrawl.DungeonCrawl;
 import model.LevelNumber;
 public class Menu extends javax.swing.JPanel {
 
@@ -142,6 +143,9 @@ public class Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
        String skipCode = jTextField1.getText();
        switch(skipCode){
+           case "sklv1":
+               GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELONE);
+               break;
            case "sklv2":
                GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTWO);
                break;
@@ -149,8 +153,11 @@ public class Menu extends javax.swing.JPanel {
                GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTHREE);
                break;
        }
-       jTextField1.setFocusable(false);
+       GameData.paused = false;
+       DungeonCrawl.menuPanel.setVisible(false);
        GameData.resetGameData();
+       //jTextField1.setFocusable(false);
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

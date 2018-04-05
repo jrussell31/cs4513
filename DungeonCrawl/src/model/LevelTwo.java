@@ -225,7 +225,7 @@ public final class LevelTwo extends Level {
 
         //Frog
         super.moveableObjects.add(new Frog(5, 19));
-        super.moveableObjects.add(new Frog(13, 22));
+   //     super.moveableObjects.add(new Frog(13, 22));
         super.moveableObjects.add(new Frog(17, 23));
 
         super.moveableObjects.add(new Frog(1, 15));
