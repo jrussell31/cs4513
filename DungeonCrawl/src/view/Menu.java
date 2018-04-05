@@ -144,8 +144,10 @@ public class Menu extends javax.swing.JPanel {
        switch(skipCode){
            case "sklv2":
                GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTWO);
+               break;
            case "sklv3":
                GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTHREE);
+               break;
        }
        jTextField1.setFocusable(false);
        GameData.resetGameData();
