@@ -12,6 +12,7 @@ import model.Immoveable.Tile.Portal;
 import model.Immoveable.Tile.Teleporter;
 import model.Immoveable.Tile.Trap;
 import model.Immoveable.Tile.Wall;
+import model.Immoveable.Tile.Water;
 import model.Moveable.Ball;
 import model.Moveable.Block;
 import model.Moveable.Bug;
@@ -50,6 +51,8 @@ public final class LevelThree extends Level {
         super.immovableObjects.add(new FakeChip(3,3));
         super.immovableObjects.add(new FakeChip(10,5));
         super.immovableObjects.add(new Fire(11,5));
+        super.immovableObjects.add(new Water(11,6));
+     
         super.immovableObjects.add(new Fire(3,4));
         
         //Level Chips
@@ -62,6 +65,7 @@ public final class LevelThree extends Level {
 
     @Override
     public void setMovableObjects() {
+        super.moveableObjects.add(new Block(10,6));
     }
 
     @Override
