@@ -13,7 +13,7 @@ import model.Immoveable.Tile.Force;
 import model.Immoveable.Tile.Ice;
 import model.Immoveable.Tile.Lock;
 import model.Immoveable.Tile.Portal;
-import model.Immoveable.Tile.Theif;
+import model.Immoveable.Tile.Thief;
 import model.Immoveable.Tile.ToggleWall;
 import model.Immoveable.Tile.Wall;
 import model.Immoveable.Tile.Water;
@@ -188,7 +188,7 @@ public final class LevelFour extends Level{
         super.immovableObjects.add(new Fire(20, 24));
         
         //Theif tile
-        super.immovableObjects.add(new Theif(15, 15));
+        super.immovableObjects.add(new Thief(15, 15));
         
         //Toggle Walls
         ArrayList<GameObject> toggleWalls = new ArrayList<>();
