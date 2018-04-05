@@ -143,6 +143,9 @@ public class Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
        String skipCode = jTextField1.getText();
        switch(skipCode){
+           case "sklv1":
+               GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELONE);
+               break;
            case "sklv2":
                GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTWO);
                break;
