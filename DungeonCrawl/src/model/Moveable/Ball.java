@@ -85,10 +85,6 @@ public class Ball extends Monster {
     public void noMove() {
         x = dx;
         y = dy;
-<<<<<<< HEAD
-=======
-    //this.turnAround();
->>>>>>> upstream/Dev
     }
 
     @Override

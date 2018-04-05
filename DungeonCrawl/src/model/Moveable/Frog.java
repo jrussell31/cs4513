@@ -48,9 +48,6 @@ public class Frog extends Monster {
         loadImages();
         g.drawImage(frogMoves.getImage(), (int) super.x, (int) super.y, (int) Monster.WIDTH, (int) Monster.HEIGHT,
                 null);
-        //Draw Collision Box
-        //g.setColor(Color.blue);
-        //g.draw(this.getCollisionBox());
     }
 
     @Override
@@ -295,7 +292,6 @@ public class Frog extends Monster {
                 }
             }
         }
-
         //no path exists
         return null;
     }
