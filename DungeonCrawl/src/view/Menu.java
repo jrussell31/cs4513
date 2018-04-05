@@ -6,6 +6,7 @@
 package view;
 
 import model.GameData;
+import DungeonCrawl.DungeonCrawl;
 import model.LevelNumber;
 public class Menu extends javax.swing.JPanel {
 
@@ -149,8 +150,11 @@ public class Menu extends javax.swing.JPanel {
                GameData.currentLevel = GameData.gameLevels.get(LevelNumber.LEVELTHREE);
                break;
        }
-       jTextField1.setFocusable(false);
+       GameData.paused = false;
+       DungeonCrawl.menuPanel.setVisible(false);
        GameData.resetGameData();
+       //jTextField1.setFocusable(false);
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
