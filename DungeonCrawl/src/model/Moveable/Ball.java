@@ -85,15 +85,20 @@ public class Ball extends Monster {
     public void noMove() {
         x = dx;
         y = dy;
+
+        this.turnAround();
+
     }
 
     @Override
     public void collide(GameObject O) {
         super.collide(O);
-                
-        if(O instanceof Wall || O instanceof FakeWall || O instanceof Water) {
-            this.noMove();
-            this.turnAround();
-        }
+        
+        if(!(O instanceof ToggleWall)){
+            if(O instanceof Wall || O instanceof FakeWall){
+                this.noMove();
+            }
+        }               
+
     }
 }
