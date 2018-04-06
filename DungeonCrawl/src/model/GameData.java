@@ -131,7 +131,6 @@ public class GameData {
         } else {
             currentLevel = gameLevels.get(LevelNumber.LEVELTHREE);
         }
-
     }
 
     public static void goToPreviousLevel() {
