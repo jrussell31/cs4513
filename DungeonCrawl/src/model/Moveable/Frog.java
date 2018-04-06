@@ -1,3 +1,9 @@
+/*
+* Methods ChangeNodeContents, GetNodeContents and ShortestPath are adapted from 
+* Mazesolver example: https://www.codeproject.com/Articles/9040/Maze-Solver-shortest-path-finder
+* on 3/17/2018.
+*/
+
 package model.Moveable;
 
 import controller.ImageFinder;
