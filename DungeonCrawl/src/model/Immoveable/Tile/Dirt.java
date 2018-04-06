@@ -19,10 +19,11 @@ public class Dirt extends Tile implements Collidable {
 
     public Dirt(float x, float y) {
         super(x, y);
-
+        System.out.println("new Dirt!" +x +" " +y);
         try {
             image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Dirt.png");
         } catch (Exception e) {
+            System.out.println("Error in Dirt" + e.getMessage());
         }
     }
 
@@ -52,13 +53,16 @@ public class Dirt extends Tile implements Collidable {
         }
         if (O instanceof Tank) {
             ((Tank) O).noMove();
-            ((Tank) O).setAlive(false);
+            ((Tank) O).direction = ((Tank) O).direction.getOppositeDirection();
+
+
 
             image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
         }
         if (O instanceof Walker) {
             ((Walker) O).noMove();
-            ((Walker) O).setAlive(false);
+            ((Walker) O).changeDirection();
+
 
             image = (BufferedImage) ImageFinder.getImage("ImagesFolder", "Chip_Drowned.png");
         }
