@@ -10,7 +10,6 @@ import model.GameData;
 import model.GameObject;
 import model.Immoveable.Tile.FakeWall;
 import model.Immoveable.Tile.Wall;
-import model.Level;
 
 public class Fireball extends Monster {
 
@@ -32,7 +31,6 @@ public class Fireball extends Monster {
             fireballSprites[0] = image;
         } catch (Exception e) {
         }
-
     }
 
     @Override
@@ -94,15 +92,15 @@ public class Fireball extends Monster {
                 switch (direction) {
                     case LEFT:
                         super.x -= MOVEMENT;
-
+                        if (super.x == 512) {
+                                direction = Direction.DOWN;
+                        }
                         break;
                     case RIGHT:
                         super.x += MOVEMENT;
                         if (super.x == 928) {
                             direction = Direction.UP;
-                        }
-                        
-
+                        }                      
                         break;
                     case UP:
                         super.y -= MOVEMENT;
